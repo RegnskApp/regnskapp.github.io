@@ -62,7 +62,7 @@
     }
 
     .carousel-dots {
-      display: flex;
+      display: none;
       justify-content: center;
       margin-top: 0.5rem;
       gap: 0.5rem;
@@ -84,6 +84,12 @@
     @media (min-width: 768px) {
       .carousel {
         justify-content: center;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .carousel-dots {
+        display: flex;
       }
     }
 
@@ -135,6 +141,7 @@
   <script>
     const carousel = document.querySelector('.carousel');
     const dots = document.querySelectorAll('.dot');
+    let autoplayInterval;
 
     function updateDots() {
       const scrollLeft = carousel.scrollLeft;
@@ -144,8 +151,30 @@
       if (dots[index]) dots[index].classList.add('active');
     }
 
+    function startAutoplay() {
+      if (window.innerWidth >= 768) return; // only run on mobile
+
+      const images = carousel.querySelectorAll('img');
+      let index = 0;
+
+      autoplayInterval = setInterval(() => {
+        index = (index + 1) % images.length;
+        const scrollTo = images[index].offsetLeft - carousel.offsetLeft;
+        carousel.scrollTo({ left: scrollTo, behavior: 'smooth' });
+        updateDots();
+      }, 4000);
+    }
+
+    function stopAutoplay() {
+      clearInterval(autoplayInterval);
+    }
+
     carousel.addEventListener('scroll', updateDots);
-    window.addEventListener('load', updateDots);
+    carousel.addEventListener('touchstart', stopAutoplay);
+    window.addEventListener('load', () => {
+      updateDots();
+      startAutoplay();
+    });
   </script>
 </body>
 </html>
