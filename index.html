@@ -141,7 +141,10 @@
   <script>
     const carousel = document.querySelector('.carousel');
     const dots = document.querySelectorAll('.dot');
+    const images = carousel.querySelectorAll('img');
     let autoplayInterval;
+    let resumeTimeout;
+    let currentIndex = 0;
 
     function updateDots() {
       const scrollLeft = carousel.scrollLeft;
@@ -149,17 +152,17 @@
       const index = Math.round(scrollLeft / width);
       dots.forEach(dot => dot.classList.remove('active'));
       if (dots[index]) dots[index].classList.add('active');
+      currentIndex = index;
     }
 
     function startAutoplay() {
-      if (window.innerWidth >= 768) return; // only run on mobile
+      if (window.innerWidth >= 768) return;
 
-      const images = carousel.querySelectorAll('img');
-      let index = 0;
+      stopAutoplay(); // reset any existing intervals
 
       autoplayInterval = setInterval(() => {
-        index = (index + 1) % images.length;
-        const scrollTo = images[index].offsetLeft - carousel.offsetLeft;
+        currentIndex = (currentIndex + 1) % images.length;
+        const scrollTo = images[currentIndex].offsetLeft - carousel.offsetLeft;
         carousel.scrollTo({ left: scrollTo, behavior: 'smooth' });
         updateDots();
       }, 4000);
@@ -169,8 +172,20 @@
       clearInterval(autoplayInterval);
     }
 
+    function restartAutoplayWithDelay() {
+      stopAutoplay();
+      clearTimeout(resumeTimeout);
+      resumeTimeout = setTimeout(startAutoplay, 5000); // 5 sek forsinkelse
+    }
+
     carousel.addEventListener('scroll', updateDots);
-    carousel.addEventListener('touchstart', stopAutoplay);
+    carousel.addEventListener('touchstart', () => {
+      stopAutoplay();
+    });
+    carousel.addEventListener('touchend', () => {
+      restartAutoplayWithDelay();
+    });
+
     window.addEventListener('load', () => {
       updateDots();
       startAutoplay();
