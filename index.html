@@ -4,17 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>RegnskApp / BalanceTrackr</title>
-  
-  <p style="max-width: 600px; margin: 2rem auto 1rem; line-height: 1.6;">
-  This app is supposed to be your personal finance companion. You can use this app to easily add accounts, both personal and shared.<br />
-  You can add accounts from as many banks as you want, since this is done completely manually.<br />
-  It is <u>not possible</u> to link this app to any bank with advanced login, and you cannot automatically retrieve accounts and transactions.
-  </p>
-  <p style="max-width: 600px; margin: 1rem auto 2rem; line-height: 1.6;">
-  The idea is that you don't have to use Excel to create budgets and accounts, but instead use this app to have an overview and good control over your finances.<br />
-  You should be able to easily follow how the money develops on a daily basis, by entering and adjusting your accounts manually when you need to.  
-  </p>
-  
   <link rel="icon" href="images/RegnskApp-Light-Mode-Icon.jpg" type="image/jpeg" />
   <style>
     body {
@@ -136,6 +125,17 @@
 
   <h1 style="margin-top: 0.25rem;">RegnskApp</h1>
 
+  <p style="max-width: 600px; margin: 2rem auto 1rem; line-height: 1.6;">
+    This app is supposed to be your personal finance companion. You can use this app to easily add accounts, both personal and shared.<br />
+    You can add accounts from as many banks as you want, since this is done completely manually.<br />
+    It is <u>not possible</u> to link this app to any bank with advanced login, and you cannot automatically retrieve accounts and transactions.
+  </p>
+
+  <p style="max-width: 600px; margin: 1rem auto 2rem; line-height: 1.6;">
+    The idea is that you don't have to use Excel to create budgets and accounts, but instead use this app to have an overview and good control over your finances.<br />
+    You should be able to easily follow how the money develops on a daily basis, by entering and adjusting your accounts manually when you need to.
+  </p>
+
   <div class="carousel-wrapper">
     <div class="carousel">
       <img src="images/RegnskApp1.png" alt="App screenshot 1" />
@@ -147,7 +147,7 @@
       If you like watching money rain, then this app does that too!
     </p>
 
-    <video controls playsinline muted style="margin-top: 1rem; max-width: 90%; border-radius: 1rem; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);">
+    <video autoplay muted playsinline loop style="margin-top: 1rem; max-width: 90%; border-radius: 1rem; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);">
       <source src="images/LadetRegneiMovie.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
@@ -173,7 +173,7 @@
   <footer>
     &copy; 2025 RegnskApp - Ole Morten Tengesdal. All rights reserved.
   </footer>
-  
+
   <script data-goatcounter="https://regnskapp.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
   <script>
@@ -196,8 +196,7 @@
     function startAutoplay() {
       if (window.innerWidth >= 768) return;
 
-      stopAutoplay(); // reset any existing intervals
-
+      stopAutoplay();
       autoplayInterval = setInterval(() => {
         currentIndex = (currentIndex + 1) % images.length;
         const scrollTo = images[currentIndex].offsetLeft - carousel.offsetLeft;
@@ -213,16 +212,12 @@
     function restartAutoplayWithDelay() {
       stopAutoplay();
       clearTimeout(resumeTimeout);
-      resumeTimeout = setTimeout(startAutoplay, 5000); // 5 sek forsinkelse
+      resumeTimeout = setTimeout(startAutoplay, 5000);
     }
 
     carousel.addEventListener('scroll', updateDots);
-    carousel.addEventListener('touchstart', () => {
-      stopAutoplay();
-    });
-    carousel.addEventListener('touchend', () => {
-      restartAutoplayWithDelay();
-    });
+    carousel.addEventListener('touchstart', stopAutoplay);
+    carousel.addEventListener('touchend', restartAutoplayWithDelay);
 
     window.addEventListener('load', () => {
       updateDots();
