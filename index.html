@@ -215,8 +215,8 @@
 
     function updateDots() {
       const scrollLeft = carousel.scrollLeft;
-      const width = carousel.clientWidth;
-      const index = Math.round(scrollLeft / width);
+      const imageWidth = images[0].offsetWidth + 16; // 16px is the gap of 1rem
+      const index = Math.round(scrollLeft / imageWidth);
       dots.forEach(dot => dot.classList.remove('active'));
       if (dots[index]) dots[index].classList.add('active');
       currentIndex = index;
