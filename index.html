@@ -326,7 +326,7 @@
   
       function startAutoplay() {
         const isDesktop = window.innerWidth >= 768;
-        const interval = isDesktop ? 6000 : 4000;
+        const interval = isDesktop ? 4000 : 3000;
         stopAutoplay();
         
         let desktopIndexes = [0, 2, 4]; // For 5 bilder
@@ -351,7 +351,7 @@
       function restartAutoplayWithDelay() {
         stopAutoplay();
         clearTimeout(resumeTimeout);
-        resumeTimeout = setTimeout(startAutoplay, 5000);
+        resumeTimeout = setTimeout(startAutoplay, 3500);
       }
   
       carousel.addEventListener('scroll', () => {
