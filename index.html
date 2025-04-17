@@ -234,8 +234,7 @@
 
   <script data-goatcounter="https://regnskapp.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
-  <script>
-    // Funksjon for å sette opp en karusell
+   <script>
     function setupCarousel(carouselNumber) {
       const carousel = document.querySelector(`.carousel-${carouselNumber}`);
       const dotsContainer = document.querySelector(`.carousel-dots-${carouselNumber}`);
@@ -245,28 +244,20 @@
       let resumeTimeout;
       let currentIndex = 0;
   
-      // Create dots based on screen size
       function createDots() {
-        // Clear existing dots
         dotsContainer.innerHTML = '';
         dots = [];
   
-        // Determine how many dots to show
         const isDesktop = window.innerWidth >= 768;
         const dotsCount = isDesktop ? 3 : images.length;
   
-        // Create new dots
         for (let i = 0; i < dotsCount; i++) {
           const dot = document.createElement('span');
           dot.className = 'dot';
           dot.addEventListener('click', () => {
             if (isDesktop) {
-              // For desktop, map dot index to corresponding image
-              let targetImageIndex;
-              if (i === 0) targetImageIndex = 0;
-              else if (i === 1) targetImageIndex = Math.floor(images.length / 2) - 1;
-              else targetImageIndex = images.length - 1;
-              scrollToImage(targetImageIndex);
+              const desktopIndexes = [0, 2, 4]; // tilpasset 5 bilder
+              scrollToImage(desktopIndexes[i]);
             } else {
               scrollToImage(i);
             }
@@ -276,7 +267,6 @@
           dots.push(dot);
         }
   
-        // Update the initial state
         updateDots();
       }
   
@@ -284,7 +274,6 @@
         const scrollLeft = carousel.scrollLeft;
         const carouselWidth = carousel.offsetWidth;
         const totalWidth = carousel.scrollWidth;
-        const progress = scrollLeft / (totalWidth - carouselWidth);
   
         let closestIndex = 0;
         let closestDistance = Infinity;
@@ -294,7 +283,6 @@
           const imgCenter = imgLeft + (img.offsetWidth / 2);
           const viewportCenter = scrollLeft + (carouselWidth / 2);
           const distance = Math.abs(viewportCenter - imgCenter);
-  
           if (distance < closestDistance) {
             closestDistance = distance;
             closestIndex = index;
@@ -305,13 +293,9 @@
         let activeDotIndex;
   
         if (isDesktop) {
-          if (closestIndex === 0 || closestIndex === 1) {
-            activeDotIndex = 0;
-          } else if (closestIndex === images.length - 1 || closestIndex === images.length - 2) {
-            activeDotIndex = 2;
-          } else {
-            activeDotIndex = 1;
-          }
+          if (closestIndex <= 1) activeDotIndex = 0;
+          else if (closestIndex >= 3) activeDotIndex = 2;
+          else activeDotIndex = 1;
         } else {
           activeDotIndex = closestIndex;
         }
@@ -336,19 +320,15 @@
   
       function startAutoplay() {
         const interval = window.innerWidth >= 768 ? 6000 : 4000;
-  
         stopAutoplay();
         autoplayInterval = setInterval(() => {
           const isDesktop = window.innerWidth >= 768;
   
           if (isDesktop) {
-            if (currentIndex >= images.length - 2) {
-              scrollToImage(0);
-            } else if (currentIndex < 2) {
-              scrollToImage(Math.floor(images.length / 2) - 1);
-            } else {
-              scrollToImage(images.length - 1);
-            }
+            const desktopIndexes = [0, 2, 4];
+            const currentDot = desktopIndexes.indexOf(currentIndex);
+            const nextDot = (currentDot + 1) % desktopIndexes.length;
+            scrollToImage(desktopIndexes[nextDot]);
           } else {
             scrollToImage((currentIndex + 1) % images.length);
           }
@@ -379,18 +359,10 @@
       carousel.addEventListener('mousedown', stopAutoplay);
       carousel.addEventListener('mouseup', restartAutoplayWithDelay);
   
-      // Initialize carousel
       function initialize() {
         createDots();
         const isDesktop = window.innerWidth >= 768;
-  
-        if (isDesktop) {
-          const middleIndex = Math.floor(images.length / 2) - 1;
-          scrollToImage(middleIndex);
-        } else {
-          scrollToImage(0);
-        }
-  
+        scrollToImage(isDesktop ? 2 : 0); // starter på midten for desktop, ellers første
         startAutoplay();
       }
   
@@ -408,10 +380,9 @@
       return { updateDots, startAutoplay, scrollToImage };
     }
   
-    // Set up both carousels
     document.addEventListener('DOMContentLoaded', () => {
-      const carousel1 = setupCarousel(1);
-      const carousel2 = setupCarousel(2);
+      setupCarousel(1);
+      setupCarousel(2);
     });
   </script>
 </body>
