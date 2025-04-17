@@ -253,10 +253,12 @@
       const userLang = navigator.language || navigator.userLanguage;
       const currentPath = window.location.pathname;
     
+      const isOnEnglish = currentPath.endsWith('index.html') || currentPath === '/' || currentPath === '/regnskapp.github.io/';
+    
       if (userLang.startsWith('no') && !currentPath.includes('index-no.html')) {
-        window.location.href = 'index-no.html';
-      } else if (!userLang.startsWith('no') && !currentPath.includes('index.html')) {
-        window.location.href = 'index.html';
+        if (isOnEnglish) {
+          window.location.href = 'index-no.html';
+        }
       }
     });
     
