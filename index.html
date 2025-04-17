@@ -234,7 +234,7 @@
 
   <script data-goatcounter="https://regnskapp.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
-   <script>
+  <script>
     function setupCarousel(carouselNumber) {
       const carousel = document.querySelector(`.carousel-${carouselNumber}`);
       const dotsContainer = document.querySelector(`.carousel-dots-${carouselNumber}`);
@@ -256,7 +256,8 @@
           dot.className = 'dot';
           dot.addEventListener('click', () => {
             if (isDesktop) {
-              const desktopIndexes = [0, 2, 4]; // tilpasset 5 bilder
+              // Mappe dotter for desktop: 1 -> bilde 0, 2 -> bilde 2, 3 -> bilde 4 (for 5 bilder)
+              const desktopIndexes = [0, 2, 4];
               scrollToImage(desktopIndexes[i]);
             } else {
               scrollToImage(i);
@@ -293,6 +294,7 @@
         let activeDotIndex;
   
         if (isDesktop) {
+          // Bestem hvilken dot som skal være aktiv basert på nærmeste bilde
           if (closestIndex <= 1) activeDotIndex = 0;
           else if (closestIndex >= 3) activeDotIndex = 2;
           else activeDotIndex = 1;
@@ -312,23 +314,25 @@
         const imgCenter = imgLeft + (targetImage.offsetWidth / 2);
         const carouselCenter = carousel.offsetWidth / 2;
         const scrollTo = imgCenter - carouselCenter;
-  
         carousel.scrollTo({ left: scrollTo, behavior: 'smooth' });
         currentIndex = targetIndex;
         updateDots();
       }
   
       function startAutoplay() {
-        const interval = window.innerWidth >= 768 ? 6000 : 4000;
+        const isDesktop = window.innerWidth >= 768;
+        const interval = isDesktop ? 6000 : 4000;
         stopAutoplay();
+        
+        let desktopIndexes = [0, 2, 4]; // For 5 bilder
+        // For desktop: start med dot 1 (bilde 0)
+        let currentDot = isDesktop ? desktopIndexes.indexOf(currentIndex) : currentIndex;
+        
         autoplayInterval = setInterval(() => {
-          const isDesktop = window.innerWidth >= 768;
-  
           if (isDesktop) {
-            const desktopIndexes = [0, 2, 4];
-            const currentDot = desktopIndexes.indexOf(currentIndex);
-            const nextDot = (currentDot + 1) % desktopIndexes.length;
-            scrollToImage(desktopIndexes[nextDot]);
+            currentDot = (currentDot + 1) % desktopIndexes.length;
+            const nextIndex = desktopIndexes[currentDot];
+            scrollToImage(nextIndex);
           } else {
             scrollToImage((currentIndex + 1) % images.length);
           }
@@ -361,8 +365,8 @@
   
       function initialize() {
         createDots();
-        const isDesktop = window.innerWidth >= 768;
-        scrollToImage(isDesktop ? 2 : 0); // starter på midten for desktop, ellers første
+        // Start alltid på den første (bilde 0) på både desktop og mobil
+        scrollToImage(0);
         startAutoplay();
       }
   
