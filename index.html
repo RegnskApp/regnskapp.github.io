@@ -235,198 +235,198 @@
   <script data-goatcounter="https://regnskapp.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
   <script>
-// Funksjon for å sette opp en karusell
-function setupCarousel(carouselNumber) {
-  const carousel = document.querySelector(`.carousel-${carouselNumber}`);
-  const dotsContainer = document.querySelector(`.carousel-dots-${carouselNumber}`);
-  const images = carousel.querySelectorAll('img');
-  let dots = [];
-  let autoplayInterval;
-  let resumeTimeout;
-  let currentIndex = 0;
+    // Funksjon for å sette opp en karusell
+    function setupCarousel(carouselNumber) {
+      const carousel = document.querySelector(`.carousel-${carouselNumber}`);
+      const dotsContainer = document.querySelector(`.carousel-dots-${carouselNumber}`);
+      const images = carousel.querySelectorAll('img');
+      let dots = [];
+      let autoplayInterval;
+      let resumeTimeout;
+      let currentIndex = 0;
   
   // Create dots based on screen size
-  function createDots() {
+      function createDots() {
     // Clear existing dots
-    dotsContainer.innerHTML = '';
-    dots = [];
+        dotsContainer.innerHTML = '';
+        dots = [];
     
     // Determine how many dots to show
-    const isDesktop = window.innerWidth >= 768;
-    const dotsCount = isDesktop ? 3 : images.length;
+        const isDesktop = window.innerWidth >= 768;
+        const dotsCount = isDesktop ? 3 : images.length;
     
     // Create new dots
-    for (let i = 0; i < dotsCount; i++) {
-      const dot = document.createElement('span');
-      dot.className = 'dot';
-      dot.addEventListener('click', () => {
-        if (isDesktop) {
+        for (let i = 0; i < dotsCount; i++) {
+          const dot = document.createElement('span');
+          dot.className = 'dot';
+          dot.addEventListener('click', () => {
+            if (isDesktop) {
           // For desktop, map dot index to corresponding image
-          let targetImageIndex;
-          if (i === 0) targetImageIndex = 0; // First dot shows first image
-          else if (i === 1) targetImageIndex = Math.floor(images.length / 2) - 1; // Middle dot shows middle image
-          else targetImageIndex = images.length - 1; // Last dot shows last image
+              let targetImageIndex;
+              if (i === 0) targetImageIndex = 0; // First dot shows first image
+              else if (i === 1) targetImageIndex = Math.floor(images.length / 2) - 1; // Middle dot shows middle image
+              else targetImageIndex = images.length - 1; // Last dot shows last image
           
-          scrollToImage(targetImageIndex);
-        } else {
+              scrollToImage(targetImageIndex);
+            } else {
           // For mobile, direct mapping
-          scrollToImage(i);
+              scrollToImage(i);
+            }
+            restartAutoplayWithDelay();
+          });
+          dotsContainer.appendChild(dot);
+          dots.push(dot);
         }
-        restartAutoplayWithDelay();
-      });
-      dotsContainer.appendChild(dot);
-      dots.push(dot);
-    }
     
     // Update the initial state
-    updateDots();
-  }
+        updateDots();
+      }
 
-  function updateDots() {
-    const scrollLeft = carousel.scrollLeft;
-    const carouselWidth = carousel.offsetWidth;
-    const totalWidth = carousel.scrollWidth;
-    const progress = scrollLeft / (totalWidth - carouselWidth);
+      function updateDots() {
+        const scrollLeft = carousel.scrollLeft;
+        const carouselWidth = carousel.offsetWidth;
+        const totalWidth = carousel.scrollWidth;
+        const progress = scrollLeft / (totalWidth - carouselWidth);
     
     // Find which image is most visible
-    let closestIndex = 0;
-    let closestDistance = Infinity;
+        let closestIndex = 0;
+        let closestDistance = Infinity;
     
-    images.forEach((img, index) => {
-      const imgLeft = img.offsetLeft - carousel.offsetLeft;
-      const imgCenter = imgLeft + (img.offsetWidth / 2);
-      const viewportCenter = scrollLeft + (carouselWidth / 2);
-      const distance = Math.abs(viewportCenter - imgCenter);
+        images.forEach((img, index) => {
+          const imgLeft = img.offsetLeft - carousel.offsetLeft;
+          const imgCenter = imgLeft + (img.offsetWidth / 2);
+          const viewportCenter = scrollLeft + (carouselWidth / 2);
+          const distance = Math.abs(viewportCenter - imgCenter);
       
-      if (distance < closestDistance) {
-        closestDistance = distance;
-        closestIndex = index;
-      }
-    });
+          if (distance < closestDistance) {
+            closestDistance = distance;
+            closestIndex = index;
+          }
+        });
     
     // Determine which dot should be active
-    const isDesktop = window.innerWidth >= 768;
-    let activeDotIndex;
+        const isDesktop = window.innerWidth >= 768;
+        let activeDotIndex;
     
-    if (isDesktop) {
+        if (isDesktop) {
       // For desktop view with 3 dots
-      if (closestIndex === 0 || closestIndex === 1) {
-        activeDotIndex = 0; // First dot
-      } else if (closestIndex === images.length - 1 || closestIndex === images.length - 2) {
-        activeDotIndex = 2; // Last dot
-      } else {
-        activeDotIndex = 1; // Middle dot
-      }
-    } else {
+          if (closestIndex === 0 || closestIndex === 1) {
+            activeDotIndex = 0; // First dot
+          } else if (closestIndex === images.length - 1 || closestIndex === images.length - 2) {
+            activeDotIndex = 2; // Last dot
+          } else {
+            activeDotIndex = 1; // Middle dot
+          }
+        } else {
       // For mobile, direct mapping
-      activeDotIndex = closestIndex;
-    }
+          activeDotIndex = closestIndex;
+        }
     
     // Update active dot
-    dots.forEach(dot => dot.classList.remove('active'));
-    if (dots[activeDotIndex]) dots[activeDotIndex].classList.add('active');
-    currentIndex = closestIndex;
-  }
+        dots.forEach(dot => dot.classList.remove('active'));
+        if (dots[activeDotIndex]) dots[activeDotIndex].classList.add('active');
+        currentIndex = closestIndex;
+      }
 
-  function scrollToImage(index) {
+      function scrollToImage(index) {
     // Ensure index is within bounds
-    const targetIndex = (index + images.length) % images.length;
+        const targetIndex = (index + images.length) % images.length;
     
     // Center the selected image
-    const targetImage = images[targetIndex];
-    const imgLeft = targetImage.offsetLeft - carousel.offsetLeft;
-    const imgCenter = imgLeft + (targetImage.offsetWidth / 2);
-    const carouselCenter = carousel.offsetWidth / 2;
-    const scrollTo = imgCenter - carouselCenter;
+        const targetImage = images[targetIndex];
+        const imgLeft = targetImage.offsetLeft - carousel.offsetLeft;
+        const imgCenter = imgLeft + (targetImage.offsetWidth / 2);
+        const carouselCenter = carousel.offsetWidth / 2;
+        const scrollTo = imgCenter - carouselCenter;
     
-    carousel.scrollTo({ left: scrollTo, behavior: 'smooth' });
-    currentIndex = targetIndex;
-    updateDots();
-  }
+        carousel.scrollTo({ left: scrollTo, behavior: 'smooth' });
+        currentIndex = targetIndex;
+        updateDots();
+      }
 
-  function startAutoplay() {
+      function startAutoplay() {
     // Allow autoplay on all devices but with a longer interval on desktop
-    const interval = window.innerWidth >= 768 ? 6000 : 4000;
+        const interval = window.innerWidth >= 768 ? 6000 : 4000;
     
-    stopAutoplay();
-    autoplayInterval = setInterval(() => {
-      const isDesktop = window.innerWidth >= 768;
+        stopAutoplay();
+        autoplayInterval = setInterval(() => {
+          const isDesktop = window.innerWidth >= 768;
       
-      if (isDesktop) {
+          if (isDesktop) {
         // On desktop, we want to cycle through the groups
         // If we're at the last image or close to it, go back to first
-        if (currentIndex >= images.length - 2) {
-          scrollToImage(0);
-        } else if (currentIndex < 2) {
+            if (currentIndex >= images.length - 2) {
+              scrollToImage(0);
+            } else if (currentIndex < 2) {
           // If we're at the beginning, go to middle
-          scrollToImage(Math.floor(images.length / 2) - 1);
-        } else {
+              scrollToImage(Math.floor(images.length / 2) - 1);
+            } else {
           // Otherwise go to end
-          scrollToImage(images.length - 1);
-        }
-      } else {
+              scrollToImage(images.length - 1);
+            }
+          } else {
         // On mobile, simply advance to next image
-        scrollToImage((currentIndex + 1) % images.length);
+            scrollToImage((currentIndex + 1) % images.length);
+          }
+        }, interval);
       }
-    }, interval);
-  }
 
-  function stopAutoplay() {
-    clearInterval(autoplayInterval);
-  }
+      function stopAutoplay() {
+        clearInterval(autoplayInterval);
+      }
 
-  function restartAutoplayWithDelay() {
-    stopAutoplay();
-    clearTimeout(resumeTimeout);
-    resumeTimeout = setTimeout(startAutoplay, 5000);
-  }
+      function restartAutoplayWithDelay() {
+        stopAutoplay();
+        clearTimeout(resumeTimeout);
+        resumeTimeout = setTimeout(startAutoplay, 5000);
+      }
 
-  carousel.addEventListener('scroll', () => {
+      carousel.addEventListener('scroll', () => {
     // Throttle the scroll event to improve performance
-    if (!carousel.scrollTimeout) {
-      carousel.scrollTimeout = setTimeout(() => {
-        updateDots();
-        carousel.scrollTimeout = null;
-      }, 100);
-    }
-  });
+        if (!carousel.scrollTimeout) {
+          carousel.scrollTimeout = setTimeout(() => {
+            updateDots();
+            carousel.scrollTimeout = null;
+          }, 100);
+        }
+      });
   
-  carousel.addEventListener('touchstart', stopAutoplay);
-  carousel.addEventListener('touchend', restartAutoplayWithDelay);
-  carousel.addEventListener('mousedown', stopAutoplay);
-  carousel.addEventListener('mouseup', restartAutoplayWithDelay);
+      carousel.addEventListener('touchstart', stopAutoplay);
+      carousel.addEventListener('touchend', restartAutoplayWithDelay);
+      carousel.addEventListener('mousedown', stopAutoplay);
+      carousel.addEventListener('mouseup', restartAutoplayWithDelay);
 
   // Initialize carousel
-  function initialize() {
-    createDots();
+      function initialize() {
+        createDots();
     // Start with the first image
-    scrollToImage(0);
-    startAutoplay();
-  }
+        scrollToImage(0);
+        startAutoplay();
+      }
   
   // Handle window resize
-  window.addEventListener('resize', () => {
-    createDots();
-    updateDots();
-    restartAutoplayWithDelay();
-  });
+      window.addEventListener('resize', () => {
+        createDots();
+        updateDots();
+        restartAutoplayWithDelay();
+      });
   
   // Initialize on load
-  window.addEventListener('load', initialize);
+      window.addEventListener('load', initialize);
   
   // Also initialize immediately in case we're loaded already
-  if (document.readyState === 'complete') {
-    initialize();
-  }
+      if (document.readyState === 'complete') {
+        initialize();
+      }
 
   // Return control functions
-  return { updateDots, startAutoplay, scrollToImage };
-}
+      return { updateDots, startAutoplay, scrollToImage };
+    }
 
 // Set up both carousels
-document.addEventListener('DOMContentLoaded', () => {
-  const carousel1 = setupCarousel(1);
-  const carousel2 = setupCarousel(2);
-});
+    document.addEventListener('DOMContentLoaded', () => {
+      const carousel1 = setupCarousel(1);
+      const carousel2 = setupCarousel(2);
+    });
   </script>
 </body>
