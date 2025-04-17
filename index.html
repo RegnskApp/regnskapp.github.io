@@ -92,11 +92,16 @@
     @media (min-width: 768px) {
       .carousel {
         justify-content: center;
+        flex-wrap: nowrap; /* Hindrer at bildene brettes */
+        max-width: 1200px; /* Begrenser karusellens bredde */
+        margin: 0 auto; /* Sentrerer karusellen */
       }
+  
       .carousel img {
         width: calc(33.333% - 16px); /* 3 bilder med mellomrom */
+        max-width: 350px; /* Maks bredde per bilde */
       }
-    
+
       .carousel-dots {
         display: flex; /* Vis prikkene også på stor skjerm */
       }
