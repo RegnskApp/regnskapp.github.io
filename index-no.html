@@ -134,13 +134,35 @@
     .carousel-dots .dot {
       cursor: pointer;
     }
+    #language-switcher {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      z-index: 999;
+      display: flex;
+      gap: 0.5rem;
+      background: transparent;
+    }
+  
+    #language-switcher button {
+      background: transparent;
+      border: none;
+      font-size: 1rem;
+      padding: 0.2rem;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+  
+    #language-switcher button:hover {
+      transform: scale(1.1);
+    }
   </style>
 </head>
 <body>
-  <!-- Språkvelger -->
-  <div style="position: fixed; top: 10px; right: 10px; z-index: 100;">
-    <button onclick="changeLanguage('en')" style="padding: 0.5rem 1rem; font-size: 1.5rem;">🇬🇧</button>
-    <button onclick="changeLanguage('no')" style="padding: 0.5rem 1rem; font-size: 1.5rem;">🇳🇴</button>
+    <!-- Språkvelger -->
+  <div id="language-switcher">
+    <button onclick="changeLanguage('en')" aria-label="English">🇬🇧</button>
+    <button onclick="changeLanguage('no')" aria-label="Norsk">🇳🇴</button>
   </div>
   <picture>
     <source srcset="images/RegnskApp-Dark-Mode-Icon.jpg" media="(prefers-color-scheme: dark)" />
