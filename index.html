@@ -364,11 +364,12 @@
       carousel.addEventListener('mouseup', restartAutoplayWithDelay);
   
       function initialize() {
-        createDots();
-        // Start alltid på den første (bilde 0) på både desktop og mobil
-        scrollToImage(0);
-        startAutoplay();
-      }
+       createDots();
+       scrollToImage(0); // Start på første bilde
+       setTimeout(() => {
+         startAutoplay();
+       }, 1000); // Vent 1 sekund før autoplay starter
+     }
   
       window.addEventListener('resize', () => {
         createDots();
