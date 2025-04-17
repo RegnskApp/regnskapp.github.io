@@ -87,13 +87,22 @@
       padding: 1rem;
       font-size: 0.9rem;
     }
-    
+
+    /* Dette er for storskjermvisning - viser maks 3 bilder */
     @media (min-width: 768px) {
       .carousel {
         justify-content: center;
       }
+      .carousel img {
+        width: calc(33.333% - 16px); /* 3 bilder med mellomrom */
+      }
+    
+      .carousel-dots {
+        display: flex; /* Vis prikkene også på stor skjerm */
+      }
     }
-
+    
+    /* Dette er for mobilvisning - viser bare 1 bilde */
     @media (max-width: 767px) {
       .carousel-dots {
         display: flex;
@@ -115,6 +124,11 @@
         color: #e0e0e0;
       }
     }
+
+    /* Legg til dette for å gjøre prikkene klikkbare */
+    .carousel-dots .dot {
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
@@ -135,26 +149,17 @@
     Everything is done your way: manually, privately, and without connecting to your bank.
   </p>
 
+  <!-- Første karusell før Features -->
   <div class="carousel-wrapper">
-    <div class="carousel">
+    <div class="carousel carousel-1">
       <img src="images/RegnskApp1en.png" alt="App screenshot 1" />
       <img src="images/RegnskApp2en.png" alt="App screenshot 2" />
-      <img src="images/RegnskApp3en.png" alt="App screenshot 3" />
-      <img src="images/RegnskApp4en.png" alt="App screenshot 4" />
-      <img src="images/RegnskApp5en.png" alt="App screenshot 5" />
-      <img src="images/RegnskApp6en.png" alt="App screenshot 6" />
-      <img src="images/RegnskApp7en.png" alt="App screenshot 7" />
-      <img src="images/RegnskApp8en.png" alt="App screenshot 8" />
-      <img src="images/RegnskApp9en.png" alt="App screenshot 9" />
-      <img src="images/RegnskApp10en.png" alt="App screenshot 10" />
+      <img src="images/RegnskApp4en.png" alt="App screenshot 3" />
+      <img src="images/RegnskApp5en.png" alt="App screenshot 4" />
+      <img src="images/RegnskApp9en.png" alt="App screenshot 5" />
     </div>
 
-    <div class="carousel-dots">
-      <span class="dot"></span>
-      <span class="dot"></span>
-      <span class="dot"></span>
-      <span class="dot"></span>
-      <span class="dot"></span>
+    <div class="carousel-dots carousel-dots-1">
       <span class="dot"></span>
       <span class="dot"></span>
       <span class="dot"></span>
@@ -175,6 +180,25 @@
     <li>💰 Watch your balance update in real time</li>
     <li>🧠 Clean, ad-free design – focused on <em>you and your money</em></li>
   </ul>
+
+  <!-- Andre karusell etter Features -->
+  <div class="carousel-wrapper">
+    <div class="carousel carousel-2">
+      <img src="images/RegnskApp3en.png" alt="App screenshot 6" />
+      <img src="images/RegnskApp6en.png" alt="App screenshot 7" />
+      <img src="images/RegnskApp7en.png" alt="App screenshot 8" />
+      <img src="images/RegnskApp8en.png" alt="App screenshot 9" />
+      <img src="images/RegnskApp10en.png" alt="App screenshot 10" />
+    </div>
+
+    <div class="carousel-dots carousel-dots-2">
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+  </div>
 
   <p style="max-width: 600px; margin: 2rem auto 1rem; line-height: 1.6;">
     This is the app for anyone who wants <strong>simple and total control without extra noise</strong>.  
@@ -206,8 +230,10 @@
   <script data-goatcounter="https://regnskapp.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
   <script>
-    const carousel = document.querySelector('.carousel');
-    const dots = document.querySelectorAll('.dot');
+  // Funksjon for å sette opp en karusell
+  function setupCarousel(carouselNumber) {
+    const carousel = document.querySelector(`.carousel-${carouselNumber}`);
+    const dots = document.querySelectorAll(`.carousel-dots-${carouselNumber} .dot`);
     const images = carousel.querySelectorAll('img');
     let autoplayInterval;
     let resumeTimeout;
@@ -215,7 +241,7 @@
 
     function updateDots() {
       const scrollLeft = carousel.scrollLeft;
-      const imageWidth = images[0].offsetWidth + 16; // 16px is the gap of 1rem
+      const imageWidth = images[0].offsetWidth + 16; // 16px er gapet på 1rem
       const index = Math.round(scrollLeft / imageWidth);
       dots.forEach(dot => dot.classList.remove('active'));
       if (dots[index]) dots[index].classList.add('active');
@@ -244,13 +270,39 @@
       resumeTimeout = setTimeout(startAutoplay, 5000);
     }
 
+    // Gjør prikkene klikkbare
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        const scrollTo = images[index].offsetLeft - carousel.offsetLeft;
+        carousel.scrollTo({ left: scrollTo, behavior: 'smooth' });
+        currentIndex = index;
+        updateDots();
+        restartAutoplayWithDelay();
+      });
+    });
+
     carousel.addEventListener('scroll', updateDots);
     carousel.addEventListener('touchstart', stopAutoplay);
     carousel.addEventListener('touchend', restartAutoplayWithDelay);
+    carousel.addEventListener('mousedown', stopAutoplay); // Legg til museinteraksjon
+    carousel.addEventListener('mouseup', restartAutoplayWithDelay);
 
+    // Initialiser karusellen
     window.addEventListener('load', () => {
       updateDots();
       startAutoplay();
+      // Aktiver første prikk
+      if (dots[0]) dots[0].classList.add('active');
     });
-  </script>
+
+    // Returner kontroll-funksjoner
+    return { updateDots, startAutoplay };
+  }
+
+  // Sett opp begge karusellene
+  document.addEventListener('DOMContentLoaded', () => {
+    const carousel1 = setupCarousel(1);
+    const carousel2 = setupCarousel(2);
+  });
+</script>
 </body>
