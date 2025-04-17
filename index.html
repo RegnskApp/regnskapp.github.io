@@ -369,12 +369,14 @@
       carousel.addEventListener('mouseup', restartAutoplayWithDelay);
   
       function initialize() {
-       createDots();
-       scrollToImage(0, false); // Start på første bilde
-       setTimeout(() => {
-         startAutoplay();
-       }, 300); // Vent 300 ms før autoplay starter
-     }
+        createDots();
+        smooth = false;             // Deaktiver smooth scroll ved start
+        scrollToImage(0);           // Start på første bilde
+        smooth = true;              // Aktiver smooth scroll igjen
+        setTimeout(() => {
+          startAutoplay();
+        }, 300);                    // Vent litt før autoplay starter
+      }
   
       window.addEventListener('resize', () => {
         createDots();
