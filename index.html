@@ -137,6 +137,11 @@
   </style>
 </head>
 <body>
+  <!-- Språkvelger -->
+  <div style="position: fixed; top: 10px; right: 10px; z-index: 100;">
+    <button onclick="changeLanguage('en')" style="padding: 0.5rem 1rem;">🇬🇧</button>
+    <button onclick="changeLanguage('no')" style="padding: 0.5rem 1rem;">🇳🇴</button>
+  </div>
   <picture>
     <source srcset="images/RegnskApp-Dark-Mode-Icon.jpg" media="(prefers-color-scheme: dark)" />
     <img src="images/RegnskApp-Light-Mode-Icon.jpg" alt="RegnskApp Icon" class="app-icon" />
@@ -235,6 +240,24 @@
   <script data-goatcounter="https://regnskapp.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
   <script>
+    function changeLanguage(lang) {
+      if (lang === 'en') {
+        window.location.href = 'index.html';  // Engelsk versjon
+      } else if (lang === 'no') {
+        window.location.href = 'index-no.html';  // Norsk versjon
+      }
+    }
+
+    // Automatisk språkvalg basert på nettleserens språkinnstillinger
+    window.addEventListener('load', () => {
+      const userLang = navigator.language || navigator.userLanguage;
+      if (userLang.startsWith('no')) {
+        window.location.href = 'index-no.html';  // Norsk versjon
+      } else {
+        window.location.href = 'index.html';  // Engelsk versjon
+      }
+    });
+    
     function setupCarousel(carouselNumber) {
       const carousel = document.querySelector(`.carousel-${carouselNumber}`);
       const dotsContainer = document.querySelector(`.carousel-dots-${carouselNumber}`);
