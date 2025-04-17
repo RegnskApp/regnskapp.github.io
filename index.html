@@ -238,11 +238,40 @@
     // Funksjon for å sette opp en karusell
     function setupCarousel(carouselNumber) {
       const carousel = document.querySelector(`.carousel-${carouselNumber}`);
-      const dots = document.querySelectorAll(`.carousel-dots-${carouselNumber} .dot`);
+      const dotsContainer = document.querySelector(`.carousel-dots-${carouselNumber}`);
       const images = carousel.querySelectorAll('img');
+      let dots = [];
       let autoplayInterval;
       let resumeTimeout;
       let currentIndex = 0;
+  
+      // Create dots based on screen size
+      function createDots() {
+        // Clear existing dots
+        dotsContainer.innerHTML = '';
+        dots = [];
+    
+        // Determine how many dots to show
+        const isDesktop = window.innerWidth >= 768;
+        const dotsCount = isDesktop ? 3 : images.length;
+    
+        // Create new dots
+        for (let i = 0; i < dotsCount; i++) {
+          const dot = document.createElement('span');
+          dot.className = 'dot';
+          dot.addEventListener('click', () => {
+            const targetIndex = isDesktop ? i * Math.ceil(images.length / dotsCount) : i;
+            scrollToImage(targetIndex);
+            currentIndex = targetIndex;
+            restartAutoplayWithDelay();
+          });
+          dotsContainer.appendChild(dot);
+          dots.push(dot);
+        }
+    
+        // Update the initial state
+        updateDots();
+      }
 
       function updateDots() {
         const scrollLeft = carousel.scrollLeft;
@@ -264,31 +293,47 @@
           }
         });
     
+        // Determine which dot should be active
+        const isDesktop = window.innerWidth >= 768;
+        let activeDotIndex;
+    
+        if (isDesktop) {
+          // For desktop, map image index to one of the three dots
+          activeDotIndex = Math.min(Math.floor(closestIndex / Math.ceil(images.length / 3)), 2);
+        } else {
+          // For mobile, direct mapping
+          activeDotIndex = closestIndex;
+        }
+    
         dots.forEach(dot => dot.classList.remove('active'));
-        if (dots[closestIndex]) dots[closestIndex].classList.add('active');
+        if (dots[activeDotIndex]) dots[activeDotIndex].classList.add('active');
         currentIndex = closestIndex;
       }
 
       function scrollToImage(index) {
-      // Center the selected image
-        const targetImage = images[index];
+        // Ensure index is within bounds
+        const targetIndex = (index + images.length) % images.length;
+    
+        // Center the selected image
+        const targetImage = images[targetIndex];
         const imgLeft = targetImage.offsetLeft - carousel.offsetLeft;
         const imgCenter = imgLeft + (targetImage.offsetWidth / 2);
         const carouselCenter = carousel.offsetWidth / 2;
         const scrollTo = imgCenter - carouselCenter;
     
         carousel.scrollTo({ left: scrollTo, behavior: 'smooth' });
+        currentIndex = targetIndex;
         updateDots();
       }
 
       function startAutoplay() {
-      // Allow autoplay on all devices but with a longer interval on desktop
+        // Allow autoplay on all devices but with a longer interval on desktop
         const interval = window.innerWidth >= 768 ? 6000 : 4000;
     
         stopAutoplay();
         autoplayInterval = setInterval(() => {
-          currentIndex = (currentIndex + 1) % images.length;
-          scrollToImage(currentIndex);
+          const nextIndex = (currentIndex + 1) % images.length;
+          scrollToImage(nextIndex);
         }, interval);
       }
 
@@ -302,17 +347,8 @@
         resumeTimeout = setTimeout(startAutoplay, 5000);
       }
 
-      // Gjør prikkene klikkbare
-      dots.forEach((dot, index) => {
-        dot.addEventListener('click', () => {
-          scrollToImage(index);
-          currentIndex = index;
-          restartAutoplayWithDelay();
-        });
-      });
-
       carousel.addEventListener('scroll', () => {
-      // Throttle the scroll event to improve performance
+        // Throttle the scroll event to improve performance
         if (!carousel.scrollTimeout) {
           carousel.scrollTimeout = setTimeout(() => {
             updateDots();
@@ -326,25 +362,36 @@
       carousel.addEventListener('mousedown', stopAutoplay);
       carousel.addEventListener('mouseup', restartAutoplayWithDelay);
 
-      // Initialiser karusellen
-      window.addEventListener('load', () => {
+      // Initialize carousel
+      function initialize() {
+        createDots();
         updateDots();
         startAutoplay();
-        // Aktiver første prikk
-        if (dots[0]) dots[0].classList.add('active');
-      });
-
-      // Håndter vindusendringer
+      }
+  
+      // Handle window resize
       window.addEventListener('resize', () => {
+        createDots(); // Recreate dots when screen size changes
         updateDots();
         restartAutoplayWithDelay();
       });
+  
+      // Initialize on load
+      window.addEventListener('load', initialize);
+  
+      // Also initialize immediately in case we're loaded already
+      if (document.readyState === 'complete') {
+        initialize();
+      } else {
+        // Otherwise initialize when DOM is ready
+        document.addEventListener('DOMContentLoaded', initialize);
+      }
 
-      // Returner kontroll-funksjoner
+      // Return control functions
       return { updateDots, startAutoplay, scrollToImage };
     }
 
-    // Sett opp begge karusellene
+    // Set up both carousels
     document.addEventListener('DOMContentLoaded', () => {
       const carousel1 = setupCarousel(1);
       const carousel2 = setupCarousel(2);
