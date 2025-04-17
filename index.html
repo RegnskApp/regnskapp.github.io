@@ -314,7 +314,12 @@
         const imgCenter = imgLeft + (targetImage.offsetWidth / 2);
         const carouselCenter = carousel.offsetWidth / 2;
         const scrollTo = imgCenter - carouselCenter;
-        carousel.scrollTo({ left: scrollTo, behavior: 'smooth' });
+        
+        carousel.scrollTo({
+          left: scrollTo, 
+          behavior: smooth ? 'smooth' : 'auto' 
+        });
+        
         currentIndex = targetIndex;
         updateDots();
       }
@@ -365,10 +370,10 @@
   
       function initialize() {
        createDots();
-       scrollToImage(0); // Start på første bilde
+       scrollToImage(0, false); // Start på første bilde
        setTimeout(() => {
          startAutoplay();
-       }, 1000); // Vent 1 sekund før autoplay starter
+       }, 300); // Vent 300 ms før autoplay starter
      }
   
       window.addEventListener('resize', () => {
