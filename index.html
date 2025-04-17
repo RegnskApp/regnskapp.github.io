@@ -247,20 +247,6 @@
         window.location.href = 'index-no.html';  // Norsk versjon
       }
     }
-
-    // Automatisk språkvalg basert på nettleserens språkinnstillinger
-    window.addEventListener('load', () => {
-      const userLang = navigator.language || navigator.userLanguage;
-      const currentPath = window.location.pathname;
-    
-      const isOnEnglish = currentPath.endsWith('index.html') || currentPath === '/' || currentPath === '/regnskapp.github.io/';
-    
-      if (userLang.startsWith('no') && !currentPath.includes('index-no.html')) {
-        if (isOnEnglish) {
-          window.location.href = 'index-no.html';
-        }
-      }
-    });
     
     function setupCarousel(carouselNumber) {
       const carousel = document.querySelector(`.carousel-${carouselNumber}`);
