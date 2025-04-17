@@ -251,10 +251,12 @@
     // Automatisk språkvalg basert på nettleserens språkinnstillinger
     window.addEventListener('load', () => {
       const userLang = navigator.language || navigator.userLanguage;
-      if (userLang.startsWith('no')) {
-        window.location.href = 'index-no.html';  // Norsk versjon
-      } else {
-        window.location.href = 'index.html';  // Engelsk versjon
+      const currentPath = window.location.pathname;
+    
+      if (userLang.startsWith('no') && !currentPath.includes('index-no.html')) {
+        window.location.href = 'index-no.html';
+      } else if (!userLang.startsWith('no') && !currentPath.includes('index.html')) {
+        window.location.href = 'index.html';
       }
     });
     
