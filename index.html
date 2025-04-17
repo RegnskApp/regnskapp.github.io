@@ -235,79 +235,119 @@
   <script data-goatcounter="https://regnskapp.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
   <script>
-  // Funksjon for å sette opp en karusell
-  function setupCarousel(carouselNumber) {
-    const carousel = document.querySelector(`.carousel-${carouselNumber}`);
-    const dots = document.querySelectorAll(`.carousel-dots-${carouselNumber} .dot`);
-    const images = carousel.querySelectorAll('img');
-    let autoplayInterval;
-    let resumeTimeout;
-    let currentIndex = 0;
+    // Funksjon for å sette opp en karusell
+    function setupCarousel(carouselNumber) {
+      const carousel = document.querySelector(`.carousel-${carouselNumber}`);
+      const dots = document.querySelectorAll(`.carousel-dots-${carouselNumber} .dot`);
+      const images = carousel.querySelectorAll('img');
+      let autoplayInterval;
+      let resumeTimeout;
+      let currentIndex = 0;
 
-    function updateDots() {
-      const scrollLeft = carousel.scrollLeft;
-      const imageWidth = images[0].offsetWidth + 16; // 16px er gapet på 1rem
-      const index = Math.round(scrollLeft / imageWidth);
-      dots.forEach(dot => dot.classList.remove('active'));
-      if (dots[index]) dots[index].classList.add('active');
-      currentIndex = index;
-    }
+      function updateDots() {
+        const scrollLeft = carousel.scrollLeft;
+        const carouselWidth = carousel.offsetWidth;
+        const centerPoint = scrollLeft + (carouselWidth / 2);
+    
+        // Find which image is centered in the view
+        let closestIndex = 0;
+        let closestDistance = Infinity;
+    
+        images.forEach((img, index) => {
+          const imgLeft = img.offsetLeft - carousel.offsetLeft;
+          const imgCenter = imgLeft + (img.offsetWidth / 2);
+          const distance = Math.abs(centerPoint - imgCenter);
+      
+          if (distance < closestDistance) {
+            closestDistance = distance;
+            closestIndex = index;
+          }
+        });
+    
+        dots.forEach(dot => dot.classList.remove('active'));
+        if (dots[closestIndex]) dots[closestIndex].classList.add('active');
+        currentIndex = closestIndex;
+      }
 
-    function startAutoplay() {
-      if (window.innerWidth >= 768) return;
-
-      stopAutoplay();
-      autoplayInterval = setInterval(() => {
-        currentIndex = (currentIndex + 1) % images.length;
-        const scrollTo = images[currentIndex].offsetLeft - carousel.offsetLeft;
+      function scrollToImage(index) {
+      // Center the selected image
+        const targetImage = images[index];
+        const imgLeft = targetImage.offsetLeft - carousel.offsetLeft;
+        const imgCenter = imgLeft + (targetImage.offsetWidth / 2);
+        const carouselCenter = carousel.offsetWidth / 2;
+        const scrollTo = imgCenter - carouselCenter;
+    
         carousel.scrollTo({ left: scrollTo, behavior: 'smooth' });
         updateDots();
-      }, 4000);
-    }
+      }
 
-    function stopAutoplay() {
-      clearInterval(autoplayInterval);
-    }
+      function startAutoplay() {
+      // Allow autoplay on all devices but with a longer interval on desktop
+        const interval = window.innerWidth >= 768 ? 6000 : 4000;
+    
+        stopAutoplay();
+        autoplayInterval = setInterval(() => {
+          currentIndex = (currentIndex + 1) % images.length;
+          scrollToImage(currentIndex);
+        }, interval);
+      }
 
-    function restartAutoplayWithDelay() {
-      stopAutoplay();
-      clearTimeout(resumeTimeout);
-      resumeTimeout = setTimeout(startAutoplay, 5000);
-    }
+      function stopAutoplay() {
+        clearInterval(autoplayInterval);
+      }
 
-    // Gjør prikkene klikkbare
-    dots.forEach((dot, index) => {
-      dot.addEventListener('click', () => {
-        const scrollTo = images[index].offsetLeft - carousel.offsetLeft;
-        carousel.scrollTo({ left: scrollTo, behavior: 'smooth' });
-        currentIndex = index;
+      function restartAutoplayWithDelay() {
+        stopAutoplay();
+        clearTimeout(resumeTimeout);
+        resumeTimeout = setTimeout(startAutoplay, 5000);
+      }
+
+      // Gjør prikkene klikkbare
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+          scrollToImage(index);
+          currentIndex = index;
+          restartAutoplayWithDelay();
+        });
+      });
+
+      carousel.addEventListener('scroll', () => {
+      // Throttle the scroll event to improve performance
+        if (!carousel.scrollTimeout) {
+          carousel.scrollTimeout = setTimeout(() => {
+            updateDots();
+            carousel.scrollTimeout = null;
+          }, 100);
+        }
+      });
+  
+      carousel.addEventListener('touchstart', stopAutoplay);
+      carousel.addEventListener('touchend', restartAutoplayWithDelay);
+      carousel.addEventListener('mousedown', stopAutoplay);
+      carousel.addEventListener('mouseup', restartAutoplayWithDelay);
+
+      // Initialiser karusellen
+      window.addEventListener('load', () => {
+        updateDots();
+        startAutoplay();
+        // Aktiver første prikk
+        if (dots[0]) dots[0].classList.add('active');
+      });
+
+      // Håndter vindusendringer
+      window.addEventListener('resize', () => {
         updateDots();
         restartAutoplayWithDelay();
       });
+
+      // Returner kontroll-funksjoner
+      return { updateDots, startAutoplay, scrollToImage };
+    }
+
+    // Sett opp begge karusellene
+    document.addEventListener('DOMContentLoaded', () => {
+      const carousel1 = setupCarousel(1);
+      const carousel2 = setupCarousel(2);
     });
-
-    carousel.addEventListener('scroll', updateDots);
-    carousel.addEventListener('touchstart', stopAutoplay);
-    carousel.addEventListener('touchend', restartAutoplayWithDelay);
-    carousel.addEventListener('mousedown', stopAutoplay); // Legg til museinteraksjon
-    carousel.addEventListener('mouseup', restartAutoplayWithDelay);
-
-    // Initialiser karusellen
-    window.addEventListener('load', () => {
-      updateDots();
-      startAutoplay();
-      // Aktiver første prikk
-      if (dots[0]) dots[0].classList.add('active');
-    });
-
-    // Returner kontroll-funksjoner
-    return { updateDots, startAutoplay };
-  }
-
-  // Sett opp begge karusellene
-  document.addEventListener('DOMContentLoaded', () => {
-    const carousel1 = setupCarousel(1);
-    const carousel2 = setupCarousel(2);
-  });
-</script>
+  </script>
 </body>
