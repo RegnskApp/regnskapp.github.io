@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>RegnskApp / BalanceTrackr</title>
+  <title>BalanceTrackr (RegnskApp)</title>
   <link rel="icon" href="images/RegnskApp-Light-Mode-Icon.jpg" type="image/jpeg" />
   <style>
     body {
@@ -134,6 +134,16 @@
     .carousel-dots .dot {
       cursor: pointer;
      } 
+
+    .subtle {
+      color: #6c757d; /* en nøytral grå som fungerer i lysmodus */
+    }
+    
+    @media (prefers-color-scheme: dark) {
+      .subtle {
+        color: #a0a0a0; /* en lysere grå som vises tydelig i mørk modus */
+      }
+    }
     
     #language-switcher {
       position: absolute;
@@ -176,11 +186,14 @@
     }
 
     #language-menu button {
-      display: block;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      white-space: nowrap;
       width: 100%;
       background: transparent;
       border: none;
-      font-size: 1.2rem;
+      font-size: 1rem;
       padding: 0.3rem 0.5rem;
       cursor: pointer;
       text-align: left;
@@ -217,7 +230,9 @@
     <img src="images/RegnskApp-Light-Mode-Icon.jpg" alt="RegnskApp Icon" class="app-icon" />
   </picture>
 
-  <h1 style="margin-top: 0.25rem;">RegnskApp / BalanceTrackr</h1>
+  <h1 style="margin-top: 0.25rem;">
+    BalanceTrackr <span class="subtle">(RegnskApp)</span>
+  </h1>
 
   <p style="max-width: 600px; margin: 2rem auto 1rem; line-height: 1.6;">
     💼 <strong>RegnskApp</strong> is your personal budgeting and balance tracker!  
