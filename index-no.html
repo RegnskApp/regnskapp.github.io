@@ -134,35 +134,83 @@
     .carousel-dots .dot {
       cursor: pointer;
     }
+    
     #language-switcher {
-      position: fixed;
-      top: 10px;
-      right: 10px;
-      z-index: 999;
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      z-index: 9999;
       display: flex;
       gap: 0.5rem;
       background: transparent;
+      pointer-events: auto;
+      width: fit-content;
+      text-align: right;
     }
-  
-    #language-switcher button {
+    
+     #language-switcher button {
       background: transparent;
       border: none;
-      font-size: 1rem;
+      font-size: 1.5rem;
       padding: 0.2rem;
       cursor: pointer;
       transition: transform 0.2s ease;
+      text-align: right;
     }
-  
+    
     #language-switcher button:hover {
       transform: scale(1.1);
+    }
+
+    #language-menu {
+      display: none;
+      position: absolute;
+      top: 2.5rem;
+      right: 0;
+      background: white;
+      border: 1px solid #ccc;
+      border-radius: 0.5rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+      padding: 0.5rem;
+      z-index: 10000;
+    }
+
+    #language-menu button {
+      display: block;
+      width: 100%;
+      background: transparent;
+      border: none;
+      font-size: 1.2rem;
+      padding: 0.3rem 0.5rem;
+      cursor: pointer;
+      text-align: left;
+    }
+    
+    #language-menu button:hover {
+      background-color: #f0f0f0;
+    }
+    
+    /* Mørk modus */
+    @media (prefers-color-scheme: dark) {
+      #language-menu {
+        background: #1e1e1e;
+        border: 1px solid #444;
+      }
+    
+      #language-menu button:hover {
+        background-color: #2a2a2a;
+      }
     }
   </style>
 </head>
 <body>
-    <!-- Språkvelger -->
+     <!-- Språkvelger -->
   <div id="language-switcher">
-    <button onclick="changeLanguage('en')" aria-label="English">🇬🇧</button>
-    <button onclick="changeLanguage('no')" aria-label="Norsk">🇳🇴</button>
+    <button id="active-language" onclick="toggleLanguageMenu()" aria-label="Valgt språk">🇳🇴</button>
+    <div id="language-menu">
+      <button onclick="changeLanguage('no')" aria-label="Norsk">🇬🇧 English</button>
+      <!-- Flere språk kan legges til her senere -->
+    </div>
   </div>
   <picture>
     <source srcset="images/RegnskApp-Dark-Mode-Icon.jpg" media="(prefers-color-scheme: dark)" />
@@ -262,13 +310,20 @@
   <script data-goatcounter="https://regnskapp.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
   <script>
-    function changeLanguage(lang) {
-          if (lang === 'en') {
-            window.location.href = 'index.html';  // Engelsk versjon
-          } else if (lang === 'no') {
-            window.location.href = 'index-no.html';  // Norsk versjon
-          }
+    let currentLang = 'en'; // kan settes dynamisk senere
+  
+      function toggleLanguageMenu() {
+        const menu = document.getElementById('language-menu');
+        menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+      }
+  
+      function changeLanguage(lang) {
+        if (lang === 'en') {
+          window.location.href = 'index.html';  // Engelsk versjon
+        } else if (lang === 'no') {
+          window.location.href = 'index-no.html';  // Norsk versjon
         }
+      }
     
     function setupCarousel(carouselNumber) {
       const carousel = document.querySelector(`.carousel-${carouselNumber}`);
