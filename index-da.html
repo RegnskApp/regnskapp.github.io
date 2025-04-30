@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BalanceTrackr (RegnskApp)</title>
+  <link rel="icon" href="images/RegnskApp-Light-Mode-Icon.jpg" type="image/jpeg" />
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+        Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      background-color: #f9f9f9;
+      color: #1b5e20;
+      text-align: center;
+      padding: 2rem 1rem;
+      margin: 0;
+    }
+
+    a.button {
+      display: inline-block;
+      margin: 1rem;
+      padding: 0.75rem 1.5rem;
+      background-color: #1b5e20;
+      color: white;
+      text-decoration: none;
+      border-radius: 0.5rem;
+      font-weight: bold;
+    }
+
+    img.app-icon {
+      width: 150px;
+      height: auto;
+      margin-bottom: 1rem;
+    }
+
+    .carousel-wrapper {
+      position: relative;
+      margin-top: 2rem;
+    }
+
+    .carousel {
+      display: flex;
+      overflow-x: auto;
+      gap: 1rem;
+      scroll-snap-type: x mandatory;
+      padding: 1rem;
+      scroll-behavior: smooth;
+    }
+
+    .carousel img {
+      flex: 0 0 auto;
+      width: calc(100% - 40px);
+      max-width: 350px;
+      border-radius: 1rem;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      scroll-snap-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .carousel img:hover {
+      transform: scale(1.02);
+    }
+
+    .carousel-dots {
+      display: none;
+      justify-content: center;
+      margin-top: 0.5rem;
+      gap: 0.5rem;
+    }
+
+    .carousel-dots .dot {
+      width: 10px;
+      height: 10px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      transition: background-color 0.3s;
+    }
+
+    .carousel-dots .dot.active {
+      background-color: #1b5e20;
+    }
+    
+    footer {
+      background-color: #f9f9f9;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+    }
+
+    /* Dette er for storskjermvisning - viser maks 3 bilder */
+    @media (min-width: 768px) {
+      .carousel {
+        justify-content: center;
+        flex-wrap: nowrap; /* Hindrer at bildene brettes */
+        max-width: 1200px; /* Begrenser karusellens bredde */
+        margin: 0 auto; /* Sentrerer karusellen */
+      }
+  
+      .carousel img {
+        width: calc(33.333% - 16px); /* 3 bilder med mellomrom */
+        max-width: 350px; /* Maks bredde per bilde */
+      }
+
+      .carousel-dots {
+        display: flex; /* Vis prikkene også på stor skjerm */
+      }
+    }
+    
+    /* Dette er for mobilvisning - viser bare 1 bilde */
+    @media (max-width: 767px) {
+      .carousel-dots {
+        display: flex;
+      }
+    }
+
+    @media (prefers-color-scheme: dark) {
+      body {
+        background-color: #121212;
+        color: #e0e0e0;
+      }
+
+      a.button {
+        background-color: #388e3c;
+        color: white;
+      }
+      footer {
+        background-color: #121212;
+        color: #e0e0e0;
+      }
+    }
+
+    /* Legg til dette for å gjøre prikkene klikkbare */
+    .carousel-dots .dot {
+      cursor: pointer;
+     } 
+
+    .subtle {
+      color: #6c757d; /* en nøytral grå som fungerer i lysmodus */
+    }
+    
+    @media (prefers-color-scheme: dark) {
+      .subtle {
+        color: #a0a0a0; /* en lysere grå som vises tydelig i mørk modus */
+      }
+    }
+    
+    #language-switcher {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      z-index: 9999;
+      display: flex;
+      gap: 0.5rem;
+      background: transparent;
+      pointer-events: auto;
+      width: fit-content;
+      text-align: right;
+    }
+    
+     #language-switcher button {
+      background: transparent;
+      border: none;
+      font-size: 1.5rem;
+      padding: 0.2rem;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+      text-align: right;
+    }
+    
+    #language-switcher button:hover {
+      transform: scale(1.1);
+    }
+
+    #language-menu {
+      display: none;
+      position: absolute;
+      top: 2.5rem;
+      right: 0;
+      background: white;
+      border: 1px solid #ccc;
+      border-radius: 0.5rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+      padding: 0.5rem;
+      z-index: 10000;
+    }
+
+    #language-menu button {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      white-space: nowrap;
+      width: 100%;
+      background: transparent;
+      border: none;
+      font-size: 1rem;
+      padding: 0.3rem 0.5rem;
+      cursor: pointer;
+      text-align: left;
+      color: #1b5e20; /* <-- legg til denne i lys modus */
+    }
+    
+    #language-menu button:hover {
+      background-color: #f0f0f0;
+    }
+    
+    /* Mørk modus */
+    @media (prefers-color-scheme: dark) {
+      #language-menu {
+        background: #1e1e1e;
+        border: 1px solid #444;
+      }
+    
+      #language-menu button {
+        color: #e0e0e0; /* <-- Lys farge på teksten */
+      }
+    
+      #language-menu button:hover {
+        background-color: #2a2a2a;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Språkvelger -->
+  <div id="language-switcher">
+    <button id="active-language" onclick="toggleLanguageMenu()" aria-label="Valgt språk">🇬🇧</button>
+    <div id="language-menu">
+      <button onclick="changeLanguage('no')" aria-label="Norsk">🇳🇴 Norwegian</button>
+      <!-- Flere språk kan legges til her senere -->
+    </div>
+  </div>
+  <picture>
+    <source srcset="images/RegnskApp-Dark-Mode-Icon.jpg" media="(prefers-color-scheme: dark)" />
+    <img src="images/RegnskApp-Light-Mode-Icon.jpg" alt="RegnskApp Icon" class="app-icon" />
+  </picture>
+
+  <h1 style="margin-top: 0.25rem;">
+    BalanceTrackr <span class="subtle">(RegnskApp)</span>
+  </h1>
+
+  <p style="max-width: 600px; margin: 2rem auto 1rem; line-height: 1.6;">
+    💼 <strong>BalanceTrackr</strong> is your personal budgeting and balance tracker!  
+    Built for those who want <em>full control over their finances</em> — manually, clearly, and without ads or subscriptions.
+  </p>
+
+  <p style="max-width: 600px; margin: 1rem auto 2rem; line-height: 1.6;">
+    Instead of juggling spreadsheets, this app lets you enter income, expenses, and transfers quickly and intuitively – and watch how your balance evolves over time 📈.  
+    Everything is done your way: manually, privately, and without connecting to your bank.
+  </p>
+
+  <!-- Første karusell før Features -->
+  <div class="carousel-wrapper">
+    <div class="carousel carousel-1">
+      <img src="images/RegnskApp1en.png" alt="App screenshot 1" />
+      <img src="images/RegnskApp2en.png" alt="App screenshot 2" />
+      <img src="images/RegnskApp4en.png" alt="App screenshot 3" />
+      <img src="images/RegnskApp5en.png" alt="App screenshot 4" />
+      <img src="images/RegnskApp9en.png" alt="App screenshot 5" />
+    </div>
+
+    <div class="carousel-dots carousel-dots-1">
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+  </div>
+
+  <p style="max-width: 600px; margin: 2rem auto 1rem; font-size: 1.1rem; font-weight: 500;">
+    📲 <strong>Features</strong> you'll love:
+  </p>
+
+  <ul style="max-width: 600px; margin: 0 auto 2rem; text-align: left; line-height: 1.6;">
+    <li>🏦 Add as many accounts as you want – personal, shared, or side projects</li>
+    <li>💸 Log salary, expenses, and transfers with just a few taps</li>
+    <li>📊 Track your balance over time with clear line graphs</li>
+    <li>📅 See how many days are left until your next paycheck</li>
+    <li>💰 Watch your balance update in real time</li>
+    <li>🧠 Clean, ad-free design – focused on <em>you and your money</em></li>
+  </ul>
+
+  <!-- Andre karusell etter Features -->
+  <div class="carousel-wrapper">
+    <div class="carousel carousel-2">
+      <img src="images/RegnskApp3en.png" alt="App screenshot 6" />
+      <img src="images/RegnskApp6en.png" alt="App screenshot 7" />
+      <img src="images/RegnskApp7en.png" alt="App screenshot 8" />
+      <img src="images/RegnskApp8en.png" alt="App screenshot 9" />
+      <img src="images/RegnskApp10en.png" alt="App screenshot 10" />
+    </div>
+
+    <div class="carousel-dots carousel-dots-2">
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+  </div>
+
+  <p style="max-width: 600px; margin: 2rem auto 1rem; line-height: 1.6;">
+    This is the app for anyone who wants <strong>simple and total control without extra noise</strong>.  
+    You stay in charge – with flexible accounts, manual entries, and a balance that updates as you go.  
+    And yes, if you like a bit of fun:  
+    <strong>It even makes it rain money! 💸</strong>
+  </p>
+
+  <video autoplay muted playsinline loop style="margin-top: 1rem; max-width: 90%; border-radius: 1rem; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);">
+    <source src="images/LadetRegneiMovie.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <div style="margin-top: 2rem; margin-bottom: 1.5rem;">
+    <a href="https://apps.apple.com/us/app/regnskapp/id6743946348" target="_blank">
+      <img src="images/black.svg" alt="Download on the App Store" style="width: 180px;" />
+    </a>
+  </div>
+
+  <div style="margin-bottom: 2rem;">
+    <a class="button" href="privacy-policy.html">Privacy Policy</a>
+    <a class="button" href="support.html">Support</a>
+  </div>
+
+  <footer>
+    &copy; 2025 BalanceTrackr (RegnskApp) - Ole Morten Tengesdal. All rights reserved.
+  </footer>
+
+  <script data-goatcounter="https://regnskapp.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+  <script>
+     let currentLang = 'en'; // kan settes dynamisk senere
+  
+      function toggleLanguageMenu() {
+        const menu = document.getElementById('language-menu');
+        menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+      }
+  
+      function changeLanguage(lang) {
+        if (lang === 'en') {
+          window.location.href = 'index.html';  // Engelsk versjon
+        } else if (lang === 'no') {
+          window.location.href = 'index-no.html';  // Norsk versjon
+        }
+      }
+  
+      // Lukk menyen om man klikker utenfor
+      document.addEventListener('click', function (e) {
+        const switcher = document.getElementById('language-switcher');
+        if (!switcher.contains(e.target)) {
+          document.getElementById('language-menu').style.display = 'none';
+        }
+      });
+    
+    function setupCarousel(carouselNumber) {
+      const carousel = document.querySelector(`.carousel-${carouselNumber}`);
+      const dotsContainer = document.querySelector(`.carousel-dots-${carouselNumber}`);
+      const images = carousel.querySelectorAll('img');
+      let dots = [];
+      let autoplayInterval;
+      let resumeTimeout;
+      let currentIndex = 0;
+  
+      function createDots() {
+        dotsContainer.innerHTML = '';
+        dots = [];
+  
+        const isDesktop = window.innerWidth >= 768;
+        const dotsCount = isDesktop ? 3 : images.length;
+  
+        for (let i = 0; i < dotsCount; i++) {
+          const dot = document.createElement('span');
+          dot.className = 'dot';
+          dot.addEventListener('click', () => {
+            if (isDesktop) {
+              // Mappe dotter for desktop: 1 -> bilde 0, 2 -> bilde 2, 3 -> bilde 4 (for 5 bilder)
+              const desktopIndexes = [0, 2, 4];
+              scrollToImage(desktopIndexes[i]);
+            } else {
+              scrollToImage(i);
+            }
+            restartAutoplayWithDelay();
+          });
+          dotsContainer.appendChild(dot);
+          dots.push(dot);
+        }
+  
+        updateDots();
+      }
+  
+      function updateDots() {
+        const scrollLeft = carousel.scrollLeft;
+        const carouselWidth = carousel.offsetWidth;
+        const totalWidth = carousel.scrollWidth;
+  
+        let closestIndex = 0;
+        let closestDistance = Infinity;
+  
+        images.forEach((img, index) => {
+          const imgLeft = img.offsetLeft - carousel.offsetLeft;
+          const imgCenter = imgLeft + (img.offsetWidth / 2);
+          const viewportCenter = scrollLeft + (carouselWidth / 2);
+          const distance = Math.abs(viewportCenter - imgCenter);
+          if (distance < closestDistance) {
+            closestDistance = distance;
+            closestIndex = index;
+          }
+        });
+  
+        const isDesktop = window.innerWidth >= 768;
+        let activeDotIndex;
+  
+        if (isDesktop) {
+          // Bestem hvilken dot som skal være aktiv basert på nærmeste bilde
+          if (closestIndex <= 1) activeDotIndex = 0;
+          else if (closestIndex >= 3) activeDotIndex = 2;
+          else activeDotIndex = 1;
+        } else {
+          activeDotIndex = closestIndex;
+        }
+  
+        dots.forEach(dot => dot.classList.remove('active'));
+        if (dots[activeDotIndex]) dots[activeDotIndex].classList.add('active');
+        currentIndex = closestIndex;
+      }
+  
+      function scrollToImage(index) {
+        const targetIndex = (index + images.length) % images.length;
+        const targetImage = images[targetIndex];
+        const imgLeft = targetImage.offsetLeft - carousel.offsetLeft;
+        const imgCenter = imgLeft + (targetImage.offsetWidth / 2);
+        const carouselCenter = carousel.offsetWidth / 2;
+        const scrollTo = imgCenter - carouselCenter;
+        
+        carousel.scrollTo({
+          left: scrollTo, 
+          behavior: smooth ? 'smooth' : 'auto' 
+        });
+        
+        currentIndex = targetIndex;
+        updateDots();
+      }
+  
+      function startAutoplay() {
+        const isDesktop = window.innerWidth >= 768;
+        const interval = isDesktop ? 4000 : 3000;
+        stopAutoplay();
+        
+        let desktopIndexes = [0, 2, 4]; // For 5 bilder
+        // For desktop: start med dot 1 (bilde 0)
+        let currentDot = isDesktop ? desktopIndexes.indexOf(currentIndex) : currentIndex;
+        
+        autoplayInterval = setInterval(() => {
+          if (isDesktop) {
+            currentDot = (currentDot + 1) % desktopIndexes.length;
+            const nextIndex = desktopIndexes[currentDot];
+            scrollToImage(nextIndex);
+          } else {
+            scrollToImage((currentIndex + 1) % images.length);
+          }
+        }, interval);
+      }
+  
+      function stopAutoplay() {
+        clearInterval(autoplayInterval);
+      }
+  
+      function restartAutoplayWithDelay() {
+        stopAutoplay();
+        clearTimeout(resumeTimeout);
+        resumeTimeout = setTimeout(startAutoplay, 3500);
+      }
+  
+      carousel.addEventListener('scroll', () => {
+        if (!carousel.scrollTimeout) {
+          carousel.scrollTimeout = setTimeout(() => {
+            updateDots();
+            carousel.scrollTimeout = null;
+          }, 100);
+        }
+      });
+  
+      carousel.addEventListener('touchstart', stopAutoplay);
+      carousel.addEventListener('touchend', restartAutoplayWithDelay);
+      carousel.addEventListener('mousedown', stopAutoplay);
+      carousel.addEventListener('mouseup', restartAutoplayWithDelay);
+  
+      function initialize() {
+        createDots();
+        smooth = false;             // Deaktiver smooth scroll ved start
+        scrollToImage(0);           // Start på første bilde
+        smooth = true;              // Aktiver smooth scroll igjen
+        setTimeout(() => {
+          startAutoplay();
+        }, 300);                    // Vent litt før autoplay starter
+      }
+  
+      window.addEventListener('resize', () => {
+        createDots();
+        updateDots();
+        restartAutoplayWithDelay();
+      });
+  
+      window.addEventListener('load', initialize);
+      if (document.readyState === 'complete') {
+        initialize();
+      }
+  
+      return { updateDots, startAutoplay, scrollToImage };
+    }
+  
+    document.addEventListener('DOMContentLoaded', () => {
+      setupCarousel(1);
+      setupCarousel(2);
+    });
+  </script>
+</body>
