@@ -224,10 +224,15 @@
 <body>
   <!-- Språkvelger -->
   <div id="language-switcher">
-    <button id="active-language" onclick="toggleLanguageMenu()" aria-label="Valgt språk">🇬🇧</button>
+    <button id="active-language" onclick="toggleLanguageMenu()" aria-label="Selected language">🌐</button>
     <div id="language-menu">
-      <button onclick="changeLanguage('no')" aria-label="Norsk">🇳🇴 Norwegian</button>
-      <!-- Flere språk kan legges til her senere -->
+      <button onclick="changeLanguage('index.html')" aria-label="English">🇬🇧 English</button>
+      <button onclick="changeLanguage('index-da.html')" aria-label="Dansk">🇩🇰 Dansk</button>
+      <button onclick="changeLanguage('index-de.html')" aria-label="Deutsch">🇩🇪 Deutsch</button>
+      <button onclick="changeLanguage('index-es.html')" aria-label="Español">🇪🇸 Español</button>
+      <button onclick="changeLanguage('index-fr.html')" aria-label="Français">🇫🇷 Français</button>
+      <button onclick="changeLanguage('index-sv.html')" aria-label="Svenska">🇸🇪 Svenska</button>
+      <button onclick="changeLanguage('index-no.html')" aria-label="Norsk">🇳🇴 Norsk</button>
     </div>
   </div>
   <picture>
@@ -333,23 +338,20 @@
      let currentLang = 'en'; // kan settes dynamisk senere
   
       function toggleLanguageMenu() {
-        const menu = document.getElementById('language-menu');
-        menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+        const menu = document.getElementById("language-menu");
+        menu.style.display = menu.style.display === "block" ? "none" : "block";
       }
-  
-      function changeLanguage(lang) {
-        if (lang === 'en') {
-          window.location.href = 'index.html';  // Engelsk versjon
-        } else if (lang === 'no') {
-          window.location.href = 'index-no.html';  // Norsk versjon
-        }
+    
+      function changeLanguage(file) {
+        window.location.href = file;
       }
-  
-      // Lukk menyen om man klikker utenfor
-      document.addEventListener('click', function (e) {
-        const switcher = document.getElementById('language-switcher');
-        if (!switcher.contains(e.target)) {
-          document.getElementById('language-menu').style.display = 'none';
+    
+      // Valgfritt: Lukk menyen hvis man klikker utenfor
+      document.addEventListener("click", function (event) {
+        const switcher = document.getElementById("language-switcher");
+        const menu = document.getElementById("language-menu");
+        if (!switcher.contains(event.target)) {
+          menu.style.display = "none";
         }
       });
     
