@@ -222,12 +222,33 @@
   </style>
 </head>
 <body>
-     <!-- Språkvelger -->
+  <!-- 🌍 Språkvelger -->
   <div id="language-switcher">
-    <button id="active-language" onclick="toggleLanguageMenu()" aria-label="Valgt språk">🇳🇴</button>
+    <button id="active-language" onclick="toggleLanguageMenu()" aria-label="Valgt språk">
+      <img id="current-flag" src="images/en/gb.svg" alt="Selected Language" width="24" />
+    </button>
     <div id="language-menu">
-      <button onclick="changeLanguage('en')" aria-label="English">🇬🇧 English</button>
-      <!-- Flere språk kan legges til her senere -->
+      <button onclick="changeLanguage('no')">
+        <img src="images/no/no.svg" width="20" alt="Norsk" /> Norsk
+      </button>
+      <button onclick="changeLanguage('da')">
+        <img src="images/da/da.svg" width="20" alt="Dansk" /> Dansk
+      </button>
+      <button onclick="changeLanguage('se')">
+        <img src="images/se/se.svg" width="20" alt="Svensk" /> Svenska
+      </button>
+      <button onclick="changeLanguage('de')">
+        <img src="images/de/de.svg" width="20" alt="Tysk" /> Deutsch
+      </button>
+      <button onclick="changeLanguage('fr')">
+        <img src="images/fr/fr.svg" width="20" alt="Fransk" /> Français
+      </button>
+      <button onclick="changeLanguage('es')">
+        <img src="images/es/es.svg" width="20" alt="Spansk" /> Español
+      </button>
+      <button onclick="changeLanguage('en')">
+        <img src="images/en/gb.svg" width="20" alt="Engelsk" /> English
+      </button>
     </div>
   </div>
   <picture>
@@ -332,18 +353,27 @@
   <script>
     let currentLang = 'no'; // kan settes dynamisk senere
   
-      function toggleLanguageMenu() {
-        const menu = document.getElementById('language-menu');
-        menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
-      }
+    function toggleLanguageMenu() {
+      const menu = document.getElementById("language-menu");
+      menu.style.display = menu.style.display === "block" ? "none" : "block";
+    }
   
-      function changeLanguage(lang) {
-        if (lang === 'en') {
-          window.location.href = 'index.html';  // Engelsk versjon
-        } else if (lang === 'no') {
-          window.location.href = 'index-no.html';  // Norsk versjon
-        }
+    function changeLanguage(langCode) {
+      const flagPath = `images/${langCode}/${langCode === 'en' ? 'gb' : langCode}.svg`;
+      document.getElementById("current-flag").src = flagPath;
+  
+      // Bytt til riktig HTML-side
+      const file = langCode === 'en' ? 'index.html' : `index-${langCode}.html`;
+      window.location.href = file;
+    }
+  
+    // Lukk menyen hvis du klikker utenfor
+    document.addEventListener("click", function (event) {
+      const switcher = document.getElementById("language-switcher");
+      if (!switcher.contains(event.target)) {
+        document.getElementById("language-menu").style.display = "none";
       }
+    });
     
     function setupCarousel(carouselNumber) {
       const carousel = document.querySelector(`.carousel-${carouselNumber}`);
