@@ -225,7 +225,7 @@
   <!-- 🌍 Språkvelger -->
   <div id="language-switcher">
     <button id="active-language" onclick="toggleLanguageMenu()" aria-label="Valgt språk">
-      <img id="current-flag" src="images/en/gb.svg" alt="Selected Language" width="24" />
+      <img id="current-flag" src="" alt="Valgt språk" width="24" />
     </button>
     <div id="language-menu">
       <button onclick="changeLanguage('no')">
@@ -362,12 +362,25 @@
       const flagPath = `images/${langCode}/${langCode === 'en' ? 'gb' : langCode}.svg`;
       document.getElementById("current-flag").src = flagPath;
   
-      // Bytt til riktig HTML-side
       const file = langCode === 'en' ? 'index.html' : `index-${langCode}.html`;
       window.location.href = file;
     }
   
-    // Lukk menyen hvis du klikker utenfor
+    // Bestem hvilket språk som er aktivt basert på URL
+    function setInitialFlag() {
+      const filename = window.location.pathname.split('/').pop();
+      let langCode = 'en'; // fallback
+      if (filename.includes('index-')) {
+        langCode = filename.split('-')[1].split('.')[0];
+      }
+  
+      const flagPath = `images/${langCode}/${langCode === 'en' ? 'gb' : langCode}.svg`;
+      document.getElementById("current-flag").src = flagPath;
+    }
+  
+    setInitialFlag(); // kall funksjonen ved innlasting
+  
+    // Lukk meny ved klikk utenfor
     document.addEventListener("click", function (event) {
       const switcher = document.getElementById("language-switcher");
       if (!switcher.contains(event.target)) {
