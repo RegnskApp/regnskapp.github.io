@@ -92,15 +92,17 @@
     @media (min-width: 768px) {
       .carousel {
         justify-content: center;
-        flex-wrap: nowrap; /* Hindrer at bildene brettes */
-        max-width: 1200px; /* Begrenser karusellens bredde */
-        margin: 0 auto; /* Sentrerer karusellen */
+        max-width: 1200px;
+        margin: 0 auto;
+        overflow: hidden; /* Hindrer å se bare deler av bilder */
       }
-  
+    
       .carousel img {
-        width: calc(33.333% - 16px); /* 3 bilder med mellomrom */
-        max-width: 350px; /* Maks bredde per bilde */
+        width: calc(30% - 1rem);
+        max-width: 320px;
+        scroll-snap-align: unset;
       }
+    }
 
       .carousel-dots {
         display: flex; /* Vis prikkene også på stor skjerm */
