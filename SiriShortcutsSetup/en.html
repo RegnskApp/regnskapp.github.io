@@ -12,7 +12,7 @@
       background-color: #f9f9f9;
       color: #212121;
       padding: 2rem;
-      max-width: 800px;
+      max-width: 900px;
       margin: auto;
     }
 
@@ -20,8 +20,31 @@
       color: #1b5e20;
     }
 
+    p {
+      margin-bottom: 1.5rem;
+    }
+
     a {
       color: #1b5e20;
+    }
+
+    .image-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .image-group a {
+      flex: 1 1 calc(33.333% - 1rem);
+      max-width: calc(33.333% - 1rem);
+    }
+
+    .image-group img, img.single {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s;
     }
 
     footer {
@@ -29,34 +52,11 @@
       text-align: center;
       padding: 1rem;
       font-size: 0.9rem;
-    }
-
-    .image-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin-bottom: 1rem;
-    }
-
-    .image-row img {
-      flex: 1 1 calc(50% - 1rem);
-      max-width: calc(50% - 1rem);
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      transition: transform 0.2s;
-    }
-
-    img {
-      width: 100%;
-      max-width: 300px;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      transition: transform 0.2s;
-      margin-bottom: 1rem;
+      margin-top: 3rem;
     }
 
     @media (max-width: 600px) {
-      .image-row img {
+      .image-group a {
         flex: 1 1 100%;
         max-width: 100%;
       }
@@ -85,60 +85,59 @@
 
   <h2>Step 1: Open the Shortcuts app</h2>
   <a href="/images/SiriShortcutsSetup-images/1.jpeg" target="_blank">
-    <img src="/images/SiriShortcutsSetup-images/1.jpeg" alt="Open Shortcuts app" />
+    <img class="single" src="/images/SiriShortcutsSetup-images/1.jpeg" alt="Open Shortcuts app" />
   </a>
   <p>Launch the built-in Shortcuts app on your iPhone.</p>
 
   <h2>Step 2: Tap "Automation" at the bottom</h2>
   <a href="/images/SiriShortcutsSetup-images/2.jpeg" target="_blank">
-    <img src="/images/SiriShortcutsSetup-images/2.jpeg" alt="Tap Automation" />
+    <img class="single" src="/images/SiriShortcutsSetup-images/2.jpeg" alt="Tap Automation" />
   </a>
   <p>Switch to the <strong>Automation</strong> tab to create a new shortcut.</p>
 
   <h2>Step 3: Tap the plus icon and choose "Transaction"</h2>
-  <div class="image-row">
-    <a href="/images/SiriShortcutsSetup-images/3.0.jpeg" target="_blank"><img src="/images/SiriShortcutsSetup-images/3.0.jpeg" alt="3.0" /></a>
-    <a href="/images/SiriShortcutsSetup-images/3.1.jpeg" target="_blank"><img src="/images/SiriShortcutsSetup-images/3.1.jpeg" alt="3.1" /></a>
-    <a href="/images/SiriShortcutsSetup-images/3.2.jpeg" target="_blank"><img src="/images/SiriShortcutsSetup-images/3.2.jpeg" alt="3.2" /></a>
+  <div class="image-group">
+    <a href="/images/SiriShortcutsSetup-images/3.0.jpeg" target="_blank"><img src="/images/SiriShortcutsSetup-images/3.0.jpeg" alt="3.0"></a>
+    <a href="/images/SiriShortcutsSetup-images/3.1.jpeg" target="_blank"><img src="/images/SiriShortcutsSetup-images/3.1.jpeg" alt="3.1"></a>
+    <a href="/images/SiriShortcutsSetup-images/3.2.jpeg" target="_blank"><img src="/images/SiriShortcutsSetup-images/3.2.jpeg" alt="3.2"></a>
   </div>
   <p>Tap the <strong>+</strong> icon at the top right, then select <strong>Transaction</strong> (with the Wallet symbol).</p>
 
   <h2>Step 4: Leave only one card under "When I tap"</h2>
-  <div class="image-row">
-    <a href="/images/SiriShortcutsSetup-images/4.0.jpeg" target="_blank"><img src="/images/SiriShortcutsSetup-images/4.0.jpeg" alt="4.0" /></a>
-    <a href="/images/SiriShortcutsSetup-images/4.1.jpeg" target="_blank"><img src="/images/SiriShortcutsSetup-images/4.1.jpeg" alt="4.1" /></a>
+  <div class="image-group">
+    <a href="/images/SiriShortcutsSetup-images/4.0.jpeg" target="_blank"><img src="/images/SiriShortcutsSetup-images/4.0.jpeg" alt="4.0"></a>
+    <a href="/images/SiriShortcutsSetup-images/4.1.jpeg" target="_blank"><img src="/images/SiriShortcutsSetup-images/4.1.jpeg" alt="4.1"></a>
   </div>
   <p>Deselect all cards except the one you want to trigger the shortcut from under <strong>"When I tap"</strong>.</p>
 
   <h2>Step 5: Confirmation settings</h2>
-  <div class="image-row">
-    <a href="/images/SiriShortcutsSetup-images/5.0.jpeg" target="_blank"><img src="/images/SiriShortcutsSetup-images/5.0.jpeg" alt="5.0" /></a>
-    <a href="/images/SiriShortcutsSetup-images/5.1.jpeg" target="_blank"><img src="/images/SiriShortcutsSetup-images/5.1.jpeg" alt="5.1" /></a>
-    <a href="/images/SiriShortcutsSetup-images/5.2.jpeg" target="_blank"><img src="/images/SiriShortcutsSetup-images/5.2.jpeg" alt="5.2" /></a>
+  <div class="image-group">
+    <a href="/images/SiriShortcutsSetup-images/5.0.jpeg" target="_blank"><img src="/images/SiriShortcutsSetup-images/5.0.jpeg" alt="5.0"></a>
+    <a href="/images/SiriShortcutsSetup-images/5.1.jpeg" target="_blank"><img src="/images/SiriShortcutsSetup-images/5.1.jpeg" alt="5.1"></a>
+    <a href="/images/SiriShortcutsSetup-images/5.2.jpeg" target="_blank"><img src="/images/SiriShortcutsSetup-images/5.2.jpeg" alt="5.2"></a>
   </div>
   <p>Choose whether you want to receive a confirmation when the automation runs, or let it run silently.</p>
 
   <h2>Step 6: Add BalanceTrackr action</h2>
-  <div class="image-row">
-    <a href="/images/SiriShortcutsSetup-images/6.0.jpeg" target="_blank"><img src="/images/SiriShortcutsSetup-images/6.0.jpeg" alt="6.0" /></a>
-    <a href="/images/SiriShortcutsSetup-images/6.1.jpeg" target="_blank"><img src="/images/SiriShortcutsSetup-images/6.1.jpeg" alt="6.1" /></a>
-    <a href="/images/SiriShortcutsSetup-images/6.2.jpeg" target="_blank"><img src="/images/SiriShortcutsSetup-images/6.2.jpeg" alt="6.2" /></a>
-    <a href="/images/SiriShortcutsSetup-images/6.3.jpeg" target="_blank"><img src="/images/SiriShortcutsSetup-images/6.3.jpeg" alt="6.3" /></a>
-    <a href="/images/SiriShortcutsSetup-images/6.4.jpeg" target="_blank"><img src="/images/SiriShortcutsSetup-images/6.4.jpeg" alt="6.4" /></a>
-    <a href="/images/SiriShortcutsSetup-images/6.5.jpeg" target="_blank"><img src="/images/SiriShortcutsSetup-images/6.5.jpeg" alt="6.5" /></a>
+  <div class="image-group">
+    <a href="/images/SiriShortcutsSetup-images/6.0.jpeg" target="_blank"><img src="/images/SiriShortcutsSetup-images/6.0.jpeg" alt="6.0"></a>
+    <a href="/images/SiriShortcutsSetup-images/6.1.jpeg" target="_blank"><img src="/images/SiriShortcutsSetup-images/6.1.jpeg" alt="6.1"></a>
+    <a href="/images/SiriShortcutsSetup-images/6.2.jpeg" target="_blank"><img src="/images/SiriShortcutsSetup-images/6.2.jpeg" alt="6.2"></a>
+    <a href="/images/SiriShortcutsSetup-images/6.3.jpeg" target="_blank"><img src="/images/SiriShortcutsSetup-images/6.3.jpeg" alt="6.3"></a>
+    <a href="/images/SiriShortcutsSetup-images/6.4.jpeg" target="_blank"><img src="/images/SiriShortcutsSetup-images/6.4.jpeg" alt="6.4"></a>
+    <a href="/images/SiriShortcutsSetup-images/6.5.jpeg" target="_blank"><img src="/images/SiriShortcutsSetup-images/6.5.jpeg" alt="6.5"></a>
   </div>
   <p>Search for <strong>"BalanceTrackr"</strong> and select whether you want to add a <strong>bank account transaction</strong> or a <strong>credit card transaction</strong>.</p>
 
   <h2>Step 7: Add variables</h2>
   <a href="/images/SiriShortcutsSetup-images/7.jpeg" target="_blank">
-    <img src="/images/SiriShortcutsSetup-images/7.jpeg" alt="Step 7" />
+    <img class="single" src="/images/SiriShortcutsSetup-images/7.jpeg" alt="Insert variables" />
   </a>
-  <p>Use variables from <strong>"Shortcut Input"</strong> to fill in <strong>Amount</strong> and <strong>Merchant</strong>.</p>
-  <p>Important: The <strong>Account</strong> or <strong>Credit Card</strong> name must match exactly the name used in the BalanceTrackr app.</p>
+  <p>Use variables from <strong>"Shortcut Input"</strong> to fill in <strong>Amount</strong> and <strong>Merchant</strong>.<br>Important: The <strong>Account</strong> or <strong>Credit Card</strong> name must match exactly the name used in the BalanceTrackr app.</p>
 
   <h2>Step 8: Tap "Done"</h2>
   <a href="/images/SiriShortcutsSetup-images/8.jpeg" target="_blank">
-    <img src="/images/SiriShortcutsSetup-images/8.jpeg" alt="Step 8" />
+    <img class="single" src="/images/SiriShortcutsSetup-images/8.jpeg" alt="Finish setup" />
   </a>
   <p>You're all set! Tap <strong>"Done"</strong> to save your new automation.</p>
 
