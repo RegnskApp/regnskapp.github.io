@@ -71,7 +71,7 @@
   </style>
 </head>
 <body>
-  <h1>Pay & Shortcuts Setup Guide</h1>
+  <h1>Guide for Pay & Shortcuts Setup</h1>
   <p>Follow these simple steps to set up a Shortcut for logging Pay transactions in BalanceTrackr:</p>
 
   <h2>Step 1: Open the Shortcuts app</h2>
@@ -201,13 +201,20 @@
   <script data-goatcounter="https://regnskapp.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
   <script>
-    if (window.innerWidth <= 768) {
-      mediumZoom('.image-row img', {
-        margin: 24,
-        background: '#000',
-        scrollOffset: 0
-      });
+    function enableMobileZoom() {
+      // Sjekk om zoom allerede er aktivert
+      if (window.innerWidth <= 768 && !window.__zoomInitialized) {
+        mediumZoom('.image-row img', {
+          margin: 24,
+          background: '#000',
+          scrollOffset: 0
+        });
+        window.__zoomInitialized = true;
+      }
     }
+  
+    // Kjør kun ved lasting
+    window.addEventListener('DOMContentLoaded', enableMobileZoom);
   </script>
   
 </body>
