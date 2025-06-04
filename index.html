@@ -95,15 +95,16 @@
         flex-wrap: nowrap; /* Hindrer at bildene brettes */
         max-width: 1200px; /* Begrenser karusellens bredde */
         margin: 0 auto; /* Sentrerer karusellen */
+        overflow-x: hidden; /* Hindrer scrolling på desktop */
       }
   
       .carousel img {
-        width: calc(33.333% - 16px); /* 3 bilder med mellomrom */
-        max-width: 240px; /* Maks bredde per bilde */
+        flex: 0 0 calc(20% - 16px); /* 5 bilder side ved side */
+        max-width: none;
       }
 
       .carousel-dots {
-        display: flex; /* Vis prikkene også på stor skjerm */
+        display: none !important; /* Skjul prikker på stor skjerm */
       }
     }
     
@@ -328,7 +329,7 @@
     <strong>It even makes it rain money! 💸</strong>
   </p>
 
-  <video autoplay muted playsinline loop style="margin-top: 1rem; max-width: 90%; max-width: 400px; border-radius: 1rem; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);">
+  <video autoplay muted playsinline loop style="margin-top: 1rem; max-width: 90%; max-width: 350px; border-radius: 1rem; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);">
   <source src="images/LadetRegneiMovie.mp4" type="video/mp4">
   Your browser does not support the video tag.
   </video>
