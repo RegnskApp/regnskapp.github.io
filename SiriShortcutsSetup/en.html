@@ -39,6 +39,7 @@
       border-radius: 12px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       transition: transform 0.2s;
+      display: block;
     }
 
     footer {
@@ -70,23 +71,18 @@
     }
 
     @media screen and (max-width: 768px) {
-    .image-row {
-      gap: 0.5rem;
+      .image-row {
+        gap: 0.5rem;
+      }
+      .image-row a {
+        flex: 1 1 48%;
+        max-width: 48%;
+        display: block;
+      }
+      .image-row img {
+        border-radius: 8px;
+      }
     }
-    .image-row a {
-      flex: 1 1 48%;
-      max-width: 48%;
-      display: block;
-    }
-    .image-row img {
-      width: 100%;
-      max-width: 100%;
-      border-radius: 8px;
-      height: auto;
-      display: block;
-    }
-  }
-    
   </style>
 </head>
 <body>
@@ -222,29 +218,39 @@
   <script>
     function enableMobileZoom() {
       if (window.innerWidth <= 768 && !window.__zoomInitialized) {
+        // Gå gjennom alle lenker i .image-row
         document.querySelectorAll('.image-row a').forEach(link => {
           const img = link.querySelector('img');
           if (img) {
-            const parent = link.parentNode;
-            // Kopier bildet og fjern lenken
+            // Erstatt <a> med bare bildet (klone bildet)
             const newImg = img.cloneNode(true);
-            parent.replaceChild(newImg, link);
+            link.parentNode.replaceChild(newImg, link);
           }
         });
-  
-        // Aktiver medium-zoom
+
+        // Aktiver medium-zoom på alle bilder i .image-row
         mediumZoom('.image-row img', {
           margin: 24,
           background: '#000',
           scrollOffset: 0
         });
-  
+
         window.__zoomInitialized = true;
       }
     }
-  
+
+    // Kjør på DOMContentLoaded og ved vindusendring (f.eks. hvis man roterer telefon)
     window.addEventListener('DOMContentLoaded', enableMobileZoom);
-</script>
+    window.addEventListener('resize', () => {
+      // Reset for å kunne kjøre på nytt hvis vindusstørrelsen endres
+      if (window.innerWidth > 768 && window.__zoomInitialized) {
+        window.__zoomInitialized = false;
+        location.reload();  // Last siden på nytt for å gjenopprette lenker på desktop
+      } else {
+        enableMobileZoom();
+      }
+    });
+  </script>
   
 </body>
 </html>
