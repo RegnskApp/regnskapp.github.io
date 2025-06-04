@@ -70,13 +70,19 @@
     }
 
     @media screen and (max-width: 768px) {
-    .image-row a {
-      flex: 1 1 calc(50% - 1rem);
-      max-width: calc(50% - 1rem);
+    .image-row {
+      gap: 0.5rem;
     }
-  
+    .image-row a {
+      flex: 1 1 48%;
+      max-width: 48%;
+    }
     .image-row img {
+      width: 100%;
+      max-width: 100%;
       border-radius: 8px;
+      height: auto;
+      display: block;
     }
   }
     
