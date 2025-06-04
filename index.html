@@ -40,11 +40,13 @@
 
     .carousel {
       display: flex;
-      overflow-x: auto;
+      overflow-x: visible; /* La innhold stikke utenfor */
       gap: 1rem;
       scroll-snap-type: x mandatory;
       padding: 1rem;
       scroll-behavior: smooth;
+      position: relative; /* Viktig for absolutt posisjonering av barn */
+      z-index: 0;
     }
 
     .carousel img {
@@ -54,11 +56,15 @@
       border-radius: 1rem;
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
       scroll-snap-align: center;
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease, z-index 0.3s ease;
+      position: relative;
+      z-index: 1;
     }
 
     .carousel img:hover {
       transform: scale(2.02);
+      z-index: 10; /* Hev bildet over andre */
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
     }
 
     .carousel-dots {
@@ -96,7 +102,7 @@
         flex-wrap: nowrap;
         max-width: 1200px;
         margin: 0 auto;
-        overflow-x: hidden;
+        overflow-x: visible;
         gap: 16px; /* mellomrom mellom bilder */
       }
     
@@ -105,6 +111,8 @@
         max-width: 200px; /* Juster etter behov */
         scroll-snap-align: none; /* Deaktiver snapping */
         flex: 0 0 auto;
+        position: relative;
+        z-index: 1;
       }
     
       .carousel-dots {
