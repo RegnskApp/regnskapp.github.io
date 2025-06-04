@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pay & Shortcuts Setup – BalanceTrackr</title>
+  <link rel="icon" href="/images/RegnskApp-Light-Mode-Icon.jpg" type="image/jpeg" />
+  <link href="https://cdn.jsdelivr.net/npm/lightbox2@2.11.4/dist/css/lightbox.min.css" rel="stylesheet" />
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+        Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      background-color: #f9f9f9;
+      color: #212121;
+      padding: 2rem;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    h1, h2 {
+      color: #1b5e20;
+    }
+
+    .image-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    /* 3 bilder per rad på desktop */
+    .image-row a {
+      flex: 1 1 calc(33.333% - 1rem);
+      max-width: calc(33.333% - 1rem);
+      display: block;
+    }
+
+    .image-row img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s;
+      display: block;
+      cursor: zoom-in;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    a {
+      color: #1b5e20;
+      text-decoration: none;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      body {
+        background-color: #121212;
+        color: #e0e0e0;
+      }
+
+      h1, h2, a {
+        color: #90ee90;
+      }
+
+      footer {
+        background-color: #121212;
+        color: #e0e0e0;
+      }
+    }
+
+    /* 2 bilder per rad på mobil */
+    @media screen and (max-width: 768px) {
+      .image-row {
+        gap: 0.5rem;
+      }
+      .image-row a {
+        flex: 1 1 48%;
+        max-width: 48%;
+      }
+      .image-row img {
+        border-radius: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Pay & Shortcuts Setup</h1>
+  <p>Follow these simple steps to set up a Shortcut for logging Pay transactions in BalanceTrackr:</p>
+
+  <h2>Step 1: Open the Shortcuts app</h2>
+  <div class="image-row">
+    <a href="/images/SiriShortcutsSetup-images/1.jpeg" data-lightbox="gallery" data-title="Step 1">
+      <img src="/images/SiriShortcutsSetup-images/1.jpeg" alt="Step 1" style="max-width: 200px;" />
+    </a>
+  </div>
+  <p>Launch the built-in Shortcuts app on your iPhone.</p>
+
+  <h2>Step 2: Tap "Automation" at the bottom</h2>
+  <div class="image-row">
+    <a href="/images/SiriShortcutsSetup-images/2.jpeg" data-lightbox="gallery" data-title="Step 2">
+      <img src="/images/SiriShortcutsSetup-images/2.jpeg" alt="Step 2" style="max-width: 200px;" />
+    </a>
+  </div>
+  <p>Switch to the <strong>Automation</strong> tab to create a new shortcut.</p>
+
+  <h2>Step 3: Tap the "New Automation" or the plus icon and choose "Transaction"</h2>
+  <div class="image-row">
+    <a href="/images/SiriShortcutsSetup-images/3.0.jpeg" data-lightbox="gallery" data-title="Step 3.0">
+      <img src="/images/SiriShortcutsSetup-images/3.0.jpeg" alt="Step 3.0" style="max-width: 200px;" />
+    </a>
+    <a href="/images/SiriShortcutsSetup-images/3.1.jpeg" data-lightbox="gallery" data-title="Step 3.1">
+      <img src="/images/SiriShortcutsSetup-images/3.1.jpeg" alt="Step 3.1" style="max-width: 200px;" />
+    </a>
+    <a href="/images/SiriShortcutsSetup-images/3.2.jpeg" data-lightbox="gallery" data-title="Step 3.2">
+      <img src="/images/SiriShortcutsSetup-images/3.2.jpeg" alt="Step 3.2" style="max-width: 200px;" />
+    </a>
+  </div>
+  <p>Tap the <strong>New Automation</strong> or the <strong>+</strong> icon at the top right, then select <strong>Transaction</strong> (with the Wallet symbol).</p>
+
+  <h2>Step 4: Leave only one card under "When I tap"</h2>
+  <div class="image-row">
+    <a href="/images/SiriShortcutsSetup-images/4.0.jpeg" data-lightbox="gallery" data-title="Step 4.0">
+      <img src="/images/SiriShortcutsSetup-images/4.0.jpeg" alt="Step 4.0" style="max-width: 200px;" />
+    </a>
+    <a href="/images/SiriShortcutsSetup-images/4.1.jpeg" data-lightbox="gallery" data-title="Step 4.1">
+      <img src="/images/SiriShortcutsSetup-images/4.1.jpeg" alt="Step 4.1" style="max-width: 200px;" />
+    </a>
+  </div>
+  <p>Deselect all cards except the one you want to trigger the shortcut from under <strong>"When I tap"</strong>.</p>
+  <p>At the bottom, you can choose whether you want to receive a confirmation when the automation runs, or let it run silently.</p>
+  <p>Tap <strong>New Blank Automation</strong> to start the setup.</p>
+
+  <h2>Step 5: Automation setup - Search</h2>
+  <div class="image-row">
+    <a href="/images/SiriShortcutsSetup-images/5.0.jpeg" data-lightbox="gallery" data-title="Step 5.0">
+      <img src="/images/SiriShortcutsSetup-images/5.0.jpeg" alt="Step 5.0" style="max-width: 200px;" />
+    </a>
+    <a href="/images/SiriShortcutsSetup-images/5.1.png" data-lightbox="gallery" data-title="Step 5.1">
+      <img src="/images/SiriShortcutsSetup-images/5.1.PNG" alt="Step 5.1" style="max-width: 200px;" />
+    </a>
+    <a href="/images/SiriShortcutsSetup-images/5.2.png" data-lightbox="gallery" data-title="Step 5.2">
+      <img src="/images/SiriShortcutsSetup-images/5.2.PNG" alt="Step 5.2" style="max-width: 200px;" />
+    </a>
+  </div>
+  <p>Search for <strong>"BalanceTrackr"</strong> and select whether you want to add a <strong>bank account transaction</strong> or a <strong>credit card transaction</strong>.</p>
+
+  <h2>Step 6: Automation setup - Variables</h2>
+  <div class="image-row">
+    <a href="/images/SiriShortcutsSetup-images/6.0.jpeg" data-lightbox="gallery" data-title="Step 6.0">
+      <img src="/images/SiriShortcutsSetup-images/6.0.jpeg" alt="Step 6.0" style="max-width: 200px;" />
+    </a>
+    <a href="/images/SiriShortcutsSetup-images/6.1.jpeg" data-lightbox="gallery" data-title="Step 6.1">
+      <img src="/images/SiriShortcutsSetup-images/6.1.jpeg" alt="Step 6.1" style="max-width: 200px;" />
+    </a>
+    <a href="/images/SiriShortcutsSetup-images/6.2.jpeg" data-lightbox="gallery" data-title="Step 6.2">
+      <img src="/images/SiriShortcutsSetup-images/6.2.jpeg" alt="Step 6.2" style="max-width: 200px;" />
+    </a>
+    <a href="/images/SiriShortcutsSetup-images/6.3.jpeg" data-lightbox="gallery" data-title="Step 6.3">
+      <img src="/images/SiriShortcutsSetup-images/6.3.jpeg" alt="Step 6.3" style="max-width: 200px;" />
+    </a>
+    <a href="/images/SiriShortcutsSetup-images/6.4.jpeg" data-lightbox="gallery" data-title="Step 6.4">
+      <img src="/images/SiriShortcutsSetup-images/6.4.jpeg" alt="Step 6.4" style="max-width: 200px;" />
+    </a>
+    <a href="/images/SiriShortcutsSetup-images/6.5.png" data-lightbox="gallery" data-title="Step 6.5">
+      <img src="/images/SiriShortcutsSetup-images/6.5.PNG" alt="Step 6.5" style="max-width: 200px;" />
+    </a>
+  </div>
+  <p>Use variables from <strong>"Shortcut Input"</strong> to fill in <strong>Amount</strong> and <strong>Merchant</strong>.<br />
+  The <strong>Account</strong> or <strong>Credit Card</strong> name must match exactly the name used in the BalanceTrackr app.</p>
+  
+  <h2>Step 7: Tap "Done"</h2>
+  <div class="image-row">
+    <a href="/images/SiriShortcutsSetup-images/7.jpeg" data-lightbox="gallery" data-title="Step 7">
+      <img src="/images/SiriShortcutsSetup-images/7.jpeg" alt="Step 7" style="max-width: 200px;" />
+    </a>
+  </div>
+  <p>Press <strong>"Done"</strong> to save the automation.</p>
+  <p><strong>Important!</strong><br>
+  If this is your first time setting up the automation, nothing might appear to happen when you press "Done."<br>
+  This is because the connection between the Shortcuts app and BalanceTrackr hasn’t been fully initialized on your device yet.</p>
+  <p><strong>However, the automation has been saved!</strong></p>
+  <p>Simply tap the <strong>back arrow</strong> in the top left corner until you return to the first setup screen, then <strong>pull down to on the setup card to dismiss it</strong>.<br>
+  You will now see that the automation has been saved successfully.</p>
+
+  <h2>Step 8: Finished Setup</h2>
+  <div class="image-row">
+    <a href="/images/SiriShortcutsSetup-images/8.0.jpeg" data-lightbox="gallery" data-title="Step 8.0">
+      <img src="/images/SiriShortcutsSetup-images/8.0.jpeg" alt="Step 8.0" style="max-width: 200px;" />
+    </a>
+    <a href="/images/SiriShortcutsSetup-images/8.1.jpeg" data-lightbox="gallery" data-title="Step 8.1">
+      <img src="/images/SiriShortcutsSetup-images/8.1.jpeg" alt="Step 8.1" style="max-width: 200px;" />
+    </a>
+  </div>
+  <p>You're all set! Tap the newly created automation if you want to make any changes.</p>
+  <p>You can customize the notification that appears when it runs, or tap the action under <strong>"Do"</strong> to modify the automation steps. Feel free to add other actions you'd like to trigger when the card is tapped.</p>
+
+  <p>
+    <a href="/index.html" style="
+      display: inline-block;
+      background-color: #1b5e20;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 2rem;
+    ">← BalanceTrackr</a>
+  </p>
+
+  <footer>
+    &copy; 2025 BalanceTrackr (RegnskApp) – Ole Morten Tengesdal. All rights reserved.
+  </footer>
+
+  <script data-goatcounter="https://regnskapp.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+   <!-- Last jQuery først -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  
+  <!-- Deretter Lightbox -->
+  <script src="https://cdn.jsdelivr.net/npm/lightbox2@2.11.4/dist/js/lightbox.min.js"></script>
+  
+</body>
+</html>
