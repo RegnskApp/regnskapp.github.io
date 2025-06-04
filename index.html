@@ -125,9 +125,10 @@
     /* Dette er for mobilvisning - viser bare 1 bilde */
     @media (max-width: 768px) {
       .carousel {
-        overflow-x: hidden;
+        overflow-x: scroll;
         scroll-snap-type: x mandatory;
         scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
       }
     
       .carousel img {
