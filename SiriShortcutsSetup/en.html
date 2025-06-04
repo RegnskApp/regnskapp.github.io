@@ -80,7 +80,10 @@
         display: block;
       }
       .image-row img {
+        max-width: 80%;
+        margin: 0 auto;
         border-radius: 8px;
+        display: block;
       }
     }
   </style>
@@ -218,16 +221,6 @@
   <script>
     function enableMobileZoom() {
       if (window.innerWidth <= 768 && !window.__zoomInitialized) {
-        // Gå gjennom alle lenker i .image-row
-        document.querySelectorAll('.image-row a').forEach(link => {
-          const img = link.querySelector('img');
-          if (img) {
-            // Erstatt <a> med bare bildet (klone bildet)
-            const newImg = img.cloneNode(true);
-            link.parentNode.replaceChild(newImg, link);
-          }
-        });
-
         // Aktiver medium-zoom på alle bilder i .image-row
         mediumZoom('.image-row img', {
           margin: 24,
