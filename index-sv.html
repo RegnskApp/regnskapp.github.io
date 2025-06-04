@@ -40,11 +40,13 @@
 
     .carousel {
       display: flex;
-      overflow-x: auto;
+      overflow-x: visible; /* La innhold stikke utenfor */
       gap: 1rem;
       scroll-snap-type: x mandatory;
       padding: 1rem;
       scroll-behavior: smooth;
+      position: relative; /* Viktig for absolutt posisjonering av barn */
+      z-index: 0;
     }
 
     .carousel img {
@@ -54,11 +56,15 @@
       border-radius: 1rem;
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
       scroll-snap-align: center;
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease, z-index 0.3s ease;
+      position: relative;
+      z-index: 1;
     }
 
     .carousel img:hover {
-      transform: scale(1.02);
+      transform: scale(2.02);
+      z-index: 10; /* Hev bildet over andre */
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
     }
 
     .carousel-dots {
@@ -88,22 +94,29 @@
       font-size: 0.9rem;
     }
 
-    /* Dette er for storskjermvisning - viser maks 3 bilder */
+    /* Dette er for storskjermvisning - viser 5 bilder */
     @media (min-width: 768px) {
       .carousel {
-        justify-content: center;
-        flex-wrap: nowrap; /* Hindrer at bildene brettes */
-        max-width: 1200px; /* Begrenser karusellens bredde */
-        margin: 0 auto; /* Sentrerer karusellen */
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: nowrap;
+        max-width: 1200px;
+        margin: 0 auto;
+        overflow-x: visible;
+        gap: 16px; /* mellomrom mellom bilder */
       }
-  
+    
       .carousel img {
-        width: calc(33.333% - 16px); /* 3 bilder med mellomrom */
-        max-width: 350px; /* Maks bredde per bilde */
+        width: 100%;
+        max-width: 200px; /* Juster etter behov */
+        scroll-snap-align: none; /* Deaktiver snapping */
+        flex: 0 0 auto;
+        position: relative;
+        z-index: 1;
       }
-
+    
       .carousel-dots {
-        display: flex; /* Vis prikkene også på stor skjerm */
+        display: none !important; /* skjul dots */
       }
     }
     
@@ -328,7 +341,7 @@
     <strong>Det regnar till och med pengar! 💸</strong>
   </p>
   
-  <video autoplay muted playsinline loop style="margin-top: 1rem; max-width: 90%; max-width: 600px; border-radius: 1rem; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);">
+  <video autoplay muted playsinline loop style="margin-top: 1rem; max-width: 90%; max-width: 350px; border-radius: 1rem; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);">
     <source src="images/LadetRegneiMovie.mp4" type="video/mp4">
     Din webbläsare stöder inte videotaggen.
   </video>
@@ -340,6 +353,7 @@
   </div>
   
   <div style="margin-bottom: 2rem;">
+    <a class="button" href="SiriShortcutsSetup/sv.html">Pay & Genvägar-inställning</a>
     <a class="button" href="privacy-policy/sv.html">Integritetspolicy</a>
     <a class="button" href="support/sv.html">Support</a>
   </div>
@@ -351,7 +365,7 @@
   <script data-goatcounter="https://regnskapp.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
   <script>
-     let currentLang = 'se'; // kan settes dynamisk senere
+     let currentLang = 'en'; // kan settes dynamisk senere
   
     function toggleLanguageMenu() {
       const menu = document.getElementById("language-menu");
@@ -526,15 +540,24 @@
         smooth = false;             // Deaktiver smooth scroll ved start
         scrollToImage(0);           // Start på første bilde
         smooth = true;              // Aktiver smooth scroll igjen
-        setTimeout(() => {
-          startAutoplay();
-        }, 300);                    // Vent litt før autoplay starter
+      
+        const isDesktop = window.innerWidth >= 768;
+        if (!isDesktop) {
+          setTimeout(() => {
+            startAutoplay();
+          }, 300);
+        }
       }
   
       window.addEventListener('resize', () => {
         createDots();
         updateDots();
-        restartAutoplayWithDelay();
+        const isDesktop = window.innerWidth >= 768;
+        if (!isDesktop) {
+          restartAutoplayWithDelay(); // Bare på mobil
+        } else {
+          stopAutoplay(); // Sørg for at desktop ikke får autoplay
+        }
       });
   
       window.addEventListener('load', initialize);
