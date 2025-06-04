@@ -88,23 +88,27 @@
       font-size: 0.9rem;
     }
 
-    /* Dette er for storskjermvisning - viser maks 3 bilder */
+    /* Dette er for storskjermvisning - viser 5 bilder */
     @media (min-width: 768px) {
       .carousel {
+        display: flex;
         justify-content: center;
-        flex-wrap: nowrap; /* Hindrer at bildene brettes */
-        max-width: 1200px; /* Begrenser karusellens bredde */
-        margin: 0 auto; /* Sentrerer karusellen */
-        overflow-x: hidden; /* Hindrer scrolling på desktop */
+        flex-wrap: nowrap;
+        max-width: 1200px;
+        margin: 0 auto;
+        overflow-x: hidden;
+        gap: 16px; /* mellomrom mellom bilder */
       }
-  
+    
       .carousel img {
-        flex: 0 0 calc(20% - 16px); /* 5 bilder side ved side */
-        max-width: none;
+        flex: 0 0 calc(20% - 16px); /* 5 bilder ved siden av hverandre */
+        width: 100%;
+        height: auto;
+        object-fit: cover;
       }
-
+    
       .carousel-dots {
-        display: none !important; /* Skjul prikker på stor skjerm */
+        display: none !important; /* skjul dots */
       }
     }
     
@@ -341,7 +345,7 @@
   </div>
 
   <div style="margin-bottom: 2rem;">
-    <a class="button" href="SiriShortcutsSetup/en.html">Apple Pay & Siri Shortcuts Setup</a>
+    <a class="button" href="SiriShortcutsSetup/en.html">Pay & Siri Shortcuts Setup</a>
     <a class="button" href="privacy-policy/en.html">Privacy Policy</a>
     <a class="button" href="support/en.html">Support</a>
   </div>
