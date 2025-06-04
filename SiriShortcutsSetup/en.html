@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pay & Shortcuts Setup – BalanceTrackr</title>
   <link rel="icon" href="/images/RegnskApp-Light-Mode-Icon.jpg" type="image/jpeg" />
+  <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js"></script>
   <style>
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
@@ -190,7 +191,7 @@
       text-decoration: none;
       font-weight: bold;
       margin-top: 2rem;
-    ">← Home</a>
+    ">← BalanceTrackr</a>
   </p>
 
   <footer>
@@ -198,5 +199,16 @@
   </footer>
 
   <script data-goatcounter="https://regnskapp.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+  <script>
+    if (window.innerWidth <= 768) {
+      mediumZoom('.image-row img', {
+        margin: 24,
+        background: '#000',
+        scrollOffset: 0
+      });
+    }
+  </script>
+  
 </body>
 </html>
