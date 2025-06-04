@@ -94,9 +94,7 @@
 
   <h2>Step 1: Open the Shortcuts app</h2>
   <div class="image-row">
-    <a href="/images/SiriShortcutsSetup-images/1.jpeg">
-      <img src="/images/SiriShortcutsSetup-images/1.jpeg" alt="Step 1" />
-    </a>
+    <img src="/images/SiriShortcutsSetup-images/1.jpeg" alt="Step 1" class="zoomable" />
   </div>
   <p>Launch the built-in Shortcuts app on your iPhone.</p>
 
@@ -219,13 +217,10 @@
   <script data-goatcounter="https://regnskapp.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
   <script>
-    // Initier medium-zoom på alle bilder i .image-row
-    mediumZoom('.image-row img', {
+    mediumZoom('.zoomable', {
       margin: 24,
       background: '#000',
-      scrollOffset: 0,
-      // Lukke zoom ved å trykke på bakgrunn eller ESC
-      // medium-zoom håndterer dette som default
+      scrollOffset: 40,
     });
   </script>
   
