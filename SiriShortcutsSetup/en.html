@@ -68,6 +68,18 @@
         color: #e0e0e0;
       }
     }
+
+    @media screen and (max-width: 768px) {
+    .image-row a {
+      flex: 1 1 calc(50% - 1rem);
+      max-width: calc(50% - 1rem);
+    }
+  
+    .image-row img {
+      border-radius: 8px;
+    }
+  }
+    
   </style>
 </head>
 <body>
@@ -203,29 +215,29 @@
   <script>
     function enableMobileZoom() {
       if (window.innerWidth <= 768 && !window.__zoomInitialized) {
-        // Fjern <a href> på mobil så ikke bildet åpnes i ny fane
         document.querySelectorAll('.image-row a').forEach(link => {
           const img = link.querySelector('img');
           if (img) {
-            // Flytt bildet ut av lenken og erstatt lenken med bildet
             const parent = link.parentNode;
-            parent.replaceChild(img, link);
+            // Kopier bildet og fjern lenken
+            const newImg = img.cloneNode(true);
+            parent.replaceChild(newImg, link);
           }
         });
-    
-        // Aktiver zoom
+  
+        // Aktiver medium-zoom
         mediumZoom('.image-row img', {
           margin: 24,
           background: '#000',
           scrollOffset: 0
         });
-    
+  
         window.__zoomInitialized = true;
       }
     }
-    
+  
     window.addEventListener('DOMContentLoaded', enableMobileZoom);
-  </script>
+</script>
   
 </body>
 </html>
