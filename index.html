@@ -92,12 +92,12 @@
     @media (min-width: 768px) {
       .carousel {
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
         flex-wrap: nowrap;
         max-width: 1200px;
         margin: 0 auto;
         overflow-x: hidden;
-        gap: 16px; /* mellomrom mellom bilder */
+        gap: 6px; /* mellomrom mellom bilder */
       }
     
       .carousel img {
@@ -532,15 +532,24 @@
         smooth = false;             // Deaktiver smooth scroll ved start
         scrollToImage(0);           // Start på første bilde
         smooth = true;              // Aktiver smooth scroll igjen
-        setTimeout(() => {
-          startAutoplay();
-        }, 300);                    // Vent litt før autoplay starter
+      
+        const isDesktop = window.innerWidth >= 768;
+        if (!isDesktop) {
+          setTimeout(() => {
+            startAutoplay();
+          }, 300);
+        }
       }
   
       window.addEventListener('resize', () => {
         createDots();
         updateDots();
-        restartAutoplayWithDelay();
+        const isDesktop = window.innerWidth >= 768;
+        if (!isDesktop) {
+          restartAutoplayWithDelay(); // Bare på mobil
+        } else {
+          stopAutoplay(); // Sørg for at desktop ikke får autoplay
+        }
       });
   
       window.addEventListener('load', initialize);
