@@ -202,18 +202,28 @@
 
   <script>
     function enableMobileZoom() {
-      // Sjekk om zoom allerede er aktivert
       if (window.innerWidth <= 768 && !window.__zoomInitialized) {
+        // Fjern <a href> på mobil så ikke bildet åpnes i ny fane
+        document.querySelectorAll('.image-row a').forEach(link => {
+          const img = link.querySelector('img');
+          if (img) {
+            // Flytt bildet ut av lenken og erstatt lenken med bildet
+            const parent = link.parentNode;
+            parent.replaceChild(img, link);
+          }
+        });
+    
+        // Aktiver zoom
         mediumZoom('.image-row img', {
           margin: 24,
           background: '#000',
           scrollOffset: 0
         });
+    
         window.__zoomInitialized = true;
       }
     }
-  
-    // Kjør kun ved lasting
+    
     window.addEventListener('DOMContentLoaded', enableMobileZoom);
   </script>
   
