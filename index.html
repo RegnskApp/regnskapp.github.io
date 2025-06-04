@@ -124,24 +124,21 @@
     
     /* Dette er for mobilvisning - viser bare 1 bilde */
     @media (max-width: 768px) {
-      .carousel-track {
-        display: flex;
-        overflow: hidden;
+      .carousel {
+        overflow-x: hidden;
         scroll-snap-type: x mandatory;
         scroll-behavior: smooth;
-        -webkit-overflow-scrolling: touch;
       }
     
-      .carousel-track img {
+      .carousel img {
         flex: 0 0 100%;
         width: 100%;
         object-fit: cover;
         scroll-snap-align: start;
-        pointer-events: auto; /* Tillat swiping */
       }
     
-      .carousel-container {
-        overflow: hidden;
+      .carousel-dots {
+        display: flex;
       }
     }
 
