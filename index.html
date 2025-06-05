@@ -178,7 +178,7 @@
     #language-switcher {
       position: absolute;
       top: 1rem;
-      right: 1rem;
+      right: 4rem; /* til venstre for hamburger */
       z-index: 9999;
       display: flex;
       gap: 0.5rem;
@@ -238,7 +238,7 @@
     #hamburger-menu {
       position: absolute;
       top: 1rem;
-      right: 4rem; /* ved siden av språkvelger */
+      right: 1rem; /* til høyre for språkvelger */
       z-index: 9998;
     }
     
@@ -318,14 +318,6 @@
   </style>
 </head>
 <body>
-  <div id="hamburger-menu">
-    <button id="menu-toggle" aria-label="Åpne meny">☰</button>
-    <div id="menu-dropdown">
-      <a href="SiriShortcutsSetup/en.html">Apple Pay & Shortcuts Setup</a>
-      <a href="privacy-policy/en.html">Privacy Policy</a>
-      <a href="support/en.html">Support</a>
-    </div>
-  </div>
   <!-- 🌍 Språkvelger -->
   <div id="language-switcher">
     <button id="active-language" onclick="toggleLanguageMenu()" aria-label="Valgt språk">
@@ -353,6 +345,15 @@
       <button onclick="changeLanguage('en')">
         <img src="images/en/gb.svg" width="20" alt="Engelsk" /> English
       </button>
+    </div>
+  </div>
+  <!-- 🍔 Hamburgermeny -->
+  <div id="hamburger-menu">
+    <button id="menu-toggle" aria-label="Åpne meny">☰</button>
+    <div id="menu-dropdown">
+      <a href="SiriShortcutsSetup/en.html">Apple Pay & Shortcuts Setup</a>
+      <a href="privacy-policy/en.html">Privacy Policy</a>
+      <a href="support/en.html">Support</a>
     </div>
   </div>
   <picture>
