@@ -173,11 +173,12 @@
         color: #a0a0a0; /* en lysere grå som vises tydelig i mørk modus */
       }
     }
-    
+
+    /* Språkvelger */
     #language-switcher {
       position: absolute;
       top: 1rem;
-      right: 1rem;
+      right: 4rem; /* til venstre for hamburger */
       z-index: 9999;
       display: flex;
       gap: 0.5rem;
@@ -232,6 +233,72 @@
     #language-menu button:hover {
       background-color: #f0f0f0;
     }
+
+    /* Hamburger Meny */
+    #hamburger-menu {
+      position: absolute;
+      top: 1rem;
+      right: 1rem; /* til høyre for språkvelger */
+      z-index: 9998;
+    }
+    
+    #menu-toggle {
+      font-size: 1.8rem;
+      background: transparent;
+      border: none;
+      color: #1b5e20;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+    
+    #menu-toggle:hover {
+      transform: scale(1.1);
+    }
+    
+    #menu-dropdown {
+      display: none;
+      position: absolute;
+      top: 2.5rem;
+      right: 0;
+      background: white;
+      border: 1px solid #ccc;
+      border-radius: 0.5rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+      padding: 0.5rem;
+      text-align: left;
+      min-width: 150px;
+    }
+    
+    #menu-dropdown a {
+      display: block;
+      padding: 0.4rem 0.6rem;
+      color: #1b5e20;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    
+    #menu-dropdown a:hover {
+      background-color: #f0f0f0;
+    }
+    
+    @media (prefers-color-scheme: dark) {
+      #menu-toggle {
+        color: #e0e0e0;
+      }
+    
+      #menu-dropdown {
+        background-color: #1e1e1e;
+        border: 1px solid #444;
+      }
+    
+      #menu-dropdown a {
+        color: #e0e0e0;
+      }
+    
+      #menu-dropdown a:hover {
+        background-color: #2a2a2a;
+      }
+    }
     
     /* Mørk modus */
     @media (prefers-color-scheme: dark) {
@@ -278,6 +345,15 @@
       <button onclick="changeLanguage('en')">
         <img src="images/en/gb.svg" width="20" alt="Engelsk" /> English
       </button>
+    </div>
+  </div>
+  <!-- 🍔 Hamburgermeny -->
+  <div id="hamburger-menu">
+    <button id="menu-toggle" aria-label="Åpne meny">☰</button>
+    <div id="menu-dropdown">
+      <a href="SiriShortcutsSetup/de.html">Apple Pay & Kurzbefehle-Einrichtung</a>
+      <a href="privacy-policy/de.html">Datenschutz</a>
+      <a href="support/de.html">Unterstützung</a>
     </div>
   </div>
   <picture>
@@ -587,6 +663,20 @@
     document.addEventListener('DOMContentLoaded', () => {
       setupCarousel(1);
       setupCarousel(2);
+    });
+
+    const toggleButton = document.getElementById('menu-toggle');
+    const dropdown = document.getElementById('menu-dropdown');
+  
+    toggleButton.addEventListener('click', () => {
+      dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+    });
+  
+    // Lukk menyen hvis man klikker utenfor
+    document.addEventListener('click', (event) => {
+      if (!document.getElementById('hamburger-menu').contains(event.target)) {
+        dropdown.style.display = 'none';
+      }
     });
   </script>
 </body>
