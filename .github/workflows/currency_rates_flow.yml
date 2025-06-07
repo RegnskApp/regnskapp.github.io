@@ -3,7 +3,7 @@ name: Oppdater valutakurser
 on:
   schedule:
     - cron: '0 * * * *'  # Hver time (UTC)
-  workflow_dispatch:      # Manuell trigger
+  workflow_dispatch:
 
 jobs:
   fetch-valuta:
@@ -13,17 +13,18 @@ jobs:
     - name: Sjekk ut repo
       uses: actions/checkout@v3
 
-    - name: Hent valutakurser fra exchangerate.host
+    - name: Hent valutakurser fra Open Exchange Rates
+      env:
+        API_KEY: ${{ secrets.API_KEY }}
       run: |
-        curl "https://api.exchangerate.host/latest?base=EUR&symbols=AED,ARS,AUD,BGN,BHD,BRL,CAD,CHF,CLP,CNY,COP,CZK,DKK,EGP,EUR,GBP,HKD,HRK,HUF,IDR,ILS,INR,ISK,JPY,KRW,KWD,MAD,MXN,MYR,NGN,NOK,NZD,PEN,PHP,PKR,PLN,QAR,RON,RUB,SAR,SEK,SGD,THB,TRY,TWD,UAH,USD,UYU,VND,ZAR" -o data/currency_rates.json
+        curl "https://openexchangerates.org/api/latest.json?app_id=$API_KEY&symbols=AED,ARS,AUD,BGN,BHD,BRL,CAD,CHF,CLP,CNY,COP,CZK,DKK,EGP,EUR,GBP,HKD,HRK,HUF,IDR,ILS,INR,ISK,JPY,KRW,KWD,MAD,MXN,MYR,NGN,NOK,NZD,PEN,PHP,PKR,PLN,QAR,RON,RUB,SAR,SEK,SGD,THB,TRY,TWD,UAH,USD,UYU,VND,ZAR" -o data/currency_rates.json
 
     - name: Commit og push ny fil
+      env:
+        GH_TOKEN: ${{ secrets.PAT_TOKEN }}
       run: |
         git config user.name "GitHub Action"
         git config user.email "action@github.com"
         git add data/currency_rates.json
         git commit -m "Oppdater valutakurser automatisk"
-        git remote set-url origin https://x-access-token:${GH_TOKEN}@github.com/RegnskApp/regnskapp.github.io.git
-        git push origin main
-      env:
-        GH_TOKEN: ${{ secrets.PAT_TOKEN }}
+        git push https://x-access-token:${GH_TOKEN}@github.com/RegnskApp/regnskapp.github.io.git
