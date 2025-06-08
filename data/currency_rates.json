@@ -1,7 +1,7 @@
 {
   "disclaimer": "Usage subject to terms: https://openexchangerates.org/terms",
   "license": "https://openexchangerates.org/license",
-  "timestamp": 1749376828,
+  "timestamp": 1749380428,
   "base": "USD",
   "rates": {
     "AED": 3.6725,
@@ -46,7 +46,7 @@
     "SAR": 3.756829,
     "SEK": 9.6445,
     "SGD": 1.2879,
-    "THB": 32.650501,
+    "THB": 32.650502,
     "TRY": 39.219301,
     "TWD": 29.9329,
     "UAH": 41.414163,
