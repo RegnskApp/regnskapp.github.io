@@ -2,7 +2,7 @@ name: Oppdater valutakurser
 
 on:
   schedule:
-    - cron: '0 * * * *'  # Hver time (UTC)
+    - cron: '2 * * * *'  # 2 min over hver hele time (UTC)
   workflow_dispatch:
 
 jobs:
