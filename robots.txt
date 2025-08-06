@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://regnskapp.github.io/sitemap.txt
+Sitemap: https://regnskapp.github.io/sitemap.xml
