@@ -1,7 +1,7 @@
 {
   "disclaimer": "Usage subject to terms: https://openexchangerates.org/terms",
   "license": "https://openexchangerates.org/license",
-  "timestamp": 1755435626,
+  "timestamp": 1755439226,
   "base": "USD",
   "rates": {
     "AED": 3.6725,
@@ -51,7 +51,7 @@
     "TWD": 30.0325,
     "UAH": 41.211007,
     "USD": 1,
-    "UYU": 39.945315,
+    "UYU": 39.945314,
     "VND": 26270.889205,
     "ZAR": 17.615
   }
