@@ -1,7 +1,7 @@
 {
   "disclaimer": "Usage subject to terms: https://openexchangerates.org/terms",
   "license": "https://openexchangerates.org/license",
-  "timestamp": 1755900005,
+  "timestamp": 1755903605,
   "base": "USD",
   "rates": {
     "AED": 3.6725,
@@ -22,7 +22,7 @@
     "EUR": 0.852915,
     "GBP": 0.739481,
     "HKD": 7.81515,
-    "HRK": 6.427719,
+    "HRK": 6.42772,
     "HUF": 337.34,
     "IDR": 16233.5,
     "ILS": 3.3686,
@@ -47,7 +47,7 @@
     "SAR": 3.752314,
     "SEK": 9.4981,
     "SGD": 1.2813,
-    "THB": 32.312679,
+    "THB": 32.312678,
     "TRY": 40.9341,
     "TWD": 30.3823,
     "UAH": 41.313539,
