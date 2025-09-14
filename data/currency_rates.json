@@ -1,7 +1,7 @@
 {
   "disclaimer": "Usage subject to terms: https://openexchangerates.org/terms",
   "license": "https://openexchangerates.org/license",
-  "timestamp": 1757862004,
+  "timestamp": 1757865614,
   "base": "USD",
   "rates": {
     "AED": 3.6725,
@@ -36,7 +36,7 @@
     "MYR": 4.205,
     "NGN": 1501.213245,
     "NOK": 9.8596,
-    "NZD": 1.67912,
+    "NZD": 1.682511,
     "PEN": 3.484258,
     "PHP": 57.17,
     "PKR": 283.854645,
@@ -47,7 +47,7 @@
     "SAR": 3.7516,
     "SEK": 9.3168,
     "SGD": 1.2859,
-    "THB": 31.686594,
+    "THB": 31.708772,
     "TRY": 41.326499,
     "TWD": 30.299899,
     "UAH": 41.217311,
