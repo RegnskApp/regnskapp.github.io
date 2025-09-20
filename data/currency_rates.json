@@ -1,7 +1,7 @@
 {
   "disclaimer": "Usage subject to terms: https://openexchangerates.org/terms",
   "license": "https://openexchangerates.org/license",
-  "timestamp": 1758391215,
+  "timestamp": 1758394814,
   "base": "USD",
   "rates": {
     "AED": 3.6725,
@@ -20,7 +20,7 @@
     "DKK": 6.3547,
     "EGP": 48.17,
     "EUR": 0.851209,
-    "GBP": 0.742143,
+    "GBP": 0.742115,
     "HKD": 7.77585,
     "HRK": 6.4145,
     "HUF": 332.4,
@@ -36,7 +36,7 @@
     "MYR": 4.207,
     "NGN": 1497.895015,
     "NOK": 9.9405,
-    "NZD": 1.707796,
+    "NZD": 1.707505,
     "PEN": 3.487847,
     "PHP": 56.946504,
     "PKR": 283.873335,
