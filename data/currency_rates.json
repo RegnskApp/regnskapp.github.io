@@ -1,7 +1,7 @@
 {
   "disclaimer": "Usage subject to terms: https://openexchangerates.org/terms",
   "license": "https://openexchangerates.org/license",
-  "timestamp": 1759532403,
+  "timestamp": 1759539611,
   "base": "USD",
   "rates": {
     "AED": 3.673,
@@ -12,7 +12,7 @@
     "BHD": 0.376815,
     "BRL": 5.33695,
     "CAD": 1.39665,
-    "CHF": 0.795593,
+    "CHF": 0.795578,
     "CLP": 965.56,
     "CNY": 7.1195,
     "COP": 3884.188938,
@@ -47,7 +47,7 @@
     "SAR": 3.749977,
     "SEK": 9.373565,
     "SGD": 1.28975,
-    "THB": 32.32145,
+    "THB": 32.321452,
     "TRY": 41.655002,
     "TWD": 30.395,
     "UAH": 41.279423,
