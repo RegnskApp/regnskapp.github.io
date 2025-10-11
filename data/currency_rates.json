@@ -1,7 +1,7 @@
 {
   "disclaimer": "Usage subject to terms: https://openexchangerates.org/terms",
   "license": "https://openexchangerates.org/license",
-  "timestamp": 1760137212,
+  "timestamp": 1760144403,
   "base": "USD",
   "rates": {
     "AED": 3.6725,
@@ -12,7 +12,7 @@
     "BHD": 0.376694,
     "BRL": 5.5183,
     "CAD": 1.401444,
-    "CHF": 0.799266,
+    "CHF": 0.799476,
     "CLP": 954.87,
     "CNY": 7.125,
     "COP": 3869.025381,
