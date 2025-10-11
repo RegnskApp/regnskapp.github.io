@@ -1,7 +1,7 @@
 {
   "disclaimer": "Usage subject to terms: https://openexchangerates.org/terms",
   "license": "https://openexchangerates.org/license",
-  "timestamp": 1760155200,
+  "timestamp": 1760158827,
   "base": "USD",
   "rates": {
     "AED": 3.6725,
@@ -19,7 +19,7 @@
     "CZK": 20.9266,
     "DKK": 6.4248,
     "EGP": 47.56,
-    "EUR": 0.860437,
+    "EUR": 0.860511,
     "GBP": 0.748923,
     "HKD": 7.7831,
     "HRK": 6.48333,
