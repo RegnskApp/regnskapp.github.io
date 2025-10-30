@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BalanceTrackr (RegnskApp) – iOS用予算・支出管理アプリ</title>
+  <meta name="description" content="BalanceTrackr はプライバシー重視の iOS 向け予算管理アプリです。収入と支出を簡単に記録し、広告やサブスクなしで使えます。" />
+  <link rel="canonical" href="https://regnskapp.github.io/index-ja.html" />
+  <link rel="alternate" hreflang="x-default" href="https://regnskapp.github.io/index.html" />
+  <link rel="icon" href="images/RegnskApp-Light-Mode-Icon.jpg" type="image/jpeg" />
+  <style>
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,'Open Sans','Helvetica Neue',sans-serif;background:#f9f9f9;color:#1b5e20;text-align:center;padding:2rem 1rem;margin:0}
+    a.button{display:inline-block;margin:1rem;padding:.75rem 1.5rem;background:#1b5e20;color:#fff;text-decoration:none;border-radius:.5rem;font-weight:700}
+    img.app-icon{width:150px;height:auto;margin-bottom:1rem}
+    .carousel-wrapper{position:relative;margin-top:2rem}
+    .carousel{display:flex;overflow-x:visible;gap:1rem;scroll-snap-type:x mandatory;padding:1rem;scroll-behavior:smooth;position:relative;z-index:0}
+    .carousel img{flex:0 0 auto;width:calc(100% - 40px);max-width:350px;border-radius:1rem;box-shadow:0 8px 20px rgba(0,0,0,.1);scroll-snap-align:center;transition:transform .3s ease,z-index .3s ease;position:relative;z-index:1}
+    @media(hover:hover) and (pointer:fine){.carousel img:hover{transform:scale(2.02);z-index:10;box-shadow:0 12px 32px rgba(0,0,0,.25)}}
+    .carousel-dots{display:none;justify-content:center;margin-top:.5rem;gap:.5rem}
+    .carousel-dots .dot{width:10px;height:10px;background:#bbb;border-radius:50%;display:inline-block;transition:background-color .3s}
+    .carousel-dots .dot.active{background:#1b5e20}
+    footer{background:#f9f9f9;text-align:center;padding:1rem;font-size:.9rem}
+    @media(min-width:768px){.carousel{justify-content:space-between;flex-wrap:nowrap;max-width:1200px;margin:0 auto;overflow-x:visible;gap:16px}.carousel img{width:100%;max-width:200px;scroll-snap-align:none;flex:0 0 auto;position:relative;z-index:1}.carousel-dots{display:none!important}}
+    @media(max-width:768px){.carousel{overflow-x:scroll;-webkit-overflow-scrolling:touch}.carousel img{flex:0 0 100%;width:100%;object-fit:cover;scroll-snap-align:start}.carousel-dots{display:flex}}
+    @media(prefers-color-scheme:dark){body{background:#121212;color:#e0e0e0}a.button{background:#388e3c;color:#fff}footer{background:#121212;color:#e0e0e0}}
+    #language-switcher{position:absolute;top:1.25rem;right:4rem;z-index:9999;display:flex;gap:.5rem;background:transparent;pointer-events:auto;width:fit-content;text-align:right}
+    #language-switcher button{background:transparent;border:none;font-size:1.5rem;padding:.2rem;cursor:pointer;transition:transform .2s ease;text-align:right}
+    #language-switcher button:hover{transform:scale(1.1)}
+    #language-menu{display:none;position:absolute;top:2.5rem;right:0;background:#fff;border:1px solid #ccc;border-radius:.5rem;box-shadow:0 4px 8px rgba(0,0,0,.15);padding:.5rem;z-index:10000}
+    #language-menu button{display:flex;align-items:center;gap:.5rem;white-space:nowrap;width:100%;background:transparent;border:none;font-size:1rem;padding:.3rem .5rem;cursor:pointer;text-align:left;color:#1b5e20}
+    #language-menu button:hover{background:#f0f0f0}
+    @media(prefers-color-scheme:dark){#language-menu{background:#1e1e1e;border:1px solid #444}#language-menu button{color:#e0e0e0}#language-menu button:hover{background:#2a2a2a}}
+    #hamburger-menu{position:absolute;top:.85rem;right:1rem;z-index:9998}
+    #menu-toggle{font-size:1.8rem;background:transparent;border:none;color:#1b5e20;cursor:pointer;transition:transform .2s ease}
+    #menu-toggle:hover{transform:scale(1.1)}
+    #menu-dropdown{display:none;position:absolute;top:2.5rem;right:0;background:#fff;border:1px solid #ccc;border-radius:.5rem;box-shadow:0 4px 8px rgba(0,0,0,.15);padding:.5rem;text-align:left;min-width:150px}
+    #menu-dropdown a{display:block;padding:.4rem .6rem;color:#1b5e20;text-decoration:none;font-weight:700}
+    #menu-dropdown a:hover{background:#f0f0f0}
+    @media(prefers-color-scheme:dark){#menu-toggle{color:#e0e0e0}#menu-dropdown{background:#1e1e1e;border:1px solid #444}#menu-dropdown a{color:#e0e0e0}#menu-dropdown a:hover{background:#2a2a2a}}
+  </style>
+</head>
+<body>
+  <div id="language-switcher">
+    <button id="active-language" onclick="toggleLanguageMenu()" aria-label="言語"><img id="current-flag" src="" alt="言語" width="24" /></button>
+    <div id="language-menu">
+      <button onclick="changeLanguage('en')"><img src="images/en/gb.svg" width="20" alt="English" /> English</button>
+      <button onclick="changeLanguage('no')"><img src="images/no/no.svg" width="20" alt="Norsk" /> Norsk</button>
+      <button onclick="changeLanguage('da')"><img src="images/da/da.svg" width="20" alt="Dansk" /> Dansk</button>
+      <button onclick="changeLanguage('sv')"><img src="images/sv/sv.svg" width="20" alt="Svenska" /> Svenska</button>
+      <button onclick="changeLanguage('de')"><img src="images/de/de.svg" width="20" alt="Deutsch" /> Deutsch</button>
+      <button onclick="changeLanguage('fr')"><img src="images/fr/fr.svg" width="20" alt="Français" /> Français</button>
+      <button onclick="changeLanguage('es')"><img src="images/es/es.svg" width="20" alt="Español" /> Español</button>
+      <button onclick="changeLanguage('ar')"><img src="images/ar/ar.svg" width="20" alt="العربية" /> العربية</button>
+      <button onclick="changeLanguage('fi')"><img src="images/fi/fi.svg" width="20" alt="Suomi" /> Suomi</button>
+      <button onclick="changeLanguage('hi')"><img src="images/hi/hi.svg" width="20" alt="हिन्दी" /> हिन्दी</button>
+      <button onclick="changeLanguage('it')"><img src="images/it/it.svg" width="20" alt="Italiano" /> Italiano</button>
+      <button onclick="changeLanguage('ja')"><img src="images/ja/ja.svg" width="20" alt="日本語" /> 日本語</button>
+      <button onclick="changeLanguage('nl')"><img src="images/nl/nl.svg" width="20" alt="Nederlands" /> Nederlands</button>
+      <button onclick="changeLanguage('uk')"><img src="images/uk/uk.svg" width="20" alt="Українська" /> Українська</button>
+      <button onclick="changeLanguage('zhHans')"><img src="images/zhHans/zhHans.svg" width="20" alt="简体中文" /> 简体中文</button>
+      <button onclick="changeLanguage('zhHant')"><img src="images/zhHant/zhHant.svg" width="20" alt="繁體中文" /> 繁體中文</button>
+    </div>
+  </div>
+
+  <div id="hamburger-menu">
+    <button id="menu-toggle" aria-label="メニューを開く">☰</button>
+    <div id="menu-dropdown">
+      <a href="SiriShortcutsSetup/ja.html">Apple Pay とショートカットの設定</a>
+      <a href="privacy-policy/ja.html">プライバシーポリシー</a>
+      <a href="support/ja.html">サポート</a>
+    </div>
+  </div>
+
+  <picture>
+    <source srcset="images/RegnskApp-Dark-Mode-Icon.jpg" media="(prefers-color-scheme: dark)" />
+    <img src="images/RegnskApp-Light-Mode-Icon.jpg" alt="RegnskApp アイコン" class="app-icon" />
+  </picture>
+
+  <h1 style="margin-top:.25rem;">BalanceTrackr <span class="subtle">(RegnskApp)</span></h1>
+  <p style="max-width:600px;margin:2rem auto 1rem;line-height:1.6;">💼 <strong>BalanceTrackr</strong> は あなたのための個人向け予算・残高トラッカーです。<em>お金の管理を完全にコントロール</em>したい人のために — 分かりやすく、プライベートに、広告やサブスクなしで。</p>
+  <p style="max-width:600px;margin:1rem auto 2rem;line-height:1.6;">スプレッドシートの代わりに、収入・支出・振替を素早く直感的に入力して、時間とともに残高がどう変化するかを確認できます 📈。手動でも、ショートカットを使った半自動でもOK — 銀行接続は不要です。</p>
+
+  <div class="carousel-wrapper"><div class="carousel carousel-1">
+    <img src="images/en/1.png" alt="アプリ画面 1" />
+    <img src="images/en/2.png" alt="アプリ画面 2" />
+    <img src="images/en/4.png" alt="アプリ画面 3" />
+    <img src="images/en/3.png" alt="アプリ画面 4" />
+    <img src="images/en/6.png" alt="アプリ画面 5" />
+  </div><div class="carousel-dots carousel-dots-1"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div></div>
+
+  <p style="max-width:600px;margin:2rem auto 1rem;font-size:1.1rem;font-weight:500;">📲 <strong>主な機能</strong>:</p>
+  <ul style="max-width:600px;margin:0 auto 2rem;text-align:left;line-height:1.6;">
+    <li>🏦 個人・共有・プロジェクト用など、好きなだけ口座を追加</li>
+    <li>💸 数タップで給与・支出・振替を記録</li>
+    <li>📊 分かりやすい折れ線グラフで残高の推移を確認</li>
+    <li>📅 次の給料日までの日数を表示</li>
+    <li>💰 残高はリアルタイムで更新</li>
+    <li>🧠 広告なしのクリーンなデザイン — <em>あなたとお金</em>に集中</li>
+  </ul>
+
+  <div class="carousel-wrapper"><div class="carousel carousel-2">
+    <img src="images/en/5.png" alt="アプリ画面 6" />
+    <img src="images/en/7.png" alt="アプリ画面 7" />
+    <img src="images/en/8.png" alt="アプリ画面 8" />
+    <img src="images/en/9.png" alt="アプリ画面 9" />
+    <img src="images/en/10.png" alt="アプリ画面 10" />
+  </div><div class="carousel-dots carousel-dots-2"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div></div>
+
+  <p style="max-width:600px;margin:2rem auto 1rem;line-height:1.6;">シンプルに、余計なノイズなしで<strong>完全なコントロール</strong>を求める人に最適。柔軟な口座、手動入力、使いながら更新される残高で、あなたが主導になります。<strong>しかも、紙幣が舞い降りる楽しい演出も！💸</strong></p>
+
+  <video autoplay muted playsinline loop style="margin-top:1rem;max-width:90%;max-width:350px;border-radius:1rem;box-shadow:0 8px 20px rgba(0,0,0,.1);">
+    <source src="images/LadetRegneiMovie.mp4" type="video/mp4">ご利用のブラウザは video タグに対応していません。
+  </video>
+
+  <div style="margin-top:2rem;margin-bottom:1.5rem;"><a href="https://apps.apple.com/us/app/regnskapp/id6743946348" target="_blank"><img src="images/black.svg" alt="App Store でダウンロード" style="width:180px;" /></a></div>
+
+  <div style="margin-bottom:2rem;">
+    <a class="button" href="SiriShortcutsSetup/ja.html">Apple Pay とショートカットの設定</a>
+    <a class="button" href="privacy-policy/ja.html">プライバシーポリシー</a>
+    <a class="button" href="support/ja.html">サポート</a>
+  </div>
+
+  <section style="padding:2rem 1rem;border-top:1px solid #ddd;">
+    <h2 style="margin-bottom:1rem;font-size:1.4rem;color:#1b5e20;">📰 KrispiTech に掲載</h2>
+    <blockquote style="font-style:italic;color:#444;max-width:700px;margin:0 auto 1rem;">「BalanceTrackr は、広告のないアプリが予算管理を革新できることを証明しています。」</blockquote>
+    <a href="https://krispitech.com/why-ad-free-apps-like-balancetrackr-are-revolutionizing-budget-management/" target="_blank" rel="noopener noreferrer" class="button">記事を読む</a>
+  </section>
+
+  <section style="padding:2rem 1rem;border-top:1px solid #ddd;">
+    <a href="https://www.instagram.com/balancetrackr/" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:.5rem;text-decoration:none;color:#1b5e20;font-weight:700;">
+      <img src="images/Instagram_logo_2016.svg.webp" alt="Instagram" style="width:32px;height:32px;">Instagram で BalanceTrackr をフォロー
+    </a>
+  </section>
+
+  <footer>&copy; 2025 BalanceTrackr (RegnskApp) - Ole Morten Tengesdal. 無断転載を禁じます。</footer>
+
+  <script data-goatcounter="https://regnskapp.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+  <script>
+    let currentLang='ja';
+    function toggleLanguageMenu(){const m=document.getElementById('language-menu');m.style.display=m.style.display==='block'?'none':'block'}
+    function changeLanguage(langCode){const flagPath=`images/${langCode}/${langCode==='en'?'gb':langCode}.svg`;const flagEl=document.getElementById('current-flag');if(flagEl)flagEl.src=flagPath;const file=langCode==='en'?'index.html':`index-${langCode}.html`;window.location.href=file}
+    function setInitialFlag(){const filename=window.location.pathname.split('/').pop();let langCode='en';if(filename.includes('index-')){langCode=filename.split('-')[1].split('.')[0]}const flagPath=`images/${langCode}/${langCode==='en'?'gb':langCode}.svg`;const flagEl=document.getElementById('current-flag');if(flagEl)flagEl.src=flagPath}
+    setInitialFlag();
+    document.addEventListener('click',function(e){const s=document.getElementById('language-switcher');if(!s.contains(e.target)){document.getElementById('language-menu').style.display='none'}});
+    function setupCarousel(n){const c=document.querySelector(`.carousel-${n}`),d=document.querySelector(`.carousel-dots-${n}`),imgs=c.querySelectorAll('img');let dots=[],autoplay,resume,smooth;function createDots(){d.innerHTML='';dots=[];const isDesk=window.innerWidth>=768;const count=isDesk?3:imgs.length;for(let i=0;i<count;i++){const dot=document.createElement('span');dot.className='dot';dot.addEventListener('click',()=>{if(isDesk){const idx=[0,2,4];scrollToImage(idx[i])}else{scrollToImage(i)}restartAutoplayWithDelay()});d.appendChild(dot);dots.push(dot)}updateDots()}function updateDots(){const scrollLeft=c.scrollLeft;const cw=c.offsetWidth;let closest=0,dist=Infinity;imgs.forEach((img,i)=>{const left=img.offsetLeft-c.offsetLeft;const center=left+(img.offsetWidth/2);const vc=scrollLeft+(cw/2);const d=Math.abs(vc-center);if(d<dist){dist=d;closest=i}});const isDesk=window.innerWidth>=768;let active;if(isDesk){if(closest<=1)active=0;else if(closest>=3)active=2;else active=1}else{active=closest}dots.forEach(x=>x.classList.remove('active'));if(dots[active])dots[active].classList.add('active')}function scrollToImage(i){const t=(i+imgs.length)%imgs.length;const im=imgs[t];const left=im.offsetLeft-c.offsetLeft;const center=left+(im.offsetWidth/2);const cc=c.offsetWidth/2;const to=center-cc;c.scrollTo({left:to,behavior:smooth?'smooth':'auto'})}function startAutoplay(){const isDesk=window.innerWidth>=768;const interval=isDesk?4000:3000;stopAutoplay();let cur=0;const idx=[0,2,4];autoplay=setInterval(()=>{if(isDesk){cur=(cur+1)%idx.length;scrollToImage(idx[cur])}else{scrollToImage((0+1)%imgs.length)}},interval)}function stopAutoplay(){clearInterval(autoplay)}function restartAutoplayWithDelay(){stopAutoplay();clearTimeout(resume);resume=setTimeout(startAutoplay,3500)}c.addEventListener('scroll',()=>{if(!c.scrollTimeout){c.scrollTimeout=setTimeout(()=>{updateDots();c.scrollTimeout=null},100)}});c.addEventListener('touchstart',stopAutoplay);c.addEventListener('touchend',restartAutoplayWithDelay);c.addEventListener('mousedown',stopAutoplay);c.addEventListener('mouseup',restartAutoplayWithDelay);function init(){createDots();smooth=false;scrollToImage(0);smooth=true;const isDesk=window.innerWidth>=768;if(!isDesk){setTimeout(()=>{startAutoplay()},300)}}window.addEventListener('resize',()=>{createDots();updateDots();const isDesk=window.innerWidth>=768;if(!isDesk){restartAutoplayWithDelay()}else{stopAutoplay()}});window.addEventListener('load',init);if(document.readyState==='complete'){init()}return{}}
+    document.addEventListener('DOMContentLoaded',()=>{setupCarousel(1);setupCarousel(2)});
+    const toggle=document.getElementById('menu-toggle'),drop=document.getElementById('menu-dropdown');toggle.addEventListener('click',()=>{drop.style.display=drop.style.display==='block'?'none':'block'});document.addEventListener('click',(e)=>{if(!document.getElementById('hamburger-menu').contains(e.target)){drop.style.display='none'}});
+  </script>
+</body>
+</html>
+
+
