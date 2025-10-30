@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Налаштування Apple Pay та Shortcuts – BalanceTrackr</title>
+  <link rel="icon" href="/images/RegnskApp-Light-Mode-Icon.jpg" type="image/jpeg" />
+  <link href="https://cdn.jsdelivr.net/npm/lightbox2@2.11.4/dist/css/lightbox.min.css" rel="stylesheet" />
+  <link rel="canonical" href="https://regnskapp.github.io/SiriShortcutsSetup/uk.html">
+  <link rel="alternate" hreflang="x-default" href="https://regnskapp.github.io/SiriShortcutsSetup/">
+  <link rel="alternate" hreflang="en" href="https://regnskapp.github.io/SiriShortcutsSetup/en.html">
+  <link rel="alternate" hreflang="no" href="https://regnskapp.github.io/SiriShortcutsSetup/no.html">
+  <link rel="alternate" hreflang="sv" href="https://regnskapp.github.io/SiriShortcutsSetup/sv.html">
+  <link rel="alternate" hreflang="da" href="https://regnskapp.github.io/SiriShortcutsSetup/da.html">
+  <link rel="alternate" hreflang="de" href="https://regnskapp.github.io/SiriShortcutsSetup/de.html">
+  <link rel="alternate" hreflang="fr" href="https://regnskapp.github.io/SiriShortcutsSetup/fr.html">
+  <link rel="alternate" hreflang="es" href="https://regnskapp.github.io/SiriShortcutsSetup/es.html">
+  <link rel="alternate" hreflang="ar" href="https://regnskapp.github.io/SiriShortcutsSetup/ar.html">
+  <link rel="alternate" hreflang="fi" href="https://regnskapp.github.io/SiriShortcutsSetup/fi.html">
+  <link rel="alternate" hreflang="hi" href="https://regnskapp.github.io/SiriShortcutsSetup/hi.html">
+  <link rel="alternate" hreflang="it" href="https://regnskapp.github.io/SiriShortcutsSetup/it.html">
+  <link rel="alternate" hreflang="ja" href="https://regnskapp.github.io/SiriShortcutsSetup/ja.html">
+  <link rel="alternate" hreflang="nl" href="https://regnskapp.github.io/SiriShortcutsSetup/nl.html">
+  <link rel="alternate" hreflang="zh-Hans" href="https://regnskapp.github.io/SiriShortcutsSetup/zhHans.html">
+  <link rel="alternate" hreflang="zh-Hant" href="https://regnskapp.github.io/SiriShortcutsSetup/zhHant.html">
+  <style>
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,'Open Sans','Helvetica Neue',sans-serif;background:#f9f9f9;color:#212121;padding:2rem;max-width:800px;margin:auto}
+    h1,h2{color:#1b5e20}
+    .image-row{display:flex;flex-wrap:wrap;gap:1rem;margin-bottom:1rem}
+    .image-row a{flex:1 1 calc(33.333% - 1rem);max-width:calc(33.333% - 1rem);display:block}
+    .image-row img{width:100%;height:auto;border-radius:12px;box-shadow:0 4px 10px rgba(0,0,0,.1);transition:transform .2s;display:block;cursor:zoom-in}
+    footer{text-align:center;padding:1rem;font-size:.9rem;color:#555}
+    a{color:#1b5e20;text-decoration:none}
+    @media(prefers-color-scheme:dark){body{background:#121212;color:#e0e0e0}h1,h2,a{color:#90ee90}footer{background:#121212;color:#e0e0e0}}
+    @media screen and (max-width:768px){.image-row{gap:.5rem}.image-row a{flex:1 1 48%;max-width:48%}.image-row img{border-radius:8px}}
+  </style>
+</head>
+<body>
+  <h1>Налаштування Apple Pay та Shortcuts</h1>
+  <p>Виконайте ці прості кроки, щоб налаштувати Shortcut для реєстрації транзакцій Apple Pay у BalanceTrackr:</p>
+
+  <h2>Крок 1: Відкрийте додаток Shortcuts</h2>
+  <div class="image-row">
+    <a href="/images/SiriShortcutsSetup-images/1.jpeg" data-lightbox="gallery" data-title="Крок 1">
+      <img src="/images/SiriShortcutsSetup-images/1.jpeg" alt="Крок 1" style="max-width:200px;" />
+    </a>
+  </div>
+  <p>Запустіть вбудований додаток Shortcuts на вашому iPhone.</p>
+
+  <h2>Крок 2: Натисніть "Автоматизація" внизу</h2>
+  <div class="image-row">
+    <a href="/images/SiriShortcutsSetup-images/2.jpeg" data-lightbox="gallery" data-title="Крок 2">
+      <img src="/images/SiriShortcutsSetup-images/2.jpeg" alt="Крок 2" style="max-width:200px;" />
+    </a>
+  </div>
+  <p>Перейдіть на вкладку <strong>Автоматизація</strong>, щоб створити новий ярлик.</p>
+
+  <h2>Крок 3: Натисніть "Нова автоматизація" або піктограму плюса та виберіть "Транзакція"</h2>
+  <div class="image-row">
+    <a href="/images/SiriShortcutsSetup-images/3.0.jpeg" data-lightbox="gallery" data-title="Крок 3.0">
+      <img src="/images/SiriShortcutsSetup-images/3.0.jpeg" alt="Крок 3.0" style="max-width:200px;" />
+    </a>
+    <a href="/images/SiriShortcutsSetup-images/3.1.jpeg" data-lightbox="gallery" data-title="Крок 3.1">
+      <img src="/images/SiriShortcutsSetup-images/3.1.jpeg" alt="Крок 3.1" style="max-width:200px;" />
+    </a>
+    <a href="/images/SiriShortcutsSetup-images/3.2.jpeg" data-lightbox="gallery" data-title="Крок 3.2">
+      <img src="/images/SiriShortcutsSetup-images/3.2.jpeg" alt="Крок 3.2" style="max-width:200px;" />
+    </a>
+  </div>
+  <p>Натисніть <strong>Нова автоматизація</strong> або піктограму <strong>+</strong> праворуч вгорі, потім виберіть <strong>Транзакція</strong> (з символом Гаманця).</p>
+
+  <h2>Крок 4: Залиште лише одну картку під "Коли я натискаю"</h2>
+  <div class="image-row">
+    <a href="/images/SiriShortcutsSetup-images/4.0.jpeg" data-lightbox="gallery" data-title="Крок 4.0">
+      <img src="/images/SiriShortcutsSetup-images/4.0.jpeg" alt="Крок 4.0" style="max-width:200px;" />
+    </a>
+    <a href="/images/SiriShortcutsSetup-images/4.1.jpeg" data-lightbox="gallery" data-title="Крок 4.1">
+      <img src="/images/SiriShortcutsSetup-images/4.1.jpeg" alt="Крок 4.1" style="max-width:200px;" />
+    </a>
+  </div>
+  <p>Зніміть вибір з усіх карток, окрім тієї, яку ви хочете використовувати для запуску ярлика під <strong>"Коли я натискаю"</strong>.</p>
+  <p>Внизу ви можете вибрати, чи хочете отримувати підтвердження при запуску автоматизації, або дозволити їй працювати безшумно.</p>
+  <p>Натисніть <strong>Нова порожня автоматизація</strong>, щоб розпочати налаштування.</p>
+
+  <h2>Крок 5: Налаштування автоматизації - Пошук</h2>
+  <div class="image-row">
+    <a href="/images/SiriShortcutsSetup-images/5.0.jpeg" data-lightbox="gallery" data-title="Крок 5.0">
+      <img src="/images/SiriShortcutsSetup-images/5.0.jpeg" alt="Крок 5.0" style="max-width:200px;" />
+    </a>
+    <a href="/images/SiriShortcutsSetup-images/5.1.png" data-lightbox="gallery" data-title="Крок 5.1">
+      <img src="/images/SiriShortcutsSetup-images/5.1.PNG" alt="Крок 5.1" style="max-width:200px;" />
+    </a>
+    <a href="/images/SiriShortcutsSetup-images/5.2.png" data-lightbox="gallery" data-title="Крок 5.2">
+      <img src="/images/SiriShortcutsSetup-images/5.2.PNG" alt="Крок 5.2" style="max-width:200px;" />
+    </a>
+  </div>
+  <p>Знайдіть <strong>"BalanceTrackr"</strong> і виберіть, чи хочете додати <strong>транзакцію банківського рахунку</strong> (дебетова картка) чи <strong>транзакцію кредитної картки</strong>.</p>
+
+  <h2>Крок 6: Налаштування автоматизації - Змінні</h2>
+  <div class="image-row">
+    <a href="/images/SiriShortcutsSetup-images/6.0.jpeg" data-lightbox="gallery" data-title="Крок 6.0">
+      <img src="/images/SiriShortcutsSetup-images/6.0.jpeg" alt="Крок 6.0" style="max-width:200px;" />
+    </a>
+    <a href="/images/SiriShortcutsSetup-images/6.1.jpeg" data-lightbox="gallery" data-title="Крок 6.1">
+      <img src="/images/SiriShortcutsSetup-images/6.1.jpeg" alt="Крок 6.1" style="max-width:200px;" />
+    </a>
+    <a href="/images/SiriShortcutsSetup-images/6.2.jpeg" data-lightbox="gallery" data-title="Крок 6.2">
+      <img src="/images/SiriShortcutsSetup-images/6.2.jpeg" alt="Крок 6.2" style="max-width:200px;" />
+    </a>
+    <a href="/images/SiriShortcutsSetup-images/6.3.jpeg" data-lightbox="gallery" data-title="Крок 6.3">
+      <img src="/images/SiriShortcutsSetup-images/6.3.jpeg" alt="Крок 6.3" style="max-width:200px;" />
+    </a>
+    <a href="/images/SiriShortcutsSetup-images/6.4.jpeg" data-lightbox="gallery" data-title="Крок 6.4">
+      <img src="/images/SiriShortcutsSetup-images/6.4.jpeg" alt="Крок 6.4" style="max-width:200px;" />
+    </a>
+    <a href="/images/SiriShortcutsSetup-images/6.5.png" data-lightbox="gallery" data-title="Крок 6.5">
+      <img src="/images/SiriShortcutsSetup-images/6.5.PNG" alt="Крок 6.5" style="max-width:200px;" />
+    </a>
+  </div>
+  <p>Використовуйте змінні з <strong>"Вхід ярлика"</strong> для заповнення <strong>Сума</strong> та <strong>Торговець</strong>.<br />
+  Назва <strong>Рахунку</strong> або <strong>Кредитної картки</strong> повинна точно відповідати назві, що використовується в додатку BalanceTrackr.</p>
+
+  <p>Ви знайдете доступні змінні в синій текстовій лінії над клавіатурою:</p>
+  <p>Натисніть змінну <strong>"Вхід ярлика"</strong>, і коли вона буде додана до ярлика, натисніть її ще раз, щоб вибрати потрібний варіант з спливаючого меню.</p>
+
+  <h2>Крок 7: Натисніть "Готово"</h2>
+  <div class="image-row">
+    <a href="/images/SiriShortcutsSetup-images/7.jpeg" data-lightbox="gallery" data-title="Крок 7">
+      <img src="/images/SiriShortcutsSetup-images/7.jpeg" alt="Крок 7" style="max-width:200px;" />
+    </a>
+  </div>
+  <h2>Важливо</h2>
+  <p><strong>Не натискайте кнопку <em>"Відтворити"</em> внизу.</strong> Оскільки транзакція ще не створена, це призведе до помилки, і вам доведеться почати налаштування спочатку.</p>
+  <p>Переконайтеся, що ви завершуєте весь процес за один раз — він не працюватиме належним чином, якщо ви зупинитеся на півдорозі.</p>
+
+  <p>Натисніть <strong>"Готово"</strong>, щоб зберегти автоматизацію.</p>
+  <p><strong>Важливо!</strong><br>
+  Якщо це перший раз, коли ви налаштовуєте автоматизацію, може здаватися, що нічого не відбувається, коли ви натискаєте "Готово".<br>
+  Це тому, що з'єднання між додатком Shortcuts і BalanceTrackr ще не повністю ініціалізовано на вашому пристрої.</p>
+  <p><strong>Однак автоматизація збережена!</strong></p>
+  <p>Просто натисніть <strong>стрілку назад</strong> у верхньому лівому куті, поки не повернетесь до першого екрана налаштування, потім <strong>потягніть вниз картку налаштування, щоб закрити її</strong>.<br>
+  Тепер ви побачите, що автоматизацію успішно збережено.</p>
+
+  <h2>Крок 8: Налаштування завершено</h2>
+  <div class="image-row">
+    <a href="/images/SiriShortcutsSetup-images/8.0.jpeg" data-lightbox="gallery" data-title="Крок 8.0">
+      <img src="/images/SiriShortcutsSetup-images/8.0.jpeg" alt="Крок 8.0" style="max-width:200px;" />
+    </a>
+    <a href="/images/SiriShortcutsSetup-images/8.1.jpeg" data-lightbox="gallery" data-title="Крок 8.1">
+      <img src="/images/SiriShortcutsSetup-images/8.1.jpeg" alt="Крок 8.1" style="max-width:200px;" />
+    </a>
+  </div>
+  <p>Готово! Натисніть на щойно створену автоматизацію, якщо хочете внести зміни.</p>
+  <p>Ви можете налаштувати сповіщення, що з'являється під час запуску, або натиснути дію під <strong>"Виконати"</strong>, щоб змінити кроки автоматизації. Не соромтеся додавати інші дії, які ви хочете активувати при натисканні картки.</p>
+
+  <p><a href="/index-uk.html" style="display:inline-block;background-color:#1b5e20;color:#fff;padding:10px 20px;border-radius:8px;text-decoration:none;font-weight:bold;margin-top:2rem;">← BalanceTrackr</a></p>
+
+  <footer>&copy; 2025 BalanceTrackr (RegnskApp) – Ole Morten Tengesdal. Всі права захищені.</footer>
+
+  <script data-goatcounter="https://regnskapp.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lightbox2@2.11.4/dist/js/lightbox.min.js"></script>
+</body>
+</html>
+
