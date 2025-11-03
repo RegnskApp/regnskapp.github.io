@@ -166,6 +166,12 @@
       cursor: pointer;
       transition: all var(--transition-fast);
       border: 1px solid var(--border-color);
+      color: var(--text-primary);
+    }
+
+    #current-lang-text {
+      color: var(--text-primary);
+      font-weight: 500;
     }
 
     #active-language:hover {
@@ -231,6 +237,7 @@
 
     #menu-toggle {
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       width: 44px;
@@ -240,7 +247,21 @@
       border-radius: var(--radius-md);
       cursor: pointer;
       transition: all var(--transition-fast);
-      font-size: 1.25rem;
+      font-size: 0;
+      padding: 0;
+    }
+
+    #menu-toggle::before,
+    #menu-toggle::after,
+    #menu-toggle span {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: var(--text-primary);
+      margin: 3px 0;
+      transition: all var(--transition-fast);
+      border-radius: 1px;
     }
 
     #menu-toggle:hover {
@@ -259,7 +280,7 @@
       border-radius: var(--radius-lg);
       box-shadow: var(--shadow-xl);
       padding: 0.5rem;
-      min-width: 180px;
+      min-width: 200px;
       opacity: 0;
       visibility: hidden;
       transform: translateY(-10px);
@@ -639,6 +660,21 @@
       color: var(--text-primary);
     }
 
+    .review-stars {
+      display: flex;
+      gap: 0.25rem;
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+    }
+
+    .review-star {
+      color: var(--accent-color);
+    }
+
+    .review-star.empty {
+      color: var(--border-color);
+    }
+
     .review-author {
       font-weight: 600;
       color: var(--text-primary);
@@ -825,7 +861,7 @@
 
       <!-- 🍔 Hamburger Menu -->
       <div id="hamburger-menu">
-        <button id="menu-toggle" aria-label="Open menu">☰</button>
+        <button id="menu-toggle" aria-label="Open menu"><span></span></button>
         <div id="menu-dropdown">
           <a href="SiriShortcutsSetup/en.html">Apple Pay & Shortcuts</a>
           <a href="privacy-policy/en.html">Privacy Policy</a>
@@ -964,7 +1000,7 @@
         Your browser does not support the video tag.
       </video>
       <div class="video-caption">
-        <p>💰 Experience the satisfying "money rain" effect when you add funds to your account!</p>
+        <p>💰 Experience the satisfying "money rain" effect whenever you want!</p>
       </div>
     </div>
   </section>
@@ -992,28 +1028,87 @@
     </div>
 
     <div class="reviews-grid">
-      <div class="review-card">
+      <a href="https://www.krispitech.com/reviews/balancetrackr" target="_blank" rel="noopener noreferrer" class="review-card" style="cursor: pointer; text-decoration: none;">
         <p class="review-quote">
           "BalanceTrackr proves that ad-free apps can revolutionize budget management. Clean, private, and incredibly effective."
         </p>
         <div class="review-author">KrispiTech Review</div>
         <div class="review-source">Featured Review</div>
+      </a>
+
+      <div class="review-card">
+        <div class="review-stars">
+          <span class="review-star">⭐</span>
+          <span class="review-star">⭐</span>
+          <span class="review-star">⭐</span>
+          <span class="review-star">⭐</span>
+          <span class="review-star">⭐</span>
+        </div>
+        <p class="review-quote">
+          "Great simple net worth tracker. I am really happy with this app. I use it to track net worth across a variety of accounts. I love that I can separate out shared accounts, I put kids college savings in that bucket since I don't consider it mine. Great simple functionality to transfer between accounts, update balances, use as much custom labeling as you want."
+        </p>
+        <div class="review-author">Allybombbally</div>
+        <div class="review-source">App Store Review • Oct 9, 2025</div>
       </div>
 
       <div class="review-card">
+        <div class="review-stars">
+          <span class="review-star">⭐</span>
+          <span class="review-star">⭐</span>
+          <span class="review-star">⭐</span>
+          <span class="review-star">⭐</span>
+          <span class="review-star">⭐</span>
+        </div>
         <p class="review-quote">
-          "Finally, a budgeting app that respects my privacy while giving me exactly what I need to manage my money."
+          "So useful. The app is super simple and clean. Everything I need is right there and easy to manage."
         </p>
-        <div class="review-author">Sarah M.</div>
-        <div class="review-source">App Store Review</div>
+        <div class="review-author">MoZZoro</div>
+        <div class="review-source">App Store Review • Jul 2, 2025</div>
       </div>
 
       <div class="review-card">
+        <div class="review-stars">
+          <span class="review-star">⭐</span>
+          <span class="review-star">⭐</span>
+          <span class="review-star">⭐</span>
+          <span class="review-star">⭐</span>
+          <span class="review-star">⭐</span>
+        </div>
         <p class="review-quote">
-          "The Siri integration is a game-changer. Adding expenses hands-free has never been easier."
+          "Superb. This app deserves no less than 5 stars because of what it offers in such a price. All the required features to track daily expenses are there. Integration with Apple Pay through shortcuts is a clear winner. Support is also very good. Highly recommended."
         </p>
-        <div class="review-author">Mike Chen</div>
-        <div class="review-source">App Store Review</div>
+        <div class="review-author">Mehroz Ahmed</div>
+        <div class="review-source">App Store Review • Jun 9, 2025</div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars">
+          <span class="review-star">⭐</span>
+          <span class="review-star">⭐</span>
+          <span class="review-star">⭐</span>
+          <span class="review-star">⭐</span>
+          <span class="review-star empty">⭐</span>
+        </div>
+        <p class="review-quote">
+          "Interesting app. Sounds everything been thought of. Only that the entry a little bit sluggish."
+        </p>
+        <div class="review-author">Diaappointed</div>
+        <div class="review-source">App Store Review • Oct 1, 2025</div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars">
+          <span class="review-star">⭐</span>
+          <span class="review-star">⭐</span>
+          <span class="review-star">⭐</span>
+          <span class="review-star">⭐</span>
+          <span class="review-star empty">⭐</span>
+        </div>
+        <p class="review-quote">
+          "Excellent potential. The app allows you to keep track of your income and expenses in a simple way: you can record when you receive money (income) or when you spend it (expense)."
+        </p>
+        <div class="review-author">misterbra</div>
+        <div class="review-source">App Store Review • Oct 29, 2025</div>
       </div>
     </div>
   </section>
