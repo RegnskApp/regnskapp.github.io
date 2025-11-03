@@ -564,13 +564,22 @@
     // Bestem hvilket språk som er aktivt basert på URL
     function setInitialFlag() {
       const filename = window.location.pathname.split('/').pop();
+      // Allowed language codes (matches the menu options)
+      const langCodes = ['en','no','da','sv','de','fr','es','ar','fi','hi','it','ja','nl','uk','zhHans','zhHant'];
       let langCode = 'en'; // fallback
-      if (filename.includes('index-')) {
-        langCode = filename.split('-')[1].split('.')[0];
+      
+      // match index.html or index-<code>.html
+      const m = filename.match(/^index(?:-([^.]+))?\.html$/);
+      if (m && m[1] && langCodes.includes(m[1])) {
+        langCode = m[1];
+      } else {
+        // fallback to 'en' if unknown or no match
+        langCode = 'en';
       }
-  
+      
       const flagPath = `images/${langCode}/${langCode === 'en' ? 'gb' : langCode}.svg`;
-      document.getElementById("current-flag").src = flagPath;
+      const img = document.getElementById("current-flag");
+      if (img) img.src = flagPath;
     }
   
     setInitialFlag(); // kall funksjonen ved innlasting
@@ -769,3 +778,4 @@
     });
   </script>
 </body>
+</html>
