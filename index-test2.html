@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BalanceTrackr (RegnskApp) – iOS Budget & Expense App</title>
+  <meta name="description" content="BalanceTrackr is a privacy-first budgeting app for iOS. Track your income and expenses easily, with no ads or subscriptions." />
+  <meta name="keywords" content="budget app, expense tracker, personal finance, iOS, BalanceTrackr, RegnskApp, money management, finance app" />
+  <meta name="author" content="Ole Morten Tengesdal" />
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://regnskapp.github.io/index.html" />
+  <!-- Hreflang -->
+  <link rel="alternate" hreflang="en" href="https://regnskapp.github.io/index.html" />
+  <link rel="alternate" hreflang="no" href="https://regnskapp.github.io/index-no.html" />
+  <link rel="alternate" hreflang="da" href="https://regnskapp.github.io/index-da.html" />
+  <link rel="alternate" hreflang="de" href="https://regnskapp.github.io/index-de.html" />
+  <link rel="alternate" hreflang="es" href="https://regnskapp.github.io/index-es.html" />
+  <link rel="alternate" hreflang="fr" href="https://regnskapp.github.io/index-fr.html" />
+  <link rel="alternate" hreflang="sv" href="https://regnskapp.github.io/index-sv.html" />
+  <link rel="alternate" hreflang="x-default" href="https://regnskapp.github.io/index.html" />
+
+  <!-- Apple Smart Banner -->
+  <meta name="apple-itunes-app" content="app-id=6743946348, app-argument=https://regnskapp.github.io/" />
+  <link rel="icon" href="images/RegnskApp-Light-Mode-Icon.jpg" type="image/jpeg" />
+
+  <!-- Social Meta -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="BalanceTrackr – iOS Budget & Expense App" />
+  <meta property="og:description" content="Track your income and expenses over time with BalanceTrackr. Clean, private, and ad-free." />
+  <meta property="og:image" content="https://regnskapp.github.io/images/RegnskApp-Light-Mode-Icon.jpg" />
+  <meta property="og:url" content="https://regnskapp.github.io/" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="BalanceTrackr – iOS Budget & Expense App" />
+  <meta name="twitter:description" content="Track your income and expenses over time with BalanceTrackr. Clean, private, and ad-free." />
+  <meta name="twitter:image" content="https://regnskapp.github.io/images/RegnskApp-Light-Mode-Icon.jpg" />
+
+  <meta name="google-site-verification" content="z2cVAhGqX7qGGwkdcP_SlnGftVeSXB4nG2K1egdlYOo" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --primary: #1b5e20;
+      --primary-dark: #388e3c;
+      --bg: #f5f7fa;
+      --card-bg: #fff;
+      --accent: #009688;
+      --inactive: #cfcfcf;
+      --shadow-lg: 0 6px 32px rgba(0,0,0,0.13);
+      --shadow-hover: 0 12px 44px rgba(0,0,0,0.23);
+      --border-radius: 1.25rem;
+      --transition: 0.24s cubic-bezier(.5, .1, .15, 1.22);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #181820;
+        --card-bg: #232336;
+        --primary: #2ecc71;
+        --primary-dark: #29895f;
+        --accent: #1de9b6;
+        --inactive: #333540;
+      }
+      body { color: #e0e0e0; }
+    }
+    html, body {
+      padding: 0;
+      margin: 0;
+      background: var(--bg);
+      font-family: 'Inter', -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Ubuntu,Cantarell,'Open Sans','Helvetica Neue',sans-serif;
+      min-height: 100%;
+      color: var(--primary);
+      scroll-behavior: smooth;
+    }
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100dvh;
+    }
+    .navbar {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      padding: .5rem 2vw;
+      background: var(--card-bg);
+      box-shadow: 0 2px 8px 0 rgb(34 34 54 / 6%);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .navbar .app-logo {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      box-shadow: 0 3px 16px 0 rgb(27 94 32 / 12%);
+      background: var(--card-bg);
+      padding: 0;
+      margin-right: .8rem;
+    }
+    .navbar .brand {
+      font-weight: 700;
+      font-size: 1.18rem;
+      color: var(--primary);
+      letter-spacing: -0.01em;
+      margin-right: auto;
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+    }
+    .navbar nav {
+      display: flex;
+      gap: 0.5rem;
+    }
+    .navbar a, .navbar button.menu-btn {
+      background: none;
+      border: none;
+      font: inherit;
+      color: var(--primary-dark);
+      padding: .4rem .9rem;
+      border-radius: .6em;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+    }
+    .navbar a:hover, .navbar button.menu-btn:focus {
+      background: var(--primary-dark);
+      color: #fff;
+    }
+
+    .lang-switcher {
+      display: flex;
+      gap: .25em;
+      align-items: center;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      margin-left: 1rem;
+      user-select: none;
+      outline: none;
+      position: relative;
+    }
+    .lang-switcher .flag {
+      width: 26px;
+      height: 20px;
+      border-radius: 5px;
+      object-fit: contain;
+      box-shadow: 0 1px 5px rgba(0,0,0,0.07);
+      border: 1px solid #e1e1e1;
+      margin-right: 0.28em;
+      background: #fff;
+    }
+    .lang-dropdown {
+      display: none;
+      flex-direction: column;
+      gap: 2px;
+      position: absolute;
+      top: 150%;
+      right: 0;
+      background: var(--card-bg);
+      box-shadow: 0 8px 32px 0 rgb(27 94 32 / 19%);
+      border-radius: .9em;
+      padding: .3em;
+      border: 1px solid #ececec;
+      min-width: 170px;
+      z-index: 102;
+    }
+    .lang-dropdown.open {
+      display: flex;
+    }
+    .lang-dropdown button {
+      display: flex;
+      align-items: center;
+      padding: .3em .8em;
+      gap: 0.4em;
+      border: none;
+      background: none;
+      font: inherit;
+      cursor: pointer;
+      font-size: 1.01em;
+      border-radius: .5em;
+      color: var(--primary);
+      transition: background var(--transition);
+    }
+    .lang-dropdown button:hover {
+      background: #f4f9f7;
+      color: var(--primary-dark);
+    }
+
+    @media (max-width: 840px) {
+      .navbar {
+        flex-wrap: wrap;
+        gap: 8px;
+        padding: .6rem 0.8rem;
+      }
+    }
+
+    main {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 4vw 3rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 1 0 auto;
+      color: inherit;
+    }
+    .hero-section {
+      background: var(--card-bg);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-lg);
+      margin-top: 4vw;
+      margin-bottom: 3vw;
+      padding: 2.2rem 1.6rem 2.6rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      align-self: stretch;
+      position: relative;
+      min-width: 320px;
+    }
+    .hero-section picture {
+      margin-bottom: 1.2rem;
+    }
+    .hero-section h1 {
+      font-size: 2.35rem;
+      font-weight: 700;
+      margin-bottom: .5rem;
+      line-height: 1.09;
+      color: var(--primary);
+      text-shadow: 0 1px 8px rgba(27,94,32,0.08);
+      display: flex;
+      align-items: center;
+      gap: .55em;
+    }
+    .subtle {
+      color: var(--accent);
+      font-size: 1.07rem;
+      font-weight: 500;
+      opacity: 0.55;
+    }
+    .hero-lead, .hero-desc {
+      font-size: 1.18rem;
+      font-weight: 400;
+      color: #374a36;
+      margin-top: 0;
+      margin-bottom: 0.85rem;
+      line-height: 1.55;
+      text-align: center;
+      max-width: 560px;
+    }
+    .hero-desc {
+      color: #42564e;
+      font-size: 1.09rem;
+      margin-bottom: 1.65rem;
+    }
+    .cta-group {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin: 2.2rem 0 0;
+      width: 100%;
+      z-index: 10;
+    }
+    .cta-group a, .cta-group button {
+      font-size: 1.11rem;
+      min-width: 150px;
+      background: var(--primary-dark);
+      color: #fff;
+      border: none;
+      border-radius: .65rem;
+      font-weight: 700;
+      padding: .90rem 1.25rem;
+      margin: .2rem 0;
+      box-shadow: 0 2px 12px 0 rgb(27,94,32,0.10);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+      transition: background var(--transition), box-shadow var(--transition), transform var(--transition);
+      text-align: center;
+      outline: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+    .cta-group a:hover, .cta-group button:focus {
+      background: var(--primary);
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-2px) scale(1.025);
+    }
+    .hero-section .appstore-badge {
+      width: 190px;
+      min-width: 150px;
+      height: auto;
+      background: transparent;
+      margin: 1.5rem 0 -.2rem;
+      margin-bottom: 0;
+      display: block;
+    }
+
+    .carousel-modern {
+      margin: 2.7rem auto 2.3rem;
+      width: 100%;
+      max-width: 810px;
+      background: none;
+      padding: 0;
+      position: relative;
+      overflow: visible;
+    }
+    .carousel-track {
+      display: flex;
+      gap: 28px;
+      align-items: flex-start;
+      justify-content: flex-start;
+      overflow-x: scroll;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      padding-bottom: 1.4rem;
+      margin-bottom: 0.7rem;
+    }
+    .carousel-track::-webkit-scrollbar {display: none;}
+    .carousel-modern img {
+      background: var(--card-bg);
+      border-radius: 1.15em;
+      box-shadow: 0 4px 24px rgb(34 55 52 / 10%);
+      width: 232px; max-width: 72vw;
+      flex: 0 0 auto;
+      scroll-snap-align: center;
+      object-fit: contain;
+      transition: transform var(--transition), box-shadow var(--transition);
+      height: 468px;
+      max-height: 54vh;
+      cursor: pointer;
+      border: 1.5px solid #f0f0f5;
+    }
+    .carousel-modern img:active,
+    .carousel-modern img:hover {
+      transform: scale(1.07);
+      box-shadow: 0 10px 36px rgba(56, 142, 60, 0.33);
+      z-index: 6;
+      border-color: var(--primary-dark);
+    }
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: .6em;
+      margin: .3em 0 0 0;
+    }
+    .carousel-dots .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--inactive);
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition);
+      margin-top: 2px;
+      margin-bottom: 2px;
+    }
+    .carousel-dots .dot.active {
+      background: var(--primary);
+      transform: scale(1.25);
+      box-shadow: 0 1px 8px rgba(27,94,32,0.13);
+    }
+
+    /* Features area */
+    .features-list {
+      background: var(--card-bg);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-lg);
+      margin: 2.5rem 0 2rem 0;
+      padding: 2rem 1.5rem;
+      max-width: 590px;
+      width: 100%;
+      font-size: 1.11rem;
+      line-height: 1.75;
+      color: #24512e;
+    }
+    .features-list ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .features-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: .85em;
+      margin: 0 0 1.2em 0;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      font-size: 1.07em;
+    }
+    .features-list li:last-child {margin-bottom: 0;}
+    .features-list li::before {
+      font-size: 1.2em;
+      line-height: 1.1;
+      flex: none;
+      display: inline-block;
+    }
+
+    .features-list li:nth-child(1)::before {content: "🏦";}
+    .features-list li:nth-child(2)::before {content: "💸";}
+    .features-list li:nth-child(3)::before {content: "📊";}
+    .features-list li:nth-child(4)::before {content: "📅";}
+    .features-list li:nth-child(5)::before {content: "💰";}
+    .features-list li:nth-child(6)::before {content: "🧠";}
+
+    /* Highlight section / review / social */
+    .card-highlight, .card-social {
+      background: var(--card-bg);
+      box-shadow: var(--shadow-lg);
+      border-radius: var(--border-radius);
+      margin: 2.2rem 0 1rem 0;
+      padding: 1.7rem 1.25rem 1.25rem;
+      max-width: 540px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      border-left: 8px solid var(--primary);
+      gap: .9em;
+    }
+    .card-highlight h2 {
+      color: var(--primary-dark);
+      font-weight: 700;
+      font-size: 1.18em;
+      letter-spacing: 0.01em;
+      margin-bottom: .5rem;
+    }
+    .card-highlight blockquote {
+      font-style: italic;
+      color: #485848;
+      margin: 0 0 .4em 0;
+      font-size: 1.14em;
+      opacity: 0.88;
+    }
+    .card-highlight .button {
+      background: var(--accent);
+      color: #fff;
+      font-weight: 600;
+      min-width: 148px;
+      border-radius: .6em;
+      padding: .69em 1.22em;
+      box-shadow: 0 1px 6px rgba(27,94,32,0.12);
+      text-decoration: none;
+      font-size: 1.07em;
+      margin-top: .4em;
+      margin-bottom: 0;
+      transition: background var(--transition);
+      border: none;
+      cursor: pointer;
+    }
+    .card-highlight .button:hover {background: var(--primary-dark);}
+    .card-social {
+      padding: 1.22rem 1rem;
+      background: var(--card-bg);
+      border-left: 8px solid var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      flex-direction: row;
+      gap: 0.8em;
+      font-size: 1.12rem;
+    }
+    .card-social img {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      background: #fff;
+      object-fit: contain;
+      margin: 0 1em 0 0;
+    }
+
+    /* Rain effect video */
+    .fun-video {
+      display: block;
+      margin: 2.1rem auto 1.4rem auto;
+      border-radius: 1.15rem;
+      box-shadow: 0 6px 18px rgba(34, 55, 52, 0.13);
+      max-width: 350px;
+      width: 100%;
+      aspect-ratio: 15/16;
+      height: auto;
+      background: #222;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--card-bg);
+      color: var(--primary);
+      text-align: center;
+      font-size: 1.03rem;
+      font-weight: 500;
+      padding: 2.3em 0 1.6em 0;
+      letter-spacing: .01em;
+      border-top: 1.5px solid #e9ede9;
+      margin-top: auto;
+      width: 100%;
+    }
+    @media (max-width: 600px) {
+      .hero-section, .features-list, .card-highlight, .card-social {
+        padding: 1.15rem 0.24rem 1.22rem;
+        border-radius: .80em;
+      }
+      .carousel-modern img {height: 212px;}
+      main {padding: 0 2vw;}
+      .hero-section h1 {font-size: 1.61rem;}
+      .fun-video {max-width: 96vw;}
+      .carousel-track {gap: 9px;}
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <picture>
+      <source srcset="images/RegnskApp-Dark-Mode-Icon.jpg" media="(prefers-color-scheme: dark)">
+      <img src="images/RegnskApp-Light-Mode-Icon.jpg" alt="RegnskApp Icon" class="app-logo" width="48" height="48"/>
+    </picture>
+    <span class="brand">BalanceTrackr <span class="subtle">(RegnskApp)</span></span>
+    <nav>
+      <a href="SiriShortcutsSetup/en.html">Apple Pay & Shortcuts</a>
+      <a href="privacy-policy/en.html">Privacy Policy</a>
+      <a href="support/en.html">Support</a>
+    </nav>
+    <button class="lang-switcher" id="lang-switcher" aria-label="Choose language">
+      <img id="current-flag" class="flag" src="images/en/gb.svg" alt="Selected language" />
+      <span style="font-size:1.05em;" aria-hidden="true">▼</span>
+      <span class="sr-only">Open language menu</span>
+      <div class="lang-dropdown" id="lang-dropdown">
+        <!-- Dynamically filled -->
+      </div>
+    </button>
+  </header>
+  <main>
+    <section class="hero-section">
+      <picture>
+        <source srcset="images/RegnskApp-Dark-Mode-Icon.jpg" media="(prefers-color-scheme: dark)">
+        <img src="images/RegnskApp-Light-Mode-Icon.jpg" alt="RegnskApp Icon" style="width:120px;height:120px;border-radius:18px;box-shadow:0 6px 24px 0 rgba(34,55,52,.13);background:#fff"/>
+      </picture>
+      <h1>
+        BalanceTrackr
+        <span class="subtle">(RegnskApp)</span>
+      </h1>
+      <div class="hero-lead">
+        💼 <strong>BalanceTrackr</strong> is your personal budgeting and balance tracker!  
+        Built for those who want <em>full control over their finances</em> — clearly, privately, and without ads or subscriptions.
+      </div>
+      <div class="hero-desc">
+        Instead of juggling spreadsheets, this app lets you enter income, expenses, and transfers quickly and intuitively – and watch how your balance evolves over time 📈.<br>
+        You’re in control: manually if you prefer, or semi-automatically by using shortcuts to speed things up — all without connecting to your bank.
+      </div>
+      <a href="https://apps.apple.com/us/app/regnskapp/id6743946348" target="_blank" style="display:block;margin:1.3rem auto 0 auto">
+        <img class="appstore-badge" src="images/black.svg" alt="Download on the App Store"/>
+      </a>
+      <div class="cta-group">
+        <a href="SiriShortcutsSetup/en.html">Apple Pay & Shortcuts</a>
+        <a href="privacy-policy/en.html">Privacy Policy</a>
+        <a href="support/en.html">Support</a>
+      </div>
+    </section>
+
+    <section class="carousel-modern">
+      <div class="carousel-track" id="carousel1">
+        <img src="images/en/1.png" alt="App screenshot 1"/>
+        <img src="images/en/2.png" alt="App screenshot 2"/>
+        <img src="images/en/3.png" alt="App screenshot 3"/>
+        <img src="images/en/4.png" alt="App screenshot 4"/>
+      </div>
+      <div class="carousel-dots" id="carousel1-dots"></div>
+    </section>
+
+    <section class="features-list" aria-labelledby="features-heading">
+      <div style="text-align:left;width:100%;margin-bottom:.9em;font-size:1.15em;font-weight:600;color:var(--primary-dark);" id="features-heading">
+        📲 <strong>Features you'll love:</strong>
+      </div>
+      <ul>
+        <li>Add as many accounts as you want – personal, shared, or side projects</li>
+        <li>Log salary, expenses, and transfers with just a few taps</li>
+        <li>Track your balance over time with clear line graphs</li>
+        <li>See how many days are left until your next paycheck</li>
+        <li>Watch your balance update in real time</li>
+        <li>Clean, ad-free design – focused on <em>you and your money</em></li>
+      </ul>
+    </section>
+
+    <section class="carousel-modern">
+      <div class="carousel-track" id="carousel2">
+        <img src="images/en/5.png" alt="App screenshot 5"/>
+        <img src="images/en/6.png" alt="App screenshot 6"/>
+        <img src="images/en/7.png" alt="App screenshot 7"/>
+        <img src="images/en/8.png" alt="App screenshot 8"/>
+      </div>
+      <div class="carousel-dots" id="carousel2-dots"></div>
+    </section>
+
+    <section style="width:100%;max-width:600px;margin:2.5rem auto 0 auto;text-align:center;font-size:1.13em;line-height:1.66;color:#2c6531;">
+      This is the app for anyone who wants <strong>simple and total control without extra noise</strong>.<br>
+      You stay in charge – with flexible accounts, manual entries, and a balance that updates as you go.<br>
+      And yes, if you like a bit of fun: <strong>It even makes it rain money! 💸</strong>
+    </section>
+
+    <video class="fun-video" autoplay muted playsinline loop>
+      <source src="images/LadetRegneiMovie.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+
+    <section class="card-highlight">
+      <h2>📰 Featured on KrispiTech</h2>
+      <blockquote>“BalanceTrackr proves that ad-free apps can revolutionize budget management.”</blockquote>
+      <a href="https://krispitech.com/why-ad-free-apps-like-balancetrackr-are-revolutionizing-budget-management/"
+         target="_blank"
+         rel="noopener noreferrer"
+         class="button">
+        Read the full review
+      </a>
+    </section>
+    <section class="card-social">
+      <img src="images/Instagram_logo_2016.svg.webp" alt="Instagram" style="width:32px;height:32px;">
+      <a href="https://www.instagram.com/balancetrackr/" 
+         target="_blank" 
+         rel="noopener noreferrer"
+         style="color:var(--primary);font-weight:700;text-decoration:none;">
+        Follow BalanceTrackr on Instagram
+      </a>
+    </section>
+  </main>
+  <footer>
+    &copy; 2025 BalanceTrackr (RegnskApp) – Ole Morten Tengesdal. All rights reserved.
+  </footer>
+  <script>
+    // Language dropdown
+    const allLangs = [
+      {code:"en", name:"English", flag:"gb"}, {code:"no", name:"Norsk", flag:"no"},{code:"da", name:"Dansk", flag:"da"},
+      {code:"sv", name:"Svenska", flag:"sv"},{code:"de", name:"Deutsch", flag:"de"},{code:"fr", name:"Français", flag:"fr"},
+      {code:"es", name:"Español", flag:"es"},{code:"ar", name:"العربية", flag:"ar"},{code:"fi", name:"Suomi", flag:"fi"},
+      {code:"hi", name:"हिन्दी", flag:"hi"},{code:"it", name:"Italiano", flag:"it"},{code:"ja", name:"日本語", flag:"ja"},
+      {code:"nl", name:"Nederlands", flag:"nl"},{code:"uk", name:"Українська", flag:"uk"},
+      {code:"zhHans", name:"简体中文", flag:"zhHans"},{code:"zhHant", name:"繁體中文", flag:"zhHant"}
+    ];
+    function getLangFromUrl() {
+      let f = window.location.pathname.split("/").pop();
+      let match = f.match(/^index(?:-([^.]+))?\.html$/);
+      if (match && match[1]) return match[1];
+      return "en";
+    }
+    function setFlag(lang) {
+      const flag = allLangs.find(l => l.code === lang)?.flag ?? "gb";
+      document.getElementById("current-flag").src = `images/${lang}/${flag}.svg`;
+    }
+    function buildLangDropdown() {
+      const ul = document.getElementById('lang-dropdown');
+      ul.innerHTML = "";
+      allLangs.forEach(l => {
+        let btn = document.createElement("button");
+        btn.innerHTML = `<img src="images/${l.code}/${l.flag}.svg" style="width:19px;height:15px;border-radius:3px;vertical-align:-3px" alt="${l.name}"/> ${l.name}`;
+        btn.onclick = () => changeLanguage(l.code);
+        ul.appendChild(btn);
+      });
+    }
+    function changeLanguage(langCode) {
+      const file = (langCode === "en") ? "index.html" : `index-${langCode}.html`;
+      window.location.href = file;
+    }
+    (function(){
+      let activeLang = getLangFromUrl();
+      setFlag(activeLang);
+      buildLangDropdown();
+    })();
+    // Open/close lang menu
+    const langSwitcher = document.getElementById('lang-switcher');
+    const langDropdown = document.getElementById('lang-dropdown');
+    langSwitcher.addEventListener('click', e => {
+      langDropdown.classList.toggle('open');
+      e.stopPropagation();
+    });
+    document.addEventListener("click", function (event) {
+      langDropdown.classList.remove("open");
+    });
+
+    // Modern carousel with dots (minimal JS, touch-friendly)
+    function setupCarousel(trackId, dotsId) {
+      const track = document.getElementById(trackId);
+      const dotsCont = document.getElementById(dotsId);
+      const imgs = track.querySelectorAll("img");
+      let index = 0;
+      function goto(idx, smooth = true) {
+        index = idx;
+        const img = imgs[idx];
+        const left = img.offsetLeft - track.offsetLeft;
+        track.scrollTo({left:left - 20, behavior:smooth?'smooth':'auto'});
+        updateDots();
+      }
+      function updateDots() {
+        dotsCont.querySelectorAll(".dot").forEach((dot, i) => {
+          dot.classList.toggle("active", i === index);
+        });
+      }
+      // Create dots
+      imgs.forEach((img, i) => {
+        const dot = document.createElement("span");
+        dot.className = "dot";
+        dot.setAttribute('tabindex', '0');
+        dot.onclick = () => goto(i);
+        dotsCont.appendChild(dot);
+      });
+      goto(0, false);
+      let lastScroll = 0;
+      // Listen to scroll for dot update
+      track.addEventListener("scroll", () => {
+        let minDist = Number.POSITIVE_INFINITY, best = 0;
+        imgs.forEach((img, i) => {
+          let dist = Math.abs(track.scrollLeft - (img.offsetLeft - track.offsetLeft));
+          if (dist < minDist) { minDist = dist; best = i;}
+        });
+        if (best !== index) {index=best;updateDots();}
+      });
+      // Optional: autoplay
+      let autoActive = true;
+      function startAuto() {
+        if (!autoActive) return;
+        setTimeout(() => {
+          if(!autoActive) return;
+          goto((index+1)%imgs.length, true);
+          startAuto();
+        }, 3700);
+      }
+      track.addEventListener('mouseenter', () => {autoActive=false;});
+      track.addEventListener('mouseleave', () => {autoActive=true;startAuto();});
+      setTimeout(startAuto, 4700);
+    }
+    setupCarousel("carousel1", "carousel1-dots");
+    setupCarousel("carousel2", "carousel2-dots");
+  </script>
+</body>
+</html>
