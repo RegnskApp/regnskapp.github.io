@@ -544,10 +544,6 @@
         max-width: 250px;
         min-width: 200px;
       }
-
-      .carousel-dots {
-        display: none;
-      }
     }
 
     .carousel img:hover {
@@ -555,11 +551,13 @@
       box-shadow: var(--shadow-xl);
     }
 
-    .carousel-dots {
-      display: flex;
-      justify-content: center;
-      gap: 0.5rem;
-      margin-top: 2rem;
+    @media (max-width: 767px) {
+      .carousel-dots {
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+        margin-top: 2rem;
+      }
     }
 
     .carousel-dots .dot {
