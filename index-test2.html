@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Basic Meta Tags -->
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>BalanceTrackr (RegnskApp) – iOS Budget & Expense App</title>
-  <meta name="description" content="BalanceTrackr is a privacy-first budgeting app for iOS. Track your income and expenses easily, with no ads or subscriptions." />
-  <meta name="keywords" content="budget app, expense tracker, personal finance, iOS, BalanceTrackr, RegnskApp, money management, finance app" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BalanceTrackr (RegnskApp) – Smart Budget & Expense Tracker</title>
+  <meta name="description" content="Take control of your finances with BalanceTrackr. Track income, expenses, and transfers effortlessly. Private, ad-free, and designed for modern money management." />
+  <meta name="keywords" content="budget app, expense tracker, personal finance, iOS, BalanceTrackr, RegnskApp, money management, finance app, budget planner" />
   <meta name="author" content="Ole Morten Tengesdal" />
 
-  <!-- Canonical URL -->
+  <!-- Canonical URL: must match this exact language version -->
   <link rel="canonical" href="https://regnskapp.github.io/index.html" />
-  <!-- Hreflang -->
+
+  <!-- Hreflang for all language versions -->
   <link rel="alternate" hreflang="en" href="https://regnskapp.github.io/index.html" />
   <link rel="alternate" hreflang="no" href="https://regnskapp.github.io/index-no.html" />
   <link rel="alternate" hreflang="da" href="https://regnskapp.github.io/index-da.html" />
@@ -18,727 +20,1301 @@
   <link rel="alternate" hreflang="es" href="https://regnskapp.github.io/index-es.html" />
   <link rel="alternate" hreflang="fr" href="https://regnskapp.github.io/index-fr.html" />
   <link rel="alternate" hreflang="sv" href="https://regnskapp.github.io/index-sv.html" />
+  <!-- x-default for generic version -->
   <link rel="alternate" hreflang="x-default" href="https://regnskapp.github.io/index.html" />
 
   <!-- Apple Smart Banner -->
   <meta name="apple-itunes-app" content="app-id=6743946348, app-argument=https://regnskapp.github.io/" />
+
+  <!-- Favicon -->
   <link rel="icon" href="images/RegnskApp-Light-Mode-Icon.jpg" type="image/jpeg" />
 
-  <!-- Social Meta -->
+  <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="BalanceTrackr – iOS Budget & Expense App" />
-  <meta property="og:description" content="Track your income and expenses over time with BalanceTrackr. Clean, private, and ad-free." />
+  <meta property="og:title" content="BalanceTrackr – Smart Budget & Expense Tracker" />
+  <meta property="og:description" content="Take control of your finances with this privacy-first budgeting app. Track expenses, monitor your balance, and achieve your financial goals." />
   <meta property="og:image" content="https://regnskapp.github.io/images/RegnskApp-Light-Mode-Icon.jpg" />
   <meta property="og:url" content="https://regnskapp.github.io/" />
 
+  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="BalanceTrackr – iOS Budget & Expense App" />
-  <meta name="twitter:description" content="Track your income and expenses over time with BalanceTrackr. Clean, private, and ad-free." />
+  <meta name="twitter:title" content="BalanceTrackr – Smart Budget & Expense Tracker" />
+  <meta name="twitter:description" content="Take control of your finances with this privacy-first budgeting app. Track expenses, monitor your balance, and achieve your financial goals." />
   <meta name="twitter:image" content="https://regnskapp.github.io/images/RegnskApp-Light-Mode-Icon.jpg" />
 
+  <!-- Google Search Console -->
   <meta name="google-site-verification" content="z2cVAhGqX7qGGwkdcP_SlnGftVeSXB4nG2K1egdlYOo" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
   <style>
-    :root {
-      --primary: #1b5e20;
-      --primary-dark: #388e3c;
-      --bg: #f5f7fa;
-      --card-bg: #fff;
-      --accent: #009688;
-      --inactive: #cfcfcf;
-      --shadow-lg: 0 6px 32px rgba(0,0,0,0.13);
-      --shadow-hover: 0 12px 44px rgba(0,0,0,0.23);
-      --border-radius: 1.25rem;
-      --transition: 0.24s cubic-bezier(.5, .1, .15, 1.22);
+    /* Modern CSS Reset & Base Styles */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
+
+    :root {
+      --primary-color: #2563eb;
+      --primary-dark: #1d4ed8;
+      --accent-color: #f59e0b;
+      --success-color: #10b981;
+      --text-primary: #111827;
+      --text-secondary: #6b7280;
+      --text-muted: #9ca3af;
+      --bg-primary: #ffffff;
+      --bg-secondary: #f8fafc;
+      --bg-tertiary: #f1f5f9;
+      --border-color: #e5e7eb;
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      --radius-sm: 0.375rem;
+      --radius-md: 0.5rem;
+      --radius-lg: 0.75rem;
+      --radius-xl: 1rem;
+      --transition-fast: 0.15s ease;
+      --transition-normal: 0.3s ease;
+      --transition-slow: 0.5s ease;
+    }
+
     @media (prefers-color-scheme: dark) {
       :root {
-        --bg: #181820;
-        --card-bg: #232336;
-        --primary: #2ecc71;
-        --primary-dark: #29895f;
-        --accent: #1de9b6;
-        --inactive: #333540;
+        --text-primary: #f9fafb;
+        --text-secondary: #d1d5db;
+        --text-muted: #9ca3af;
+        --bg-primary: #111827;
+        --bg-secondary: #1f2937;
+        --bg-tertiary: #374151;
+        --border-color: #374151;
+        --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+        --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+        --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
+        --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
       }
-      body { color: #e0e0e0; }
     }
-    html, body {
-      padding: 0;
-      margin: 0;
-      background: var(--bg);
-      font-family: 'Inter', -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Ubuntu,Cantarell,'Open Sans','Helvetica Neue',sans-serif;
-      min-height: 100%;
-      color: var(--primary);
-      scroll-behavior: smooth;
-    }
+
     body {
-      display: flex;
-      flex-direction: column;
-      min-height: 100dvh;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      color: var(--text-primary);
+      background: var(--bg-primary);
+      overflow-x: hidden;
     }
-    .navbar {
+
+    /* Modern Typography */
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 600;
+      line-height: 1.25;
+      letter-spacing: -0.025em;
+    }
+
+    h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
+    h2 { font-size: clamp(1.5rem, 4vw, 2.25rem); }
+    h3 { font-size: clamp(1.25rem, 3vw, 1.875rem); }
+
+    p { margin-bottom: 1rem; }
+
+    /* Navigation Components */
+    .nav-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-color);
+      transition: all var(--transition-normal);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .nav-container {
+        background: rgba(17, 24, 39, 0.8);
+      }
+    }
+
+    .nav-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* Language Switcher */
+    #language-switcher {
+      position: relative;
       display: flex;
       align-items: center;
-      gap: 2rem;
-      padding: .5rem 2vw;
-      background: var(--card-bg);
-      box-shadow: 0 2px 8px 0 rgb(34 34 54 / 6%);
-      position: sticky;
-      top: 0;
-      z-index: 100;
+      gap: 0.5rem;
     }
-    .navbar .app-logo {
+
+    #active-language {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 0.75rem;
+      background: var(--bg-secondary);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      border: 1px solid var(--border-color);
+    }
+
+    #active-language:hover {
+      background: var(--bg-tertiary);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+
+    #current-flag {
+      width: 20px;
+      height: 15px;
+      border-radius: 2px;
+      object-fit: cover;
+    }
+
+    #language-menu {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      margin-top: 0.5rem;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-xl);
+      padding: 0.5rem;
+      min-width: 200px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all var(--transition-normal);
+      z-index: 1000;
+    }
+
+    #language-menu.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    #language-menu button {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      width: 100%;
+      padding: 0.5rem 0.75rem;
+      background: none;
+      border: none;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      font-size: 0.9rem;
+      color: var(--text-primary);
+    }
+
+    #language-menu button:hover {
+      background: var(--bg-secondary);
+    }
+
+    /* Hamburger Menu */
+    #hamburger-menu {
+      position: relative;
+    }
+
+    #menu-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      font-size: 1.25rem;
+    }
+
+    #menu-toggle:hover {
+      background: var(--bg-tertiary);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+
+    #menu-dropdown {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      margin-top: 0.5rem;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-xl);
+      padding: 0.5rem;
+      min-width: 180px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all var(--transition-normal);
+      z-index: 1000;
+    }
+
+    #menu-dropdown.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    #menu-dropdown a {
+      display: block;
+      padding: 0.75rem 1rem;
+      color: var(--text-primary);
+      text-decoration: none;
+      border-radius: var(--radius-md);
+      transition: all var(--transition-fast);
+      font-weight: 500;
+    }
+
+    #menu-dropdown a:hover {
+      background: var(--bg-secondary);
+      transform: translateX(2px);
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(37, 99, 235, 0.05) 0%, transparent 70%);
+      animation: float 20s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      33% { transform: translate(30px, -30px) rotate(120deg); }
+      66% { transform: translate(-20px, 20px) rotate(240deg); }
+    }
+
+    .hero-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-icon {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 2rem;
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-xl);
+      transition: transform var(--transition-normal);
+    }
+
+    .hero-icon:hover {
+      transform: scale(1.05) rotate(5deg);
+    }
+
+    .hero-title {
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 3rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1rem 2rem;
+      background: var(--primary-color);
+      color: white;
+      text-decoration: none;
+      border-radius: var(--radius-lg);
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: all var(--transition-fast);
+      box-shadow: var(--shadow-md);
+      border: 2px solid var(--primary-color);
+    }
+
+    .btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--primary-color);
+      border-color: var(--primary-color);
+    }
+
+    .btn-secondary:hover {
+      background: var(--primary-color);
+      color: white;
+    }
+
+    /* Features Section */
+    .features {
+      padding: 5rem 2rem;
+      background: var(--bg-secondary);
+    }
+
+    .features-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .feature-card {
+      background: var(--bg-primary);
+      padding: 2rem;
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border-color);
+      transition: all var(--transition-normal);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+      transform: scaleX(0);
+      transition: transform var(--transition-normal);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .feature-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .feature-icon {
       width: 48px;
       height: 48px;
-      border-radius: 16px;
-      box-shadow: 0 3px 16px 0 rgb(27 94 32 / 12%);
-      background: var(--card-bg);
-      padding: 0;
-      margin-right: .8rem;
-    }
-    .navbar .brand {
-      font-weight: 700;
-      font-size: 1.18rem;
-      color: var(--primary);
-      letter-spacing: -0.01em;
-      margin-right: auto;
+      background: var(--primary-color);
+      border-radius: var(--radius-lg);
       display: flex;
       align-items: center;
-      gap: .4rem;
-    }
-    .navbar nav {
-      display: flex;
-      gap: 0.5rem;
-    }
-    .navbar a, .navbar button.menu-btn {
-      background: none;
-      border: none;
-      font: inherit;
-      color: var(--primary-dark);
-      padding: .4rem .9rem;
-      border-radius: .6em;
-      font-weight: 600;
-      text-decoration: none;
-      transition: background var(--transition);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      cursor: pointer;
-    }
-    .navbar a:hover, .navbar button.menu-btn:focus {
-      background: var(--primary-dark);
-      color: #fff;
-    }
-
-    .lang-switcher {
-      display: flex;
-      gap: .25em;
-      align-items: center;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 0;
-      margin-left: 1rem;
-      user-select: none;
-      outline: none;
-      position: relative;
-    }
-    .lang-switcher .flag {
-      width: 26px;
-      height: 20px;
-      border-radius: 5px;
-      object-fit: contain;
-      box-shadow: 0 1px 5px rgba(0,0,0,0.07);
-      border: 1px solid #e1e1e1;
-      margin-right: 0.28em;
-      background: #fff;
-    }
-    .lang-dropdown {
-      display: none;
-      flex-direction: column;
-      gap: 2px;
-      position: absolute;
-      top: 150%;
-      right: 0;
-      background: var(--card-bg);
-      box-shadow: 0 8px 32px 0 rgb(27 94 32 / 19%);
-      border-radius: .9em;
-      padding: .3em;
-      border: 1px solid #ececec;
-      min-width: 170px;
-      z-index: 102;
-    }
-    .lang-dropdown.open {
-      display: flex;
-    }
-    .lang-dropdown button {
-      display: flex;
-      align-items: center;
-      padding: .3em .8em;
-      gap: 0.4em;
-      border: none;
-      background: none;
-      font: inherit;
-      cursor: pointer;
-      font-size: 1.01em;
-      border-radius: .5em;
-      color: var(--primary);
-      transition: background var(--transition);
-    }
-    .lang-dropdown button:hover {
-      background: #f4f9f7;
-      color: var(--primary-dark);
-    }
-
-    @media (max-width: 840px) {
-      .navbar {
-        flex-wrap: wrap;
-        gap: 8px;
-        padding: .6rem 0.8rem;
-      }
-    }
-
-    main {
-      width: 100%;
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 0 4vw 3rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      flex: 1 0 auto;
-      color: inherit;
-    }
-    .hero-section {
-      background: var(--card-bg);
-      border-radius: var(--border-radius);
-      box-shadow: var(--shadow-lg);
-      margin-top: 4vw;
-      margin-bottom: 3vw;
-      padding: 2.2rem 1.6rem 2.6rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      align-self: stretch;
-      position: relative;
-      min-width: 320px;
-    }
-    .hero-section picture {
-      margin-bottom: 1.2rem;
-    }
-    .hero-section h1 {
-      font-size: 2.35rem;
-      font-weight: 700;
-      margin-bottom: .5rem;
-      line-height: 1.09;
-      color: var(--primary);
-      text-shadow: 0 1px 8px rgba(27,94,32,0.08);
-      display: flex;
-      align-items: center;
-      gap: .55em;
-    }
-    .subtle {
-      color: var(--accent);
-      font-size: 1.07rem;
-      font-weight: 500;
-      opacity: 0.55;
-    }
-    .hero-lead, .hero-desc {
-      font-size: 1.18rem;
-      font-weight: 400;
-      color: #374a36;
-      margin-top: 0;
-      margin-bottom: 0.85rem;
-      line-height: 1.55;
-      text-align: center;
-      max-width: 560px;
-    }
-    .hero-desc {
-      color: #42564e;
-      font-size: 1.09rem;
-      margin-bottom: 1.65rem;
-    }
-    .cta-group {
-      display: flex;
       justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-      margin: 2.2rem 0 0;
-      width: 100%;
-      z-index: 10;
-    }
-    .cta-group a, .cta-group button {
-      font-size: 1.11rem;
-      min-width: 150px;
-      background: var(--primary-dark);
-      color: #fff;
-      border: none;
-      border-radius: .65rem;
-      font-weight: 700;
-      padding: .90rem 1.25rem;
-      margin: .2rem 0;
-      box-shadow: 0 2px 12px 0 rgb(27,94,32,0.10);
-      text-decoration: none;
-      letter-spacing: 0.01em;
-      transition: background var(--transition), box-shadow var(--transition), transform var(--transition);
-      text-align: center;
-      outline: none;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 9px;
-    }
-    .cta-group a:hover, .cta-group button:focus {
-      background: var(--primary);
-      box-shadow: var(--shadow-hover);
-      transform: translateY(-2px) scale(1.025);
-    }
-    .hero-section .appstore-badge {
-      width: 190px;
-      min-width: 150px;
-      height: auto;
-      background: transparent;
-      margin: 1.5rem 0 -.2rem;
-      margin-bottom: 0;
-      display: block;
+      color: white;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
     }
 
-    .carousel-modern {
-      margin: 2.7rem auto 2.3rem;
-      width: 100%;
-      max-width: 810px;
-      background: none;
-      padding: 0;
-      position: relative;
-      overflow: visible;
+    .feature-title {
+      margin-bottom: 0.5rem;
+      color: var(--text-primary);
     }
-    .carousel-track {
+
+    .feature-description {
+      color: var(--text-secondary);
+    }
+
+    /* Screenshots Section */
+    .screenshots {
+      padding: 5rem 2rem;
+      background: var(--bg-primary);
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 4rem;
+    }
+
+    .section-title {
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+
+    .section-description {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+    }
+
+    .carousel-wrapper {
+      position: relative;
+      margin: 0 auto;
+      max-width: 1000px;
+    }
+
+    .carousel {
       display: flex;
-      gap: 28px;
-      align-items: flex-start;
-      justify-content: flex-start;
-      overflow-x: scroll;
+      overflow-x: auto;
+      gap: 2rem;
       scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      padding: 2rem;
       scrollbar-width: none;
       -ms-overflow-style: none;
-      padding-bottom: 1.4rem;
-      margin-bottom: 0.7rem;
     }
-    .carousel-track::-webkit-scrollbar {display: none;}
-    .carousel-modern img {
-      background: var(--card-bg);
-      border-radius: 1.15em;
-      box-shadow: 0 4px 24px rgb(34 55 52 / 10%);
-      width: 232px; max-width: 72vw;
+
+    .carousel::-webkit-scrollbar {
+      display: none;
+    }
+
+    .carousel img {
       flex: 0 0 auto;
+      width: calc(100vw - 4rem);
+      max-width: 300px;
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-lg);
       scroll-snap-align: center;
-      object-fit: contain;
-      transition: transform var(--transition), box-shadow var(--transition);
-      height: 468px;
-      max-height: 54vh;
-      cursor: pointer;
-      border: 1.5px solid #f0f0f5;
+      transition: all var(--transition-normal);
     }
-    .carousel-modern img:active,
-    .carousel-modern img:hover {
-      transform: scale(1.07);
-      box-shadow: 0 10px 36px rgba(56, 142, 60, 0.33);
-      z-index: 6;
-      border-color: var(--primary-dark);
+
+    .carousel img:hover {
+      transform: scale(1.02);
+      box-shadow: var(--shadow-xl);
     }
+
     .carousel-dots {
       display: flex;
       justify-content: center;
-      align-items: center;
-      gap: .6em;
-      margin: .3em 0 0 0;
+      gap: 0.5rem;
+      margin-top: 2rem;
     }
+
     .carousel-dots .dot {
       width: 12px;
       height: 12px;
+      background: var(--border-color);
       border-radius: 50%;
-      background: var(--inactive);
       cursor: pointer;
-      transition: background var(--transition), transform var(--transition);
-      margin-top: 2px;
-      margin-bottom: 2px;
+      transition: all var(--transition-fast);
     }
+
     .carousel-dots .dot.active {
-      background: var(--primary);
-      transform: scale(1.25);
-      box-shadow: 0 1px 8px rgba(27,94,32,0.13);
+      background: var(--primary-color);
+      transform: scale(1.2);
     }
 
-    /* Features area */
-    .features-list {
-      background: var(--card-bg);
-      border-radius: var(--border-radius);
-      box-shadow: var(--shadow-lg);
-      margin: 2.5rem 0 2rem 0;
-      padding: 2rem 1.5rem;
-      max-width: 590px;
-      width: 100%;
-      font-size: 1.11rem;
-      line-height: 1.75;
-      color: #24512e;
-    }
-    .features-list ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-    .features-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: .85em;
-      margin: 0 0 1.2em 0;
-      font-weight: 500;
-      letter-spacing: 0.02em;
-      font-size: 1.07em;
-    }
-    .features-list li:last-child {margin-bottom: 0;}
-    .features-list li::before {
-      font-size: 1.2em;
-      line-height: 1.1;
-      flex: none;
-      display: inline-block;
-    }
-
-    .features-list li:nth-child(1)::before {content: "🏦";}
-    .features-list li:nth-child(2)::before {content: "💸";}
-    .features-list li:nth-child(3)::before {content: "📊";}
-    .features-list li:nth-child(4)::before {content: "📅";}
-    .features-list li:nth-child(5)::before {content: "💰";}
-    .features-list li:nth-child(6)::before {content: "🧠";}
-
-    /* Highlight section / review / social */
-    .card-highlight, .card-social {
-      background: var(--card-bg);
-      box-shadow: var(--shadow-lg);
-      border-radius: var(--border-radius);
-      margin: 2.2rem 0 1rem 0;
-      padding: 1.7rem 1.25rem 1.25rem;
-      max-width: 540px;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    /* Video Section */
+    .video-section {
+      padding: 5rem 2rem;
+      background: var(--bg-secondary);
       text-align: center;
-      border-left: 8px solid var(--primary);
-      gap: .9em;
-    }
-    .card-highlight h2 {
-      color: var(--primary-dark);
-      font-weight: 700;
-      font-size: 1.18em;
-      letter-spacing: 0.01em;
-      margin-bottom: .5rem;
-    }
-    .card-highlight blockquote {
-      font-style: italic;
-      color: #485848;
-      margin: 0 0 .4em 0;
-      font-size: 1.14em;
-      opacity: 0.88;
-    }
-    .card-highlight .button {
-      background: var(--accent);
-      color: #fff;
-      font-weight: 600;
-      min-width: 148px;
-      border-radius: .6em;
-      padding: .69em 1.22em;
-      box-shadow: 0 1px 6px rgba(27,94,32,0.12);
-      text-decoration: none;
-      font-size: 1.07em;
-      margin-top: .4em;
-      margin-bottom: 0;
-      transition: background var(--transition);
-      border: none;
-      cursor: pointer;
-    }
-    .card-highlight .button:hover {background: var(--primary-dark);}
-    .card-social {
-      padding: 1.22rem 1rem;
-      background: var(--card-bg);
-      border-left: 8px solid var(--accent);
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      flex-direction: row;
-      gap: 0.8em;
-      font-size: 1.12rem;
-    }
-    .card-social img {
-      width: 36px; height: 36px;
-      border-radius: 8px;
-      background: #fff;
-      object-fit: contain;
-      margin: 0 1em 0 0;
     }
 
-    /* Rain effect video */
-    .fun-video {
-      display: block;
-      margin: 2.1rem auto 1.4rem auto;
-      border-radius: 1.15rem;
-      box-shadow: 0 6px 18px rgba(34, 55, 52, 0.13);
-      max-width: 350px;
+    .video-container {
+      max-width: 600px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .video-container video {
       width: 100%;
-      aspect-ratio: 15/16;
-      height: auto;
-      background: #222;
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .video-caption {
+      margin-top: 2rem;
+      padding: 1rem;
+      background: var(--bg-primary);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border-color);
+    }
+
+    /* Download Section */
+    .download {
+      padding: 5rem 2rem;
+      background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+      color: white;
+      text-align: center;
+    }
+
+    .download-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .download-title {
+      margin-bottom: 1rem;
+      color: white;
+    }
+
+    .download-subtitle {
+      margin-bottom: 3rem;
+      opacity: 0.9;
+      font-size: 1.1rem;
+    }
+
+    .download-badge {
+      display: inline-block;
+      padding: 1rem 2rem;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: var(--radius-lg);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      transition: all var(--transition-fast);
+    }
+
+    .download-badge:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: translateY(-2px);
+    }
+
+    /* Reviews Section */
+    .reviews {
+      padding: 5rem 2rem;
+      background: var(--bg-primary);
+    }
+
+    .reviews-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .review-card {
+      background: var(--bg-secondary);
+      padding: 2rem;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-color);
+      position: relative;
+    }
+
+    .review-quote {
+      font-size: 1.1rem;
+      font-style: italic;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+
+    .review-author {
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .review-source {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    /* Social Section */
+    .social {
+      padding: 3rem 2rem;
+      background: var(--bg-secondary);
+      text-align: center;
+    }
+
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1rem 1.5rem;
+      background: var(--bg-primary);
+      border-radius: var(--radius-lg);
+      text-decoration: none;
+      color: var(--text-primary);
+      transition: all var(--transition-fast);
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border-color);
+    }
+
+    .social-link:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
     }
 
     /* Footer */
-    footer {
-      background: var(--card-bg);
-      color: var(--primary);
+    .footer {
+      padding: 2rem;
+      background: var(--bg-tertiary);
       text-align: center;
-      font-size: 1.03rem;
-      font-weight: 500;
-      padding: 2.3em 0 1.6em 0;
-      letter-spacing: .01em;
-      border-top: 1.5px solid #e9ede9;
-      margin-top: auto;
-      width: 100%;
+      border-top: 1px solid var(--border-color);
     }
-    @media (max-width: 600px) {
-      .hero-section, .features-list, .card-highlight, .card-social {
-        padding: 1.15rem 0.24rem 1.22rem;
-        border-radius: .80em;
+
+    .footer-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav-content {
+        padding: 1rem;
       }
-      .carousel-modern img {height: 212px;}
-      main {padding: 0 2vw;}
-      .hero-section h1 {font-size: 1.61rem;}
-      .fun-video {max-width: 96vw;}
-      .carousel-track {gap: 9px;}
+
+      .hero-cta {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .btn {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .reviews-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 8rem 0 4rem;
+      }
+    }
+
+    /* Loading Animation */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in-up {
+      animation: fadeInUp 0.6s ease-out;
+    }
+
+    /* Accessibility */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    /* Focus styles */
+    button:focus-visible,
+    a:focus-visible {
+      outline: 2px solid var(--primary-color);
+      outline-offset: 2px;
+    }
+
+    /* Print styles */
+    @media print {
+      .nav-container,
+      .hero-cta,
+      .social {
+        display: none !important;
+      }
     }
   </style>
 </head>
 <body>
-  <header class="navbar">
-    <picture>
-      <source srcset="images/RegnskApp-Dark-Mode-Icon.jpg" media="(prefers-color-scheme: dark)">
-      <img src="images/RegnskApp-Light-Mode-Icon.jpg" alt="RegnskApp Icon" class="app-logo" width="48" height="48"/>
-    </picture>
-    <span class="brand">BalanceTrackr <span class="subtle">(RegnskApp)</span></span>
-    <nav>
-      <a href="SiriShortcutsSetup/en.html">Apple Pay & Shortcuts</a>
-      <a href="privacy-policy/en.html">Privacy Policy</a>
-      <a href="support/en.html">Support</a>
-    </nav>
-    <button class="lang-switcher" id="lang-switcher" aria-label="Choose language">
-      <img id="current-flag" class="flag" src="images/en/gb.svg" alt="Selected language" />
-      <span style="font-size:1.05em;" aria-hidden="true">▼</span>
-      <span class="sr-only">Open language menu</span>
-      <div class="lang-dropdown" id="lang-dropdown">
-        <!-- Dynamically filled -->
+  <!-- Navigation -->
+  <nav class="nav-container">
+    <div class="nav-content">
+      <!-- 🌍 Language Switcher -->
+      <div id="language-switcher">
+        <button id="active-language" onclick="toggleLanguageMenu()" aria-label="Select language">
+          <img id="current-flag" src="" alt="Selected language" />
+          <span id="current-lang-text">EN</span>
+        </button>
+        <div id="language-menu">
+          <button onclick="changeLanguage('en')">
+            <img src="images/en/gb.svg" width="20" alt="English" /> English
+          </button>
+          <button onclick="changeLanguage('no')">
+            <img src="images/no/no.svg" width="20" alt="Norsk" /> Norsk
+          </button>
+          <button onclick="changeLanguage('da')">
+            <img src="images/da/da.svg" width="20" alt="Dansk" /> Dansk
+          </button>
+          <button onclick="changeLanguage('sv')">
+            <img src="images/sv/sv.svg" width="20" alt="Svenska" /> Svenska
+          </button>
+          <button onclick="changeLanguage('de')">
+            <img src="images/de/de.svg" width="20" alt="Deutsch" /> Deutsch
+          </button>
+          <button onclick="changeLanguage('fr')">
+            <img src="images/fr/fr.svg" width="20" alt="Français" /> Français
+          </button>
+          <button onclick="changeLanguage('es')">
+            <img src="images/es/es.svg" width="20" alt="Español" /> Español
+          </button>
+          <button onclick="changeLanguage('ar')">
+            <img src="images/ar/ar.svg" width="20" alt="العربية" /> العربية
+          </button>
+          <button onclick="changeLanguage('fi')">
+            <img src="images/fi/fi.svg" width="20" alt="Suomi" /> Suomi
+          </button>
+          <button onclick="changeLanguage('hi')">
+            <img src="images/hi/hi.svg" width="20" alt="हिन्दी" /> हिन्दी
+          </button>
+          <button onclick="changeLanguage('it')">
+            <img src="images/it/it.svg" width="20" alt="Italiano" /> Italiano
+          </button>
+          <button onclick="changeLanguage('ja')">
+            <img src="images/ja/ja.svg" width="20" alt="日本語" /> 日本語
+          </button>
+          <button onclick="changeLanguage('nl')">
+            <img src="images/nl/nl.svg" width="20" alt="Nederlands" /> Nederlands
+          </button>
+          <button onclick="changeLanguage('uk')">
+            <img src="images/uk/uk.svg" width="20" alt="Українська" /> Українська
+          </button>
+          <button onclick="changeLanguage('zhHans')">
+            <img src="images/zhHans/zhHans.svg" width="20" alt="简体中文" /> 简体中文
+          </button>
+          <button onclick="changeLanguage('zhHant')">
+            <img src="images/zhHant/zhHant.svg" width="20" alt="繁體中文" /> 繁體中文
+          </button>
+        </div>
       </div>
-    </button>
-  </header>
-  <main>
-    <section class="hero-section">
+
+      <!-- 🍔 Hamburger Menu -->
+      <div id="hamburger-menu">
+        <button id="menu-toggle" aria-label="Open menu">☰</button>
+        <div id="menu-dropdown">
+          <a href="SiriShortcutsSetup/en.html">Apple Pay & Shortcuts</a>
+          <a href="privacy-policy/en.html">Privacy Policy</a>
+          <a href="support/en.html">Support</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content fade-in-up">
       <picture>
-        <source srcset="images/RegnskApp-Dark-Mode-Icon.jpg" media="(prefers-color-scheme: dark)">
-        <img src="images/RegnskApp-Light-Mode-Icon.jpg" alt="RegnskApp Icon" style="width:120px;height:120px;border-radius:18px;box-shadow:0 6px 24px 0 rgba(34,55,52,.13);background:#fff"/>
+        <source srcset="images/RegnskApp-Dark-Mode-Icon.jpg" media="(prefers-color-scheme: dark)" />
+        <img src="images/RegnskApp-Light-Mode-Icon.jpg" alt="BalanceTrackr App Icon" class="hero-icon" />
       </picture>
-      <h1>
-        BalanceTrackr
-        <span class="subtle">(RegnskApp)</span>
-      </h1>
-      <div class="hero-lead">
-        💼 <strong>BalanceTrackr</strong> is your personal budgeting and balance tracker!  
-        Built for those who want <em>full control over their finances</em> — clearly, privately, and without ads or subscriptions.
+
+      <h1 class="hero-title">BalanceTrackr</h1>
+      <p class="hero-subtitle">
+        Take control of your finances with this privacy-first budgeting app.
+        Track expenses, monitor your balance, and achieve your financial goals effortlessly.
+      </p>
+
+      <div class="hero-cta">
+        <a href="https://apps.apple.com/us/app/regnskapp/id6743946348" class="btn" target="_blank">
+          <span>📱</span> Download for iOS
+        </a>
+        <a href="#features" class="btn btn-secondary">
+          <span>✨</span> Discover Features
+        </a>
       </div>
-      <div class="hero-desc">
-        Instead of juggling spreadsheets, this app lets you enter income, expenses, and transfers quickly and intuitively – and watch how your balance evolves over time 📈.<br>
-        You’re in control: manually if you prefer, or semi-automatically by using shortcuts to speed things up — all without connecting to your bank.
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="features">
+    <div class="features-grid">
+      <div class="feature-card fade-in-up">
+        <div class="feature-icon">🏦</div>
+        <h3 class="feature-title">Multiple Accounts</h3>
+        <p class="feature-description">
+          Create personal, shared, or project-specific accounts. Keep your finances organized and separate.
+        </p>
       </div>
-      <a href="https://apps.apple.com/us/app/regnskapp/id6743946348" target="_blank" style="display:block;margin:1.3rem auto 0 auto">
-        <img class="appstore-badge" src="images/black.svg" alt="Download on the App Store"/>
+
+      <div class="feature-card fade-in-up">
+        <div class="feature-icon">💸</div>
+        <h3 class="feature-title">Smart Tracking</h3>
+        <p class="feature-description">
+          Log income, expenses, and transfers with intuitive controls. Your balance updates in real-time.
+        </p>
+      </div>
+
+      <div class="feature-card fade-in-up">
+        <div class="feature-icon">📊</div>
+        <h3 class="feature-title">Visual Analytics</h3>
+        <p class="feature-description">
+          Watch your financial journey unfold with clear line graphs and trend analysis over time.
+        </p>
+      </div>
+
+      <div class="feature-card fade-in-up">
+        <div class="feature-icon">⏰</div>
+        <h3 class="feature-title">Payday Countdown</h3>
+        <p class="feature-description">
+          Never lose track of when your next paycheck arrives. Stay ahead of your cash flow.
+        </p>
+      </div>
+
+      <div class="feature-card fade-in-up">
+        <div class="feature-icon">🔒</div>
+        <h3 class="feature-title">Privacy First</h3>
+        <p class="feature-description">
+          Your financial data stays on your device. No ads, no subscriptions, no data collection.
+        </p>
+      </div>
+
+      <div class="feature-card fade-in-up">
+        <div class="feature-icon">🎯</div>
+        <h3 class="feature-title">Siri Integration</h3>
+        <p class="feature-description">
+          Use Siri Shortcuts to quickly add transactions hands-free. Automation at your fingertips.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Screenshots Section -->
+  <section class="screenshots">
+    <div class="section-header">
+      <h2 class="section-title">See BalanceTrackr in Action</h2>
+      <p class="section-description">
+        Experience the clean, intuitive interface designed for modern money management.
+      </p>
+    </div>
+
+    <div class="carousel-wrapper">
+      <div class="carousel carousel-1">
+        <img src="images/en/1.png" alt="App dashboard showing balance overview" />
+        <img src="images/en/2.png" alt="Adding new transactions" />
+        <img src="images/en/3.png" alt="Account management interface" />
+        <img src="images/en/4.png" alt="Analytics and charts" />
+      </div>
+
+      <div class="carousel-dots carousel-dots-1">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
+    </div>
+
+    <div class="carousel-wrapper">
+      <div class="carousel carousel-2">
+        <img src="images/en/5.png" alt="Transaction history" />
+        <img src="images/en/6.png" alt="Settings and preferences" />
+        <img src="images/en/7.png" alt="Payday countdown feature" />
+        <img src="images/en/8.png" alt="Siri Shortcuts integration" />
+      </div>
+
+      <div class="carousel-dots carousel-dots-2">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Video Section -->
+  <section class="video-section">
+    <h2 class="section-title">Watch the Magic Happen</h2>
+    <div class="video-container">
+      <video autoplay muted playsinline loop>
+        <source src="images/LadetRegneiMovie.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <div class="video-caption">
+        <p>💰 Experience the satisfying "money rain" effect when you add funds to your account!</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Download Section -->
+  <section class="download">
+    <div class="download-content">
+      <h2 class="download-title">Ready to Take Control?</h2>
+      <p class="download-subtitle">
+        Join thousands of users who have simplified their financial tracking with BalanceTrackr.
+      </p>
+      <a href="https://apps.apple.com/us/app/regnskapp/id6743946348" target="_blank" class="download-badge">
+        <img src="images/black.svg" alt="Download on the App Store" style="width: 140px; height: auto;" />
       </a>
-      <div class="cta-group">
-        <a href="SiriShortcutsSetup/en.html">Apple Pay & Shortcuts</a>
-        <a href="privacy-policy/en.html">Privacy Policy</a>
-        <a href="support/en.html">Support</a>
+    </div>
+  </section>
+
+  <!-- Reviews Section -->
+  <section class="reviews">
+    <div class="section-header">
+      <h2 class="section-title">What People Are Saying</h2>
+      <p class="section-description">
+        Real feedback from users who have transformed their financial habits.
+      </p>
+    </div>
+
+    <div class="reviews-grid">
+      <div class="review-card">
+        <p class="review-quote">
+          "BalanceTrackr proves that ad-free apps can revolutionize budget management. Clean, private, and incredibly effective."
+        </p>
+        <div class="review-author">KrispiTech Review</div>
+        <div class="review-source">Featured Review</div>
       </div>
-    </section>
 
-    <section class="carousel-modern">
-      <div class="carousel-track" id="carousel1">
-        <img src="images/en/1.png" alt="App screenshot 1"/>
-        <img src="images/en/2.png" alt="App screenshot 2"/>
-        <img src="images/en/3.png" alt="App screenshot 3"/>
-        <img src="images/en/4.png" alt="App screenshot 4"/>
+      <div class="review-card">
+        <p class="review-quote">
+          "Finally, a budgeting app that respects my privacy while giving me exactly what I need to manage my money."
+        </p>
+        <div class="review-author">Sarah M.</div>
+        <div class="review-source">App Store Review</div>
       </div>
-      <div class="carousel-dots" id="carousel1-dots"></div>
-    </section>
 
-    <section class="features-list" aria-labelledby="features-heading">
-      <div style="text-align:left;width:100%;margin-bottom:.9em;font-size:1.15em;font-weight:600;color:var(--primary-dark);" id="features-heading">
-        📲 <strong>Features you'll love:</strong>
+      <div class="review-card">
+        <p class="review-quote">
+          "The Siri integration is a game-changer. Adding expenses hands-free has never been easier."
+        </p>
+        <div class="review-author">Mike Chen</div>
+        <div class="review-source">App Store Review</div>
       </div>
-      <ul>
-        <li>Add as many accounts as you want – personal, shared, or side projects</li>
-        <li>Log salary, expenses, and transfers with just a few taps</li>
-        <li>Track your balance over time with clear line graphs</li>
-        <li>See how many days are left until your next paycheck</li>
-        <li>Watch your balance update in real time</li>
-        <li>Clean, ad-free design – focused on <em>you and your money</em></li>
-      </ul>
-    </section>
+    </div>
+  </section>
 
-    <section class="carousel-modern">
-      <div class="carousel-track" id="carousel2">
-        <img src="images/en/5.png" alt="App screenshot 5"/>
-        <img src="images/en/6.png" alt="App screenshot 6"/>
-        <img src="images/en/7.png" alt="App screenshot 7"/>
-        <img src="images/en/8.png" alt="App screenshot 8"/>
+  <!-- Social Section -->
+  <section class="social">
+    <a href="https://www.instagram.com/balancetrackr/" target="_blank" rel="noopener noreferrer" class="social-link">
+      <img src="images/Instagram_logo_2016.svg.webp" alt="Instagram" style="width: 24px; height: 24px;">
+      Follow @BalanceTrackr
+    </a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <p>&copy; 2025 BalanceTrackr (RegnskApp) - Ole Morten Tengesdal. All rights reserved.</p>
+      <div style="margin-top: 1rem;">
+        <a href="privacy-policy/en.html" style="color: var(--text-secondary); text-decoration: none; margin: 0 1rem;">Privacy</a>
+        <a href="support/en.html" style="color: var(--text-secondary); text-decoration: none; margin: 0 1rem;">Support</a>
+        <a href="SiriShortcutsSetup/en.html" style="color: var(--text-secondary); text-decoration: none; margin: 0 1rem;">Shortcuts</a>
       </div>
-      <div class="carousel-dots" id="carousel2-dots"></div>
-    </section>
-
-    <section style="width:100%;max-width:600px;margin:2.5rem auto 0 auto;text-align:center;font-size:1.13em;line-height:1.66;color:#2c6531;">
-      This is the app for anyone who wants <strong>simple and total control without extra noise</strong>.<br>
-      You stay in charge – with flexible accounts, manual entries, and a balance that updates as you go.<br>
-      And yes, if you like a bit of fun: <strong>It even makes it rain money! 💸</strong>
-    </section>
-
-    <video class="fun-video" autoplay muted playsinline loop>
-      <source src="images/LadetRegneiMovie.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-
-    <section class="card-highlight">
-      <h2>📰 Featured on KrispiTech</h2>
-      <blockquote>“BalanceTrackr proves that ad-free apps can revolutionize budget management.”</blockquote>
-      <a href="https://krispitech.com/why-ad-free-apps-like-balancetrackr-are-revolutionizing-budget-management/"
-         target="_blank"
-         rel="noopener noreferrer"
-         class="button">
-        Read the full review
-      </a>
-    </section>
-    <section class="card-social">
-      <img src="images/Instagram_logo_2016.svg.webp" alt="Instagram" style="width:32px;height:32px;">
-      <a href="https://www.instagram.com/balancetrackr/" 
-         target="_blank" 
-         rel="noopener noreferrer"
-         style="color:var(--primary);font-weight:700;text-decoration:none;">
-        Follow BalanceTrackr on Instagram
-      </a>
-    </section>
-  </main>
-  <footer>
-    &copy; 2025 BalanceTrackr (RegnskApp) – Ole Morten Tengesdal. All rights reserved.
+    </div>
   </footer>
+
   <script>
-    // Language dropdown
-    const allLangs = [
-      {code:"en", name:"English", flag:"gb"}, {code:"no", name:"Norsk", flag:"no"},{code:"da", name:"Dansk", flag:"da"},
-      {code:"sv", name:"Svenska", flag:"sv"},{code:"de", name:"Deutsch", flag:"de"},{code:"fr", name:"Français", flag:"fr"},
-      {code:"es", name:"Español", flag:"es"},{code:"ar", name:"العربية", flag:"ar"},{code:"fi", name:"Suomi", flag:"fi"},
-      {code:"hi", name:"हिन्दी", flag:"hi"},{code:"it", name:"Italiano", flag:"it"},{code:"ja", name:"日本語", flag:"ja"},
-      {code:"nl", name:"Nederlands", flag:"nl"},{code:"uk", name:"Українська", flag:"uk"},
-      {code:"zhHans", name:"简体中文", flag:"zhHans"},{code:"zhHant", name:"繁體中文", flag:"zhHant"}
-    ];
-    function getLangFromUrl() {
-      let f = window.location.pathname.split("/").pop();
-      let match = f.match(/^index(?:-([^.]+))?\.html$/);
-      if (match && match[1]) return match[1];
-      return "en";
+    let currentLang = 'en'; // can be set dynamically later
+
+    function toggleLanguageMenu() {
+      const menu = document.getElementById("language-menu");
+      menu.classList.toggle("show");
     }
-    function setFlag(lang) {
-      const flag = allLangs.find(l => l.code === lang)?.flag ?? "gb";
-      document.getElementById("current-flag").src = `images/${lang}/${flag}.svg`;
-    }
-    function buildLangDropdown() {
-      const ul = document.getElementById('lang-dropdown');
-      ul.innerHTML = "";
-      allLangs.forEach(l => {
-        let btn = document.createElement("button");
-        btn.innerHTML = `<img src="images/${l.code}/${l.flag}.svg" style="width:19px;height:15px;border-radius:3px;vertical-align:-3px" alt="${l.name}"/> ${l.name}`;
-        btn.onclick = () => changeLanguage(l.code);
-        ul.appendChild(btn);
-      });
-    }
+
     function changeLanguage(langCode) {
-      const file = (langCode === "en") ? "index.html" : `index-${langCode}.html`;
+      const flagPath = `images/${langCode}/${langCode === 'en' ? 'gb' : langCode}.svg`;
+      document.getElementById("current-flag").src = flagPath;
+
+      const langTexts = {
+        'en': 'EN', 'no': 'NO', 'da': 'DA', 'sv': 'SV', 'de': 'DE',
+        'fr': 'FR', 'es': 'ES', 'ar': 'AR', 'fi': 'FI', 'hi': 'HI',
+        'it': 'IT', 'ja': 'JA', 'nl': 'NL', 'uk': 'UK', 'zhHans': 'CN', 'zhHant': 'TW'
+      };
+      document.getElementById("current-lang-text").textContent = langTexts[langCode] || 'EN';
+
+      const file = langCode === 'en' ? 'index.html' : `index-${langCode}.html`;
       window.location.href = file;
     }
-    (function(){
-      let activeLang = getLangFromUrl();
-      setFlag(activeLang);
-      buildLangDropdown();
-    })();
-    // Open/close lang menu
-    const langSwitcher = document.getElementById('lang-switcher');
-    const langDropdown = document.getElementById('lang-dropdown');
-    langSwitcher.addEventListener('click', e => {
-      langDropdown.classList.toggle('open');
-      e.stopPropagation();
-    });
+
+    // Determine which language is active based on URL
+    function setInitialFlag() {
+      const filename = window.location.pathname.split('/').pop();
+      // Allowed language codes (matches the menu options)
+      const langCodes = ['en','no','da','sv','de','fr','es','ar','fi','hi','it','ja','nl','uk','zhHans','zhHant'];
+      let langCode = 'en'; // fallback
+
+      // match index.html or index-<code>.html
+      const m = filename.match(/^index(?:-([^.]+))?\.html$/);
+      if (m && m[1] && langCodes.includes(m[1])) {
+        langCode = m[1];
+      } else {
+        // fallback to 'en' if unknown or no match
+        langCode = 'en';
+      }
+
+      const flagPath = `images/${langCode}/${langCode === 'en' ? 'gb' : langCode}.svg`;
+      const img = document.getElementById("current-flag");
+      if (img) img.src = flagPath;
+
+      const langTexts = {
+        'en': 'EN', 'no': 'NO', 'da': 'DA', 'sv': 'SV', 'de': 'DE',
+        'fr': 'FR', 'es': 'ES', 'ar': 'AR', 'fi': 'FI', 'hi': 'HI',
+        'it': 'IT', 'ja': 'JA', 'nl': 'NL', 'uk': 'UK', 'zhHans': 'CN', 'zhHant': 'TW'
+      };
+      document.getElementById("current-lang-text").textContent = langTexts[langCode] || 'EN';
+    }
+
+    setInitialFlag(); // call the function on load
+
+    // Close menu when clicking outside
     document.addEventListener("click", function (event) {
-      langDropdown.classList.remove("open");
+      const switcher = document.getElementById("language-switcher");
+      if (!switcher.contains(event.target)) {
+        document.getElementById("language-menu").classList.remove("show");
+      }
     });
 
-    // Modern carousel with dots (minimal JS, touch-friendly)
-    function setupCarousel(trackId, dotsId) {
-      const track = document.getElementById(trackId);
-      const dotsCont = document.getElementById(dotsId);
-      const imgs = track.querySelectorAll("img");
-      let index = 0;
-      function goto(idx, smooth = true) {
-        index = idx;
-        const img = imgs[idx];
-        const left = img.offsetLeft - track.offsetLeft;
-        track.scrollTo({left:left - 20, behavior:smooth?'smooth':'auto'});
+    // Enhanced carousel functionality
+    function setupCarousel(carouselNumber) {
+      const carousel = document.querySelector(`.carousel-${carouselNumber}`);
+      const dotsContainer = document.querySelector(`.carousel-dots-${carouselNumber}`);
+      const images = carousel.querySelectorAll('img');
+      let dots = [];
+      let autoplayInterval;
+      let resumeTimeout;
+      let currentIndex = 0;
+
+      function createDots() {
+        dotsContainer.innerHTML = '';
+        dots = [];
+
+        const isDesktop = window.innerWidth >= 768;
+        const dotsCount = isDesktop ? 3 : images.length;
+
+        for (let i = 0; i < dotsCount; i++) {
+          const dot = document.createElement('span');
+          dot.className = 'dot';
+          dot.addEventListener('click', () => {
+            if (isDesktop) {
+              // Map dots for desktop: 1 -> image 0, 2 -> image 2, 3 -> image 4 (for 5 images)
+              const desktopIndexes = [0, 2, 4];
+              scrollToImage(desktopIndexes[i]);
+            } else {
+              scrollToImage(i);
+            }
+            restartAutoplayWithDelay();
+          });
+          dotsContainer.appendChild(dot);
+          dots.push(dot);
+        }
+
         updateDots();
       }
+
       function updateDots() {
-        dotsCont.querySelectorAll(".dot").forEach((dot, i) => {
-          dot.classList.toggle("active", i === index);
+        const scrollLeft = carousel.scrollLeft;
+        const carouselWidth = carousel.offsetWidth;
+        const totalWidth = carousel.scrollWidth;
+
+        let closestIndex = 0;
+        let closestDistance = Infinity;
+
+        images.forEach((img, index) => {
+          const imgLeft = img.offsetLeft - carousel.offsetLeft;
+          const imgCenter = imgLeft + (img.offsetWidth / 2);
+          const viewportCenter = scrollLeft + (carouselWidth / 2);
+          const distance = Math.abs(viewportCenter - imgCenter);
+          if (distance < closestDistance) {
+            closestDistance = distance;
+            closestIndex = index;
+          }
         });
+
+        const isDesktop = window.innerWidth >= 768;
+        let activeDotIndex;
+
+        if (isDesktop) {
+          // Determine which dot should be active based on closest image
+          if (closestIndex <= 1) activeDotIndex = 0;
+          else if (closestIndex >= 3) activeDotIndex = 2;
+          else activeDotIndex = 1;
+        } else {
+          activeDotIndex = closestIndex;
+        }
+
+        dots.forEach(dot => dot.classList.remove('active'));
+        if (dots[activeDotIndex]) dots[activeDotIndex].classList.add('active');
+        currentIndex = closestIndex;
       }
-      // Create dots
-      imgs.forEach((img, i) => {
-        const dot = document.createElement("span");
-        dot.className = "dot";
-        dot.setAttribute('tabindex', '0');
-        dot.onclick = () => goto(i);
-        dotsCont.appendChild(dot);
-      });
-      goto(0, false);
-      let lastScroll = 0;
-      // Listen to scroll for dot update
-      track.addEventListener("scroll", () => {
-        let minDist = Number.POSITIVE_INFINITY, best = 0;
-        imgs.forEach((img, i) => {
-          let dist = Math.abs(track.scrollLeft - (img.offsetLeft - track.offsetLeft));
-          if (dist < minDist) { minDist = dist; best = i;}
+
+      function scrollToImage(index) {
+        const targetIndex = (index + images.length) % images.length;
+        const targetImage = images[targetIndex];
+        const imgLeft = targetImage.offsetLeft - carousel.offsetLeft;
+        const imgCenter = imgLeft + (targetImage.offsetWidth / 2);
+        const carouselCenter = carousel.offsetWidth / 2;
+        const scrollTo = imgCenter - carouselCenter;
+
+        carousel.scrollTo({
+          left: scrollTo,
+          behavior: 'smooth'
         });
-        if (best !== index) {index=best;updateDots();}
+
+        currentIndex = targetIndex;
+        updateDots();
+      }
+
+      function startAutoplay() {
+        const isDesktop = window.innerWidth >= 768;
+        const interval = isDesktop ? 4000 : 3000;
+        stopAutoplay();
+
+        let desktopIndexes = [0, 2, 4]; // For 5 images
+        // For desktop: start with dot 1 (image 0)
+        let currentDot = isDesktop ? desktopIndexes.indexOf(currentIndex) : currentIndex;
+
+        autoplayInterval = setInterval(() => {
+          if (isDesktop) {
+            currentDot = (currentDot + 1) % desktopIndexes.length;
+            const nextIndex = desktopIndexes[currentDot];
+            scrollToImage(nextIndex);
+          } else {
+            scrollToImage((currentIndex + 1) % images.length);
+          }
+        }, interval);
+      }
+
+      function stopAutoplay() {
+        clearInterval(autoplayInterval);
+      }
+
+      function restartAutoplayWithDelay() {
+        stopAutoplay();
+        clearTimeout(resumeTimeout);
+        resumeTimeout = setTimeout(startAutoplay, 3500);
+      }
+
+      carousel.addEventListener('scroll', () => {
+        if (!carousel.scrollTimeout) {
+          carousel.scrollTimeout = setTimeout(() => {
+            updateDots();
+            carousel.scrollTimeout = null;
+          }, 100);
+        }
       });
-      // Optional: autoplay
-      let autoActive = true;
-      function startAuto() {
-        if (!autoActive) return;
+
+      carousel.addEventListener('touchstart', stopAutoplay);
+      carousel.addEventListener('touchend', restartAutoplayWithDelay);
+      carousel.addEventListener('mousedown', stopAutoplay);
+      carousel.addEventListener('mouseup', restartAutoplayWithDelay);
+
+      function initialize() {
+        createDots();
+        scrollToImage(0); // Start on first image
         setTimeout(() => {
-          if(!autoActive) return;
-          goto((index+1)%imgs.length, true);
-          startAuto();
-        }, 3700);
+          const isDesktop = window.innerWidth >= 768;
+          if (!isDesktop) {
+            startAutoplay();
+          }
+        }, 300);
       }
-      track.addEventListener('mouseenter', () => {autoActive=false;});
-      track.addEventListener('mouseleave', () => {autoActive=true;startAuto();});
-      setTimeout(startAuto, 4700);
+
+      window.addEventListener('resize', () => {
+        createDots();
+        updateDots();
+        const isDesktop = window.innerWidth >= 768;
+        if (!isDesktop) {
+          restartAutoplayWithDelay(); // Only on mobile
+        } else {
+          stopAutoplay(); // Ensure desktop doesn't get autoplay
+        }
+      });
+
+      window.addEventListener('load', initialize);
+      if (document.readyState === 'complete') {
+        initialize();
+      }
+
+      return { updateDots, startAutoplay, scrollToImage };
     }
-    setupCarousel("carousel1", "carousel1-dots");
-    setupCarousel("carousel2", "carousel2-dots");
+
+    document.addEventListener('DOMContentLoaded', () => {
+      setupCarousel(1);
+      setupCarousel(2);
+    });
+
+    // Enhanced menu toggle
+    const toggleButton = document.getElementById('menu-toggle');
+    const dropdown = document.getElementById('menu-dropdown');
+
+    toggleButton.addEventListener('click', () => {
+      dropdown.classList.toggle('show');
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (event) => {
+      if (!document.getElementById('hamburger-menu').contains(event.target)) {
+        dropdown.classList.remove('show');
+      }
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Intersection Observer for animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in-up');
+        }
+      });
+    }, observerOptions);
+
+    // Observe all feature cards and review cards
+    document.querySelectorAll('.feature-card, .review-card').forEach(card => {
+      observer.observe(card);
+    });
   </script>
 </body>
 </html>
