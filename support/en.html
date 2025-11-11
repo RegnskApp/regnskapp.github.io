@@ -475,9 +475,9 @@
       <div id="hamburger-menu">
         <button id="menu-toggle" aria-label="Open menu"><span></span></button>
         <div id="menu-dropdown">
-          <a href="index.html">Home</a>
-          <a href="SiriShortcutsSetup/en.html">Apple Pay & Shortcuts</a>
-          <a href="privacy-policy/en.html">Privacy Policy</a>
+          <a href="../index.html">Home</a>
+          <a href="../SiriShortcutsSetup/en.html">Apple Pay & Shortcuts</a>
+          <a href="../privacy-policy/en.html">Privacy Policy</a>
         </div>
       </div>
     </div>
@@ -639,7 +639,7 @@
   <h2>Feedback</h2>
   <p>I welcome your feedback and suggestions for improving the app. Please use the feedback option in the app's settings or contact us directly via email.</p>
 
-    <a href="index.html" class="back-btn">← Back to Home</a>
+    <a href="../index.html" class="back-btn">← Back to Home</a>
   </div>
 
   <footer>
@@ -658,9 +658,9 @@
       document.getElementById('language-menu').classList.remove('show');
 
       // Navigate to the appropriate support page
-      const file = langCode === 'en' ? 'support/en.html' :
-                   `support/${langCode}.html`;
-      window.location.href = file;
+      const file = langCode === 'en' ? 'en.html' :
+                   `${langCode}.html`;
+      window.location.href = `support/${file}`;
     }
 
     // Hamburger Menu Functions
