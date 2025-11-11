@@ -1516,15 +1516,18 @@
     const modalImage = document.getElementById('modal-image');
     const modalClose = document.querySelector('.modal-close');
 
-    // Add click event to all carousel images
+    // Add click event to all carousel images (desktop only)
     document.querySelectorAll('.carousel img').forEach(img => {
-      img.style.cursor = 'pointer';
-      img.addEventListener('click', function() {
-        modal.style.display = 'block';
-        modalImage.src = this.src;
-        modalImage.alt = this.alt;
-        document.body.style.overflow = 'hidden'; // Prevent background scrolling
-      });
+      // Only enable modal on desktop screens (>= 768px)
+      if (window.innerWidth >= 768) {
+        img.style.cursor = 'pointer';
+        img.addEventListener('click', function() {
+          modal.style.display = 'block';
+          modalImage.src = this.src;
+          modalImage.alt = this.alt;
+          document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        });
+      }
     });
 
     // Close modal when clicking the close button
