@@ -965,7 +965,7 @@
     </button>
     <div id="language-menu">
           <button onclick="changeLanguage('en')">
-            <img src="images/it/gb.svg" width="20" alt="English" /> English
+            <img src="images/en/gb.svg" width="20" alt="English" /> English
           </button>
       <button onclick="changeLanguage('no')">
         <img src="images/no/no.svg" width="20" alt="Norsk" /> Norsk
@@ -1019,7 +1019,7 @@
   <div id="hamburger-menu">
         <button id="menu-toggle" aria-label="Open menu"><span></span></button>
     <div id="menu-dropdown">
-          <a href="SiriShortcutsSetup/en.html">Apple Pay Apple Pay & Shortcuts Shortcuts</a>
+          <a href="SiriShortcutsSetup/en.html">Apple Pay & Shortcuts</a>
       <a href="privacy-policy/en.html">Informativa sulla Privacy</a>
       <a href="support/en.html">Supportooo</a>
     </div>
@@ -1311,7 +1311,7 @@
       };
       document.getElementById("current-lang-text").textContent = langTexts[langCode] || 'EN';
   
-      const file = langCode === 'en' ? 'index-it.html' : `index-${langCode}.html`;
+      const file = langCode === 'en' ? 'index.html' : `index-${langCode}.html`;
       window.location.href = file;
     }
   
