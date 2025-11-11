@@ -153,11 +153,23 @@
       font-weight: 500;
     }
 
+    #current-lang-text {
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
     #active-language:hover {
       background: var(--bg-tertiary);
       border-color: var(--primary-color);
       transform: translateY(-1px);
       box-shadow: var(--shadow-md);
+    }
+
+    #current-flag {
+      width: 20px;
+      height: 15px;
+      border-radius: 2px;
+      object-fit: cover;
     }
 
     #language-menu {
@@ -215,28 +227,6 @@
       display: flex;
       align-items: center;
       gap: 0.5rem;
-    }
-
-    #language-menu button img,
-    #active-language img {
-      width: 20px;
-      height: 15px;
-      object-fit: cover;
-      border-radius: 2px;
-      background: var(--bg-secondary);
-      border: 1px solid var(--border-color);
-    }
-
-    /* Fallback for broken flag images */
-    #language-menu button img[src=""],
-    #active-language img[src=""] {
-      display: none;
-    }
-
-    #language-menu button:has(img[src=""])::before,
-    #active-language:has(img[src=""])::before {
-      content: "🏳️";
-      font-size: 16px;
     }
 
     #language-menu button:hover {
@@ -448,7 +438,7 @@
       <!-- 🌍 Language Switcher -->
       <div id="language-switcher">
         <button id="active-language" onclick="toggleLanguageMenu()" aria-label="Select language">
-          <img id="current-flag" src="images/en/gb.svg" alt="English" />
+          <img id="current-flag" src="" alt="Selected language" />
           <span id="current-lang-text">EN</span>
         </button>
         <div id="language-menu">
@@ -679,20 +669,57 @@
   </footer>
 
   <script>
-    // Language Switcher Functions
     function toggleLanguageMenu() {
-      const menu = document.getElementById('language-menu');
-      menu.classList.toggle('show');
+      const menu = document.getElementById("language-menu");
+      menu.classList.toggle("show");
     }
 
     function changeLanguage(langCode) {
-      // Close the menu
-      document.getElementById('language-menu').classList.remove('show');
+      const flagPath = `images/${langCode}/${langCode === 'en' ? 'gb' : langCode}.svg`;
+      document.getElementById("current-flag").src = flagPath;
+
+      const langTexts = {
+        'en': 'EN', 'no': 'NO', 'da': 'DA', 'sv': 'SV', 'de': 'DE',
+        'fr': 'FR', 'es': 'ES', 'ar': 'AR', 'fi': 'FI', 'hi': 'HI',
+        'it': 'IT', 'ja': 'JA', 'nl': 'NL', 'uk': 'UK', 'zhHans': 'CN', 'zhHant': 'TW'
+      };
+      document.getElementById("current-lang-text").textContent = langTexts[langCode] || 'EN';
 
       // Navigate to the appropriate support page
       const file = langCode === 'en' ? 'en.html' : `${langCode}.html`;
-      window.location.href = `${file}`;
+      window.location.href = file;
     }
+
+    // Determine which language is active based on URL
+    function setInitialFlag() {
+      const filename = window.location.pathname.split('/').pop();
+      // Allowed language codes (matches the menu options)
+      const langCodes = ['en','no','da','sv','de','fr','es','ar','fi','hi','it','ja','nl','uk','zhHans','zhHant'];
+
+      // Default to English if no match
+      let currentLang = 'en';
+
+      // Check if filename matches a language code
+      for (const lang of langCodes) {
+        if (filename === (lang === 'en' ? 'en.html' : `${lang}.html`)) {
+          currentLang = lang;
+          break;
+        }
+      }
+
+      const flagPath = `images/${currentLang}/${currentLang === 'en' ? 'gb' : currentLang}.svg`;
+      const img = document.getElementById("current-flag");
+      if (img) img.src = flagPath;
+
+      const langTexts = {
+        'en': 'EN', 'no': 'NO', 'da': 'DA', 'sv': 'SV', 'de': 'DE',
+        'fr': 'FR', 'es': 'ES', 'ar': 'AR', 'fi': 'FI', 'hi': 'HI',
+        'it': 'IT', 'ja': 'JA', 'nl': 'NL', 'uk': 'UK', 'zhHans': 'CN', 'zhHant': 'TW'
+      };
+      document.getElementById("current-lang-text").textContent = langTexts[currentLang] || 'EN';
+    }
+
+    setInitialFlag(); // call the function on load
 
     // Hamburger Menu Functions
     const toggleButton = document.getElementById('menu-toggle');
@@ -703,7 +730,12 @@
     });
 
     // Close menu when clicking outside
-    document.addEventListener('click', (event) => {
+    document.addEventListener("click", function (event) {
+      const switcher = document.getElementById("language-switcher");
+      if (!switcher.contains(event.target)) {
+        document.getElementById("language-menu").classList.remove("show");
+      }
+
       if (!document.getElementById('hamburger-menu').contains(event.target)) {
         dropdown.classList.remove('show');
       }
