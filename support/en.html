@@ -358,13 +358,32 @@
       margin-top: 1.25rem;
     }
 
-    .content ul {
+    .content ul, .content ol {
       padding-left: 1.5rem;
       margin-bottom: 1rem;
     }
 
     .content li {
       margin-bottom: 0.5rem;
+    }
+
+    .content ol {
+      counter-reset: step-counter;
+    }
+
+    .content ol li {
+      counter-increment: step-counter;
+      position: relative;
+      padding-left: 0.5rem;
+    }
+
+    .content ol li::before {
+      content: counter(step-counter) ".";
+      position: absolute;
+      left: -2rem;
+      top: 0;
+      font-weight: 600;
+      color: var(--primary-color);
     }
 
     .content a {
@@ -398,14 +417,16 @@
       box-shadow: var(--shadow-lg);
     }
 
-    footer {
-      background: var(--bg-secondary);
-      text-align: center;
+    .footer {
       padding: 2rem;
-      margin-top: 4rem;
+      background: var(--bg-tertiary);
+      text-align: center;
       border-top: 1px solid var(--border-color);
-      font-size: 0.9rem;
-      color: var(--text-secondary);
+    }
+
+    .footer-content {
+      max-width: 800px;
+      margin: 0 auto;
     }
 
     /* Mobile Responsive */
@@ -664,8 +685,16 @@
     <a href="../index.html" class="back-btn">← Back to Home</a>
   </div>
 
-  <footer>
-    &copy; 2025 BalanceTrackr (RegnskApp) - Ole Morten Tengesdal. All rights reserved.
+  <footer class="footer">
+    <div class="footer-content">
+      <p>&copy; 2025 BalanceTrackr (RegnskApp).<br>
+      Ole Morten Tengesdal. All rights reserved.</p>
+      <div style="margin-top: 1rem;">
+        <a href="../privacy-policy/en.html" style="color: var(--text-secondary); text-decoration: none; margin: 0 1rem;">Privacy Policy</a>
+        <a href="../support/en.html" style="color: var(--text-secondary); text-decoration: none; margin: 0 1rem;">Support</a>
+        <a href="../SiriShortcutsSetup/en.html" style="color: var(--text-secondary); text-decoration: none; margin: 0 1rem;">Apple Pay & Shortcuts</a>
+      </div>
+    </div>
   </footer>
 
   <script>
