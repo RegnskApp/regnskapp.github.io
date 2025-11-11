@@ -217,6 +217,28 @@
       gap: 0.5rem;
     }
 
+    #language-menu button img,
+    #active-language img {
+      width: 20px;
+      height: 15px;
+      object-fit: cover;
+      border-radius: 2px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+    }
+
+    /* Fallback for broken flag images */
+    #language-menu button img[src=""],
+    #active-language img[src=""] {
+      display: none;
+    }
+
+    #language-menu button:has(img[src=""])::before,
+    #active-language:has(img[src=""])::before {
+      content: "🏳️";
+      font-size: 16px;
+    }
+
     #language-menu button:hover {
       background: var(--bg-secondary);
       border-color: var(--primary-color);
@@ -298,18 +320,27 @@
     #menu-dropdown a {
       display: block;
       padding: 0.75rem 1rem;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
       color: var(--text-primary);
       text-decoration: none;
       font-weight: 500;
       border-radius: var(--radius-md);
       transition: all var(--transition-fast);
       margin-bottom: 0.25rem;
+      box-shadow: var(--shadow-sm);
     }
 
     #menu-dropdown a:hover {
       background: var(--bg-secondary);
+      border-color: var(--primary-color);
       transform: translateY(-1px);
       box-shadow: var(--shadow-md);
+    }
+
+    #menu-dropdown a:active {
+      transform: translateY(0);
+      box-shadow: var(--shadow-sm);
     }
 
     /* Content Styles */
@@ -360,7 +391,7 @@
     .back-btn {
       display: inline-block;
       background: var(--primary-color);
-      color: white;
+      color: white !important;
       padding: 0.75rem 1.5rem;
       border-radius: var(--radius-md);
       text-decoration: none;
@@ -368,6 +399,7 @@
       transition: all var(--transition-fast);
       margin-top: 2rem;
       box-shadow: var(--shadow-md);
+      border: 2px solid var(--primary-color);
     }
 
     .back-btn:hover {
