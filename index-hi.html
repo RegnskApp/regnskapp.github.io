@@ -965,7 +965,7 @@
     </button>
     <div id="language-menu">
           <button onclick="changeLanguage('en')">
-            <img src="images/hi/gb.svg" width="20" alt="English" /> English
+            <img src="images/en/gb.svg" width="20" alt="English" /> English
           </button>
       <button onclick="changeLanguage('no')">
         <img src="images/no/no.svg" width="20" alt="Norsk" /> Norsk
@@ -1019,7 +1019,7 @@
   <div id="hamburger-menu">
         <button id="menu-toggle" aria-label="Open menu"><span></span></button>
     <div id="menu-dropdown">
-          <a href="SiriShortcutsSetup/en.html">Apple Pay Apple Pay & Shortcuts Shortcuts</a>
+          <a href="SiriShortcutsSetup/en.html">Apple Pay & Shortcuts</a>
       <a href="privacy-policy/en.html">गोपनीयता नीति</a>
       <a href="support/en.html">सहायता</a>
     </div>
@@ -1285,7 +1285,7 @@
       <p>&copy; 2025 BalanceTrackr (RegnskApp).<br>
       Ole Morten Tengesdal. सभी अधिकार सुरक्षित।</p>
       <div style="margin-top: 1rem;">
-        <a href="privacy-policy/en.html" style="color: var(--text-secondary); text-decoration: none; margin: 0 1rem;">Privacy</a>
+        <a href="privacy-policy/en.html" style="color: var(--text-secondary); text-decoration: none; margin: 0 1rem;">गोपनीयता नीति</a>
         <a href="support/en.html" style="color: var(--text-secondary); text-decoration: none; margin: 0 1rem;">सहायता</a>
         <a href="SiriShortcutsSetup/en.html" style="color: var(--text-secondary); text-decoration: none; margin: 0 1rem;">Shortcuts</a>
       </div>
@@ -1311,7 +1311,7 @@
       };
       document.getElementById("current-lang-text").textContent = langTexts[langCode] || 'EN';
   
-      const file = langCode === 'en' ? 'index-hi.html' : `index-${langCode}.html`;
+      const file = langCode === 'en' ? 'index.html' : `index-${langCode}.html`;
       window.location.href = file;
     }
   
