@@ -546,9 +546,11 @@
       }
     }
 
-    .carousel img:hover {
-      transform: scale(1.05);
-      box-shadow: var(--shadow-xl);
+    @media (min-width: 768px) {
+      .carousel img:hover {
+        transform: scale(1.05);
+        box-shadow: var(--shadow-xl);
+      }
     }
 
     @media (max-width: 767px) {
@@ -595,7 +597,7 @@
 
     .video-caption {
       margin-top: 2rem;
-      padding: 0.75rem 1rem;
+      padding: 1rem;
       background: var(--bg-primary);
       border-radius: var(--radius-lg);
       box-shadow: var(--shadow-md);
@@ -603,8 +605,9 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      min-height: 2.5rem;
+      min-height: 3rem;
       text-align: center;
+      line-height: 1.4;
     }
 
     /* Download Section */
@@ -623,12 +626,20 @@
       align-items: center;
       justify-content: center;
       text-align: center;
+      gap: 1.5rem;
     }
 
     .download-title {
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
       color: white;
     }
+
+    .download-subtitle {
+      margin-bottom: 1rem;
+      color: rgba(255, 255, 255, 0.9);
+      max-width: 600px;
+    }
+
 
     .download-subtitle {
       margin-bottom: 3rem;
@@ -1550,6 +1561,27 @@
         modal.style.display = 'none';
         document.body.style.overflow = 'auto'; // Restore scrolling
       }
+    });
+
+    // Update modal functionality on window resize
+    window.addEventListener('resize', function() {
+      document.querySelectorAll('.carousel img').forEach(img => {
+        // Remove existing click events
+        img.style.cursor = 'default';
+        img.removeEventListener('click', img._modalClickHandler);
+
+        // Re-enable modal on desktop if needed
+        if (window.innerWidth >= 768) {
+          img.style.cursor = 'pointer';
+          img._modalClickHandler = function() {
+            modal.style.display = 'block';
+            modalImage.src = this.src;
+            modalImage.alt = this.alt;
+            document.body.style.overflow = 'hidden';
+          };
+          img.addEventListener('click', img._modalClickHandler);
+        }
+      });
     });
   </script>
 
