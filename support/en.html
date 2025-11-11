@@ -369,18 +369,20 @@
 
     .content ol {
       counter-reset: step-counter;
+      list-style: none;
+      padding-left: 0;
     }
 
     .content ol li {
       counter-increment: step-counter;
       position: relative;
-      padding-left: 0.5rem;
+      padding-left: 2.5rem;
     }
 
     .content ol li::before {
       content: counter(step-counter) ".";
       position: absolute;
-      left: -2rem;
+      left: 0.5rem;
       top: 0;
       font-weight: 600;
       color: var(--primary-color);
@@ -689,11 +691,6 @@
     <div class="footer-content">
       <p>&copy; 2025 BalanceTrackr (RegnskApp).<br>
       Ole Morten Tengesdal. All rights reserved.</p>
-      <div style="margin-top: 1rem;">
-        <a href="../privacy-policy/en.html" style="color: var(--text-secondary); text-decoration: none; margin: 0 1rem;">Privacy Policy</a>
-        <a href="../support/en.html" style="color: var(--text-secondary); text-decoration: none; margin: 0 1rem;">Support</a>
-        <a href="../SiriShortcutsSetup/en.html" style="color: var(--text-secondary); text-decoration: none; margin: 0 1rem;">Apple Pay & Shortcuts</a>
-      </div>
     </div>
   </footer>
 
