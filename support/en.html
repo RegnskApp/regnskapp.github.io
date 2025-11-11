@@ -657,10 +657,9 @@
       // Close the menu
       document.getElementById('language-menu').classList.remove('show');
 
-      // Navigate to the appropriate support page
-      const file = langCode === 'en' ? 'en.html' :
-                   `${langCode}.html`;
-      window.location.href = `support/${file}`;
+      // Navigate to the appropriate index page (since support pages don't have new design yet)
+      const file = langCode === 'en' ? 'index.html' : `index-${langCode}.html`;
+      window.location.href = `../${file}`;
     }
 
     // Hamburger Menu Functions
