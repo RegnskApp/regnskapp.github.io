@@ -193,16 +193,36 @@
       right: 0;
       margin-top: 0.5rem;
       background: var(--bg-primary);
-      border: 1px solid var(--border-color);
       border-radius: var(--radius-lg);
       box-shadow: var(--shadow-xl);
       padding: 0.5rem;
       min-width: 200px;
+      max-height: 300px;
+      overflow-y: auto;
       opacity: 0;
       visibility: hidden;
       transform: translateY(-10px);
       transition: all var(--transition-normal);
       z-index: 1000;
+    }
+
+    /* Custom scrollbar for language menu */
+    #language-menu::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    #language-menu::-webkit-scrollbar-track {
+      background: var(--bg-secondary);
+      border-radius: 3px;
+    }
+
+    #language-menu::-webkit-scrollbar-thumb {
+      background: var(--border-color);
+      border-radius: 3px;
+    }
+
+    #language-menu::-webkit-scrollbar-thumb:hover {
+      background: var(--text-muted);
     }
 
     #language-menu.show {
@@ -287,7 +307,6 @@
       right: 0;
       margin-top: 0.5rem;
       background: var(--bg-primary);
-      border: 1px solid var(--border-color);
       border-radius: var(--radius-lg);
       box-shadow: var(--shadow-xl);
       padding: 0.5rem;
