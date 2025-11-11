@@ -1523,66 +1523,75 @@
     });
 
     // Image Modal Functionality
-    const modal = document.getElementById('image-modal');
-    const modalImage = document.getElementById('modal-image');
-    const modalClose = document.querySelector('.modal-close');
+    function initImageModal() {
+      const modal = document.getElementById('image-modal');
+      const modalImage = document.getElementById('modal-image');
+      const modalClose = document.querySelector('.modal-close');
 
-    // Add click event to all carousel images (desktop only)
-    document.querySelectorAll('.carousel img').forEach(img => {
-      // Only enable modal on desktop screens (>= 768px)
-      if (window.innerWidth >= 768) {
-        img.style.cursor = 'pointer';
-        img.addEventListener('click', function() {
-          modal.style.display = 'block';
-          modalImage.src = this.src;
-          modalImage.alt = this.alt;
-          document.body.style.overflow = 'hidden'; // Prevent background scrolling
-        });
-      }
-    });
-
-    // Close modal when clicking the close button
-    modalClose.addEventListener('click', function() {
-      modal.style.display = 'none';
-      document.body.style.overflow = 'auto'; // Restore scrolling
-    });
-
-    // Close modal when clicking outside the image
-    modal.addEventListener('click', function(e) {
-      if (e.target === modal) {
-        modal.style.display = 'none';
-        document.body.style.overflow = 'auto'; // Restore scrolling
-      }
-    });
-
-    // Close modal with Escape key
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape' && modal.style.display === 'block') {
-        modal.style.display = 'none';
-        document.body.style.overflow = 'auto'; // Restore scrolling
-      }
-    });
-
-    // Update modal functionality on window resize
-    window.addEventListener('resize', function() {
+      // Add click event to all carousel images (desktop only)
       document.querySelectorAll('.carousel img').forEach(img => {
-        // Remove existing click events
-        img.style.cursor = 'default';
-        img.removeEventListener('click', img._modalClickHandler);
-
-        // Re-enable modal on desktop if needed
+        // Only enable modal on desktop screens (>= 768px)
         if (window.innerWidth >= 768) {
           img.style.cursor = 'pointer';
-          img._modalClickHandler = function() {
+          img.addEventListener('click', function() {
             modal.style.display = 'block';
             modalImage.src = this.src;
             modalImage.alt = this.alt;
-            document.body.style.overflow = 'hidden';
-          };
-          img.addEventListener('click', img._modalClickHandler);
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+          });
         }
       });
-    });
+
+      // Close modal when clicking the close button
+      modalClose.addEventListener('click', function() {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto'; // Restore scrolling
+      });
+
+      // Close modal when clicking outside the image
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+          modal.style.display = 'none';
+          document.body.style.overflow = 'auto'; // Restore scrolling
+        }
+      });
+
+      // Close modal with Escape key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.style.display === 'block') {
+          modal.style.display = 'none';
+          document.body.style.overflow = 'auto'; // Restore scrolling
+        }
+      });
+
+      // Update modal functionality on window resize
+      window.addEventListener('resize', function() {
+        document.querySelectorAll('.carousel img').forEach(img => {
+          // Remove existing click events
+          img.style.cursor = 'default';
+          img.removeEventListener('click', img._modalClickHandler);
+
+          // Re-enable modal on desktop if needed
+          if (window.innerWidth >= 768) {
+            img.style.cursor = 'pointer';
+            img._modalClickHandler = function() {
+              modal.style.display = 'block';
+              modalImage.src = this.src;
+              modalImage.alt = this.alt;
+              document.body.style.overflow = 'hidden';
+            };
+            img.addEventListener('click', img._modalClickHandler);
+          }
+        });
+      });
+    }
+
+    // Initialize modal after DOM is loaded
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initImageModal);
+    } else {
+      initImageModal();
+    }
   </script>
 
   <!-- Image Modal -->
