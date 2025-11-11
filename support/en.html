@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Support – BalanceTrackr</title>
-  <link rel="icon" href="images/RegnskApp-Light-Mode-Icon.jpg" type="image/jpeg" />
+  <link rel="icon" href="../images/RegnskApp-Light-Mode-Icon.jpg" type="image/jpeg" />
 
   <!-- Canonical -->
   <link rel="canonical" href="https://regnskapp.github.io/support/en.html">
@@ -443,52 +443,52 @@
         </button>
         <div id="language-menu">
           <button onclick="changeLanguage('en')">
-            <img src="images/en/gb.svg" width="20" alt="English" /> English
+            <img src="../images/en/gb.svg" width="20" alt="English" /> English
           </button>
           <button onclick="changeLanguage('no')">
-            <img src="images/no/no.svg" width="20" alt="Norsk" /> Norsk
+            <img src="../images/no/no.svg" width="20" alt="Norsk" /> Norsk
           </button>
           <button onclick="changeLanguage('da')">
-            <img src="images/da/da.svg" width="20" alt="Dansk" /> Dansk
+            <img src="../images/da/da.svg" width="20" alt="Dansk" /> Dansk
           </button>
           <button onclick="changeLanguage('sv')">
-            <img src="images/sv/sv.svg" width="20" alt="Svenska" /> Svenska
+            <img src="../images/sv/sv.svg" width="20" alt="Svenska" /> Svenska
           </button>
           <button onclick="changeLanguage('de')">
-            <img src="images/de/de.svg" width="20" alt="Deutsch" /> Deutsch
+            <img src="../images/de/de.svg" width="20" alt="Deutsch" /> Deutsch
           </button>
           <button onclick="changeLanguage('fr')">
-            <img src="images/fr/fr.svg" width="20" alt="Français" /> Français
+            <img src="../images/fr/fr.svg" width="20" alt="Français" /> Français
           </button>
           <button onclick="changeLanguage('es')">
-            <img src="images/es/es.svg" width="20" alt="Español" /> Español
+            <img src="../images/es/es.svg" width="20" alt="Español" /> Español
           </button>
           <button onclick="changeLanguage('it')">
-            <img src="images/it/it.svg" width="20" alt="Italiano" /> Italiano
+            <img src="../images/it/it.svg" width="20" alt="Italiano" /> Italiano
           </button>
           <button onclick="changeLanguage('nl')">
-            <img src="images/nl/nl.svg" width="20" alt="Nederlands" /> Nederlands
+            <img src="../images/nl/nl.svg" width="20" alt="Nederlands" /> Nederlands
           </button>
           <button onclick="changeLanguage('fi')">
-            <img src="images/fi/fi.svg" width="20" alt="Suomi" /> Suomi
+            <img src="../images/fi/fi.svg" width="20" alt="Suomi" /> Suomi
           </button>
           <button onclick="changeLanguage('ar')">
-            <img src="images/ar/ar.svg" width="20" alt="العربية" /> العربية
+            <img src="../images/ar/ar.svg" width="20" alt="العربية" /> العربية
           </button>
           <button onclick="changeLanguage('hi')">
-            <img src="images/hi/hi.svg" width="20" alt="हिन्दी" /> हिन्दी
+            <img src="../images/hi/hi.svg" width="20" alt="हिन्दी" /> हिन्दी
           </button>
           <button onclick="changeLanguage('ja')">
-            <img src="images/ja/ja.svg" width="20" alt="日本語" /> 日本語
+            <img src="../images/ja/ja.svg" width="20" alt="日本語" /> 日本語
           </button>
           <button onclick="changeLanguage('uk')">
-            <img src="images/uk/uk.svg" width="20" alt="Українська" /> Українська
+            <img src="../images/uk/uk.svg" width="20" alt="Українська" /> Українська
           </button>
           <button onclick="changeLanguage('zh-Hans')">
-            <img src="images/zhHans/zhHans.svg" width="20" alt="简体中文" /> 简体中文
+            <img src="../images/zhHans/zhHans.svg" width="20" alt="简体中文" /> 简体中文
           </button>
           <button onclick="changeLanguage('zh-Hant')">
-            <img src="images/zhHant/zhHant.svg" width="20" alt="繁體中文" /> 繁體中文
+            <img src="../images/zhHant/zhHant.svg" width="20" alt="繁體中文" /> 繁體中文
           </button>
         </div>
       </div>
@@ -675,7 +675,7 @@
     }
 
     function changeLanguage(langCode) {
-      const flagPath = `images/${langCode}/${langCode === 'en' ? 'gb' : langCode}.svg`;
+      const flagPath = `../images/${langCode}/${langCode === 'en' ? 'gb' : langCode}.svg`;
       document.getElementById("current-flag").src = flagPath;
 
       const langTexts = {
@@ -707,7 +707,7 @@
         }
       }
 
-      const flagPath = `images/${currentLang}/${currentLang === 'en' ? 'gb' : currentLang}.svg`;
+      const flagPath = `../images/${currentLang}/${currentLang === 'en' ? 'gb' : currentLang}.svg`;
       const img = document.getElementById("current-flag");
       if (img) img.src = flagPath;
 
