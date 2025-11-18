@@ -1,0 +1,168 @@
+  <!-- Main Content -->
+  <div class="content">
+    <h1>Support</h1>
+
+    <h2>Kontaktinformation</h2>
+    <p>For supportforespørgsler, kontakt venligst:</p>
+    <p>📧 Email: <a href="mailto:balancetrackr@gmail.com">balancetrackr@gmail.com</a></p>
+
+    <h2>Funktioner</h2>
+    <h3>Konti</h3>
+    <ul>
+      <li>Administrer flere bankkonti manuelt</li>
+      <li>Understøttelse af delte og personlige konti</li>
+      <li>Realtids-opdatering af saldo</li>
+      <li>Transaktionshistorik</li>
+      <li>Tilpasselige kontoikoner</li>
+      <li>Manuelle saldojusteringer</li>
+    </ul>
+
+    <h3>Lån</h3>
+    <ul>
+      <li>Understøttelse af forskellige lånetyper: realkreditlån, billån, studielån, personlige lån, forbrugslån, kreditkort</li>
+      <li>Detaljerede afdragsplaner</li>
+      <li>Renteberegninger</li>
+      <li>Månedlig betalingssporing</li>
+      <li>Understøttelse af både annuitets- og serielån</li>
+      <li>Automatisk betalingsbehandling</li>
+      <li>Detaljerede lånebetalingsregistre</li>
+      <li>Sporing af tilbagevendende kreditkortbrug</li>
+    </ul>
+
+    <h3>Transaktioner</h3>
+    <ul>
+      <li>Registrer indtægter og udgifter</li>
+      <li>Kategoriser transaktioner</li>
+      <li>Understøttelse af tilbagevendende transaktioner</li>
+      <li>Detaljeret transaktionshistorik</li>
+      <li>Overførsel mellem konti</li>
+      <li>Tilpassede transaktionsdatoer</li>
+      <li>Søg og filtrer transaktioner</li>
+    </ul>
+
+    <h3>Datahåndtering</h3>
+    <ul>
+      <li>Eksporter data til .regnskappdata-filer til sikkerhedskopiering</li>
+      <li>Selektiv dataeksport (vælg hvad du vil inkludere)</li>
+      <li>Importer data fra sikkerhedskopier</li>
+      <li>Valg mellem at erstatte eller sammenflette data ved import</li>
+      <li>Lokal dataopbevaring uden eksterne servere</li>
+    </ul>
+
+    <h3>Yderligere funktioner</h3>
+    <ul>
+      <li>Understøttelse af flere valutaer (NOK, USD, EUR, GBP, SEK, DKK)</li>
+      <li>Fler-sproglig understøttelse</li>
+      <li>Tilpassede kategorier med ikoner</li>
+      <li>Økonomisk oversigt og statistik</li>
+      <li>Tilpasselig lønningsdag</li>
+      <li>Biometrisk autentificering (Face ID/Touch ID)</li>
+      <li>"Lad det regne"-animationsfunktion med tilpasningsmuligheder</li>
+      <li>Vis/skjul ører i beløb</li>
+    </ul>
+
+    <h2>Ofte stillede spørgsmål</h2>
+
+    <h3>Hvordan tilføjer jeg en ny konto?</h3>
+    <ol>
+      <li>Gå til Konti-fanen</li>
+      <li>Tryk på +-knappen</li>
+      <li>Indtast kontodetaljer</li>
+      <li>Gem</li>
+    </ol>
+
+    <h3>Hvordan opretter jeg et lån?</h3>
+    <ol>
+      <li>Gå til Lån-fanen</li>
+      <li>Tryk på +-knappen</li>
+      <li>Vælg lånetype</li>
+      <li>Indtast lånedetaljer</li>
+      <li>Gem</li>
+    </ol>
+
+    <h3>Hvordan opretter jeg en tilbagevendende transaktion?</h3>
+    <ol>
+      <li>Tilføj en ny transaktion</li>
+      <li>Aktivér "Tilbagevendende"-kontakten</li>
+      <li>Indstil frekvensen (ugentlig, månedlig, årlig)</li>
+      <li>Vælg startdato og valgfri slutdato</li>
+      <li>Gem transaktionen</li>
+    </ol>
+
+    <h3>Hvordan eksporterer jeg mine data til sikkerhedskopiering?</h3>
+    <ol>
+      <li>Gå til Indstillinger</li>
+      <li>Vælg "Eksporter og Importer"</li>
+      <li>Vælg "Eksporter"-fanen</li>
+      <li>Vælg hvilke data du vil inkludere</li>
+      <li>Tryk på "Eksporter data"</li>
+      <li>Vælg hvor du vil gemme .regnskappdata-filen</li>
+    </ol>
+
+    <h3>Hvordan importerer jeg data fra en sikkerhedskopi?</h3>
+    <ol>
+      <li>Gå til Indstillinger</li>
+      <li>Vælg "Eksporter og Importer"</li>
+      <li>Vælg "Importer"-fanen</li>
+      <li>Beslut om du vil erstatte eksisterende data</li>
+      <li>Vælg din sikkerhedskopifil</li>
+      <li>Bekræft importen</li>
+    </ol>
+
+    <h3>Hvordan ændrer jeg sprog?</h3>
+    <ol>
+      <li>Gå til Indstillinger</li>
+      <li>Vælg "Sprog"</li>
+      <li>Vælg dit foretrukne sprog</li>
+    </ol>
+
+    <h3>Hvordan aktiverer jeg Face ID/Touch ID?</h3>
+    <ol>
+      <li>Tryk længe på app-ikonet på startskærmen</li>
+      <li>Vælg "Kræv Face ID/Touch ID"</li>
+    </ol>
+
+    <h3>Hvordan ændrer jeg valuta?</h3>
+    <ol>
+      <li>Gå til Indstillinger</li>
+      <li>Tryk på "Valuta"</li>
+      <li>Vælg din foretrukne valuta fra listen</li>
+    </ol>
+
+    <h3>Hvordan indstiller jeg min lønningsdag?</h3>
+    <ol>
+      <li>Gå til Indstillinger</li>
+      <li>Find "Lønningsdag"-indstillingen</li>
+      <li>Vælg din faste lønningsdag (1-31)</li>
+      <li>Systemet justerer automatisk for weekender</li>
+    </ol>
+
+    <h2>Datasikkerhed</h2>
+    <ul>
+      <li>Alle data gemmes lokalt på din enhed ved hjælp af SwiftData</li>
+      <li>Ingen internetforbindelse påkrævet</li>
+      <li>Ingen kontoprettelse nødvendig</li>
+      <li>Understøttelse af Face ID/Touch ID-autentificering</li>
+      <li>Manuel eksport og import giver dig fuld kontrol</li>
+      <li>Dine finansielle data krypteres på enhedsniveau af iOS</li>
+    </ul>
+
+    <h2>Opdateringer</h2>
+    <p>Appen opdateres regelmæssigt med forbedringer og nye funktioner. Sørg for at holde appen opdateret via App Store.</p>
+
+    <h2>Feedback</h2>
+    <p>Jeg byder din feedback og forslag til at forbedre appen velkommen. Brug feedback-muligheden i appens indstillinger eller kontakt os direkte via email.</p>
+
+    <p>
+      <a href="../index.html" class="back-btn">← Tilbage til hjem</a>
+    </p>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <p>&copy; 2025 BalanceTrackr (RegnskApp).<br>
+      Ole Morten Tengesdal. All rights reserved.</p>
+    </div>
+  </footer>

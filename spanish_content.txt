@@ -1,0 +1,168 @@
+  <!-- Main Content -->
+  <div class="content">
+    <h1>Soporte</h1>
+
+    <h2>Información de contacto</h2>
+    <p>Para consultas de soporte, por favor contacta:</p>
+    <p>📧 Email: <a href="mailto:balancetrackr@gmail.com">balancetrackr@gmail.com</a></p>
+
+    <h2>Funciones</h2>
+    <h3>Cuentas</h3>
+    <ul>
+      <li>Administrar múltiples cuentas bancarias manualmente</li>
+      <li>Soporte para cuentas compartidas y personales</li>
+      <li>Actualizaciones de saldo en tiempo real</li>
+      <li>Historial de transacciones</li>
+      <li>Iconos de cuenta personalizables</li>
+      <li>Ajustes manuales de saldo</li>
+    </ul>
+
+    <h3>Préstamos</h3>
+    <ul>
+      <li>Soporte para varios tipos de préstamos: hipotecas, préstamos para automóviles, préstamos estudiantiles, préstamos personales, préstamos al consumo, tarjetas de crédito</li>
+      <li>Planes de pago detallados</li>
+      <li>Cálculos de intereses</li>
+      <li>Seguimiento mensual de pagos</li>
+      <li>Soporte tanto para préstamos de anualidad como seriados</li>
+      <li>Procesamiento automático de pagos</li>
+      <li>Registros detallados de pagos de préstamos</li>
+      <li>Seguimiento de uso recurrente de tarjetas de crédito</li>
+    </ul>
+
+    <h3>Transacciones</h3>
+    <ul>
+      <li>Registrar ingresos y gastos</li>
+      <li>Categorizar transacciones</li>
+      <li>Soporte para transacciones recurrentes</li>
+      <li>Historial detallado de transacciones</li>
+      <li>Transferencias entre cuentas</li>
+      <li>Fechas de transacción personalizables</li>
+      <li>Búsqueda y filtrado de transacciones</li>
+    </ul>
+
+    <h3>Gestión de datos</h3>
+    <ul>
+      <li>Exportar datos a archivos .regnskappdata para respaldo</li>
+      <li>Exportación selectiva de datos (elige qué incluir)</li>
+      <li>Importar datos desde archivos de respaldo</li>
+      <li>Opción de reemplazar o fusionar datos durante la importación</li>
+      <li>Almacenamiento local de datos sin servidores externos</li>
+    </ul>
+
+    <h3>Funciones adicionales</h3>
+    <ul>
+      <li>Soporte para múltiples monedas (NOK, USD, EUR, GBP, SEK, DKK)</li>
+      <li>Soporte multilingüe</li>
+      <li>Categorías personalizadas con iconos</li>
+      <li>Resumen financiero y estadísticas</li>
+      <li>Configuración personalizable del día de pago</li>
+      <li>Autenticación biométrica (Face ID/Touch ID)</li>
+      <li>Función de animación "Haz llover" con opciones personalizables</li>
+      <li>Mostrar/ocultar céntimos en las cantidades</li>
+    </ul>
+
+    <h2>Preguntas frecuentes</h2>
+
+    <h3>¿Cómo agrego una nueva cuenta?</h3>
+    <ol>
+      <li>Ve a la pestaña "Cuentas"</li>
+      <li>Toca el botón +</li>
+      <li>Ingresa los detalles de la cuenta</li>
+      <li>Guardar</li>
+    </ol>
+
+    <h3>¿Cómo configuro un préstamo?</h3>
+    <ol>
+      <li>Ve a la pestaña "Préstamos"</li>
+      <li>Toca el botón +</li>
+      <li>Elije el tipo de préstamo</li>
+      <li>Ingresa los detalles del préstamo</li>
+      <li>Guardar</li>
+    </ol>
+
+    <h3>¿Cómo configuro una transacción recurrente?</h3>
+    <ol>
+      <li>Agrega una nueva transacción</li>
+      <li>Habilita el interruptor "Recurrente"</li>
+      <li>Establece la frecuencia (semanal, mensual, anual)</li>
+      <li>Elije la fecha de inicio y opcional de fin</li>
+      <li>Guarda la transacción</li>
+    </ol>
+
+    <h3>¿Cómo exporto mis datos para respaldo?</h3>
+    <ol>
+      <li>Ve a Configuración</li>
+      <li>Selecciona "Exportar e Importar"</li>
+      <li>Elige la pestaña "Exportar"</li>
+      <li>Selecciona qué datos incluir</li>
+      <li>Toca "Exportar datos"</li>
+      <li>Elige dónde guardar el archivo .regnskappdata</li>
+    </ol>
+
+    <h3>¿Cómo importo datos desde un respaldo?</h3>
+    <ol>
+      <li>Ve a Configuración</li>
+      <li>Selecciona "Exportar e Importar"</li>
+      <li>Elige la pestaña "Importar"</li>
+      <li>Decide si reemplazar los datos existentes</li>
+      <li>Toca para seleccionar tu archivo de respaldo</li>
+      <li>Confirma la importación</li>
+    </ol>
+
+    <h3>¿Cómo cambio el idioma?</h3>
+    <ol>
+      <li>Ve a Configuración</li>
+      <li>Selecciona "Idioma"</li>
+      <li>Elije tu idioma preferido</li>
+    </ol>
+
+    <h3>¿Cómo habilito Face ID/Touch ID?</h3>
+    <ol>
+      <li>Pulsa largo en el icono de la app en la pantalla de inicio</li>
+      <li>Selecciona "Requerir Face ID/Touch ID"</li>
+    </ol>
+
+    <h3>¿Cómo cambio la moneda?</h3>
+    <ol>
+      <li>Ve a Configuración</li>
+      <li>Toca en "Moneda"</li>
+      <li>Selecciona tu moneda preferida de la lista</li>
+    </ol>
+
+    <h3>¿Cómo configuro mi fecha de pago?</h3>
+    <ol>
+      <li>Ve a Configuración</li>
+      <li>Busca la configuración de "Día de pago"</li>
+      <li>Selecciona tu fecha regular de pago (1-31)</li>
+      <li>El sistema se ajustará automáticamente para fines de semana</li>
+    </ol>
+
+    <h2>Seguridad de datos</h2>
+    <ul>
+      <li>Todos los datos se almacenan localmente en tu dispositivo usando SwiftData</li>
+      <li>No se requiere conexión a internet</li>
+      <li>No es necesario crear cuenta</li>
+      <li>Soporte para autenticación Face ID/Touch ID</li>
+      <li>Exportación/importación manual te da control completo</li>
+      <li>Tus datos financieros están encriptados a nivel de dispositivo por iOS</li>
+    </ul>
+
+    <h2>Actualizaciones</h2>
+    <p>La app se actualiza regularmente con mejoras y nuevas funciones. Asegúrate de mantener la app actualizada a través de App Store.</p>
+
+    <h2>Comentarios</h2>
+    <p>Agradezco tus comentarios y sugerencias para mejorar la app. Por favor usa la opción de comentarios en la configuración de la app o contáctanos directamente por email.</p>
+
+    <p>
+      <a href="../index.html" class="back-btn">← Volver al inicio</a>
+    </p>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <p>&copy; 2025 BalanceTrackr (RegnskApp).<br>
+      Ole Morten Tengesdal. All rights reserved.</p>
+    </div>
+  </footer>

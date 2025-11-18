@@ -1,0 +1,168 @@
+  <!-- Main Content -->
+  <div class="content">
+    <h1>Tuki</h1>
+
+    <h2>Yhteystiedot</h2>
+    <p>Tukipyyntöjä varten ota yhteyttä:</p>
+    <p>📧 Sähköposti: <a href="mailto:balancetrackr@gmail.com">balancetrackr@gmail.com</a></p>
+
+    <h2>Ominaisuudet</h2>
+    <h3>Tilit</h3>
+    <ul>
+      <li>Hallinnoi useita pankkitilejä manuaalisesti</li>
+      <li>Tuki yhteisille ja henkilökohtaisille tileille</li>
+      <li>Reaaliaikaiset saldopäivitykset</li>
+      <li>Tapahtumahistoria</li>
+      <li>Muokattavat tilikuvakkeet</li>
+      <li>Manuaaliset saldosoitukset</li>
+    </ul>
+
+    <h3>Lainat</h3>
+    <ul>
+      <li>Tuki erilaisille lainatyypeille: asuntolainat, autolainat, opintolainat, henkilökohtaiset lainat, kulutusluotot, luottokortit</li>
+      <li>Yksityiskohtaiset maksusuunnitelmat</li>
+      <li>Korkolaskelmat</li>
+      <li>Kuukausittainen maksujen seuranta</li>
+      <li>Tuki sekä annuiteetti- että sarjalainoille</li>
+      <li>Automaattinen maksujen käsittely</li>
+      <li>Yksityiskohtaiset lainamaksurekisterit</li>
+      <li>Toistuvan luottokorttikäytön seuranta</li>
+    </ul>
+
+    <h3>Tapahtumat</h3>
+    <ul>
+      <li>Rekisteröi tulot ja menot</li>
+      <li>Luokittele tapahtumat</li>
+      <li>Tuki toistuville tapahtumille</li>
+      <li>Yksityiskohtainen tapahtumahistoria</li>
+      <li>Siirrot tilien välillä</li>
+      <li>Muokattavat tapahtumapäivät</li>
+      <li>Tapahtumien haku ja suodatus</li>
+    </ul>
+
+    <h3>Tietojen hallinta</h3>
+    <ul>
+      <li>Vie tiedot .regnskappdata-tiedostoihin varmuuskopiointia varten</li>
+      <li>Valikoiva tietojen vienti (valitse mitä sisällyttää)</li>
+      <li>Tuo tiedot varmuuskopioista</li>
+      <li>Valinta korvata vai yhdistää tiedot tuotaessa</li>
+      <li>Paikallinen tietojen tallennus ilman ulkoisia palvelimia</li>
+    </ul>
+
+    <h3>Lisäominaisuudet</h3>
+    <ul>
+      <li>Usean valuutan tuki (NOK, USD, EUR, GBP, SEK, DKK)</li>
+      <li>Usean kielen tuki</li>
+      <li>Mukautetut kategoriat kuvakkeilla</li>
+      <li>Talousyhteenveto ja tilastot</li>
+      <li>Muokattava palkkapäiväasetus</li>
+      <li>Biometrinen tunnistautuminen (Face ID/Touch ID)</li>
+      <li>"Sade"-animaatio-ominaisuus muokattavilla vaihtoehdoilla</li>
+      <li>Näytä/piilota sentit summissa</li>
+    </ul>
+
+    <h2>Usein kysytyt kysymykset</h2>
+
+    <h3>Miten lisään uuden tilin?</h3>
+    <ol>
+      <li>Siirry "Tilit"-välilehteen</li>
+      <li>Napauta +-painiketta</li>
+      <li>Syötä tilin tiedot</li>
+      <li>Tallenna</li>
+    </ol>
+
+    <h3>Miten määritän lainan?</h3>
+    <ol>
+      <li>Siirry "Lainat"-välilehteen</li>
+      <li>Napauta +-painiketta</li>
+      <li>Valitse lainatyyppi</li>
+      <li>Syötä lainan tiedot</li>
+      <li>Tallenna</li>
+    </ol>
+
+    <h3>Miten määritän toistuvan tapahtuman?</h3>
+    <ol>
+      <li>Lisää uusi tapahtuma</li>
+      <li>Ota "Toistuva"-kytkin käyttöön</li>
+      <li>Aseta tiheys (viikoittainen, kuukausittainen, vuotuinen)</li>
+      <li>Valitse aloitus- ja valinnainen lopetuspäivä</li>
+      <li>Tallenna tapahtuma</li>
+    </ol>
+
+    <h3>Miten vien tietoni varmuuskopiointia varten?</h3>
+    <ol>
+      <li>Siirry Asetuksiin</li>
+      <li>Valitse "Vie ja tuo"</li>
+      <li>Valitse "Vie"-välilehti</li>
+      <li>Valitse mitä tietoja sisällyttää</li>
+      <li>Napauta "Vie tiedot"</li>
+      <li>Valitse minne tallentaa .regnskappdata-tiedosto</li>
+    </ol>
+
+    <h3>Miten tuon tietoja varmuuskopiosta?</h3>
+    <ol>
+      <li>Siirry Asetuksiin</li>
+      <li>Valitse "Vie ja tuo"</li>
+      <li>Valitse "Tuo"-välilehti</li>
+      <li>Päätä korvataanko olemassa olevat tiedot</li>
+      <li>Napauta valitaksesi varmuuskopiotiedostosi</li>
+      <li>Vahvista tuonti</li>
+    </ol>
+
+    <h3>Miten vaihdan kieltä?</h3>
+    <ol>
+      <li>Siirry Asetuksiin</li>
+      <li>Valitse "Kieli"</li>
+      <li>Valitse haluamasi kieli</li>
+    </ol>
+
+    <h3>Miten otan Face ID/Touch ID:n käyttöön?</h3>
+    <ol>
+      <li>Paina pitkään sovelluskuvaketta aloitusnäytössä</li>
+      <li>Valitse "Vaadi Face ID/Touch ID"</li>
+    </ol>
+
+    <h3>Miten vaihdan valuutan?</h3>
+    <ol>
+      <li>Siirry Asetuksiin</li>
+      <li>Napauta "Valuutta"</li>
+      <li>Valitse haluamasi valuutta luettelosta</li>
+    </ol>
+
+    <h3>Miten asetän palkkapäiväni?</h3>
+    <ol>
+      <li>Siirry Asetuksiin</li>
+      <li>Etsi "Palkkapäivä"-asetus</li>
+      <li>Valitse säännöllinen palkkapäiväsi (1-31)</li>
+      <li>Järjestelmä säätää automaattisesti viikonlopuille</li>
+    </ol>
+
+    <h2>Tietoturva</h2>
+    <ul>
+      <li>Kaikki tiedot tallennetaan paikallisesti laitteellesi SwiftDataa käyttäen</li>
+      <li>Internet-yhteyttä ei vaadita</li>
+      <li>Tilin luomista ei tarvita</li>
+      <li>Face ID/Touch ID -tunnistautumisen tuki</li>
+      <li>Manuaalinen vienti/tuonti antaa sinulle täyden hallinnan</li>
+      <li>Taloustietosi ovat salattuja iOS:n laitetasolla</li>
+    </ul>
+
+    <h2>Päivitykset</h2>
+    <p>Sovellus päivitetään säännöllisesti parannuksilla ja uusilla ominaisuuksilla. Varmista että pidät sovelluksen ajan tasalla App Storen kautta.</p>
+
+    <h2>Palaute</h2>
+    <p>Arvostan palautettasi ja ehdotuksiasi sovelluksen parantamiseksi. Käytä palautteenanto-ominaisuutta sovelluksen asetuksissa tai ota yhteyttä suoraan sähköpostitse.</p>
+
+    <p>
+      <a href="../index.html" class="back-btn">← Takaisin kotiin</a>
+    </p>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <p>&copy; 2025 BalanceTrackr (RegnskApp).<br>
+      Ole Morten Tengesdal. All rights reserved.</p>
+    </div>
+  </footer>
