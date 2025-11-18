@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zhHans">
+<html lang="zh-Hans">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Support – RegnskApp</title>
+  <title>支持 – RegnskApp</title>
   <link rel="icon" href="../images/RegnskApp-Light-Mode-Icon.jpg" type="image/jpeg" />
 
   <!-- Canonical -->
@@ -11,7 +11,7 @@
 
   <!-- Alternate hreflang -->
   <link rel="alternate" hreflang="x-default" href="https://regnskapp.github.io/support/">
-  <link rel="alternate" hreflang="zhHans" href="https://regnskapp.github.io/support/zhHans.html">
+  <link rel="alternate" hreflang="en" href="https://regnskapp.github.io/support/en.html">
   <link rel="alternate" hreflang="no" href="https://regnskapp.github.io/support/no.html">
   <link rel="alternate" hreflang="sv" href="https://regnskapp.github.io/support/sv.html">
   <link rel="alternate" hreflang="da" href="https://regnskapp.github.io/support/da.html">
@@ -157,20 +157,411 @@
       color: var(--text-primary);
       font-weight: 500;
     }
+
+    #active-language:hover {
+      background: var(--bg-tertiary);
+      border-color: var(--primary-color);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+
+    #current-flag {
+      width: 20px;
+      height: 15px;
+      border-radius: 2px;
+      object-fit: cover;
+    }
+
+    #language-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      margin-top: 0.5rem;
+      background: var(--bg-primary);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-xl);
+      padding: 0.5rem;
+      min-width: 200px;
+      max-height: 300px;
+      overflow-y: auto;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all var(--transition-normal);
+      z-index: 1000;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border-color) transparent;
+    }
+
+    #language-menu::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    #language-menu::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    #language-menu::-webkit-scrollbar-thumb {
+      background: var(--border-color);
+      border-radius: 3px;
+    }
+
+    #language-menu.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    #language-menu button {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      color: var(--text-primary);
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    #language-menu button:hover {
+      background: var(--bg-secondary);
+      border-color: var(--primary-color);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-1px);
+    }
+
+    #language-menu button:active {
+      transform: translateY(0);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Hamburger Menu */
+    #hamburger-menu {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    #menu-toggle {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      font-size: 0;
+      padding: 0;
+    }
+
+    #menu-toggle::before,
+    #menu-toggle::after,
+    #menu-toggle span {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: var(--text-primary);
+      margin: 3px 0;
+      transition: all var(--transition-fast);
+      border-radius: 1px;
+    }
+
+    #menu-toggle:hover {
+      background: var(--bg-tertiary);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+
+    #menu-dropdown {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      margin-top: 0.5rem;
+      background: var(--bg-primary);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-xl);
+      padding: 0.5rem;
+      min-width: 235px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all var(--transition-normal);
+      z-index: 1000;
+    }
+
+    #menu-dropdown.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    #menu-dropdown a {
+      display: block;
+      padding: 0.75rem 1rem;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      text-decoration: none;
+      font-weight: 500;
+      border-radius: var(--radius-md);
+      transition: all var(--transition-fast);
+      margin-bottom: 0.25rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    #menu-dropdown a:hover {
+      background: var(--bg-secondary);
+      border-color: var(--primary-color);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+
+    #menu-dropdown a:active {
+      transform: translateY(0);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Content Styles */
+    .content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
+      padding-top: calc(80px + 2rem);
+    }
+
+    .content h1, .content h2, .content h3 {
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+
+    .content h1 {
+      margin-top: 2rem;
+    }
+
+    .content h2 {
+      margin-top: 1.5rem;
+    }
+
+    .content h3 {
+      margin-top: 1.25rem;
+    }
+
+    .content ul, .content ol {
+      padding-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .content li {
+      margin-bottom: 0.5rem;
+    }
+
+    .content ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .content ul li {
+      position: relative;
+      padding-left: 1.5rem;
+    }
+
+    .content ul li::before {
+      content: "•";
+      position: absolute;
+      left: 0.25rem;
+      top: 0;
+      font-weight: 600;
+      color: var(--primary-color);
+      font-size: 1.2em;
+    }
+
+    .content ol {
+      counter-reset: step-counter;
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .content ol li {
+      counter-increment: step-counter;
+      position: relative;
+      padding-left: 2.5rem;
+    }
+
+    .content ol li::before {
+      content: counter(step-counter) ".";
+      position: absolute;
+      left: 0.5rem;
+      top: 0;
+      font-weight: 600;
+      color: var(--primary-color);
+    }
+
+    .content a {
+      color: var(--primary-color);
+      text-decoration: none;
+      transition: color var(--transition-fast);
+    }
+
+    .content a:hover {
+      color: var(--primary-dark);
+      text-decoration: underline;
+    }
+
+    .back-btn {
+      display: inline-block;
+      background: var(--primary-color);
+      color: white !important;
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      font-weight: 600;
+      transition: all var(--transition-fast);
+      margin-top: 2rem;
+      box-shadow: var(--shadow-md);
+      border: 2px solid var(--primary-color);
+    }
+
+    .back-btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .footer {
+      padding: 2rem;
+      background: var(--bg-tertiary);
+      text-align: center;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .footer-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .nav-content {
+        padding: 1rem;
+      }
+
+      .content {
+        padding: 1rem;
+        padding-top: calc(70px + 1rem);
+      }
+
+      #language-menu {
+        left: 0;
+        right: auto;
+        min-width: 180px;
+      }
+
+      #menu-dropdown {
+        min-width: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav-container">
+    <div class="nav-content">
+      <!-- 🌍 Language Switcher -->
+      <div id="language-switcher">
+        <button id="active-language" onclick="toggleLanguageMenu()" aria-label="Select language">
+          <img id="current-flag" src="" alt="Selected language" />
+          <span id="current-lang-text">EN</span>
+        </button>
+        <div id="language-menu">
+          <button onclick="changeLanguage('en')">
+            <img src="../images/en/gb.svg" width="20" alt="English" /> English
+          </button>
+          <button onclick="changeLanguage('no')">
+            <img src="../images/no/no.svg" width="20" alt="Norsk" /> Norsk
+          </button>
+          <button onclick="changeLanguage('da')">
+            <img src="../images/da/da.svg" width="20" alt="Dansk" /> Dansk
+          </button>
+          <button onclick="changeLanguage('sv')">
+            <img src="../images/sv/sv.svg" width="20" alt="Svenska" /> Svenska
+          </button>
+          <button onclick="changeLanguage('de')">
+            <img src="../images/de/de.svg" width="20" alt="Deutsch" /> Deutsch
+          </button>
+          <button onclick="changeLanguage('fr')">
+            <img src="../images/fr/fr.svg" width="20" alt="Français" /> Français
+          </button>
+          <button onclick="changeLanguage('es')">
+            <img src="../images/es/es.svg" width="20" alt="Español" /> Español
+          </button>
+          <button onclick="changeLanguage('it')">
+            <img src="../images/it/it.svg" width="20" alt="Italiano" /> Italiano
+          </button>
+          <button onclick="changeLanguage('nl')">
+            <img src="../images/nl/nl.svg" width="20" alt="Nederlands" /> Nederlands
+          </button>
+          <button onclick="changeLanguage('fi')">
+            <img src="../images/fi/fi.svg" width="20" alt="Suomi" /> Suomi
+          </button>
+          <button onclick="changeLanguage('ar')">
+            <img src="../images/ar/ar.svg" width="20" alt="العربية" /> العربية
+          </button>
+          <button onclick="changeLanguage('hi')">
+            <img src="../images/hi/hi.svg" width="20" alt="हिन्दी" /> हिन्दी
+          </button>
+          <button onclick="changeLanguage('ja')">
+            <img src="../images/ja/ja.svg" width="20" alt="日本語" /> 日本語
+          </button>
+          <button onclick="changeLanguage('uk')">
+            <img src="../images/uk/uk.svg" width="20" alt="Українська" /> Українська
+          </button>
+          <button onclick="changeLanguage('zh-Hans')">
+            <img src="../images/zhHans/zhHans.svg" width="20" alt="简体中文" /> 简体中文
+          </button>
+          <button onclick="changeLanguage('zh-Hant')">
+            <img src="../images/zhHant/zhHant.svg" width="20" alt="繁體中文" /> 繁體中文
+          </button>
+        </div>
+      </div>
+
+      <!-- Hamburger Menu -->
+      <div id="hamburger-menu">
+        <button id="menu-toggle" aria-label="Open menu"><span></span></button>
+        <div id="menu-dropdown">
+          <a href="../index.html">Home</a>
+          <a href="../SiriShortcutsSetup/en.html">Apple Pay & Shortcuts</a>
+          <a href="../privacy-policy/en.html">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
   <!-- Main Content -->
   <div class="content">
-  <h1>支持</h1>
+    <h1>支持</h1>
 
-  <h2>联系信息</h2>
-  <p>需要支持，请发送邮件：</p>
-  <p>📧 邮箱：<a href="mailto:balancetrackr@gmail.com">balancetrackr@gmail.com</a></p>
+    <h2>联系信息</h2>
+    <p>如需支持，请联系：</p>
+    <p>📧 电子邮件: <a href="mailto:balancetrackr@gmail.com">balancetrackr@gmail.com</a></p>
 
   <h2>功能</h2>
   <h3>账户</h3>
   <ul>
     <li>手动跟踪多个银行账户</li>
-    <li>支持个人与共享账户</li>
-    <li>余额实时更新</li>
+    <li>支持共享和个人账户</li>
+    <li>实时余额更新</li>
     <li>交易历史</li>
     <li>可自定义账户图标</li>
     <li>手动余额调整</li>
@@ -178,161 +569,147 @@
 
   <h3>贷款</h3>
   <ul>
-    <li>房贷、车贷、助学贷、个人贷、消费贷、信用卡</li>
-    <li>详细还款计划</li>
+    <li>支持各种贷款类型：抵押贷款、汽车贷款、学生贷款、个人贷款、消费贷款、信用卡</li>
+    <li>详细的还款计划</li>
     <li>利息计算</li>
     <li>每月还款跟踪</li>
-    <li>支持等额本息与等额本金</li>
-    <li>自动处理还款</li>
-    <li>详细还款记录</li>
-    <li>跟踪信用卡的周期性使用</li>
+    <li>支持年金和系列贷款类型</li>
+    <li>自动还款处理</li>
+    <li>详细的贷款还款记录</li>
+    <li>循环信用卡使用跟踪</li>
   </ul>
 
   <h3>交易</h3>
   <ul>
-    <li>记录收入与支出</li>
-    <li>交易分类</li>
-    <li>支持周期性交易</li>
-    <li>详细交易历史</li>
+    <li>记录收入和支出</li>
+    <li>分类交易</li>
+    <li>支持定期交易</li>
+    <li>详细的交易历史</li>
     <li>账户间转账</li>
-    <li>自定义日期</li>
-    <li>搜索与筛选</li>
+    <li>自定义交易日期</li>
+    <li>交易搜索和筛选</li>
   </ul>
 
   <h3>数据管理</h3>
   <ul>
-    <li>导出为 .regnskappdata 备份文件</li>
-    <li>选择性导出（自选包含内容）</li>
-    <li>从备份导入数据</li>
-    <li>导入时可选择替换或合并</li>
-    <li>本地存储，无外部服务器</li>
+    <li>导出数据到.regnskappdata文件进行备份</li>
+    <li>选择性数据导出（选择要包含的内容）</li>
+    <li>从备份文件导入数据</li>
+    <li>导入时选择替换或合并数据的选项</li>
+    <li>本地数据存储，无需外部服务器</li>
   </ul>
 
-  <h3>其他功能</h3>
+  <h3>附加功能</h3>
   <ul>
-    <li>多种货币（NOK、USD、EUR、GBP、SEK、DKK）</li>
-    <li>多语言支持</li>
-    <li>可自定义类别与图标</li>
-    <li>财务总览与统计</li>
-    <li>可自定义发薪日</li>
-    <li>生物识别（Face ID/Touch ID）</li>
-    <li>“Make it Rain” 动画</li>
-    <li>显示/隐藏角分</li>
+    <li>多种货币支持（NOK、USD、EUR、GBP、SEK、DKK）</li>
+    <li>多语言支持（挪威语、英语、法语、西班牙语、德语、丹麦语、瑞典语）</li>
+    <li>带图标的自定义类别</li>
+    <li>财务概览和统计</li>
+    <li>可自定义的发薪日设置</li>
+    <li>生物识别认证（Face ID/Touch ID）</li>
+    <li>"下雨"动画功能，可自定义选项</li>
+    <li>显示/隐藏金额中的分币</li>
   </ul>
 
   <h2>常见问题</h2>
+
   <h3>如何添加新账户？</h3>
   <ol>
-    <li>进入“账户”标签</li>
-    <li>点击 +</li>
-    <li>填写账户信息</li>
+    <li>转到账户选项卡</li>
+    <li>点击+按钮</li>
+    <li>输入账户详细信息</li>
     <li>保存</li>
   </ol>
 
   <h3>如何设置贷款？</h3>
   <ol>
-    <li>进入“贷款”标签</li>
-    <li>点击 +</li>
+    <li>转到贷款选项卡</li>
+    <li>点击+按钮</li>
     <li>选择贷款类型</li>
-    <li>填写详细信息</li>
+    <li>输入贷款详细信息</li>
     <li>保存</li>
   </ol>
 
-  <h3>如何创建周期性交易？</h3>
+  <h3>如何设置定期交易？</h3>
   <ol>
-    <li>新增交易</li>
-    <li>启用“周期性”</li>
-    <li>设置频率（周/月/年）</li>
-    <li>选择开始与可选结束日期</li>
-    <li>保存</li>
+    <li>添加新交易</li>
+    <li>启用"定期"切换开关</li>
+    <li>设置频率（每周、每月、每年）</li>
+    <li>选择开始日期和可选的结束日期</li>
+    <li>保存交易</li>
   </ol>
 
-  <h3>如何导出备份？</h3>
+  <h3>如何导出数据进行备份？</h3>
   <ol>
-    <li>打开“设置”</li>
-    <li>选择“导出与导入”</li>
-    <li>进入“导出”标签</li>
+    <li>转到设置</li>
+    <li>选择"导出和导入"</li>
+    <li>选择"导出"选项卡</li>
     <li>选择要包含的数据</li>
-    <li>点击“导出数据”</li>
-    <li>保存 .regnskappdata 文件</li>
+    <li>点击"导出数据"</li>
+    <li>选择保存.regnskappdata文件的位置</li>
   </ol>
 
-  <h3>如何从备份导入？</h3>
+  <h3>如何从备份导入数据？</h3>
   <ol>
-    <li>打开“设置”</li>
-    <li>选择“导出与导入”</li>
-    <li>进入“导入”标签</li>
-    <li>选择替换或合并</li>
-    <li>选择备份文件</li>
+    <li>转到设置</li>
+    <li>选择"导出和导入"</li>
+    <li>选择"导入"选项卡</li>
+    <li>决定是否替换现有数据</li>
+    <li>点击选择备份文件</li>
     <li>确认导入</li>
   </ol>
 
   <h3>如何更改语言？</h3>
   <ol>
-    <li>打开“设置”</li>
-    <li>选择“语言”</li>
-    <li>选择偏好的语言</li>
+    <li>转到设置</li>
+    <li>选择语言</li>
+    <li>选择您的首选语言（挪威语、英语、法语、西班牙语、德语、丹麦语或瑞典语）</li>
+    <li>如果提示，请重新启动应用</li>
   </ol>
 
-  <h3>如何启用 Face ID/Touch ID？</h3>
+  <h3>如何启用Face ID/Touch ID？</h3>
   <ol>
-    <li>在主屏幕长按 App 图标</li>
-    <li>选择 “Require Face ID/Touch ID”</li>
+    <li>长按主屏幕上的应用图标</li>
+    <li>选择"需要Face ID/Touch ID"</li>
   </ol>
 
   <h3>如何更改货币？</h3>
   <ol>
-    <li>打开“设置”</li>
-    <li>点击“货币”</li>
-    <li>从列表中选择</li>
+    <li>转到设置</li>
+    <li>点击货币</li>
+    <li>从列表中选择您的首选货币</li>
   </ol>
 
   <h3>如何设置发薪日？</h3>
   <ol>
-    <li>打开“设置”</li>
-    <li>找到“发薪日”设置</li>
-    <li>选择日期（1–31），周末自动调整</li>
+    <li>转到设置</li>
+    <li>找到发薪日设置</li>
+    <li>选择您的常规发薪日（1-31）</li>
+    <li>系统将自动调整周末</li>
   </ol>
 
   <h2>数据安全</h2>
   <ul>
-    <li>所有数据使用 SwiftData 保存在本地</li>
-    <li>无需联网</li>
-    <li>无需创建账号</li>
-    <li>支持 Face ID/Touch ID</li>
-    <li>手动导入导出，完全掌控</li>
-    <li>iOS 在设备层面加密财务数据</li>
+    <li>所有数据都使用SwiftData本地存储在您的设备上</li>
+    <li>无需互联网连接</li>
+    <li>无需创建账户</li>
+    <li>支持Face ID/Touch ID身份验证</li>
+    <li>手动数据导出和导入让您完全控制</li>
+    <li>您的财务数据在iOS设备层面加密</li>
   </ul>
 
   <h2>更新</h2>
-  <p>应用会定期更新。请在 App Store 中保持最新版。</p>
+  <p>应用会定期更新改进和新功能。请确保通过App Store保持您的应用更新。</p>
 
   <h2>反馈</h2>
-  <p>欢迎反馈与建议。请通过应用中的反馈功能或电子邮件联系我们。</p>
+  <p>欢迎您提供反馈和改进应用的建议。请使用应用设置中的反馈选项或直接通过电子邮件联系我们。</p>
 
-  <p><a href="/index-zhHans.html" style="display:inline-block;background-color:#1b5e20;color:#fff;padding:10px 20px;border-radius:8px;text-decoration:none;font-weight:bold;margin-top:2rem;">← 返回</a></p>
-
-  <footer>&copy; 2025 BalanceTrackr (RegnskApp) - Ole Morten Tengesdal. 版权所有。</footer>
-  <script data-goatcounter="https://regnskapp.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-</body>
-</html>
-
-    <p>
-      <a href="../index.html" class="back-btn">← Back to Home</a>
-    </p>
-
+    <a href="../index.html" class="back-btn">← 返回主页</a>
   </div>
 
-  <!-- Footer -->
   <footer class="footer">
     <div class="footer-content">
       <p>&copy; 2025 BalanceTrackr (RegnskApp).<br>
-      Ole Morten Tengesdal. All rights reserved.</p>
-    </div>
-  </footer>
-  <footer class="footer">
-    <div class="footer-content">
-      <p>&copy; 2025 RegnskApp (RegnskApp).<br>
       Ole Morten Tengesdal. All rights reserved.</p>
     </div>
   </footer>
