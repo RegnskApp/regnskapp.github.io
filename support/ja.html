@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Support – BalanceTrackr</title>
+  <title>Support – RegnskApp</title>
   <link rel="icon" href="../images/RegnskApp-Light-Mode-Icon.jpg" type="image/jpeg" />
 
   <!-- Canonical -->
@@ -157,559 +157,182 @@
       color: var(--text-primary);
       font-weight: 500;
     }
-
-    #active-language:hover {
-      background: var(--bg-tertiary);
-      border-color: var(--primary-color);
-      transform: translateY(-1px);
-      box-shadow: var(--shadow-md);
-    }
-
-    #current-flag {
-      width: 20px;
-      height: 15px;
-      border-radius: 2px;
-      object-fit: cover;
-    }
-
-    #language-menu {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      margin-top: 0.5rem;
-      background: var(--bg-primary);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-xl);
-      padding: 0.5rem;
-      min-width: 200px;
-      max-height: 300px;
-      overflow-y: auto;
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(-10px);
-      transition: all var(--transition-normal);
-      z-index: 1000;
-      scrollbar-width: thin;
-      scrollbar-color: var(--border-color) transparent;
-    }
-
-    #language-menu::-webkit-scrollbar {
-      width: 6px;
-    }
-
-    #language-menu::-webkit-scrollbar-track {
-      background: transparent;
-    }
-
-    #language-menu::-webkit-scrollbar-thumb {
-      background: var(--border-color);
-      border-radius: 3px;
-    }
-
-    #language-menu.show {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-    }
-
-    #language-menu button {
-      width: 100%;
-      padding: 0.75rem 1rem;
-      background: var(--bg-primary);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
-      cursor: pointer;
-      transition: all var(--transition-fast);
-      color: var(--text-primary);
-      font-weight: 500;
-      margin-bottom: 0.25rem;
-      text-align: left;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    #language-menu button:hover {
-      background: var(--bg-secondary);
-      border-color: var(--primary-color);
-      box-shadow: var(--shadow-md);
-      transform: translateY(-1px);
-    }
-
-    #language-menu button:active {
-      transform: translateY(0);
-      box-shadow: var(--shadow-sm);
-    }
-
-    /* Hamburger Menu */
-    #hamburger-menu {
-      position: relative;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    #menu-toggle {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      width: 44px;
-      height: 44px;
-      background: var(--bg-secondary);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
-      cursor: pointer;
-      transition: all var(--transition-fast);
-      font-size: 0;
-      padding: 0;
-    }
-
-    #menu-toggle::before,
-    #menu-toggle::after,
-    #menu-toggle span {
-      content: '';
-      display: block;
-      width: 20px;
-      height: 2px;
-      background: var(--text-primary);
-      margin: 3px 0;
-      transition: all var(--transition-fast);
-      border-radius: 1px;
-    }
-
-    #menu-toggle:hover {
-      background: var(--bg-tertiary);
-      transform: translateY(-1px);
-      box-shadow: var(--shadow-md);
-    }
-
-    #menu-dropdown {
-      position: absolute;
-      top: 100%;
-      right: 0;
-      margin-top: 0.5rem;
-      background: var(--bg-primary);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-xl);
-      padding: 0.5rem;
-      min-width: 235px;
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(-10px);
-      transition: all var(--transition-normal);
-      z-index: 1000;
-    }
-
-    #menu-dropdown.show {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-    }
-
-    #menu-dropdown a {
-      display: block;
-      padding: 0.75rem 1rem;
-      background: var(--bg-primary);
-      border: 1px solid var(--border-color);
-      color: var(--text-primary);
-      text-decoration: none;
-      font-weight: 500;
-      border-radius: var(--radius-md);
-      transition: all var(--transition-fast);
-      margin-bottom: 0.25rem;
-      box-shadow: var(--shadow-sm);
-    }
-
-    #menu-dropdown a:hover {
-      background: var(--bg-secondary);
-      border-color: var(--primary-color);
-      transform: translateY(-1px);
-      box-shadow: var(--shadow-md);
-    }
-
-    #menu-dropdown a:active {
-      transform: translateY(0);
-      box-shadow: var(--shadow-sm);
-    }
-
-    /* Content Styles */
-    .content {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 2rem;
-      padding-top: calc(80px + 2rem);
-    }
-
-    .content h1, .content h2, .content h3 {
-      color: var(--primary-color);
-      margin-bottom: 1rem;
-    }
-
-    .content h1 {
-      margin-top: 2rem;
-    }
-
-    .content h2 {
-      margin-top: 1.5rem;
-    }
-
-    .content h3 {
-      margin-top: 1.25rem;
-    }
-
-    .content ul, .content ol {
-      padding-left: 1.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .content li {
-      margin-bottom: 0.5rem;
-    }
-
-    .content ul {
-      list-style: none;
-      padding-left: 0;
-    }
-
-    .content ul li {
-      position: relative;
-      padding-left: 1.5rem;
-    }
-
-    .content ul li::before {
-      content: "•";
-      position: absolute;
-      left: 0.25rem;
-      top: 0;
-      font-weight: 600;
-      color: var(--primary-color);
-      font-size: 1.2em;
-    }
-
-    .content ol {
-      counter-reset: step-counter;
-      list-style: none;
-      padding-left: 0;
-    }
-
-    .content ol li {
-      counter-increment: step-counter;
-      position: relative;
-      padding-left: 2.5rem;
-    }
-
-    .content ol li::before {
-      content: counter(step-counter) ".";
-      position: absolute;
-      left: 0.5rem;
-      top: 0;
-      font-weight: 600;
-      color: var(--primary-color);
-    }
-
-    .content a {
-      color: var(--primary-color);
-      text-decoration: none;
-      transition: color var(--transition-fast);
-    }
-
-    .content a:hover {
-      color: var(--primary-dark);
-      text-decoration: underline;
-    }
-
-    .back-btn {
-      display: inline-block;
-      background: var(--primary-color);
-      color: white !important;
-      padding: 0.75rem 1.5rem;
-      border-radius: var(--radius-md);
-      text-decoration: none;
-      font-weight: 600;
-      transition: all var(--transition-fast);
-      margin-top: 2rem;
-      box-shadow: var(--shadow-md);
-      border: 2px solid var(--primary-color);
-    }
-
-    .back-btn:hover {
-      background: var(--primary-dark);
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-lg);
-    }
-
-    .footer {
-      padding: 2rem;
-      background: var(--bg-tertiary);
-      text-align: center;
-      border-top: 1px solid var(--border-color);
-    }
-
-    .footer-content {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    /* Mobile Responsive */
-    @media (max-width: 768px) {
-      .nav-content {
-        padding: 1rem;
-      }
-
-      .content {
-        padding: 1rem;
-        padding-top: calc(70px + 1rem);
-      }
-
-      #language-menu {
-        left: 0;
-        right: auto;
-        min-width: 180px;
-      }
-
-      #menu-dropdown {
-        min-width: 200px;
-      }
-    }
-  </style>
-</head>
-<body>
-  <!-- Navigation -->
-  <nav class="nav-container">
-    <div class="nav-content">
-      <!-- 🌍 Language Switcher -->
-      <div id="language-switcher">
-        <button id="active-language" onclick="toggleLanguageMenu()" aria-label="Select language">
-          <img id="current-flag" src="" alt="Selected language" />
-          <span id="current-lang-text">EN</span>
-        </button>
-        <div id="language-menu">
-          <button onclick="changeLanguage('en')">
-            <img src="../images/en/gb.svg" width="20" alt="English" /> English
-          </button>
-          <button onclick="changeLanguage('no')">
-            <img src="../images/no/no.svg" width="20" alt="Norsk" /> Norsk
-          </button>
-          <button onclick="changeLanguage('da')">
-            <img src="../images/da/da.svg" width="20" alt="Dansk" /> Dansk
-          </button>
-          <button onclick="changeLanguage('sv')">
-            <img src="../images/sv/sv.svg" width="20" alt="Svenska" /> Svenska
-          </button>
-          <button onclick="changeLanguage('de')">
-            <img src="../images/de/de.svg" width="20" alt="Deutsch" /> Deutsch
-          </button>
-          <button onclick="changeLanguage('fr')">
-            <img src="../images/fr/fr.svg" width="20" alt="Français" /> Français
-          </button>
-          <button onclick="changeLanguage('es')">
-            <img src="../images/es/es.svg" width="20" alt="Español" /> Español
-          </button>
-          <button onclick="changeLanguage('it')">
-            <img src="../images/it/it.svg" width="20" alt="Italiano" /> Italiano
-          </button>
-          <button onclick="changeLanguage('nl')">
-            <img src="../images/nl/nl.svg" width="20" alt="Nederlands" /> Nederlands
-          </button>
-          <button onclick="changeLanguage('fi')">
-            <img src="../images/fi/fi.svg" width="20" alt="Suomi" /> Suomi
-          </button>
-          <button onclick="changeLanguage('ar')">
-            <img src="../images/ar/ar.svg" width="20" alt="العربية" /> العربية
-          </button>
-          <button onclick="changeLanguage('hi')">
-            <img src="../images/hi/hi.svg" width="20" alt="हिन्दी" /> हिन्दी
-          </button>
-          <button onclick="changeLanguage('ja')">
-            <img src="../images/ja/ja.svg" width="20" alt="日本語" /> 日本語
-          </button>
-          <button onclick="changeLanguage('uk')">
-            <img src="../images/uk/uk.svg" width="20" alt="Українська" /> Українська
-          </button>
-          <button onclick="changeLanguage('zh-Hans')">
-            <img src="../images/zhHans/zhHans.svg" width="20" alt="简体中文" /> 简体中文
-          </button>
-          <button onclick="changeLanguage('zh-Hant')">
-            <img src="../images/zhHant/zhHant.svg" width="20" alt="繁體中文" /> 繁體中文
-          </button>
-        </div>
-      </div>
-
-      <!-- Hamburger Menu -->
-      <div id="hamburger-menu">
-        <button id="menu-toggle" aria-label="Open menu"><span></span></button>
-        <div id="menu-dropdown">
-          <a href="../index.html">Home</a>
-          <a href="../SiriShortcutsSetup/en.html">Apple Pay & Shortcuts</a>
-          <a href="../privacy-policy/en.html">Privacy Policy</a>
-        </div>
-      </div>
-    </div>
-  </nav>
-
   <!-- Main Content -->
   <div class="content">
-    <h1>Support</h1>
+  <h1>サポート</h1>
 
-  <h2>Contact Information</h2>
-  <p>For support inquiries, please contact:</p>
-  <p>📧 Email: <a href="mailto:balancetrackr@gmail.com">balancetrackr@gmail.com</a></p>
+  <h2>連絡先</h2>
+  <p>サポートはメールで受け付けています。</p>
+  <p>📧 メール: <a href="mailto:balancetrackr@gmail.com">balancetrackr@gmail.com</a></p>
 
-  <h2>Features</h2>
-  <h3>Accounts</h3>
+  <h2>機能</h2>
+  <h3>アカウント</h3>
   <ul>
-    <li>Track multiple bank accounts manually</li>
-    <li>Support for shared and personal accounts</li>
-    <li>Real-time balance updates</li>
-    <li>Transaction history</li>
-    <li>Customizable account icons</li>
-    <li>Manual balance adjustments</li>
+    <li>複数口座の手動トラッキング</li>
+    <li>個人用・共有用の両方に対応</li>
+    <li>残高のリアルタイム更新</li>
+    <li>取引履歴</li>
+    <li>口座アイコンのカスタマイズ</li>
+    <li>残高の手動調整</li>
   </ul>
 
-  <h3>Loans</h3>
+  <h3>ローン</h3>
   <ul>
-    <li>Support for various loan types: mortgages, car loans, student loans, personal loans, consumer loans, credit cards</li>
-    <li>Detailed payment schedules</li>
-    <li>Interest calculations</li>
-    <li>Monthly payment tracking</li>
-    <li>Support for both annuity and serial loan types</li>
-    <li>Automatic payment processing</li>
-    <li>Detailed loan payment records</li>
-    <li>Recurring credit card usage tracking</li>
+    <li>住宅・自動車・学生・個人・消費者ローン、クレジットカード</li>
+    <li>詳細な支払スケジュール</li>
+    <li>利息計算</li>
+    <li>月々の支払いトラッキング</li>
+    <li>元利均等・元金均等の両方式に対応</li>
+    <li>支払いの自動処理</li>
+    <li>詳細な返済履歴</li>
+    <li>クレジットカードの定期的な利用の追跡</li>
   </ul>
 
-  <h3>Transactions</h3>
+  <h3>取引</h3>
   <ul>
-    <li>Record income and expenses</li>
-    <li>Categorize transactions</li>
-    <li>Support for recurring transactions</li>
-    <li>Detailed transaction history</li>
-    <li>Transfer between accounts</li>
-    <li>Custom transaction dates</li>
-    <li>Transaction search and filtering</li>
+    <li>収入と支出の記録</li>
+    <li>カテゴリ分け</li>
+    <li>定期取引の対応</li>
+    <li>詳細な取引履歴</li>
+    <li>口座間の振替</li>
+    <li>カスタム日付</li>
+    <li>検索とフィルタ</li>
   </ul>
 
-  <h3>Data Management</h3>
+  <h3>データ管理</h3>
   <ul>
-    <li>Export data to .regnskappdata files for backup</li>
-    <li>Selective data export (choose what to include)</li>
-    <li>Import data from backup files</li>
-    <li>Option to replace or merge data during import</li>
-    <li>Local data storage with no external servers</li>
+    <li>.regnskappdata 形式でのエクスポート（バックアップ）</li>
+    <li>必要なデータのみ選択してエクスポート</li>
+    <li>バックアップからのインポート</li>
+    <li>インポート時に置換またはマージを選択可能</li>
+    <li>データはローカル保存（外部サーバーなし）</li>
   </ul>
 
-  <h3>Additional Features</h3>
+  <h3>その他</h3>
   <ul>
-    <li>Multiple currency support (NOK, USD, EUR, GBP, SEK, DKK)</li>
-    <li>Multi-language support (Norwegian, English, French, Spanish, German, Danish, Swedish)</li>
-    <li>Custom categories with icons</li>
-    <li>Financial overview and statistics</li>
-    <li>Customizable payday setting</li>
-    <li>Biometric authentication (Face ID/Touch ID)</li>
-    <li>"Make it Rain" animation feature with customizable options</li>
-    <li>Show/hide cents in amounts</li>
+    <li>複数通貨（NOK, USD, EUR, GBP, SEK, DKK）</li>
+    <li>多言語対応</li>
+    <li>アイコン付きのカスタムカテゴリ</li>
+    <li>財務サマリーと統計</li>
+    <li>給料日のカスタマイズ</li>
+    <li>生体認証（Face ID/Touch ID）</li>
+    <li>“Make it Rain” アニメーション</li>
+    <li>小数の表示/非表示</li>
   </ul>
 
-  <h2>Frequently Asked Questions</h2>
-
-  <h3>How do I add a new account?</h3>
+  <h2>よくある質問</h2>
+  <h3>新しい口座を追加するには？</h3>
   <ol>
-    <li>Go to the Accounts tab</li>
-    <li>Tap the + button</li>
-    <li>Enter account details</li>
-    <li>Save</li>
+    <li>口座タブへ</li>
+    <li>＋をタップ</li>
+    <li>口座情報を入力</li>
+    <li>保存</li>
   </ol>
 
-  <h3>How do I set up a loan?</h3>
+  <h3>ローンを設定するには？</h3>
   <ol>
-    <li>Go to the Loans tab</li>
-    <li>Tap the + button</li>
-    <li>Choose loan type</li>
-    <li>Enter loan details</li>
-    <li>Save</li>
+    <li>ローンタブへ</li>
+    <li>＋をタップ</li>
+    <li>ローンタイプを選択</li>
+    <li>詳細を入力</li>
+    <li>保存</li>
   </ol>
 
-  <h3>How do I set up a recurring transaction?</h3>
+  <h3>定期取引を設定するには？</h3>
   <ol>
-    <li>Add a new transaction</li>
-    <li>Enable the "Recurring" toggle</li>
-    <li>Set the frequency (weekly, monthly, yearly)</li>
-    <li>Choose the start and optional end date</li>
-    <li>Save the transaction</li>
+    <li>新規取引を追加</li>
+    <li>「定期」を有効化</li>
+    <li>頻度を設定（週・月・年）</li>
+    <li>開始日と任意の終了日</li>
+    <li>保存</li>
   </ol>
 
-  <h3>How do I export my data for backup?</h3>
+  <h3>バックアップ用にデータをエクスポートするには？</h3>
   <ol>
-    <li>Go to Settings</li>
-    <li>Select "Export & Import"</li>
-    <li>Choose the "Export" tab</li>
-    <li>Select what data you want to include</li>
-    <li>Tap "Export Data"</li>
-    <li>Choose where to save the .regnskappdata file</li>
+    <li>設定へ</li>
+    <li>「エクスポートとインポート」を選択</li>
+    <li>「エクスポート」タブへ</li>
+    <li>含めるデータを選択</li>
+    <li>「データをエクスポート」をタップ</li>
+    <li>.regnskappdata ファイルを保存</li>
   </ol>
 
-  <h3>How do I import data from a backup?</h3>
+  <h3>バックアップからインポートするには？</h3>
   <ol>
-    <li>Go to Settings</li>
-    <li>Select "Export & Import"</li>
-    <li>Choose the "Import" tab</li>
-    <li>Decide whether to replace existing data</li>
-    <li>Tap to select your backup file</li>
-    <li>Confirm the import</li>
+    <li>設定へ</li>
+    <li>「エクスポートとインポート」を選択</li>
+    <li>「インポート」タブへ</li>
+    <li>既存データの置換またはマージを選択</li>
+    <li>バックアップファイルを選択</li>
+    <li>インポートを確定</li>
   </ol>
 
-  <h3>How do I change the language?</h3>
+  <h3>言語を変更するには？</h3>
   <ol>
-    <li>Go to Settings</li>
-    <li>Select Language</li>
-    <li>Choose your preferred language (Norwegian, English, French, Spanish, German, Danish, or Swedish)</li>
-    <li>Restart the app if prompted</li>
+    <li>設定へ</li>
+    <li>「言語」を選択</li>
+    <li>希望の言語を選ぶ</li>
   </ol>
 
-  <h3>How do I enable Face ID/Touch ID?</h3>
+  <h3>Face ID/Touch ID を有効にするには？</h3>
   <ol>
-    <li>Long press the app icon on your home screen</li>
-    <li>Select "Require Face ID/Touch ID"</li>
+    <li>ホーム画面のアプリアイコンを長押し</li>
+    <li>「Require Face ID/Touch ID」を選択</li>
   </ol>
 
-  <h3>How do I change the currency?</h3>
+  <h3>通貨を変更するには？</h3>
   <ol>
-    <li>Go to Settings</li>
-    <li>Tap on Currency</li>
-    <li>Select your preferred currency from the list</li>
+    <li>設定へ</li>
+    <li>「通貨」をタップ</li>
+    <li>リストから選択</li>
   </ol>
 
-  <h3>How do I set my payday date?</h3>
+  <h3>給料日を設定するには？</h3>
   <ol>
-    <li>Go to Settings</li>
-    <li>Find the Payday setting</li>
-    <li>Select your regular payday date (1-31)</li>
-    <li>The system will automatically adjust for weekends</li>
+    <li>設定へ</li>
+    <li>給料日設定を開く</li>
+    <li>日付（1〜31）を選択（週末は自動調整）</li>
   </ol>
 
-  <h2>Data Security</h2>
+  <h2>データの安全性</h2>
   <ul>
-    <li>All data is stored locally on your device using SwiftData</li>
-    <li>No internet connection required</li>
-    <li>No account creation needed</li>
-    <li>Support for Face ID/Touch ID authentication</li>
-    <li>Manual data export and import gives you complete control</li>
-    <li>Your financial data is encrypted at the device level by iOS</li>
+    <li>すべてのデータは SwiftData により端末内に保存</li>
+    <li>インターネット接続不要</li>
+    <li>アカウント作成不要</li>
+    <li>Face ID/Touch ID に対応</li>
+    <li>手動のエクスポート/インポートで完全な制御</li>
+    <li>iOS による端末レベルの暗号化</li>
   </ul>
 
-  <h2>Updates</h2>
-  <p>The app is regularly updated with improvements and new features. Make sure to keep your app updated through the App Store.</p>
+  <h2>アップデート</h2>
+  <p>アプリは定期的に改善されています。App Store で最新に保ってください。</p>
 
-  <h2>Feedback</h2>
-  <p>I welcome your feedback and suggestions for improving the app. Please use the feedback option in the app's settings or contact us directly via email.</p>
+  <h2>フィードバック</h2>
+  <p>ご意見・ご要望を歓迎します。アプリ設定のフィードバック機能、またはメールをご利用ください。</p>
 
-    <a href="../index.html" class="back-btn">← Back to Home</a>
+  <p><a href="/index-ja.html" style="display:inline-block;background-color:#1b5e20;color:#fff;padding:10px 20px;border-radius:8px;text-decoration:none;font-weight:bold;margin-top:2rem;">← 戻る</a></p>
+
+  <footer>&copy; 2025 BalanceTrackr (RegnskApp) - Ole Morten Tengesdal. 無断転載を禁じます。</footer>
+  <script data-goatcounter="https://regnskapp.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
+
+    <p>
+      <a href="../index.html" class="back-btn">← Back to Home</a>
+    </p>
+
   </div>
 
+  <!-- Footer -->
   <footer class="footer">
     <div class="footer-content">
       <p>&copy; 2025 BalanceTrackr (RegnskApp).<br>
+      Ole Morten Tengesdal. All rights reserved.</p>
+    </div>
+  </footer>
+  <footer class="footer">
+    <div class="footer-content">
+      <p>&copy; 2025 RegnskApp (RegnskApp).<br>
       Ole Morten Tengesdal. All rights reserved.</p>
     </div>
   </footer>

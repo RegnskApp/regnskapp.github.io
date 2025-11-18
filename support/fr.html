@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Support – BalanceTrackr</title>
+  <title>Support – RegnskApp</title>
   <link rel="icon" href="../images/RegnskApp-Light-Mode-Icon.jpg" type="image/jpeg" />
 
   <!-- Canonical -->
@@ -157,559 +157,198 @@
       color: var(--text-primary);
       font-weight: 500;
     }
-
-    #active-language:hover {
-      background: var(--bg-tertiary);
-      border-color: var(--primary-color);
-      transform: translateY(-1px);
-      box-shadow: var(--shadow-md);
-    }
-
-    #current-flag {
-      width: 20px;
-      height: 15px;
-      border-radius: 2px;
-      object-fit: cover;
-    }
-
-    #language-menu {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      margin-top: 0.5rem;
-      background: var(--bg-primary);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-xl);
-      padding: 0.5rem;
-      min-width: 200px;
-      max-height: 300px;
-      overflow-y: auto;
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(-10px);
-      transition: all var(--transition-normal);
-      z-index: 1000;
-      scrollbar-width: thin;
-      scrollbar-color: var(--border-color) transparent;
-    }
-
-    #language-menu::-webkit-scrollbar {
-      width: 6px;
-    }
-
-    #language-menu::-webkit-scrollbar-track {
-      background: transparent;
-    }
-
-    #language-menu::-webkit-scrollbar-thumb {
-      background: var(--border-color);
-      border-radius: 3px;
-    }
-
-    #language-menu.show {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-    }
-
-    #language-menu button {
-      width: 100%;
-      padding: 0.75rem 1rem;
-      background: var(--bg-primary);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
-      cursor: pointer;
-      transition: all var(--transition-fast);
-      color: var(--text-primary);
-      font-weight: 500;
-      margin-bottom: 0.25rem;
-      text-align: left;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    #language-menu button:hover {
-      background: var(--bg-secondary);
-      border-color: var(--primary-color);
-      box-shadow: var(--shadow-md);
-      transform: translateY(-1px);
-    }
-
-    #language-menu button:active {
-      transform: translateY(0);
-      box-shadow: var(--shadow-sm);
-    }
-
-    /* Hamburger Menu */
-    #hamburger-menu {
-      position: relative;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    #menu-toggle {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      width: 44px;
-      height: 44px;
-      background: var(--bg-secondary);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
-      cursor: pointer;
-      transition: all var(--transition-fast);
-      font-size: 0;
-      padding: 0;
-    }
-
-    #menu-toggle::before,
-    #menu-toggle::after,
-    #menu-toggle span {
-      content: '';
-      display: block;
-      width: 20px;
-      height: 2px;
-      background: var(--text-primary);
-      margin: 3px 0;
-      transition: all var(--transition-fast);
-      border-radius: 1px;
-    }
-
-    #menu-toggle:hover {
-      background: var(--bg-tertiary);
-      transform: translateY(-1px);
-      box-shadow: var(--shadow-md);
-    }
-
-    #menu-dropdown {
-      position: absolute;
-      top: 100%;
-      right: 0;
-      margin-top: 0.5rem;
-      background: var(--bg-primary);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-xl);
-      padding: 0.5rem;
-      min-width: 235px;
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(-10px);
-      transition: all var(--transition-normal);
-      z-index: 1000;
-    }
-
-    #menu-dropdown.show {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-    }
-
-    #menu-dropdown a {
-      display: block;
-      padding: 0.75rem 1rem;
-      background: var(--bg-primary);
-      border: 1px solid var(--border-color);
-      color: var(--text-primary);
-      text-decoration: none;
-      font-weight: 500;
-      border-radius: var(--radius-md);
-      transition: all var(--transition-fast);
-      margin-bottom: 0.25rem;
-      box-shadow: var(--shadow-sm);
-    }
-
-    #menu-dropdown a:hover {
-      background: var(--bg-secondary);
-      border-color: var(--primary-color);
-      transform: translateY(-1px);
-      box-shadow: var(--shadow-md);
-    }
-
-    #menu-dropdown a:active {
-      transform: translateY(0);
-      box-shadow: var(--shadow-sm);
-    }
-
-    /* Content Styles */
-    .content {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 2rem;
-      padding-top: calc(80px + 2rem);
-    }
-
-    .content h1, .content h2, .content h3 {
-      color: var(--primary-color);
-      margin-bottom: 1rem;
-    }
-
-    .content h1 {
-      margin-top: 2rem;
-    }
-
-    .content h2 {
-      margin-top: 1.5rem;
-    }
-
-    .content h3 {
-      margin-top: 1.25rem;
-    }
-
-    .content ul, .content ol {
-      padding-left: 1.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .content li {
-      margin-bottom: 0.5rem;
-    }
-
-    .content ul {
-      list-style: none;
-      padding-left: 0;
-    }
-
-    .content ul li {
-      position: relative;
-      padding-left: 1.5rem;
-    }
-
-    .content ul li::before {
-      content: "•";
-      position: absolute;
-      left: 0.25rem;
-      top: 0;
-      font-weight: 600;
-      color: var(--primary-color);
-      font-size: 1.2em;
-    }
-
-    .content ol {
-      counter-reset: step-counter;
-      list-style: none;
-      padding-left: 0;
-    }
-
-    .content ol li {
-      counter-increment: step-counter;
-      position: relative;
-      padding-left: 2.5rem;
-    }
-
-    .content ol li::before {
-      content: counter(step-counter) ".";
-      position: absolute;
-      left: 0.5rem;
-      top: 0;
-      font-weight: 600;
-      color: var(--primary-color);
-    }
-
-    .content a {
-      color: var(--primary-color);
-      text-decoration: none;
-      transition: color var(--transition-fast);
-    }
-
-    .content a:hover {
-      color: var(--primary-dark);
-      text-decoration: underline;
-    }
-
-    .back-btn {
-      display: inline-block;
-      background: var(--primary-color);
-      color: white !important;
-      padding: 0.75rem 1.5rem;
-      border-radius: var(--radius-md);
-      text-decoration: none;
-      font-weight: 600;
-      transition: all var(--transition-fast);
-      margin-top: 2rem;
-      box-shadow: var(--shadow-md);
-      border: 2px solid var(--primary-color);
-    }
-
-    .back-btn:hover {
-      background: var(--primary-dark);
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-lg);
-    }
-
-    .footer {
-      padding: 2rem;
-      background: var(--bg-tertiary);
-      text-align: center;
-      border-top: 1px solid var(--border-color);
-    }
-
-    .footer-content {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    /* Mobile Responsive */
-    @media (max-width: 768px) {
-      .nav-content {
-        padding: 1rem;
-      }
-
-      .content {
-        padding: 1rem;
-        padding-top: calc(70px + 1rem);
-      }
-
-      #language-menu {
-        left: 0;
-        right: auto;
-        min-width: 180px;
-      }
-
-      #menu-dropdown {
-        min-width: 200px;
-      }
-    }
-  </style>
-</head>
-<body>
-  <!-- Navigation -->
-  <nav class="nav-container">
-    <div class="nav-content">
-      <!-- 🌍 Language Switcher -->
-      <div id="language-switcher">
-        <button id="active-language" onclick="toggleLanguageMenu()" aria-label="Select language">
-          <img id="current-flag" src="" alt="Selected language" />
-          <span id="current-lang-text">EN</span>
-        </button>
-        <div id="language-menu">
-          <button onclick="changeLanguage('en')">
-            <img src="../images/en/gb.svg" width="20" alt="English" /> English
-          </button>
-          <button onclick="changeLanguage('no')">
-            <img src="../images/no/no.svg" width="20" alt="Norsk" /> Norsk
-          </button>
-          <button onclick="changeLanguage('da')">
-            <img src="../images/da/da.svg" width="20" alt="Dansk" /> Dansk
-          </button>
-          <button onclick="changeLanguage('sv')">
-            <img src="../images/sv/sv.svg" width="20" alt="Svenska" /> Svenska
-          </button>
-          <button onclick="changeLanguage('de')">
-            <img src="../images/de/de.svg" width="20" alt="Deutsch" /> Deutsch
-          </button>
-          <button onclick="changeLanguage('fr')">
-            <img src="../images/fr/fr.svg" width="20" alt="Français" /> Français
-          </button>
-          <button onclick="changeLanguage('es')">
-            <img src="../images/es/es.svg" width="20" alt="Español" /> Español
-          </button>
-          <button onclick="changeLanguage('it')">
-            <img src="../images/it/it.svg" width="20" alt="Italiano" /> Italiano
-          </button>
-          <button onclick="changeLanguage('nl')">
-            <img src="../images/nl/nl.svg" width="20" alt="Nederlands" /> Nederlands
-          </button>
-          <button onclick="changeLanguage('fi')">
-            <img src="../images/fi/fi.svg" width="20" alt="Suomi" /> Suomi
-          </button>
-          <button onclick="changeLanguage('ar')">
-            <img src="../images/ar/ar.svg" width="20" alt="العربية" /> العربية
-          </button>
-          <button onclick="changeLanguage('hi')">
-            <img src="../images/hi/hi.svg" width="20" alt="हिन्दी" /> हिन्दी
-          </button>
-          <button onclick="changeLanguage('ja')">
-            <img src="../images/ja/ja.svg" width="20" alt="日本語" /> 日本語
-          </button>
-          <button onclick="changeLanguage('uk')">
-            <img src="../images/uk/uk.svg" width="20" alt="Українська" /> Українська
-          </button>
-          <button onclick="changeLanguage('zh-Hans')">
-            <img src="../images/zhHans/zhHans.svg" width="20" alt="简体中文" /> 简体中文
-          </button>
-          <button onclick="changeLanguage('zh-Hant')">
-            <img src="../images/zhHant/zhHant.svg" width="20" alt="繁體中文" /> 繁體中文
-          </button>
-        </div>
-      </div>
-
-      <!-- Hamburger Menu -->
-      <div id="hamburger-menu">
-        <button id="menu-toggle" aria-label="Open menu"><span></span></button>
-        <div id="menu-dropdown">
-          <a href="../index.html">Home</a>
-          <a href="../SiriShortcutsSetup/en.html">Apple Pay & Shortcuts</a>
-          <a href="../privacy-policy/en.html">Privacy Policy</a>
-        </div>
-      </div>
-    </div>
-  </nav>
-
   <!-- Main Content -->
   <div class="content">
-    <h1>Support</h1>
-
-  <h2>Contact Information</h2>
-  <p>For support inquiries, please contact:</p>
-  <p>📧 Email: <a href="mailto:balancetrackr@gmail.com">balancetrackr@gmail.com</a></p>
-
-  <h2>Features</h2>
-  <h3>Accounts</h3>
+  <h1>Assistance</h1>
+  
+  <h2>Coordonnées</h2>
+  <p>Pour toute question de support, veuillez contacter :</p>
+  <p>📧 E-mail : <a href="mailto:balancetrackr@gmail.com">balancetrackr@gmail.com</a></p>
+  
+  <h2>Fonctionnalités</h2>
+  <h3>Comptes</h3>
   <ul>
-    <li>Track multiple bank accounts manually</li>
-    <li>Support for shared and personal accounts</li>
-    <li>Real-time balance updates</li>
-    <li>Transaction history</li>
-    <li>Customizable account icons</li>
-    <li>Manual balance adjustments</li>
+    <li>Gestion manuelle de plusieurs comptes bancaires</li>
+    <li>Prise en charge des comptes partagés et personnels</li>
+    <li>Mise à jour en temps réel du solde</li>
+    <li>Historique des transactions</li>
+    <li>Icônes de compte personnalisables</li>
+    <li>Ajustements manuels du solde</li>
   </ul>
-
-  <h3>Loans</h3>
+  
+  <h3>Crédits</h3>
   <ul>
-    <li>Support for various loan types: mortgages, car loans, student loans, personal loans, consumer loans, credit cards</li>
-    <li>Detailed payment schedules</li>
-    <li>Interest calculations</li>
-    <li>Monthly payment tracking</li>
-    <li>Support for both annuity and serial loan types</li>
-    <li>Automatic payment processing</li>
-    <li>Detailed loan payment records</li>
-    <li>Recurring credit card usage tracking</li>
+    <li>Prise en charge de différents types de crédits : prêts hypothécaires, automobiles, étudiants, personnels, à la consommation, cartes de crédit</li>
+    <li>Plans de remboursement détaillés</li>
+    <li>Calculs d’intérêts</li>
+    <li>Aperçu des paiements mensuels</li>
+    <li>Soutien pour les prêts amortissables et à annuités</li>
+    <li>Gestion automatique des paiements</li>
+    <li>Historique détaillé des paiements</li>
+    <li>Suivi des utilisations récurrentes de la carte de crédit</li>
   </ul>
-
+  
   <h3>Transactions</h3>
   <ul>
-    <li>Record income and expenses</li>
-    <li>Categorize transactions</li>
-    <li>Support for recurring transactions</li>
-    <li>Detailed transaction history</li>
-    <li>Transfer between accounts</li>
-    <li>Custom transaction dates</li>
-    <li>Transaction search and filtering</li>
+    <li>Ajout de revenus et de dépenses</li>
+    <li>Catégorisation des transactions</li>
+    <li>Support des transactions récurrentes</li>
+    <li>Historique complet des transactions</li>
+    <li>Transferts entre comptes</li>
+    <li>Données de transaction personnalisables</li>
+    <li>Recherche et filtres</li>
   </ul>
-
-  <h3>Data Management</h3>
+  
+  <h3>Gestion des données</h3>
   <ul>
-    <li>Export data to .regnskappdata files for backup</li>
-    <li>Selective data export (choose what to include)</li>
-    <li>Import data from backup files</li>
-    <li>Option to replace or merge data during import</li>
-    <li>Local data storage with no external servers</li>
+    <li>Exportation des données au format .regnskappdata</li>
+    <li>Exportation sélective (vous choisissez les données à inclure)</li>
+    <li>Importation depuis les fichiers de sauvegarde</li>
+    <li>Remplacement ou fusion des données lors de l'import</li>
+    <li>Stockage local sans serveurs externes</li>
   </ul>
-
-  <h3>Additional Features</h3>
+  
+  <h3>Autres fonctionnalités</h3>
   <ul>
-    <li>Multiple currency support (NOK, USD, EUR, GBP, SEK, DKK)</li>
-    <li>Multi-language support (Norwegian, English, French, Spanish, German, Danish, Swedish)</li>
-    <li>Custom categories with icons</li>
-    <li>Financial overview and statistics</li>
-    <li>Customizable payday setting</li>
-    <li>Biometric authentication (Face ID/Touch ID)</li>
-    <li>"Make it Rain" animation feature with customizable options</li>
-    <li>Show/hide cents in amounts</li>
+    <li>Prise en charge de plusieurs devises (NOK, USD, EUR, GBP, SEK, DKK)</li>
+    <li>Langues disponibles : norvégien, anglais, français, espagnol, allemand, danois, suédois</li>
+    <li>Catégories personnalisables avec icônes</li>
+    <li>Statistiques et vues d’ensemble</li>
+    <li>Date de paie personnalisable</li>
+    <li>Authentification biométrique (Face ID / Touch ID)</li>
+    <li>Animation « pluie d’argent » personnalisable</li>
+    <li>Affichage des montants avec ou sans décimales</li>
   </ul>
-
-  <h2>Frequently Asked Questions</h2>
-
-  <h3>How do I add a new account?</h3>
+  
+  <h2>Foire aux questions</h2>
+  
+  <h3>Comment ajouter un nouveau compte ?</h3>
   <ol>
-    <li>Go to the Accounts tab</li>
-    <li>Tap the + button</li>
-    <li>Enter account details</li>
-    <li>Save</li>
+    <li>Accédez à l’onglet « Comptes »</li>
+    <li>Appuyez sur le symbole +</li>
+    <li>Renseignez les informations du compte</li>
+    <li>Appuyez sur « Enregistrer »</li>
   </ol>
-
-  <h3>How do I set up a loan?</h3>
+  
+  <h3>Comment ajouter un crédit ?</h3>
   <ol>
-    <li>Go to the Loans tab</li>
-    <li>Tap the + button</li>
-    <li>Choose loan type</li>
-    <li>Enter loan details</li>
-    <li>Save</li>
+    <li>Accédez à l’onglet « Crédits »</li>
+    <li>Appuyez sur le symbole +</li>
+    <li>Choisissez le type de crédit</li>
+    <li>Renseignez les détails</li>
+    <li>Appuyez sur « Enregistrer »</li>
   </ol>
-
-  <h3>How do I set up a recurring transaction?</h3>
+  
+  <h3>Comment créer une transaction récurrente ?</h3>
   <ol>
-    <li>Add a new transaction</li>
-    <li>Enable the "Recurring" toggle</li>
-    <li>Set the frequency (weekly, monthly, yearly)</li>
-    <li>Choose the start and optional end date</li>
-    <li>Save the transaction</li>
+    <li>Ajoutez une transaction</li>
+    <li>Activez l’option « Récurrente »</li>
+    <li>Choisissez la fréquence (hebdomadaire, mensuelle, annuelle)</li>
+    <li>Sélectionnez la date de début et éventuellement une date de fin</li>
+    <li>Appuyez sur « Enregistrer »</li>
   </ol>
-
-  <h3>How do I export my data for backup?</h3>
+  
+  <h3>Comment exporter mes données ?</h3>
   <ol>
-    <li>Go to Settings</li>
-    <li>Select "Export & Import"</li>
-    <li>Choose the "Export" tab</li>
-    <li>Select what data you want to include</li>
-    <li>Tap "Export Data"</li>
-    <li>Choose where to save the .regnskappdata file</li>
+    <li>Allez dans les paramètres</li>
+    <li>Sélectionnez « Exportation et importation »</li>
+    <li>Allez dans l’onglet « Exporter »</li>
+    <li>Sélectionnez les données à inclure</li>
+    <li>Appuyez sur « Exporter les données »</li>
+    <li>Choisissez l’emplacement pour sauvegarder le fichier .regnskappdata</li>
   </ol>
-
-  <h3>How do I import data from a backup?</h3>
+  
+  <h3>Comment importer une sauvegarde ?</h3>
   <ol>
-    <li>Go to Settings</li>
-    <li>Select "Export & Import"</li>
-    <li>Choose the "Import" tab</li>
-    <li>Decide whether to replace existing data</li>
-    <li>Tap to select your backup file</li>
-    <li>Confirm the import</li>
+    <li>Allez dans les paramètres</li>
+    <li>Sélectionnez « Exportation et importation »</li>
+    <li>Accédez à l’onglet « Importer »</li>
+    <li>Choisissez si les données existantes doivent être remplacées</li>
+    <li>Sélectionnez le fichier de sauvegarde</li>
+    <li>Confirmez l’importation</li>
   </ol>
-
-  <h3>How do I change the language?</h3>
+  
+  <h3>Comment changer la langue ?</h3>
   <ol>
-    <li>Go to Settings</li>
-    <li>Select Language</li>
-    <li>Choose your preferred language (Norwegian, English, French, Spanish, German, Danish, or Swedish)</li>
-    <li>Restart the app if prompted</li>
+    <li>Allez dans les paramètres</li>
+    <li>Sélectionnez « Langue »</li>
+    <li>Choisissez une langue disponible</li>
+    <li>Redémarrez l’app si nécessaire</li>
   </ol>
-
-  <h3>How do I enable Face ID/Touch ID?</h3>
+  
+  <h3>Comment activer Face ID / Touch ID ?</h3>
   <ol>
-    <li>Long press the app icon on your home screen</li>
-    <li>Select "Require Face ID/Touch ID"</li>
+    <li>Appuyez longuement sur l’icône de l’application sur l’écran d’accueil</li>
+    <li>Sélectionnez « Exiger Face ID / Touch ID »</li>
   </ol>
-
-  <h3>How do I change the currency?</h3>
+  
+  <h3>Comment changer la devise ?</h3>
   <ol>
-    <li>Go to Settings</li>
-    <li>Tap on Currency</li>
-    <li>Select your preferred currency from the list</li>
+    <li>Allez dans les paramètres</li>
+    <li>Sélectionnez « Devise »</li>
+    <li>Choisissez votre devise</li>
   </ol>
-
-  <h3>How do I set my payday date?</h3>
+  
+  <h3>Comment définir la date de paie ?</h3>
   <ol>
-    <li>Go to Settings</li>
-    <li>Find the Payday setting</li>
-    <li>Select your regular payday date (1-31)</li>
-    <li>The system will automatically adjust for weekends</li>
+    <li>Accédez aux paramètres</li>
+    <li>Trouvez l’option « Date de paie »</li>
+    <li>Sélectionnez un jour entre 1 et 31</li>
+    <li>L’app l’ajustera automatiquement si cela tombe un week-end</li>
   </ol>
-
-  <h2>Data Security</h2>
+  
+  <h2>Sécurité des données</h2>
   <ul>
-    <li>All data is stored locally on your device using SwiftData</li>
-    <li>No internet connection required</li>
-    <li>No account creation needed</li>
-    <li>Support for Face ID/Touch ID authentication</li>
-    <li>Manual data export and import gives you complete control</li>
-    <li>Your financial data is encrypted at the device level by iOS</li>
+    <li>Vos données sont stockées localement avec SwiftData</li>
+    <li>Aucune connexion Internet requise</li>
+    <li>Aucun compte nécessaire</li>
+    <li>Prise en charge de l’authentification Face ID / Touch ID</li>
+    <li>Contrôle total via l’exportation et l’importation manuelles</li>
+    <li>Les données financières sont chiffrées au niveau iOS</li>
   </ul>
+  
+  <h2>Mises à jour</h2>
+  <p>L’application est régulièrement mise à jour avec des améliorations et de nouvelles fonctionnalités. Assurez-vous d’avoir la dernière version via l’App Store.</p>
+  
+  <h2>Retour et suggestions</h2>
+  <p>Vos retours sont les bienvenus pour améliorer l’application. Utilisez l’option « Donner son avis » dans les paramètres ou envoyez-moi un e-mail directement.</p>
+  
+  <p>
+    <a href="/index-fr.html" style="
+      display: inline-block;
+      background-color: #1b5e20;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 2rem;
+    ">← Retour</a>
+  </p>
+  
+  <footer>
+    &copy; 2025 BalanceTrackr (RegnskApp) – Ole Morten Tengesdal. Tous droits réservés.
+  </footer>
+  
+  <script data-goatcounter="https://regnskapp.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
-  <h2>Updates</h2>
-  <p>The app is regularly updated with improvements and new features. Make sure to keep your app updated through the App Store.</p>
 
-  <h2>Feedback</h2>
-  <p>I welcome your feedback and suggestions for improving the app. Please use the feedback option in the app's settings or contact us directly via email.</p>
+    <p>
+      <a href="../index.html" class="back-btn">← Back to Home</a>
+    </p>
 
-    <a href="../index.html" class="back-btn">← Back to Home</a>
   </div>
 
+  <!-- Footer -->
   <footer class="footer">
     <div class="footer-content">
       <p>&copy; 2025 BalanceTrackr (RegnskApp).<br>
+      Ole Morten Tengesdal. All rights reserved.</p>
+    </div>
+  </footer>
+  <footer class="footer">
+    <div class="footer-content">
+      <p>&copy; 2025 RegnskApp (RegnskApp).<br>
       Ole Morten Tengesdal. All rights reserved.</p>
     </div>
   </footer>
