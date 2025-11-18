@@ -157,174 +157,557 @@
       color: var(--text-primary);
       font-weight: 500;
     }
+
+    #active-language:hover {
+      background: var(--bg-tertiary);
+      border-color: var(--primary-color);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+
+    #current-flag {
+      width: 20px;
+      height: 15px;
+      border-radius: 2px;
+      object-fit: cover;
+    }
+
+    #language-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      margin-top: 0.5rem;
+      background: var(--bg-primary);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-xl);
+      padding: 0.5rem;
+      min-width: 200px;
+      max-height: 300px;
+      overflow-y: auto;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all var(--transition-normal);
+      z-index: 1000;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border-color) transparent;
+    }
+
+    #language-menu::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    #language-menu::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    #language-menu::-webkit-scrollbar-thumb {
+      background: var(--border-color);
+      border-radius: 3px;
+    }
+
+    #language-menu.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    #language-menu button {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      color: var(--text-primary);
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    #language-menu button:hover {
+      background: var(--bg-secondary);
+      border-color: var(--primary-color);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-1px);
+    }
+
+    #language-menu button:active {
+      transform: translateY(0);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Hamburger Menu */
+    #hamburger-menu {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    #menu-toggle {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      font-size: 0;
+      padding: 0;
+    }
+
+    #menu-toggle::before,
+    #menu-toggle::after,
+    #menu-toggle span {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: var(--text-primary);
+      margin: 3px 0;
+      transition: all var(--transition-fast);
+      border-radius: 1px;
+    }
+
+    #menu-toggle:hover {
+      background: var(--bg-tertiary);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+
+    #menu-dropdown {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      margin-top: 0.5rem;
+      background: var(--bg-primary);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-xl);
+      padding: 0.5rem;
+      min-width: 235px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all var(--transition-normal);
+      z-index: 1000;
+    }
+
+    #menu-dropdown.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    #menu-dropdown a {
+      display: block;
+      padding: 0.75rem 1rem;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      text-decoration: none;
+      font-weight: 500;
+      border-radius: var(--radius-md);
+      transition: all var(--transition-fast);
+      margin-bottom: 0.25rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    #menu-dropdown a:hover {
+      background: var(--bg-secondary);
+      border-color: var(--primary-color);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+
+    #menu-dropdown a:active {
+      transform: translateY(0);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Content Styles */
+    .content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
+      padding-top: calc(80px + 2rem);
+    }
+
+    .content h1, .content h2, .content h3 {
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+
+    .content h1 {
+      margin-top: 2rem;
+    }
+
+    .content h2 {
+      margin-top: 1.5rem;
+    }
+
+    .content h3 {
+      margin-top: 1.25rem;
+    }
+
+    .content ul, .content ol {
+      padding-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .content li {
+      margin-bottom: 0.5rem;
+    }
+
+    .content ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .content ul li {
+      position: relative;
+      padding-left: 1.5rem;
+    }
+
+    .content ul li::before {
+      content: "•";
+      position: absolute;
+      left: 0.25rem;
+      top: 0;
+      font-weight: 600;
+      color: var(--primary-color);
+      font-size: 1.2em;
+    }
+
+    .content ol {
+      counter-reset: step-counter;
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .content ol li {
+      counter-increment: step-counter;
+      position: relative;
+      padding-left: 2.5rem;
+    }
+
+    .content ol li::before {
+      content: counter(step-counter) ".";
+      position: absolute;
+      left: 0.5rem;
+      top: 0;
+      font-weight: 600;
+      color: var(--primary-color);
+    }
+
+    .content a {
+      color: var(--primary-color);
+      text-decoration: none;
+      transition: color var(--transition-fast);
+    }
+
+    .content a:hover {
+      color: var(--primary-dark);
+      text-decoration: underline;
+    }
+
+    .back-btn {
+      display: inline-block;
+      background: var(--primary-color);
+      color: white !important;
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      font-weight: 600;
+      transition: all var(--transition-fast);
+      margin-top: 2rem;
+      box-shadow: var(--shadow-md);
+      border: 2px solid var(--primary-color);
+    }
+
+    .back-btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .footer {
+      padding: 2rem;
+      background: var(--bg-tertiary);
+      text-align: center;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .footer-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .nav-content {
+        padding: 1rem;
+      }
+
+      .content {
+        padding: 1rem;
+        padding-top: calc(70px + 1rem);
+      }
+
+      #language-menu {
+        left: 0;
+        right: auto;
+        min-width: 180px;
+      }
+
+      #menu-dropdown {
+        min-width: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav-container">
+    <div class="nav-content">
+      <!-- 🌍 Language Switcher -->
+      <div id="language-switcher">
+        <button id="active-language" onclick="toggleLanguageMenu()" aria-label="Select language">
+          <img id="current-flag" src="" alt="Selected language" />
+          <span id="current-lang-text">EN</span>
+        </button>
+        <div id="language-menu">
+          <button onclick="changeLanguage('en')">
+            <img src="../images/en/gb.svg" width="20" alt="English" /> English
+          </button>
+          <button onclick="changeLanguage('no')">
+            <img src="../images/no/no.svg" width="20" alt="Norsk" /> Norsk
+          </button>
+          <button onclick="changeLanguage('da')">
+            <img src="../images/da/da.svg" width="20" alt="Dansk" /> Dansk
+          </button>
+          <button onclick="changeLanguage('sv')">
+            <img src="../images/sv/sv.svg" width="20" alt="Svenska" /> Svenska
+          </button>
+          <button onclick="changeLanguage('de')">
+            <img src="../images/de/de.svg" width="20" alt="Deutsch" /> Deutsch
+          </button>
+          <button onclick="changeLanguage('fr')">
+            <img src="../images/fr/fr.svg" width="20" alt="Français" /> Français
+          </button>
+          <button onclick="changeLanguage('es')">
+            <img src="../images/es/es.svg" width="20" alt="Español" /> Español
+          </button>
+          <button onclick="changeLanguage('it')">
+            <img src="../images/it/it.svg" width="20" alt="Italiano" /> Italiano
+          </button>
+          <button onclick="changeLanguage('nl')">
+            <img src="../images/nl/nl.svg" width="20" alt="Nederlands" /> Nederlands
+          </button>
+          <button onclick="changeLanguage('fi')">
+            <img src="../images/fi/fi.svg" width="20" alt="Suomi" /> Suomi
+          </button>
+          <button onclick="changeLanguage('ar')">
+            <img src="../images/ar/ar.svg" width="20" alt="العربية" /> العربية
+          </button>
+          <button onclick="changeLanguage('hi')">
+            <img src="../images/hi/hi.svg" width="20" alt="हिन्दी" /> हिन्दी
+          </button>
+          <button onclick="changeLanguage('ja')">
+            <img src="../images/ja/ja.svg" width="20" alt="日本語" /> 日本語
+          </button>
+          <button onclick="changeLanguage('uk')">
+            <img src="../images/uk/uk.svg" width="20" alt="Українська" /> Українська
+          </button>
+          <button onclick="changeLanguage('zh-Hans')">
+            <img src="../images/zhHans/zhHans.svg" width="20" alt="简体中文" /> 简体中文
+          </button>
+          <button onclick="changeLanguage('zh-Hant')">
+            <img src="../images/zhHant/zhHant.svg" width="20" alt="繁體中文" /> 繁體中文
+          </button>
+        </div>
+      </div>
+
+      <!-- Hamburger Menu -->
+      <div id="hamburger-menu">
+        <button id="menu-toggle" aria-label="Open menu"><span></span></button>
+        <div id="menu-dropdown">
+          <a href="../index.html">Home</a>
+          <a href="../SiriShortcutsSetup/en.html">Apple Pay & Shortcuts</a>
+          <a href="../privacy-policy/en.html">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
   <!-- Main Content -->
   <div class="content">
     <h1>Unterstützung</h1>
 
     <h2>Kontaktinformationen</h2>
-    <p>Für Supportanfragen kontaktieren Sie bitte:</p>
+    <p>Für Support-Anfragen kontaktieren Sie bitte:</p>
     <p>📧 E-Mail: <a href="mailto:balancetrackr@gmail.com">balancetrackr@gmail.com</a></p>
 
-    <h2>Funktionen</h2>
-    <h3>Konten</h3>
-    <ul>
-      <li>Verwalten mehrerer Bankkonten manuell</li>
-      <li>Unterstützung für gemeinsame und persönliche Konten</li>
-      <li>Echtzeit-Aktualisierung des Kontostands</li>
-      <li>Transaktionsverlauf</li>
-      <li>Anpassbare Kontosymbole</li>
-      <li>Manuelle Saldoanpassungen</li>
-    </ul>
+  <h2>Funktionen</h2>
+  <h3>Konten</h3>
+  <ul>
+    <li>Mehrere Bankkonten manuell verfolgen</li>
+    <li>Unterstützung für gemeinsame und persönliche Konten</li>
+    <li>Echtzeit-Saldo-Updates</li>
+    <li>Transaktionshistorie</li>
+    <li>Anpassbare Konto-Icons</li>
+    <li>Manuelle Saldo-Anpassungen</li>
+  </ul>
 
-    <h3>Kredite</h3>
-    <ul>
-      <li>Unterstützung verschiedener Kreditarten: Hypotheken, Autokredite, Studienkredite, Privatkredite, Konsumentenkredite, Kreditkarten</li>
-      <li>Detaillierte Rückzahlungspläne</li>
-      <li>Zinsberechnungen</li>
-      <li>Monatliche Zahlungsübersicht</li>
-      <li>Unterstützung für Annuitätendarlehen und Tilgungsdarlehen</li>
-      <li>Automatische Zahlungsverwaltung</li>
-      <li>Detaillierter Zahlungsverlauf für Kredite</li>
-      <li>Nachverfolgung wiederkehrender Kreditkartennutzung</li>
-    </ul>
+  <h3>Kredite</h3>
+  <ul>
+    <li>Unterstützung für verschiedene Kreditarten: Hypotheken, Autokredite, Studienkredite, persönliche Kredite, Verbraucherkredite, Kreditkarten</li>
+    <li>Detaillierte Zahlungspläne</li>
+    <li>Zinsberechnungen</li>
+    <li>Monatliche Zahlungsverfolgung</li>
+    <li>Unterstützung für sowohl Annuitäten- als auch Serienkreditarten</li>
+    <li>Automatische Zahlungsverarbeitung</li>
+    <li>Detaillierte Kreditzahlungsaufzeichnungen</li>
+    <li>Verfolgung wiederkehrender Kreditkartennutzung</li>
+  </ul>
 
-    <h3>Transaktionen</h3>
-    <ul>
-      <li>Einnahmen und Ausgaben erfassen</li>
-      <li>Transaktionen kategorisieren</li>
-      <li>Unterstützung wiederkehrender Transaktionen</li>
-      <li>Detaillierte Transaktionshistorie</li>
-      <li>Überweisungen zwischen Konten</li>
-      <li>Anpassbare Transaktionsdaten</li>
-      <li>Suche und Filter für Transaktionen</li>
-    </ul>
+  <h3>Transaktionen</h3>
+  <ul>
+    <li>Einnahmen und Ausgaben aufzeichnen</li>
+    <li>Transaktionen kategorisieren</li>
+    <li>Unterstützung für wiederkehrende Transaktionen</li>
+    <li>Detaillierte Transaktionshistorie</li>
+    <li>Übertragung zwischen Konten</li>
+    <li>Anpassbare Transaktionsdaten</li>
+    <li>Transaktionssuche und -filterung</li>
+  </ul>
 
-    <h3>Datenverwaltung</h3>
-    <ul>
-      <li>Datenexport in .regnskappdata-Dateien zur Sicherung</li>
-      <li>Selektiver Export (Sie wählen, was enthalten sein soll)</li>
-      <li>Datenimport aus Backups</li>
-      <li>Option zum Ersetzen oder Zusammenführen von Daten beim Import</li>
-      <li>Lokale Speicherung ohne externe Server</li>
-    </ul>
+  <h3>Datenverwaltung</h3>
+  <ul>
+    <li>Daten zur Sicherung in .regnskappdata-Dateien exportieren</li>
+    <li>Selektiver Datenexport (wählen Sie aus, was eingeschlossen werden soll)</li>
+    <li>Daten aus Sicherungsdateien importieren</li>
+    <li>Option zum Ersetzen oder Zusammenführen von Daten beim Import</li>
+    <li>Lokale Datenspeicherung ohne externe Server</li>
+  </ul>
 
-    <h3>Weitere Funktionen</h3>
-    <ul>
-      <li>Unterstützung mehrerer Währungen (NOK, USD, EUR, GBP, SEK, DKK)</li>
-      <li>Mehrsprachigkeit</li>
-      <li>Anpassbare Kategorien mit Symbolen</li>
-      <li>Finanzübersicht und Statistiken</li>
-      <li>Anpassbares Gehaltsdatum</li>
-      <li>Biometrische Authentifizierung (Face ID/Touch ID)</li>
-      <li>"Make it Rain"-Animation mit Anpassungsmöglichkeiten</li>
-      <li>Beträge mit oder ohne Dezimalstellen anzeigen</li>
-    </ul>
+  <h3>Zusätzliche Funktionen</h3>
+  <ul>
+    <li>Unterstützung mehrerer Währungen (NOK, USD, EUR, GBP, SEK, DKK)</li>
+    <li>Mehrsprachige Unterstützung (Norwegisch, Englisch, Französisch, Spanisch, Deutsch, Dänisch, Schwedisch)</li>
+    <li>Benutzerdefinierte Kategorien mit Icons</li>
+    <li>Finanzübersicht und Statistiken</li>
+    <li>Anpassbare Gehaltstag-Einstellung</li>
+    <li>Biometrische Authentifizierung (Face ID/Touch ID)</li>
+    <li>"Lass es regnen"-Animationsfunktion mit anpassbaren Optionen</li>
+    <li>Cent in Beträgen anzeigen/ausblenden</li>
+  </ul>
 
-    <h2>Häufig gestellte Fragen</h2>
+  <h2>Häufig gestellte Fragen</h2>
 
-    <h3>Wie füge ich ein neues Konto hinzu?</h3>
-    <ol>
-      <li>Gehen Sie zur Registerkarte "Konten"</li>
-      <li>Tippen Sie auf das + Symbol</li>
-      <li>Geben Sie die Kontodaten ein</li>
-      <li>Speichern</li>
-    </ol>
+  <h3>Wie füge ich ein neues Konto hinzu?</h3>
+  <ol>
+    <li>Gehen Sie zum Konten-Tab</li>
+    <li>Tippen Sie auf die +-Schaltfläche</li>
+    <li>Geben Sie Kontodetails ein</li>
+    <li>Speichern</li>
+  </ol>
 
-    <h3>Wie richte ich einen Kredit ein?</h3>
-    <ol>
-      <li>Gehen Sie zur Registerkarte "Kredite"</li>
-      <li>Tippen Sie auf das + Symbol</li>
-      <li>Wählen Sie die Kreditart</li>
-      <li>Geben Sie die Details ein</li>
-      <li>Speichern</li>
-    </ol>
+  <h3>Wie richte ich einen Kredit ein?</h3>
+  <ol>
+    <li>Gehen Sie zum Kredite-Tab</li>
+    <li>Tippen Sie auf die +-Schaltfläche</li>
+    <li>Wählen Sie den Kredittyp</li>
+    <li>Geben Sie Kreditdetails ein</li>
+    <li>Speichern</li>
+  </ol>
 
-    <h3>Wie erstelle ich eine wiederkehrende Transaktion?</h3>
-    <ol>
-      <li>Fügen Sie eine neue Transaktion hinzu</li>
-      <li>Aktivieren Sie den Schalter "Wiederkehrend"</li>
-      <li>Wählen Sie die Häufigkeit (wöchentlich, monatlich, jährlich)</li>
-      <li>Wählen Sie Startdatum und ggf. Enddatum</li>
-      <li>Speichern Sie die Transaktion</li>
-    </ol>
+  <h3>Wie richte ich eine wiederkehrende Transaktion ein?</h3>
+  <ol>
+    <li>Fügen Sie eine neue Transaktion hinzu</li>
+    <li>Aktivieren Sie den "Wiederkehrend"-Schalter</li>
+    <li>Stellen Sie die Häufigkeit ein (wöchentlich, monatlich, jährlich)</li>
+    <li>Wählen Sie das Start- und optionale Enddatum</li>
+    <li>Speichern Sie die Transaktion</li>
+  </ol>
 
-    <h3>Wie exportiere ich Daten zur Sicherung?</h3>
-    <ol>
-      <li>Gehen Sie zu den Einstellungen</li>
-      <li>Wählen Sie "Export & Import"</li>
-      <li>Wechseln Sie zum Reiter "Exportieren"</li>
-      <li>Wählen Sie die gewünschten Daten aus</li>
-      <li>Tippen Sie auf "Daten exportieren"</li>
-      <li>Wählen Sie den Speicherort für die .regnskappdata-Datei</li>
-    </ol>
+  <h3>Wie exportiere ich meine Daten zur Sicherung?</h3>
+  <ol>
+    <li>Gehen Sie zu den Einstellungen</li>
+    <li>Wählen Sie "Exportieren und Importieren"</li>
+    <li>Wählen Sie den "Exportieren"-Tab</li>
+    <li>Wählen Sie aus, welche Daten eingeschlossen werden sollen</li>
+    <li>Tippen Sie auf "Daten exportieren"</li>
+    <li>Wählen Sie, wo die .regnskappdata-Datei gespeichert werden soll</li>
+  </ol>
 
-    <h3>Wie importiere ich Daten aus einem Backup?</h3>
-    <ol>
-      <li>Gehen Sie zu den Einstellungen</li>
-      <li>Wählen Sie "Export & Import"</li>
-      <li>Wechseln Sie zum Reiter "Importieren"</li>
-      <li>Wählen Sie, ob bestehende Daten ersetzt werden sollen</li>
-      <li>Wählen Sie Ihre Backup-Datei</li>
-      <li>Bestätigen Sie den Import</li>
-    </ol>
+  <h3>Wie importiere ich Daten aus einer Sicherung?</h3>
+  <ol>
+    <li>Gehen Sie zu den Einstellungen</li>
+    <li>Wählen Sie "Exportieren und Importieren"</li>
+    <li>Wählen Sie den "Importieren"-Tab</li>
+    <li>Entscheiden Sie, ob vorhandene Daten ersetzt werden sollen</li>
+    <li>Tippen Sie, um Ihre Sicherungsdatei auszuwählen</li>
+    <li>Bestätigen Sie den Import</li>
+  </ol>
 
-    <h3>Wie ändere ich die Sprache?</h3>
-    <ol>
-      <li>Gehen Sie zu den Einstellungen</li>
-      <li>Wählen Sie "Sprache"</li>
-      <li>Wählen Sie die gewünschte Sprache</li>
-    </ol>
+  <h3>Wie ändere ich die Sprache?</h3>
+  <ol>
+    <li>Gehen Sie zu den Einstellungen</li>
+    <li>Wählen Sie Sprache</li>
+    <li>Wählen Sie Ihre bevorzugte Sprache (Norwegisch, Englisch, Französisch, Spanisch, Deutsch, Dänisch oder Schwedisch)</li>
+    <li>Starten Sie die App neu, falls aufgefordert</li>
+  </ol>
 
-    <h3>Wie aktiviere ich Face ID/Touch ID?</h3>
-    <ol>
-      <li>Drücken Sie lange auf das App-Symbol auf dem Startbildschirm</li>
-      <li>Wählen Sie "Face ID/Touch ID erforderlich"</li>
-    </ol>
+  <h3>Wie aktiviere ich Face ID/Touch ID?</h3>
+  <ol>
+    <li>Drücken Sie lange auf das App-Symbol auf Ihrem Startbildschirm</li>
+    <li>Wählen Sie "Face ID/Touch ID erforderlich"</li>
+  </ol>
 
-    <h3>Wie ändere ich die Währung?</h3>
-    <ol>
-      <li>Gehen Sie zu den Einstellungen</li>
-      <li>Tippen Sie auf "Währung"</li>
-      <li>Wählen Sie Ihre gewünschte Währung</li>
-    </ol>
+  <h3>Wie ändere ich die Währung?</h3>
+  <ol>
+    <li>Gehen Sie zu den Einstellungen</li>
+    <li>Tippen Sie auf Währung</li>
+    <li>Wählen Sie Ihre bevorzugte Währung aus der Liste</li>
+  </ol>
 
-    <h3>Wie stelle ich mein Gehaltsdatum ein?</h3>
-    <ol>
-      <li>Gehen Sie zu den Einstellungen</li>
-      <li>Suchen Sie nach der Einstellung für "Gehaltstag"</li>
-      <li>Wählen Sie das übliche Gehaltsdatum (1–31)</li>
-      <li>Das System passt es automatisch an Wochenenden an</li>
-    </ol>
+  <h3>Wie stelle ich mein Gehaltstag-Datum ein?</h3>
+  <ol>
+    <li>Gehen Sie zu den Einstellungen</li>
+    <li>Suchen Sie die Gehaltstag-Einstellung</li>
+    <li>Wählen Sie Ihr regelmäßiges Gehaltstag-Datum (1-31)</li>
+    <li>Das System wird automatisch für Wochenenden angepasst</li>
+  </ol>
 
-    <h2>Datensicherheit</h2>
-    <ul>
-      <li>Alle Daten werden lokal auf Ihrem Gerät mit SwiftData gespeichert</li>
-      <li>Keine Internetverbindung erforderlich</li>
-      <li>Kein Benutzerkonto nötig</li>
-      <li>Unterstützung für Face ID/Touch ID-Authentifizierung</li>
-      <li>Manueller Export/Import gibt Ihnen die volle Kontrolle</li>
-      <li>Ihre Finanzdaten sind auf iOS-Gerätebene verschlüsselt</li>
-    </ul>
+  <h2>Datensicherheit</h2>
+  <ul>
+    <li>Alle Daten werden lokal auf Ihrem Gerät mit SwiftData gespeichert</li>
+    <li>Keine Internetverbindung erforderlich</li>
+    <li>Keine Kontoerstellung notwendig</li>
+    <li>Unterstützung für Face ID/Touch ID-Authentifizierung</li>
+    <li>Manueller Datenexport und -import gibt Ihnen vollständige Kontrolle</li>
+    <li>Ihre Finanzdaten werden auf Geräteebene von iOS verschlüsselt</li>
+  </ul>
 
-    <h2>Updates</h2>
-    <p>Die App wird regelmäßig mit Verbesserungen und neuen Funktionen aktualisiert. Bitte halten Sie die App über den App Store aktuell.</p>
+  <h2>Updates</h2>
+  <p>Die App wird regelmäßig mit Verbesserungen und neuen Funktionen aktualisiert. Stellen Sie sicher, dass Sie Ihre App über den App Store aktualisiert halten.</p>
 
-    <h2>Feedback</h2>
-    <p>Ich freue mich über Ihr Feedback und Ihre Vorschläge zur Verbesserung der App. Nutzen Sie die Feedback-Option in den Einstellungen oder schreiben Sie mir direkt per E-Mail.</p>
+  <h2>Feedback</h2>
+  <p>Ich begrüße Ihr Feedback und Ihre Vorschläge zur Verbesserung der App. Bitte verwenden Sie die Feedback-Option in den App-Einstellungen oder kontaktieren Sie uns direkt per E-Mail.</p>
 
-    <p>
-      <a href="../index.html" class="back-btn">← Zurück zur Startseite</a>
-    </p>
-
+    <a href="../index.html" class="back-btn">← Zurück zur Startseite</a>
   </div>
 
-  <!-- Footer -->
   <footer class="footer">
-    <div class="footer-content">
-      <p>&copy; 2025 BalanceTrackr (RegnskApp).<br>
-      Ole Morten Tengesdal. All rights reserved.</p>
-    </div>
-  </footer>
     <div class="footer-content">
       <p>&copy; 2025 BalanceTrackr (RegnskApp).<br>
       Ole Morten Tengesdal. All rights reserved.</p>
@@ -422,3 +805,4 @@
   <script data-goatcounter="https://regnskapp.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
 </body>
+</html>
