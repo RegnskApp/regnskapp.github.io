@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Support – RegnskApp</title>
+  <title>Підтримка – RegnskApp</title>
   <link rel="icon" href="../images/RegnskApp-Light-Mode-Icon.jpg" type="image/jpeg" />
 
   <!-- Canonical -->
@@ -11,7 +11,7 @@
 
   <!-- Alternate hreflang -->
   <link rel="alternate" hreflang="x-default" href="https://regnskapp.github.io/support/">
-  <link rel="alternate" hreflang="uk" href="https://regnskapp.github.io/support/uk.html">
+  <link rel="alternate" hreflang="en" href="https://regnskapp.github.io/support/en.html">
   <link rel="alternate" hreflang="no" href="https://regnskapp.github.io/support/no.html">
   <link rel="alternate" hreflang="sv" href="https://regnskapp.github.io/support/sv.html">
   <link rel="alternate" hreflang="da" href="https://regnskapp.github.io/support/da.html">
@@ -157,182 +157,559 @@
       color: var(--text-primary);
       font-weight: 500;
     }
+
+    #active-language:hover {
+      background: var(--bg-tertiary);
+      border-color: var(--primary-color);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+
+    #current-flag {
+      width: 20px;
+      height: 15px;
+      border-radius: 2px;
+      object-fit: cover;
+    }
+
+    #language-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      margin-top: 0.5rem;
+      background: var(--bg-primary);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-xl);
+      padding: 0.5rem;
+      min-width: 200px;
+      max-height: 300px;
+      overflow-y: auto;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all var(--transition-normal);
+      z-index: 1000;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border-color) transparent;
+    }
+
+    #language-menu::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    #language-menu::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    #language-menu::-webkit-scrollbar-thumb {
+      background: var(--border-color);
+      border-radius: 3px;
+    }
+
+    #language-menu.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    #language-menu button {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      color: var(--text-primary);
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    #language-menu button:hover {
+      background: var(--bg-secondary);
+      border-color: var(--primary-color);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-1px);
+    }
+
+    #language-menu button:active {
+      transform: translateY(0);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Hamburger Menu */
+    #hamburger-menu {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    #menu-toggle {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      font-size: 0;
+      padding: 0;
+    }
+
+    #menu-toggle::before,
+    #menu-toggle::after,
+    #menu-toggle span {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: var(--text-primary);
+      margin: 3px 0;
+      transition: all var(--transition-fast);
+      border-radius: 1px;
+    }
+
+    #menu-toggle:hover {
+      background: var(--bg-tertiary);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+
+    #menu-dropdown {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      margin-top: 0.5rem;
+      background: var(--bg-primary);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-xl);
+      padding: 0.5rem;
+      min-width: 235px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all var(--transition-normal);
+      z-index: 1000;
+    }
+
+    #menu-dropdown.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    #menu-dropdown a {
+      display: block;
+      padding: 0.75rem 1rem;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      text-decoration: none;
+      font-weight: 500;
+      border-radius: var(--radius-md);
+      transition: all var(--transition-fast);
+      margin-bottom: 0.25rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    #menu-dropdown a:hover {
+      background: var(--bg-secondary);
+      border-color: var(--primary-color);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+
+    #menu-dropdown a:active {
+      transform: translateY(0);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Content Styles */
+    .content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
+      padding-top: calc(80px + 2rem);
+    }
+
+    .content h1, .content h2, .content h3 {
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+
+    .content h1 {
+      margin-top: 2rem;
+    }
+
+    .content h2 {
+      margin-top: 1.5rem;
+    }
+
+    .content h3 {
+      margin-top: 1.25rem;
+    }
+
+    .content ul, .content ol {
+      padding-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .content li {
+      margin-bottom: 0.5rem;
+    }
+
+    .content ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .content ul li {
+      position: relative;
+      padding-left: 1.5rem;
+    }
+
+    .content ul li::before {
+      content: "•";
+      position: absolute;
+      left: 0.25rem;
+      top: 0;
+      font-weight: 600;
+      color: var(--primary-color);
+      font-size: 1.2em;
+    }
+
+    .content ol {
+      counter-reset: step-counter;
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .content ol li {
+      counter-increment: step-counter;
+      position: relative;
+      padding-left: 2.5rem;
+    }
+
+    .content ol li::before {
+      content: counter(step-counter) ".";
+      position: absolute;
+      left: 0.5rem;
+      top: 0;
+      font-weight: 600;
+      color: var(--primary-color);
+    }
+
+    .content a {
+      color: var(--primary-color);
+      text-decoration: none;
+      transition: color var(--transition-fast);
+    }
+
+    .content a:hover {
+      color: var(--primary-dark);
+      text-decoration: underline;
+    }
+
+    .back-btn {
+      display: inline-block;
+      background: var(--primary-color);
+      color: white !important;
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      font-weight: 600;
+      transition: all var(--transition-fast);
+      margin-top: 2rem;
+      box-shadow: var(--shadow-md);
+      border: 2px solid var(--primary-color);
+    }
+
+    .back-btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .footer {
+      padding: 2rem;
+      background: var(--bg-tertiary);
+      text-align: center;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .footer-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .nav-content {
+        padding: 1rem;
+      }
+
+      .content {
+        padding: 1rem;
+        padding-top: calc(70px + 1rem);
+      }
+
+      #language-menu {
+        left: 0;
+        right: auto;
+        min-width: 180px;
+      }
+
+      #menu-dropdown {
+        min-width: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav-container">
+    <div class="nav-content">
+      <!-- 🌍 Language Switcher -->
+      <div id="language-switcher">
+        <button id="active-language" onclick="toggleLanguageMenu()" aria-label="Select language">
+          <img id="current-flag" src="" alt="Selected language" />
+          <span id="current-lang-text">EN</span>
+        </button>
+        <div id="language-menu">
+          <button onclick="changeLanguage('en')">
+            <img src="../images/en/gb.svg" width="20" alt="English" /> English
+          </button>
+          <button onclick="changeLanguage('no')">
+            <img src="../images/no/no.svg" width="20" alt="Norsk" /> Norsk
+          </button>
+          <button onclick="changeLanguage('da')">
+            <img src="../images/da/da.svg" width="20" alt="Dansk" /> Dansk
+          </button>
+          <button onclick="changeLanguage('sv')">
+            <img src="../images/sv/sv.svg" width="20" alt="Svenska" /> Svenska
+          </button>
+          <button onclick="changeLanguage('de')">
+            <img src="../images/de/de.svg" width="20" alt="Deutsch" /> Deutsch
+          </button>
+          <button onclick="changeLanguage('fr')">
+            <img src="../images/fr/fr.svg" width="20" alt="Français" /> Français
+          </button>
+          <button onclick="changeLanguage('es')">
+            <img src="../images/es/es.svg" width="20" alt="Español" /> Español
+          </button>
+          <button onclick="changeLanguage('it')">
+            <img src="../images/it/it.svg" width="20" alt="Italiano" /> Italiano
+          </button>
+          <button onclick="changeLanguage('nl')">
+            <img src="../images/nl/nl.svg" width="20" alt="Nederlands" /> Nederlands
+          </button>
+          <button onclick="changeLanguage('fi')">
+            <img src="../images/fi/fi.svg" width="20" alt="Suomi" /> Suomi
+          </button>
+          <button onclick="changeLanguage('ar')">
+            <img src="../images/ar/ar.svg" width="20" alt="العربية" /> العربية
+          </button>
+          <button onclick="changeLanguage('hi')">
+            <img src="../images/hi/hi.svg" width="20" alt="हिन्दी" /> हिन्दी
+          </button>
+          <button onclick="changeLanguage('ja')">
+            <img src="../images/ja/ja.svg" width="20" alt="日本語" /> 日本語
+          </button>
+          <button onclick="changeLanguage('uk')">
+            <img src="../images/uk/uk.svg" width="20" alt="Українська" /> Українська
+          </button>
+          <button onclick="changeLanguage('zh-Hans')">
+            <img src="../images/zhHans/zhHans.svg" width="20" alt="简体中文" /> 简体中文
+          </button>
+          <button onclick="changeLanguage('zh-Hant')">
+            <img src="../images/zhHant/zhHant.svg" width="20" alt="繁體中文" /> 繁體中文
+          </button>
+        </div>
+      </div>
+
+      <!-- Hamburger Menu -->
+      <div id="hamburger-menu">
+        <button id="menu-toggle" aria-label="Open menu"><span></span></button>
+        <div id="menu-dropdown">
+          <a href="../index.html">Home</a>
+          <a href="../SiriShortcutsSetup/en.html">Apple Pay & Shortcuts</a>
+          <a href="../privacy-policy/en.html">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
   <!-- Main Content -->
   <div class="content">
-  <h1>Підтримка</h1>
+    <h1>Підтримка</h1>
 
-  <h2>Контакти</h2>
-  <p>Звертайтесь до підтримки електронною поштою:</p>
-  <p>📧 Email: <a href="mailto:balancetrackr@gmail.com">balancetrackr@gmail.com</a></p>
+    <h2>Контактна інформація</h2>
+    <p>Для запитів щодо підтримки, будь ласка, зв'яжіться:</p>
+    <p>📧 Email: <a href="mailto:balancetrackr@gmail.com">balancetrackr@gmail.com</a></p>
 
-  <h2>Можливості</h2>
-  <h3>Рахунки</h3>
+  <h2>Функції</h2>
+  <h3>Облікові записи</h3>
   <ul>
-    <li>Ручне відстеження кількох банківських рахунків</li>
-    <li>Підтримка особистих і спільних рахунків</li>
-    <li>Оновлення балансу в реальному часі</li>
+    <li>Відстежувати кілька банківських рахунків вручну</li>
+    <li>Підтримка спільних та особистих рахунків</li>
+    <li>Оновлення балансу в режимі реального часу</li>
     <li>Історія транзакцій</li>
-    <li>Налаштовувані значки рахунків</li>
+    <li>Налаштовувані іконки рахунків</li>
     <li>Ручні коригування балансу</li>
   </ul>
 
-  <h3>Кредити</h3>
+  <h3>Позики</h3>
   <ul>
-    <li>Іпотека, авто, студентські, персональні, споживчі кредити, кредитні картки</li>
+    <li>Підтримка різних типів позик: іпотека, автокредити, студентські позики, особисті позики, споживчі кредити, кредитні картки</li>
     <li>Детальні графіки платежів</li>
-    <li>Розрахунок відсотків</li>
-    <li>Відстеження щомісячних платежів</li>
-    <li>Підтримка ануїтетних і класичних схем</li>
+    <li>Розрахунки відсотків</li>
+    <li>Щомісячне відстеження платежів</li>
+    <li>Підтримка як ануїтетних, так і серійних типів позик</li>
     <li>Автоматична обробка платежів</li>
-    <li>Детальний облік платежів</li>
-    <li>Відстеження повторного використання кредитних карток</li>
+    <li>Детальні записи про платежі за позиками</li>
+    <li>Відстеження повторюваного використання кредитних карток</li>
   </ul>
 
   <h3>Транзакції</h3>
   <ul>
-    <li>Запис доходів і витрат</li>
-    <li>Категоризація транзакцій</li>
-    <li>Періодичні транзакції</li>
-    <li>Детальна історія</li>
-    <li>Перекази між рахунками</li>
-    <li>Користувацькі дати</li>
-    <li>Пошук і фільтри</li>
+    <li>Записувати доходи та витрати</li>
+    <li>Категоризувати транзакції</li>
+    <li>Підтримка повторюваних транзакцій</li>
+    <li>Детальна історія транзакцій</li>
+    <li>Переказ між рахунками</li>
+    <li>Налаштовувані дати транзакцій</li>
+    <li>Пошук та фільтрація транзакцій</li>
   </ul>
 
   <h3>Керування даними</h3>
   <ul>
-    <li>Експорт у .regnskappdata для резервних копій</li>
-    <li>Вибірковий експорт</li>
-    <li>Імпорт з резервної копії</li>
-    <li>Заміна або об’єднання під час імпорту</li>
-    <li>Локальне зберігання, без зовнішніх серверів</li>
+    <li>Експортувати дані до файлів .regnskappdata для резервного копіювання</li>
+    <li>Вибірковий експорт даних (виберіть, що включити)</li>
+    <li>Імпортувати дані з файлів резервних копій</li>
+    <li>Опція замінити або об'єднати дані під час імпорту</li>
+    <li>Локальне зберігання даних без зовнішніх серверів</li>
   </ul>
 
-  <h3>Додатково</h3>
+  <h3>Додаткові функції</h3>
   <ul>
-    <li>Кілька валют (NOK, USD, EUR, GBP, SEK, DKK)</li>
-    <li>Підтримка кількох мов</li>
-    <li>Користувацькі категорії зі значками</li>
-    <li>Фінансовий огляд і статистика</li>
-    <li>Налаштовувана дата зарплати</li>
-    <li>Біометрична автентифікація (Face ID/Touch ID)</li>
-    <li>Анімація “Make it Rain”</li>
-    <li>Показ/приховування копійок</li>
+    <li>Підтримка кількох валют (NOK, USD, EUR, GBP, SEK, DKK)</li>
+    <li>Багатомовна підтримка (норвезька, англійська, французька, іспанська, німецька, данська, шведська)</li>
+    <li>Користувацькі категорії з іконками</li>
+    <li>Фінансовий огляд та статистика</li>
+    <li>Налаштовуване налаштування дня виплати</li>
+    <li>Біометрична аутентифікація (Face ID/Touch ID)</li>
+    <li>Функція анімації "Зроби дощ" з налаштовуваними опціями</li>
+    <li>Показати/приховати копійки в сумах</li>
   </ul>
 
-  <h2>Поширені питання</h2>
-  <h3>Як додати новий рахунок?</h3>
+  <h2>Поширені запитання</h2>
+
+  <h3>Як додати новий обліковий запис?</h3>
   <ol>
-    <li>Перейдіть на вкладку Рахунки</li>
-    <li>Натисніть +</li>
-    <li>Введіть дані рахунку</li>
-    <li>Збережіть</li>
+    <li>Перейдіть до вкладки Облікові записи</li>
+    <li>Торкніться кнопки +</li>
+    <li>Введіть дані облікового запису</li>
+    <li>Зберегти</li>
   </ol>
 
-  <h3>Як налаштувати кредит?</h3>
+  <h3>Як налаштувати позику?</h3>
   <ol>
-    <li>Перейдіть на вкладку Кредити</li>
-    <li>Натисніть +</li>
-    <li>Оберіть тип кредиту</li>
-    <li>Заповніть дані</li>
-    <li>Збережіть</li>
+    <li>Перейдіть до вкладки Позики</li>
+    <li>Торкніться кнопки +</li>
+    <li>Виберіть тип позики</li>
+    <li>Введіть деталі позики</li>
+    <li>Зберегти</li>
   </ol>
 
-  <h3>Як створити періодичну транзакцію?</h3>
+  <h3>Як налаштувати повторювану транзакцію?</h3>
   <ol>
     <li>Додайте нову транзакцію</li>
-    <li>Увімкніть “Періодична”</li>
-    <li>Виберіть частоту</li>
-    <li>Вкажіть дату початку та (за потреби) завершення</li>
-    <li>Збережіть</li>
+    <li>Увімкніть перемикач "Повторювана"</li>
+    <li>Встановіть частоту (щотижнева, щомісячна, щорічна)</li>
+    <li>Виберіть дату початку та необов'язкову дату завершення</li>
+    <li>Збережіть транзакцію</li>
   </ol>
 
-  <h3>Як експортувати дані для резервної копії?</h3>
+  <h3>Як експортувати мої дані для резервного копіювання?</h3>
   <ol>
-    <li>Відкрийте Налаштування</li>
-    <li>Оберіть “Export & Import”</li>
-    <li>Перейдіть на вкладку “Export”</li>
-    <li>Виберіть дані</li>
-    <li>Натисніть “Export Data”</li>
-    <li>Збережіть файл .regnskappdata</li>
+    <li>Перейдіть до Налаштувань</li>
+    <li>Виберіть "Експорт та імпорт"</li>
+    <li>Виберіть вкладку "Експорт"</li>
+    <li>Виберіть, які дані ви хочете включити</li>
+    <li>Торкніться "Експортувати дані"</li>
+    <li>Виберіть, де зберегти файл .regnskappdata</li>
   </ol>
 
   <h3>Як імпортувати дані з резервної копії?</h3>
   <ol>
-    <li>Відкрийте Налаштування</li>
-    <li>Оберіть “Export & Import”</li>
-    <li>Перейдіть на вкладку “Import”</li>
-    <li>Оберіть заміну або об’єднання</li>
-    <li>Виберіть файл резервної копії</li>
+    <li>Перейдіть до Налаштувань</li>
+    <li>Виберіть "Експорт та імпорт"</li>
+    <li>Виберіть вкладку "Імпорт"</li>
+    <li>Вирішіть, чи замінити існуючі дані</li>
+    <li>Торкніться, щоб вибрати файл резервної копії</li>
     <li>Підтвердіть імпорт</li>
   </ol>
 
   <h3>Як змінити мову?</h3>
   <ol>
-    <li>Відкрийте Налаштування</li>
-    <li>Оберіть Мову</li>
-    <li>Виберіть бажану мову</li>
+    <li>Перейдіть до Налаштувань</li>
+    <li>Виберіть Мову</li>
+    <li>Виберіть бажану мову (норвезька, англійська, французька, іспанська, німецька, данська або шведська)</li>
+    <li>Перезапустіть додаток, якщо буде запропоновано</li>
   </ol>
 
   <h3>Як увімкнути Face ID/Touch ID?</h3>
   <ol>
-    <li>Довго натисніть на значок застосунку</li>
-    <li>Оберіть “Require Face ID/Touch ID”</li>
+    <li>Довго натисніть іконку додатка на головному екрані</li>
+    <li>Виберіть "Вимагати Face ID/Touch ID"</li>
   </ol>
 
   <h3>Як змінити валюту?</h3>
   <ol>
-    <li>Відкрийте Налаштування</li>
-    <li>Натисніть Валюта</li>
-    <li>Оберіть валюту зі списку</li>
+    <li>Перейдіть до Налаштувань</li>
+    <li>Торкніться Валюти</li>
+    <li>Виберіть бажану валюту зі списку</li>
   </ol>
 
-  <h3>Як встановити дату зарплати?</h3>
+  <h3>Як встановити дату виплати?</h3>
   <ol>
-    <li>Відкрийте Налаштування</li>
-    <li>Знайдіть налаштування Зарплатний день</li>
-    <li>Виберіть число (1–31); вихідні враховуються автоматично</li>
+    <li>Перейдіть до Налаштувань</li>
+    <li>Знайдіть налаштування Дня виплати</li>
+    <li>Виберіть регулярну дату виплати (1-31)</li>
+    <li>Система автоматично скоригує для вихідних</li>
   </ol>
 
   <h2>Безпека даних</h2>
   <ul>
-    <li>Дані зберігаються локально на пристрої (SwiftData)</li>
-    <li>Інтернет не потрібен</li>
-    <li>Не потрібна реєстрація</li>
-    <li>Підтримка Face ID/Touch ID</li>
-    <li>Повний контроль завдяки ручному експорту/імпорту</li>
-    <li>iOS шифрує фіндані на рівні пристрою</li>
+    <li>Усі дані зберігаються локально на вашому пристрої за допомогою SwiftData</li>
+    <li>Не потрібне інтернет-з'єднання</li>
+    <li>Не потрібно створювати обліковий запис</li>
+    <li>Підтримка аутентифікації Face ID/Touch ID</li>
+    <li>Ручний експорт та імпорт даних дає вам повний контроль</li>
+    <li>Ваші фінансові дані шифруються на рівні пристрою iOS</li>
   </ul>
 
   <h2>Оновлення</h2>
-  <p>Додаток регулярно вдосконалюється. Оновлюйте через App Store.</p>
+  <p>Додаток регулярно оновлюється з покращеннями та новими функціями. Переконайтеся, що ваш додаток оновлений через App Store.</p>
 
-  <h2>Зворотній зв’язок</h2>
-  <p>Будь-які відгуки вітаються. Використовуйте опцію в налаштуваннях або пишіть на email.</p>
+  <h2>Зворотній зв'язок</h2>
+  <p>Я вітаю ваш зворотній зв'язок та пропозиції щодо покращення додатка. Будь ласка, використовуйте опцію зворотнього зв'язку в налаштуваннях додатка або зв'яжіться з нами безпосередньо електронною поштою.</p>
 
-  <p><a href="/index-uk.html" style="display:inline-block;background-color:#1b5e20;color:#fff;padding:10px 20px;border-radius:8px;text-decoration:none;font-weight:bold;margin-top:2rem;">← Назад</a></p>
-
-  <footer>&copy; 2025 BalanceTrackr (RegnskApp) - Ole Morten Tengesdal. Усі права захищено.</footer>
-  <script data-goatcounter="https://regnskapp.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-</body>
-</html>
-
-    <p>
-      <a href="../index.html" class="back-btn">← Back to Home</a>
-    </p>
-
+    <a href="../index.html" class="back-btn">← Повернутися на головну</a>
   </div>
 
-  <!-- Footer -->
   <footer class="footer">
     <div class="footer-content">
       <p>&copy; 2025 BalanceTrackr (RegnskApp).<br>
-      Ole Morten Tengesdal. All rights reserved.</p>
-    </div>
-  </footer>
-  <footer class="footer">
-    <div class="footer-content">
-      <p>&copy; 2025 RegnskApp (RegnskApp).<br>
       Ole Morten Tengesdal. All rights reserved.</p>
     </div>
   </footer>
