@@ -3,184 +3,806 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tuki – BalanceTrackr</title>
-  <link rel="icon" href="images/RegnskApp-Light-Mode-Icon.jpg" type="image/jpeg" />
+  <title>Support – BalanceTrackr</title>
+  <link rel="icon" href="../images/RegnskApp-Light-Mode-Icon.jpg" type="image/jpeg" />
 
+  <!-- Canonical -->
   <link rel="canonical" href="https://regnskapp.github.io/support/fi.html">
+
+  <!-- Alternate hreflang -->
   <link rel="alternate" hreflang="x-default" href="https://regnskapp.github.io/support/">
-  <link rel="alternate" hreflang="en" href="https://regnskapp.github.io/support/en.html">
+  <link rel="alternate" hreflang="fi" href="https://regnskapp.github.io/support/fi.html">
   <link rel="alternate" hreflang="no" href="https://regnskapp.github.io/support/no.html">
   <link rel="alternate" hreflang="sv" href="https://regnskapp.github.io/support/sv.html">
   <link rel="alternate" hreflang="da" href="https://regnskapp.github.io/support/da.html">
   <link rel="alternate" hreflang="de" href="https://regnskapp.github.io/support/de.html">
   <link rel="alternate" hreflang="fr" href="https://regnskapp.github.io/support/fr.html">
   <link rel="alternate" hreflang="es" href="https://regnskapp.github.io/support/es.html">
+  <link rel="alternate" hreflang="ar" href="https://regnskapp.github.io/support/ar.html">
+  <link rel="alternate" hreflang="fi" href="https://regnskapp.github.io/support/fi.html">
+  <link rel="alternate" hreflang="hi" href="https://regnskapp.github.io/support/hi.html">
+  <link rel="alternate" hreflang="it" href="https://regnskapp.github.io/support/it.html">
+  <link rel="alternate" hreflang="ja" href="https://regnskapp.github.io/support/ja.html">
+  <link rel="alternate" hreflang="nl" href="https://regnskapp.github.io/support/nl.html">
+  <link rel="alternate" hreflang="uk" href="https://regnskapp.github.io/support/uk.html">
+  <link rel="alternate" hreflang="zh-Hans" href="https://regnskapp.github.io/support/zhHans.html">
+  <link rel="alternate" hreflang="zh-Hant" href="https://regnskapp.github.io/support/zhHant.html">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
   <style>
-    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,'Open Sans','Helvetica Neue',sans-serif;background:#f9f9f9;color:#212121;padding:2rem;max-width:800px;margin:auto}
-    h1,h2{color:#1b5e20}
-    ul{padding-left:1.5rem}
-    a{color:#1b5e20}
-    footer{background:#f9f9f9;text-align:center;padding:1rem;font-size:.9rem}
-    @media(prefers-color-scheme:dark){body{background:#121212;color:#e0e0e0}h1,h2,a{color:#90ee90}footer{background:#121212;color:#e0e0e0}}
+    /* Modern CSS Reset & Base Styles */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --primary-color: #0f766e;
+      --primary-dark: #0d5f56;
+      --accent-color: #f59e0b;
+      --success-color: #10b981;
+      --text-primary: #111827;
+      --text-secondary: #6b7280;
+      --text-muted: #9ca3af;
+      --bg-primary: #ffffff;
+      --bg-secondary: #f8fafc;
+      --bg-tertiary: #f1f5f9;
+      --border-color: #e5e7eb;
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      --radius-sm: 0.375rem;
+      --radius-md: 0.5rem;
+      --radius-lg: 0.75rem;
+      --radius-xl: 1rem;
+      --transition-fast: 0.15s ease;
+      --transition-normal: 0.3s ease;
+      --transition-slow: 0.5s ease;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --text-primary: #f9fafb;
+        --text-secondary: #d1d5db;
+        --text-muted: #9ca3af;
+        --bg-primary: #111827;
+        --bg-secondary: #1f2937;
+        --bg-tertiary: #374151;
+        --border-color: #374151;
+        --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+        --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+        --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
+        --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+      }
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      color: var(--text-primary);
+      background: var(--bg-primary);
+      overflow-x: hidden;
+    }
+
+    /* Modern Typography */
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 600;
+      line-height: 1.25;
+      letter-spacing: -0.025em;
+    }
+
+    h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
+    h2 { font-size: clamp(1.5rem, 4vw, 2.25rem); }
+    h3 { font-size: clamp(1.25rem, 3vw, 1.875rem); }
+
+    p { margin-bottom: 1rem; }
+
+    /* Navigation Components */
+    .nav-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-color);
+      transition: all var(--transition-normal);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .nav-container {
+        background: rgba(17, 24, 39, 0.8);
+      }
+    }
+
+    .nav-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* Language Switcher */
+    #language-switcher {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    #active-language {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    #current-lang-text {
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    #active-language:hover {
+      background: var(--bg-tertiary);
+      border-color: var(--primary-color);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+
+    #current-flag {
+      width: 20px;
+      height: 15px;
+      border-radius: 2px;
+      object-fit: cover;
+    }
+
+    #language-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      margin-top: 0.5rem;
+      background: var(--bg-primary);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-xl);
+      padding: 0.5rem;
+      min-width: 200px;
+      max-height: 300px;
+      overflow-y: auto;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all var(--transition-normal);
+      z-index: 1000;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border-color) transparent;
+    }
+
+    #language-menu::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    #language-menu::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    #language-menu::-webkit-scrollbar-thumb {
+      background: var(--border-color);
+      border-radius: 3px;
+    }
+
+    #language-menu.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    #language-menu button {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      color: var(--text-primary);
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    #language-menu button:hover {
+      background: var(--bg-secondary);
+      border-color: var(--primary-color);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-1px);
+    }
+
+    #language-menu button:active {
+      transform: translateY(0);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Hamburger Menu */
+    #hamburger-menu {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    #menu-toggle {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      font-size: 0;
+      padding: 0;
+    }
+
+    #menu-toggle::before,
+    #menu-toggle::after,
+    #menu-toggle span {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: var(--text-primary);
+      margin: 3px 0;
+      transition: all var(--transition-fast);
+      border-radius: 1px;
+    }
+
+    #menu-toggle:hover {
+      background: var(--bg-tertiary);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+
+    #menu-dropdown {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      margin-top: 0.5rem;
+      background: var(--bg-primary);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-xl);
+      padding: 0.5rem;
+      min-width: 235px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all var(--transition-normal);
+      z-index: 1000;
+    }
+
+    #menu-dropdown.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    #menu-dropdown a {
+      display: block;
+      padding: 0.75rem 1rem;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      text-decoration: none;
+      font-weight: 500;
+      border-radius: var(--radius-md);
+      transition: all var(--transition-fast);
+      margin-bottom: 0.25rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    #menu-dropdown a:hover {
+      background: var(--bg-secondary);
+      border-color: var(--primary-color);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+
+    #menu-dropdown a:active {
+      transform: translateY(0);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Content Styles */
+    .content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
+      padding-top: calc(80px + 2rem);
+    }
+
+    .content h1, .content h2, .content h3 {
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+
+    .content h1 {
+      margin-top: 2rem;
+    }
+
+    .content h2 {
+      margin-top: 1.5rem;
+    }
+
+    .content h3 {
+      margin-top: 1.25rem;
+    }
+
+    .content ul, .content ol {
+      padding-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .content li {
+      margin-bottom: 0.5rem;
+    }
+
+    .content ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .content ul li {
+      position: relative;
+      padding-left: 1.5rem;
+    }
+
+    .content ul li::before {
+      content: "•";
+      position: absolute;
+      left: 0.25rem;
+      top: 0;
+      font-weight: 600;
+      color: var(--primary-color);
+      font-size: 1.2em;
+    }
+
+    .content ol {
+      counter-reset: step-counter;
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .content ol li {
+      counter-increment: step-counter;
+      position: relative;
+      padding-left: 2.5rem;
+    }
+
+    .content ol li::before {
+      content: counter(step-counter) ".";
+      position: absolute;
+      left: 0.5rem;
+      top: 0;
+      font-weight: 600;
+      color: var(--primary-color);
+    }
+
+    .content a {
+      color: var(--primary-color);
+      text-decoration: none;
+      transition: color var(--transition-fast);
+    }
+
+    .content a:hover {
+      color: var(--primary-dark);
+      text-decoration: underline;
+    }
+
+    .back-btn {
+      display: inline-block;
+      background: var(--primary-color);
+      color: white !important;
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      font-weight: 600;
+      transition: all var(--transition-fast);
+      margin-top: 2rem;
+      box-shadow: var(--shadow-md);
+      border: 2px solid var(--primary-color);
+    }
+
+    .back-btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .footer {
+      padding: 2rem;
+      background: var(--bg-tertiary);
+      text-align: center;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .footer-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .nav-content {
+        padding: 1rem;
+      }
+
+      .content {
+        padding: 1rem;
+        padding-top: calc(70px + 1rem);
+      }
+
+      #language-menu {
+        left: 0;
+        right: auto;
+        min-width: 180px;
+      }
+
+      #menu-dropdown {
+        min-width: 200px;
+      }
+    }
   </style>
 </head>
 <body>
-  <h1>Tuki</h1>
+  <!-- Navigation -->
+  <nav class="nav-container">
+    <div class="nav-content">
+      <!-- 🌍 Language Switcher -->
+      <div id="language-switcher">
+        <button id="active-language" onclick="toggleLanguageMenu()" aria-label="Select language">
+          <img id="current-flag" src="" alt="Selected language" />
+          <span id="current-lang-text">EN</span>
+        </button>
+        <div id="language-menu">
+          <button onclick="changeLanguage('en')">
+            <img src="../images/en/gb.svg" width="20" alt="English" /> English
+          </button>
+          <button onclick="changeLanguage('no')">
+            <img src="../images/no/no.svg" width="20" alt="Norsk" /> Norsk
+          </button>
+          <button onclick="changeLanguage('da')">
+            <img src="../images/da/da.svg" width="20" alt="Dansk" /> Dansk
+          </button>
+          <button onclick="changeLanguage('sv')">
+            <img src="../images/sv/sv.svg" width="20" alt="Svenska" /> Svenska
+          </button>
+          <button onclick="changeLanguage('de')">
+            <img src="../images/de/de.svg" width="20" alt="Deutsch" /> Deutsch
+          </button>
+          <button onclick="changeLanguage('fr')">
+            <img src="../images/fr/fr.svg" width="20" alt="Français" /> Français
+          </button>
+          <button onclick="changeLanguage('es')">
+            <img src="../images/es/es.svg" width="20" alt="Español" /> Español
+          </button>
+          <button onclick="changeLanguage('it')">
+            <img src="../images/it/it.svg" width="20" alt="Italiano" /> Italiano
+          </button>
+          <button onclick="changeLanguage('nl')">
+            <img src="../images/nl/nl.svg" width="20" alt="Nederlands" /> Nederlands
+          </button>
+          <button onclick="changeLanguage('fi')">
+            <img src="../images/fi/fi.svg" width="20" alt="Suomi" /> Suomi
+          </button>
+          <button onclick="changeLanguage('ar')">
+            <img src="../images/ar/ar.svg" width="20" alt="العربية" /> العربية
+          </button>
+          <button onclick="changeLanguage('hi')">
+            <img src="../images/hi/hi.svg" width="20" alt="हिन्दी" /> हिन्दी
+          </button>
+          <button onclick="changeLanguage('ja')">
+            <img src="../images/ja/ja.svg" width="20" alt="日本語" /> 日本語
+          </button>
+          <button onclick="changeLanguage('uk')">
+            <img src="../images/uk/uk.svg" width="20" alt="Українська" /> Українська
+          </button>
+          <button onclick="changeLanguage('zh-Hans')">
+            <img src="../images/zhHans/zhHans.svg" width="20" alt="简体中文" /> 简体中文
+          </button>
+          <button onclick="changeLanguage('zh-Hant')">
+            <img src="../images/zhHant/zhHant.svg" width="20" alt="繁體中文" /> 繁體中文
+          </button>
+        </div>
+      </div>
 
-  <h2>Yhteystiedot</h2>
-  <p>Tukipyyntöihin vastataan sähköpostitse:</p>
-  <p>📧 Sähköposti: <a href="mailto:olemortentengesdal@icloud.com">olemortentengesdal@icloud.com</a></p>
+      <!-- Hamburger Menu -->
+      <div id="hamburger-menu">
+        <button id="menu-toggle" aria-label="Open menu"><span></span></button>
+        <div id="menu-dropdown">
+          <a href="../index.html">Home</a>
+          <a href="../SiriShortcutsSetup/en.html">Apple Pay & Shortcuts</a>
+          <a href="../privacy-policy/en.html">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+  </nav>
 
-  <h2>Ominaisuudet</h2>
-  <h3>Tilit</h3>
+  <!-- Main Content -->
+  <div class="content">
+    <h1>Support</h1>
+
+  <h2>Contact Information</h2>
+  <p>For support inquiries, please contact:</p>
+  <p>📧 Email: <a href="mailto:balancetrackr@gmail.com">balancetrackr@gmail.com</a></p>
+
+  <h2>Features</h2>
+  <h3>Accounts</h3>
   <ul>
-    <li>Useiden pankkitilien manuaalinen seuranta</li>
-    <li>Henkilökohtaiset ja jaetut tilit</li>
-    <li>Saldo päivittyy reaaliajassa</li>
-    <li>Tapahtumahistoria</li>
-    <li>Muokattavat tilikuvakkeet</li>
-    <li>Manuaaliset saldon korjaukset</li>
+    <li>Track multiple bank accounts manually</li>
+    <li>Support for shared and personal accounts</li>
+    <li>Real-time balance updates</li>
+    <li>Transaction history</li>
+    <li>Customizable account icons</li>
+    <li>Manual balance adjustments</li>
   </ul>
 
-  <h3>Lainat</h3>
+  <h3>Loans</h3>
   <ul>
-    <li>Asunto-, auto-, opinto-, kulutus- ja henkilölainat, sekä luottokortit</li>
-    <li>Yksityiskohtaiset maksuaikataulut</li>
-    <li>Korkolaskenta</li>
-    <li>Kuukausittaisten maksujen seuranta</li>
-    <li>Annuitetti- ja tasalyhennyslainojen tuki</li>
-    <li>Automaattinen maksujen käsittely</li>
-    <li>Tarkat maksukirjaukset</li>
-    <li>Toistuvan luottokorttikäytön seuranta</li>
+    <li>Support for various loan types: mortgages, car loans, student loans, personal loans, consumer loans, credit cards</li>
+    <li>Detailed payment schedules</li>
+    <li>Interest calculations</li>
+    <li>Monthly payment tracking</li>
+    <li>Support for both annuity and serial loan types</li>
+    <li>Automatic payment processing</li>
+    <li>Detailed loan payment records</li>
+    <li>Recurring credit card usage tracking</li>
   </ul>
 
-  <h3>Tapahtumat</h3>
+  <h3>Transactions</h3>
   <ul>
-    <li>Tulojen ja menojen kirjaaminen</li>
-    <li>Tapahtumien kategorisointi</li>
-    <li>Toistuvat tapahtumat</li>
-    <li>Yksityiskohtainen historia</li>
-    <li>Siirrot tilien välillä</li>
-    <li>Vapaavalintaiset päivämäärät</li>
-    <li>Haku ja suodatus</li>
+    <li>Record income and expenses</li>
+    <li>Categorize transactions</li>
+    <li>Support for recurring transactions</li>
+    <li>Detailed transaction history</li>
+    <li>Transfer between accounts</li>
+    <li>Custom transaction dates</li>
+    <li>Transaction search and filtering</li>
   </ul>
 
-  <h3>Datanhallinta</h3>
+  <h3>Data Management</h3>
   <ul>
-    <li>Vienti .regnskappdata-varmuuskopiotiedostoiksi</li>
-    <li>Valikoiva vienti (valitse sisällytettävä data)</li>
-    <li>Tuonti varmuuskopiosta</li>
-    <li>Korvaa tai yhdistä tuonnin yhteydessä</li>
-    <li>Paikallinen tallennus – ei ulkoisia palvelimia</li>
+    <li>Export data to .regnskappdata files for backup</li>
+    <li>Selective data export (choose what to include)</li>
+    <li>Import data from backup files</li>
+    <li>Option to replace or merge data during import</li>
+    <li>Local data storage with no external servers</li>
   </ul>
 
-  <h3>Lisäominaisuuksia</h3>
+  <h3>Additional Features</h3>
   <ul>
-    <li>Useita valuuttoja (NOK, USD, EUR, GBP, SEK, DKK)</li>
-    <li>Monikielisyystuki</li>
-    <li>Muokattavat kategoriat ja kuvakkeet</li>
-    <li>Taloudellinen yleiskuva ja tilastot</li>
-    <li>Muokattava palkanmaksupäivä</li>
-    <li>Biometrinen tunnistus (Face ID/Touch ID)</li>
-    <li>“Make it Rain” -animaatio</li>
-    <li>Senttien näyttö/piilotus</li>
+    <li>Multiple currency support (NOK, USD, EUR, GBP, SEK, DKK)</li>
+    <li>Multi-language support (Norwegian, English, French, Spanish, German, Danish, Swedish)</li>
+    <li>Custom categories with icons</li>
+    <li>Financial overview and statistics</li>
+    <li>Customizable payday setting</li>
+    <li>Biometric authentication (Face ID/Touch ID)</li>
+    <li>"Make it Rain" animation feature with customizable options</li>
+    <li>Show/hide cents in amounts</li>
   </ul>
 
-  <h2>Usein kysyttyä</h2>
-  <h3>Miten lisään uuden tilin?</h3>
+  <h2>Frequently Asked Questions</h2>
+
+  <h3>How do I add a new account?</h3>
   <ol>
-    <li>Avaa Tilit-välilehti</li>
-    <li>Napauta + -painiketta</li>
-    <li>Syötä tilin tiedot</li>
-    <li>Tallenna</li>
+    <li>Go to the Accounts tab</li>
+    <li>Tap the + button</li>
+    <li>Enter account details</li>
+    <li>Save</li>
   </ol>
 
-  <h3>Miten perustan lainan?</h3>
+  <h3>How do I set up a loan?</h3>
   <ol>
-    <li>Avaa Lainat-välilehti</li>
-    <li>Napauta +</li>
-    <li>Valitse lainatyyppi</li>
-    <li>Syötä laina­tiedot</li>
-    <li>Tallenna</li>
+    <li>Go to the Loans tab</li>
+    <li>Tap the + button</li>
+    <li>Choose loan type</li>
+    <li>Enter loan details</li>
+    <li>Save</li>
   </ol>
 
-  <h3>Miten teen toistuvan tapahtuman?</h3>
+  <h3>How do I set up a recurring transaction?</h3>
   <ol>
-    <li>Lisää uusi tapahtuma</li>
-    <li>Ota “Toistuva” käyttöön</li>
-    <li>Valitse toistuvuus</li>
-    <li>Valitse aloitus- ja mahdollinen päättymispäivä</li>
-    <li>Tallenna</li>
+    <li>Add a new transaction</li>
+    <li>Enable the "Recurring" toggle</li>
+    <li>Set the frequency (weekly, monthly, yearly)</li>
+    <li>Choose the start and optional end date</li>
+    <li>Save the transaction</li>
   </ol>
 
-  <h3>Miten vien datani varmuuskopioksi?</h3>
+  <h3>How do I export my data for backup?</h3>
   <ol>
-    <li>Avaa Asetukset</li>
-    <li>Valitse “Vienti ja tuonti”</li>
-    <li>Valitse “Vienti”-välilehti</li>
-    <li>Valitse vietävä data</li>
-    <li>Napauta “Vie data”</li>
-    <li>Valitse tallennuspaikka</li>
+    <li>Go to Settings</li>
+    <li>Select "Export & Import"</li>
+    <li>Choose the "Export" tab</li>
+    <li>Select what data you want to include</li>
+    <li>Tap "Export Data"</li>
+    <li>Choose where to save the .regnskappdata file</li>
   </ol>
 
-  <h3>Miten tuon varmuuskopion?</h3>
+  <h3>How do I import data from a backup?</h3>
   <ol>
-    <li>Avaa Asetukset</li>
-    <li>Valitse “Vienti ja tuonti”</li>
-    <li>Valitse “Tuonti”-välilehti</li>
-    <li>Valitse korvaus tai yhdistäminen</li>
-    <li>Valitse varmuuskopiotiedosto</li>
-    <li>Vahvista tuonti</li>
+    <li>Go to Settings</li>
+    <li>Select "Export & Import"</li>
+    <li>Choose the "Import" tab</li>
+    <li>Decide whether to replace existing data</li>
+    <li>Tap to select your backup file</li>
+    <li>Confirm the import</li>
   </ol>
 
-  <h3>Miten vaihdan kielen?</h3>
+  <h3>How do I change the language?</h3>
   <ol>
-    <li>Avaa Asetukset</li>
-    <li>Valitse Kieli</li>
-    <li>Valitse haluamasi kieli</li>
+    <li>Go to Settings</li>
+    <li>Select Language</li>
+    <li>Choose your preferred language (Norwegian, English, French, Spanish, German, Danish, or Swedish)</li>
+    <li>Restart the app if prompted</li>
   </ol>
 
-  <h3>Miten otan Face ID/Touch ID:n käyttöön?</h3>
+  <h3>How do I enable Face ID/Touch ID?</h3>
   <ol>
-    <li>Paina pitkään sovelluskuvaketta</li>
-    <li>Valitse “Require Face ID/Touch ID”</li>
+    <li>Long press the app icon on your home screen</li>
+    <li>Select "Require Face ID/Touch ID"</li>
   </ol>
 
-  <h3>Miten vaihdan valuutan?</h3>
+  <h3>How do I change the currency?</h3>
   <ol>
-    <li>Avaa Asetukset</li>
-    <li>Valitse Valuutta</li>
-    <li>Valitse haluamasi valuutta</li>
+    <li>Go to Settings</li>
+    <li>Tap on Currency</li>
+    <li>Select your preferred currency from the list</li>
   </ol>
 
-  <h3>Miten asetan palkanmaksupäivän?</h3>
+  <h3>How do I set my payday date?</h3>
   <ol>
-    <li>Avaa Asetukset</li>
-    <li>Etsi Palkanmaksupäivä</li>
-    <li>Valitse vakiopäivä (1–31); viikonloput huomioidaan automaattisesti</li>
+    <li>Go to Settings</li>
+    <li>Find the Payday setting</li>
+    <li>Select your regular payday date (1-31)</li>
+    <li>The system will automatically adjust for weekends</li>
   </ol>
 
-  <h2>Dataturva</h2>
+  <h2>Data Security</h2>
   <ul>
-    <li>Kaikki data tallennetaan paikallisesti laitteellesi (SwiftData)</li>
-    <li>Ei tarvitse internet-yhteyttä</li>
-    <li>Ei käyttäjätiliä</li>
-    <li>Face ID/Touch ID -tuki</li>
-    <li>Manuaalinen vienti/tuonti antaa täyden hallinnan</li>
-    <li>iOS salaa taloustietosi laitetasolla</li>
+    <li>All data is stored locally on your device using SwiftData</li>
+    <li>No internet connection required</li>
+    <li>No account creation needed</li>
+    <li>Support for Face ID/Touch ID authentication</li>
+    <li>Manual data export and import gives you complete control</li>
+    <li>Your financial data is encrypted at the device level by iOS</li>
   </ul>
 
-  <h2>Päivitykset</h2>
-  <p>Sovellusta parannetaan säännöllisesti. Pidä se ajan tasalla App Storessa.</p>
+  <h2>Updates</h2>
+  <p>The app is regularly updated with improvements and new features. Make sure to keep your app updated through the App Store.</p>
 
-  <h2>Palaute</h2>
-  <p>Kuulen mielelläni palautteesi ja kehitysehdotuksesi. Käytä sovelluksen palaute-toimintoa tai lähetä sähköpostia.</p>
+  <h2>Feedback</h2>
+  <p>I welcome your feedback and suggestions for improving the app. Please use the feedback option in the app's settings or contact us directly via email.</p>
 
-  <p><a href="/index-fi.html" style="display:inline-block;background-color:#1b5e20;color:#fff;padding:10px 20px;border-radius:8px;text-decoration:none;font-weight:bold;margin-top:2rem;">← Takaisin</a></p>
+    <a href="../index.html" class="back-btn">← Back to Home</a>
+  </div>
 
-  <footer>&copy; 2025 BalanceTrackr (RegnskApp) - Ole Morten Tengesdal. Kaikki oikeudet pidätetään.</footer>
+  <footer class="footer">
+    <div class="footer-content">
+      <p>&copy; 2025 BalanceTrackr (RegnskApp).<br>
+      Ole Morten Tengesdal. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    function toggleLanguageMenu() {
+      const menu = document.getElementById("language-menu");
+      menu.classList.toggle("show");
+    }
+
+    function changeLanguage(langCode) {
+      const flagPath = `../images/${langCode}/${langCode === 'en' ? 'gb' : langCode}.svg`;
+      document.getElementById("current-flag").src = flagPath;
+
+      const langTexts = {
+        'en': 'EN', 'no': 'NO', 'da': 'DA', 'sv': 'SV', 'de': 'DE',
+        'fr': 'FR', 'es': 'ES', 'ar': 'AR', 'fi': 'FI', 'hi': 'HI',
+        'it': 'IT', 'ja': 'JA', 'nl': 'NL', 'uk': 'UK', 'zhHans': 'CN', 'zhHant': 'TW'
+      };
+      document.getElementById("current-lang-text").textContent = langTexts[langCode] || 'EN';
+
+      // Navigate to the appropriate support page
+      const file = langCode === 'en' ? 'en.html' : `${langCode}.html`;
+      window.location.href = file;
+    }
+
+    // Determine which language is active based on URL
+    function setInitialFlag() {
+      const filename = window.location.pathname.split('/').pop();
+      // Allowed language codes (matches the menu options)
+      const langCodes = ['en','no','da','sv','de','fr','es','ar','fi','hi','it','ja','nl','uk','zhHans','zhHant'];
+
+      // Default to English if no match
+      let currentLang = 'en';
+
+      // Check if filename matches a language code
+      for (const lang of langCodes) {
+        if (filename === (lang === 'en' ? 'en.html' : `${lang}.html`)) {
+          currentLang = lang;
+          break;
+        }
+      }
+
+      const flagPath = `../images/${currentLang}/${currentLang === 'en' ? 'gb' : currentLang}.svg`;
+      const img = document.getElementById("current-flag");
+      if (img) img.src = flagPath;
+
+      const langTexts = {
+        'en': 'EN', 'no': 'NO', 'da': 'DA', 'sv': 'SV', 'de': 'DE',
+        'fr': 'FR', 'es': 'ES', 'ar': 'AR', 'fi': 'FI', 'hi': 'HI',
+        'it': 'IT', 'ja': 'JA', 'nl': 'NL', 'uk': 'UK', 'zhHans': 'CN', 'zhHant': 'TW'
+      };
+      document.getElementById("current-lang-text").textContent = langTexts[currentLang] || 'EN';
+    }
+
+    setInitialFlag(); // call the function on load
+
+    // Hamburger Menu Functions
+    const toggleButton = document.getElementById('menu-toggle');
+    const dropdown = document.getElementById('menu-dropdown');
+
+    toggleButton.addEventListener('click', () => {
+      dropdown.classList.toggle('show');
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener("click", function (event) {
+      const switcher = document.getElementById("language-switcher");
+      if (!switcher.contains(event.target)) {
+        document.getElementById("language-menu").classList.remove("show");
+      }
+
+      if (!document.getElementById('hamburger-menu').contains(event.target)) {
+        dropdown.classList.remove('show');
+      }
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+  </script>
+
   <script data-goatcounter="https://regnskapp.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
 </body>
 </html>
-
-
