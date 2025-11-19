@@ -4,150 +4,719 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Politique de confidentialité – BalanceTrackr</title>
-  <link rel="icon" href="images/RegnskApp-Light-Mode-Icon.jpg" type="image/jpeg" />
-    <!-- Canonical -->
+  <link rel="icon" href="../images/RegnskApp-Light-Mode-Icon.jpg" type="image/jpeg" />
+
+  <!-- Canonical -->
   <link rel="canonical" href="https://regnskapp.github.io/privacy-policy/fr.html">
 
   <!-- Alternate hreflang -->
   <link rel="alternate" hreflang="x-default" href="https://regnskapp.github.io/privacy-policy/">
   <link rel="alternate" hreflang="en" href="https://regnskapp.github.io/privacy-policy/en.html">
-  <link rel="alternate" hreflang="da" href="https://regnskapp.github.io/privacy-policy/da.html">
-  <link rel="alternate" hreflang="sv" href="https://regnskapp.github.io/privacy-policy/sv.html">
   <link rel="alternate" hreflang="no" href="https://regnskapp.github.io/privacy-policy/no.html">
+  <link rel="alternate" hreflang="sv" href="https://regnskapp.github.io/privacy-policy/sv.html">
+  <link rel="alternate" hreflang="da" href="https://regnskapp.github.io/privacy-policy/da.html">
   <link rel="alternate" hreflang="de" href="https://regnskapp.github.io/privacy-policy/de.html">
   <link rel="alternate" hreflang="fr" href="https://regnskapp.github.io/privacy-policy/fr.html">
   <link rel="alternate" hreflang="es" href="https://regnskapp.github.io/privacy-policy/es.html">
+  <link rel="alternate" hreflang="ar" href="https://regnskapp.github.io/privacy-policy/ar.html">
+  <link rel="alternate" hreflang="fi" href="https://regnskapp.github.io/privacy-policy/fi.html">
+  <link rel="alternate" hreflang="hi" href="https://regnskapp.github.io/privacy-policy/hi.html">
+  <link rel="alternate" hreflang="it" href="https://regnskapp.github.io/privacy-policy/it.html">
+  <link rel="alternate" hreflang="ja" href="https://regnskapp.github.io/privacy-policy/ja.html">
+  <link rel="alternate" hreflang="nl" href="https://regnskapp.github.io/privacy-policy/nl.html">
+  <link rel="alternate" hreflang="uk" href="https://regnskapp.github.io/privacy-policy/uk.html">
+  <link rel="alternate" hreflang="zh-Hans" href="https://regnskapp.github.io/privacy-policy/zhHans.html">
+  <link rel="alternate" hreflang="zh-Hant" href="https://regnskapp.github.io/privacy-policy/zhHant.html">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
   <style>
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-        Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-      background-color: #f9f9f9;
-      color: #212121; /* Normal tekstfarge i lys modus */
-      padding: 2rem;
-      max-width: 800px;
-      margin: auto;
+    /* Modern CSS Reset & Base Styles */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
-    h1, h2 {
-      color: #1b5e20;
+    :root {
+      --primary-color: #0f766e;
+      --primary-dark: #0d5f56;
+      --accent-color: #f59e0b;
+      --success-color: #10b981;
+      --text-primary: #111827;
+      --text-secondary: #6b7280;
+      --text-muted: #9ca3af;
+      --bg-primary: #ffffff;
+      --bg-secondary: #f8fafc;
+      --bg-tertiary: #f1f5f9;
+      --border-color: #e5e7eb;
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      --radius-sm: 0.375rem;
+      --radius-md: 0.5rem;
+      --radius-lg: 0.75rem;
+      --radius-xl: 1rem;
+      --transition-fast: 0.15s ease;
+      --transition-normal: 0.3s ease;
+      --transition-slow: 0.5s ease;
     }
 
-    a {
-      color: #1b5e20;
-    }
-
-    footer {
-      background-color: #f9f9f9;
-      text-align: center;
-      padding: 1rem;
-      font-size: 0.9rem;
-    }
-    
     @media (prefers-color-scheme: dark) {
-      body {
-        background-color: #121212;
-        color: #e0e0e0;
+      :root {
+        --text-primary: #f9fafb;
+        --text-secondary: #d1d5db;
+        --text-muted: #9ca3af;
+        --bg-primary: #111827;
+        --bg-secondary: #1f2937;
+        --bg-tertiary: #374151;
+        --border-color: #374151;
+        --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+        --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+        --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
+        --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+      }
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      color: var(--text-primary);
+      background: var(--bg-primary);
+      overflow-x: hidden;
+    }
+
+    /* Modern Typography */
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 600;
+      line-height: 1.25;
+      letter-spacing: -0.025em;
+    }
+
+    h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
+    h2 { font-size: clamp(1.5rem, 4vw, 2.25rem); }
+    h3 { font-size: clamp(1.25rem, 3vw, 1.875rem); }
+
+    p { margin-bottom: 1rem; }
+
+    /* Navigation Components */
+    .nav-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-color);
+      transition: all var(--transition-normal);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .nav-container {
+        background: rgba(17, 24, 39, 0.8);
+      }
+    }
+
+    .nav-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* Language Switcher */
+    #language-switcher {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    #active-language {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    #current-lang-text {
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    #active-language:hover {
+      background: var(--bg-tertiary);
+      border-color: var(--primary-color);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+
+    #current-flag {
+      width: 20px;
+      height: 15px;
+      border-radius: 2px;
+      object-fit: cover;
+    }
+
+    #language-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      margin-top: 0.5rem;
+      background: var(--bg-primary);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-xl);
+      padding: 0.5rem;
+      min-width: 200px;
+      max-height: 300px;
+      overflow-y: auto;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all var(--transition-normal);
+      z-index: 1000;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border-color) transparent;
+    }
+
+    #language-menu::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    #language-menu::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    #language-menu::-webkit-scrollbar-thumb {
+      background: var(--border-color);
+      border-radius: 3px;
+    }
+
+    #language-menu.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    #language-menu button {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      color: var(--text-primary);
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    #language-menu button:hover {
+      background: var(--bg-secondary);
+      border-color: var(--primary-color);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-1px);
+    }
+
+    #language-menu button:active {
+      transform: translateY(0);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Hamburger Menu */
+    #hamburger-menu {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    #menu-toggle {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      font-size: 0;
+      padding: 0;
+    }
+
+    #menu-toggle::before,
+    #menu-toggle::after,
+    #menu-toggle span {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: var(--text-primary);
+      margin: 3px 0;
+      transition: all var(--transition-fast);
+      border-radius: 1px;
+    }
+
+    #menu-toggle:hover {
+      background: var(--bg-tertiary);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+
+    #menu-dropdown {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      margin-top: 0.5rem;
+      background: var(--bg-primary);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-xl);
+      padding: 0.5rem;
+      min-width: 235px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all var(--transition-normal);
+      z-index: 1000;
+    }
+
+    #menu-dropdown.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    #menu-dropdown a {
+      display: block;
+      padding: 0.75rem 1rem;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      text-decoration: none;
+      font-weight: 500;
+      border-radius: var(--radius-md);
+      transition: all var(--transition-fast);
+      margin-bottom: 0.25rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    #menu-dropdown a:hover {
+      background: var(--bg-secondary);
+      border-color: var(--primary-color);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+
+    #menu-dropdown a:active {
+      transform: translateY(0);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Content Styles */
+    .content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
+      padding-top: calc(80px + 2rem);
+    }
+
+    .content h1, .content h2, .content h3 {
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+
+    .content h1 {
+      margin-top: 2rem;
+    }
+
+    .content h2 {
+      margin-top: 1.5rem;
+    }
+
+    .content h3 {
+      margin-top: 1.25rem;
+    }
+
+    .content ul, .content ol {
+      padding-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .content li {
+      margin-bottom: 0.5rem;
+    }
+
+    .content ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .content ul li {
+      position: relative;
+      padding-left: 1.5rem;
+    }
+
+    .content ul li::before {
+      content: "•";
+      position: absolute;
+      left: 0.25rem;
+      top: 0;
+      font-weight: 600;
+      color: var(--primary-color);
+      font-size: 1.2em;
+    }
+
+    .content ol {
+      counter-reset: step-counter;
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .content ol li {
+      counter-increment: step-counter;
+      position: relative;
+      padding-left: 2.5rem;
+    }
+
+    .content ol li::before {
+      content: counter(step-counter) ".";
+      position: absolute;
+      left: 0.5rem;
+      top: 0;
+      font-weight: 600;
+      color: var(--primary-color);
+    }
+
+    .content a {
+      color: var(--primary-color);
+      text-decoration: none;
+      transition: color var(--transition-fast);
+    }
+
+    .content a:hover {
+      color: var(--primary-dark);
+      text-decoration: underline;
+    }
+
+    .back-btn {
+      display: inline-block;
+      background: var(--primary-color);
+      color: white !important;
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      font-weight: 600;
+      transition: all var(--transition-fast);
+      margin-top: 2rem;
+      box-shadow: var(--shadow-md);
+      border: 2px solid var(--primary-color);
+    }
+
+    .back-btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .footer {
+      padding: 2rem;
+      background: var(--bg-tertiary);
+      text-align: center;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .footer-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .nav-content {
+        padding: 1rem;
       }
 
-      h1, h2, a {
-        color: #90ee90;
+      .content {
+        padding: 1rem;
+        padding-top: calc(70px + 1rem);
       }
-      footer {
-        background-color: #121212;
-        color: #e0e0e0;
+
+      #language-menu {
+        left: 0;
+        right: auto;
+        min-width: 180px;
+      }
+
+      #menu-dropdown {
+        min-width: 200px;
       }
     }
   </style>
 </head>
 <body>
-  <h1>Politique de confidentialité</h1>
-  <h2>Introduction</h2>
-  <p>BalanceTrackr (RegnskApp) est une application de gestion des finances personnelles qui respecte votre vie privée. Cette politique explique comment nous traitons vos données.</p>
-  
-  <h2>Collecte et stockage des données</h2>
-  <ul>
-    <li>Toutes vos données financières (comptes, transactions, prêts) sont stockées localement sur votre appareil</li>
-    <li>Nous ne collectons, ne transmettons ni ne stockons aucune de vos informations financières sur des serveurs externes</li>
-    <li>Aucune information personnelle n'est partagée avec des tiers</li>
-    <li>L'application ne nécessite pas de connexion Internet pour fonctionner</li>
-  </ul>
-  
-  <h2>Utilisation des données</h2>
-  <p>L'application utilise vos données pour :</p>
-  <ul>
-    <li>Afficher les soldes de vos comptes et vos transactions</li>
-    <li>Calculer les paiements et échéances de prêts</li>
-    <li>Afficher des statistiques financières et des graphiques</li>
-    <li>Gérer les transactions récurrentes</li>
-  </ul>
-  
-  <h2>Stockage local</h2>
-  <ul>
-    <li>Toutes les données sont stockées de manière sécurisée sur votre appareil à l'aide de SwiftData</li>
-    <li>Les données restent sur votre appareil à moins que vous choisissiez explicitement de les supprimer</li>
-    <li>Vous pouvez supprimer toutes les données de l'application en désinstallant l'application</li>
-  </ul>
-  
-  <h2>Authentification biométrique</h2>
-  <ul>
-    <li>L'application prend en charge la sécurité au niveau de l'appareil via Face ID/Touch ID</li>
-    <li>L'authentification biométrique peut être activée via les paramètres du système iOS (appuyez et maintenez l'icône de l'application et sélectionnez "Exiger Face ID"/"Exiger Touch ID")</li>
-    <li>Les données d'authentification sont gérées par iOS et ne sont jamais accessibles par BalanceTrackr</li>
-    <li>Aucune donnée biométrique n'est collectée ou stockée par l'application</li>
-  </ul>
-  
-  <h2>Exportation et importation des données</h2>
-  <ul>
-    <li>Vous pouvez exporter vos données vers un fichier sécurisé (.regnskappdata format) à des fins de sauvegarde</li>
-    <li>Vous avez le contrôle sur les données qui sont exportées (comptes, transactions, catégories, prêts, paramètres)</li>
-    <li>Les fichiers exportés sont stockés localement et ne sont pas automatiquement téléchargés ailleurs</li>
-    <li>Vous pouvez importer vos données depuis des fichiers précédemment exportés pour restaurer des informations ou les transférer vers un nouvel appareil</li>
-    <li>Toutes les transferts de données sont effectués manuellement par vous, l'utilisateur</li>
-  </ul>
-  
-  <h2>Paramètres de langue et de devise</h2>
-  <ul>
-    <li>Vos préférences de langue et de devise sont stockées localement</li>
-    <li>Ces paramètres sont utilisés uniquement pour formater l'affichage des informations dans l'application</li>
-  </ul>
-  
-  <h2>Sécurité</h2>
-  <ul>
-    <li>L'application prend en charge la sécurité au niveau de l'appareil via Face ID/Touch ID</li>
-    <li>Aucune authentification externe n'est requise</li>
-    <li>Aucune donnée n'est transmise en dehors de votre appareil</li>
-    <li>Nous appliquons les meilleures pratiques pour le stockage sécurisé des données locales</li>
-    <li>Vos données financières sont chiffrées au niveau de l'appareil par iOS</li>
-  </ul>
-  
-  <h2>Mises à jour et modifications</h2>
-  <p>Nous pouvons mettre à jour cette politique de confidentialité de temps en temps. Toute modification sera reflétée dans la dernière version de l'application.</p>
-  
-  <h2>Contact</h2>
-  <p>Si vous avez des questions concernant cette politique de confidentialité, veuillez nous contacter :</p>
-  <p>📧 Email : <a href="mailto:olemortentengesdal@icloud.com">olemortentengesdal@icloud.com</a></p>
-  
-  <p><em>Dernière mise à jour : avril 2025</em></p>
-  
-  <p>
-    <a href="/index-fr.html" style="
-      display: inline-block;
-      background-color: #1b5e20;
-      color: white;
-      padding: 10px 20px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-      margin-top: 2rem;
-    ">← Retour</a>
-  </p>
-  
-  <footer>
-    &copy; 2025 BalanceTrackr (RegnskApp) - Ole Morten Tengesdal. Tous droits réservés.
+  <!-- Navigation -->
+  <nav class="nav-container">
+    <div class="nav-content">
+      <!-- 🌍 Language Switcher -->
+      <div id="language-switcher">
+        <button id="active-language" onclick="toggleLanguageMenu()" aria-label="Select language">
+          <img id="current-flag" src="" alt="Selected language" />
+          <span id="current-lang-text">FR</span>
+        </button>
+        <div id="language-menu">
+          <button onclick="changeLanguage('en')">
+            <img src="../images/en/gb.svg" width="20" alt="English" /> English
+          </button>
+          <button onclick="changeLanguage('no')">
+            <img src="../images/no/no.svg" width="20" alt="Norsk" /> Norsk
+          </button>
+          <button onclick="changeLanguage('da')">
+            <img src="../images/da/da.svg" width="20" alt="Dansk" /> Dansk
+          </button>
+          <button onclick="changeLanguage('sv')">
+            <img src="../images/sv/sv.svg" width="20" alt="Svenska" /> Svenska
+          </button>
+          <button onclick="changeLanguage('de')">
+            <img src="../images/de/de.svg" width="20" alt="Deutsch" /> Deutsch
+          </button>
+          <button onclick="changeLanguage('fr')">
+            <img src="../images/fr/fr.svg" width="20" alt="Français" /> Français
+          </button>
+          <button onclick="changeLanguage('es')">
+            <img src="../images/es/es.svg" width="20" alt="Español" /> Español
+          </button>
+          <button onclick="changeLanguage('it')">
+            <img src="../images/it/it.svg" width="20" alt="Italiano" /> Italiano
+          </button>
+          <button onclick="changeLanguage('nl')">
+            <img src="../images/nl/nl.svg" width="20" alt="Nederlands" /> Nederlands
+          </button>
+          <button onclick="changeLanguage('fi')">
+            <img src="../images/fi/fi.svg" width="20" alt="Suomi" /> Suomi
+          </button>
+          <button onclick="changeLanguage('ar')">
+            <img src="../images/ar/ar.svg" width="20" alt="العربية" /> العربية
+          </button>
+          <button onclick="changeLanguage('hi')">
+            <img src="../images/hi/hi.svg" width="20" alt="हिन्दी" /> हिन्दी
+          </button>
+          <button onclick="changeLanguage('ja')">
+            <img src="../images/ja/ja.svg" width="20" alt="日本語" /> 日本語
+          </button>
+          <button onclick="changeLanguage('uk')">
+            <img src="../images/uk/uk.svg" width="20" alt="Українська" /> Українська
+          </button>
+          <button onclick="changeLanguage('zh-Hans')">
+            <img src="../images/zhHans/zhHans.svg" width="20" alt="简体中文" /> 简体中文
+          </button>
+          <button onclick="changeLanguage('zh-Hant')">
+            <img src="../images/zhHant/zhHant.svg" width="20" alt="繁體中文" /> 繁體中文
+          </button>
+        </div>
+      </div>
+
+      <!-- Hamburger Menu -->
+      <div id="hamburger-menu">
+        <button id="menu-toggle" aria-label="Open menu"><span></span></button>
+        <div id="menu-dropdown">
+          <a href="../index-fr.html">Accueil</a>
+          <a href="../SiriShortcutsSetup/fr.html">Apple Pay & Shortcuts</a>
+          <a href="../support/fr.html">Support</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="content">
+    <h1>Politique de confidentialité</h1>
+    <h2>Introduction</h2>
+    <p>BalanceTrackr (RegnskApp) est une application de gestion des finances personnelles qui respecte votre vie privée. Cette politique explique comment nous traitons vos données.</p>
+    
+    <h2>Collecte et stockage des données</h2>
+    <ul>
+      <li>Toutes vos données financières (comptes, transactions, prêts) sont stockées localement sur votre appareil</li>
+      <li>Nous ne collectons, ne transmettons ni ne stockons aucune de vos informations financières sur des serveurs externes</li>
+      <li>Aucune information personnelle n'est partagée avec des tiers</li>
+      <li>L'application ne nécessite pas de connexion Internet pour fonctionner</li>
+    </ul>
+    
+    <h2>Utilisation des données</h2>
+    <p>L'application utilise vos données pour :</p>
+    <ul>
+      <li>Afficher les soldes de vos comptes et vos transactions</li>
+      <li>Calculer les paiements et échéances de prêts</li>
+      <li>Afficher des statistiques financières et des graphiques</li>
+      <li>Gérer les transactions récurrentes</li>
+    </ul>
+    
+    <h2>Stockage local</h2>
+    <ul>
+      <li>Toutes les données sont stockées de manière sécurisée sur votre appareil à l'aide de SwiftData</li>
+      <li>Les données restent sur votre appareil à moins que vous choisissiez explicitement de les supprimer</li>
+      <li>Vous pouvez supprimer toutes les données de l'application en désinstallant l'application</li>
+    </ul>
+    
+    <h2>Authentification biométrique</h2>
+    <ul>
+      <li>L'application prend en charge la sécurité au niveau de l'appareil via Face ID/Touch ID</li>
+      <li>L'authentification biométrique peut être activée via les paramètres du système iOS (appuyez et maintenez l'icône de l'application et sélectionnez "Exiger Face ID"/"Exiger Touch ID")</li>
+      <li>Les données d'authentification sont gérées par iOS et ne sont jamais accessibles par BalanceTrackr</li>
+      <li>Aucune donnée biométrique n'est collectée ou stockée par l'application</li>
+    </ul>
+    
+    <h2>Exportation et importation des données</h2>
+    <ul>
+      <li>Vous pouvez exporter vos données vers un fichier sécurisé (.regnskappdata format) à des fins de sauvegarde</li>
+      <li>Vous avez le contrôle sur les données qui sont exportées (comptes, transactions, catégories, prêts, paramètres)</li>
+      <li>Les fichiers exportés sont stockés localement et ne sont pas automatiquement téléchargés ailleurs</li>
+      <li>Vous pouvez importer vos données depuis des fichiers précédemment exportés pour restaurer des informations ou les transférer vers un nouvel appareil</li>
+      <li>Toutes les transferts de données sont effectués manuellement par vous, l'utilisateur</li>
+    </ul>
+    
+    <h2>Paramètres de langue et de devise</h2>
+    <ul>
+      <li>Vos préférences de langue et de devise sont stockées localement</li>
+      <li>Ces paramètres sont utilisés uniquement pour formater l'affichage des informations dans l'application</li>
+    </ul>
+    
+    <h2>Sécurité</h2>
+    <ul>
+      <li>L'application prend en charge la sécurité au niveau de l'appareil via Face ID/Touch ID</li>
+      <li>Aucune authentification externe n'est requise</li>
+      <li>Aucune donnée n'est transmise en dehors de votre appareil</li>
+      <li>Nous appliquons les meilleures pratiques pour le stockage sécurisé des données locales</li>
+      <li>Vos données financières sont chiffrées au niveau de l'appareil par iOS</li>
+    </ul>
+    
+    <h2>Mises à jour et modifications</h2>
+    <p>Nous pouvons mettre à jour cette politique de confidentialité de temps en temps. Toute modification sera reflétée dans la dernière version de l'application.</p>
+    
+    <h2>Contact</h2>
+    <p>Si vous avez des questions concernant cette politique de confidentialité, veuillez nous contacter :</p>
+    <p>📧 Email : <a href="mailto:balancetrackr@gmail.com">balancetrackr@gmail.com</a></p>
+    
+    <p><em>Dernière mise à jour : avril 2025</em></p>
+
+    <a href="../index-fr.html" class="back-btn">← Retour</a>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <p>&copy; 2025 BalanceTrackr (RegnskApp) - Ole Morten Tengesdal. Tous droits réservés.</p>
+    </div>
   </footer>
-  
-  <!-- GoatCounter analytics -->
+
+  <script>
+    function toggleLanguageMenu() {
+      const menu = document.getElementById("language-menu");
+      menu.classList.toggle("show");
+    }
+
+    function changeLanguage(langCode) {
+      const flagPath = `../images/${langCode}/${langCode === 'en' ? 'gb' : langCode}.svg`;
+      document.getElementById("current-flag").src = flagPath;
+
+      const langTexts = {
+        'en': 'EN', 'no': 'NO', 'da': 'DA', 'sv': 'SV', 'de': 'DE',
+        'fr': 'FR', 'es': 'ES', 'ar': 'AR', 'fi': 'FI', 'hi': 'HI',
+        'it': 'IT', 'ja': 'JA', 'nl': 'NL', 'uk': 'UK', 'zhHans': 'CN', 'zhHant': 'TW'
+      };
+      document.getElementById("current-lang-text").textContent = langTexts[langCode] || 'EN';
+
+      // Navigate to the appropriate support page
+      const file = langCode === 'en' ? 'en.html' : `${langCode}.html`;
+      window.location.href = file;
+    }
+
+    // Determine which language is active based on URL
+    function setInitialFlag() {
+      const filename = window.location.pathname.split('/').pop();
+      // Allowed language codes (matches the menu options)
+      const langCodes = ['en','no','da','sv','de','fr','es','ar','fi','hi','it','ja','nl','uk','zhHans','zhHant'];
+
+      // Default to English if no match
+      let currentLang = 'en';
+
+      // Check if filename matches a language code
+      for (const lang of langCodes) {
+        if (filename === (lang === 'en' ? 'en.html' : `${lang}.html`)) {
+          currentLang = lang;
+          break;
+        }
+      }
+
+      const flagPath = `../images/${currentLang}/${currentLang === 'en' ? 'gb' : currentLang}.svg`;
+      const img = document.getElementById("current-flag");
+      if (img) img.src = flagPath;
+
+      const langTexts = {
+        'en': 'EN', 'no': 'NO', 'da': 'DA', 'sv': 'SV', 'de': 'DE',
+        'fr': 'FR', 'es': 'ES', 'ar': 'AR', 'fi': 'FI', 'hi': 'HI',
+        'it': 'IT', 'ja': 'JA', 'nl': 'NL', 'uk': 'UK', 'zhHans': 'CN', 'zhHant': 'TW'
+      };
+      document.getElementById("current-lang-text").textContent = langTexts[currentLang] || 'EN';
+    }
+
+    setInitialFlag(); // call the function on load
+
+    // Hamburger Menu Functions
+    const toggleButton = document.getElementById('menu-toggle');
+    const dropdown = document.getElementById('menu-dropdown');
+
+    toggleButton.addEventListener('click', () => {
+      dropdown.classList.toggle('show');
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener("click", function (event) {
+      const switcher = document.getElementById("language-switcher");
+      if (!switcher.contains(event.target)) {
+        document.getElementById("language-menu").classList.remove("show");
+      }
+
+      if (!document.getElementById('hamburger-menu').contains(event.target)) {
+        dropdown.classList.remove('show');
+      }
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+  </script>
+
   <script data-goatcounter="https://regnskapp.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-  
+
 </body>
 </html>
