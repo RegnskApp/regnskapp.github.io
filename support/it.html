@@ -721,7 +721,10 @@
     }
 
     function changeLanguage(langCode) {
-      const flagPath = `../images/${langCode}/${langCode === 'en' ? 'gb' : langCode}.svg`;
+      // Normalize language codes (remove hyphens for zhHans/zhHant)
+      if (langCode === 'zh-Hans') langCode = 'zhHans';
+      if (langCode === 'zh-Hant') langCode = 'zhHant';
+      const flagPath = `../images/${langCode.replace('-', '')}/${langCode === 'en' ? 'gb' : langCode.replace('-', '')}.svg`;
       document.getElementById("current-flag").src = flagPath;
 
       const langTexts = {
