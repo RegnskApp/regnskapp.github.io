@@ -378,6 +378,14 @@
       transform: translateY(-2px);
     }
 
+    /* Mobile: Highlight card when in viewport */
+    @media screen and (max-width: 768px) {
+      .step-card.in-view {
+        box-shadow: var(--shadow-md), 0 0 0 1px rgba(15, 118, 110, 0.25), 0 10px 24px -4px rgba(15, 118, 110, 0.4);
+        transform: translateY(-2px);
+      }
+    }
+
     .step-header {
       display: flex;
       align-items: flex-start;
@@ -885,6 +893,31 @@
         }
       });
     });
+
+    // Mobile: Highlight step cards when they come into viewport
+    if (window.matchMedia('(max-width: 768px)').matches) {
+      const stepCards = document.querySelectorAll('.step-card');
+      
+      const observerOptions = {
+        root: null,
+        rootMargin: '-20% 0px -20% 0px', // Trigger when card is in middle 60% of viewport
+        threshold: 0.1
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+          } else {
+            entry.target.classList.remove('in-view');
+          }
+        });
+      }, observerOptions);
+
+      stepCards.forEach(card => {
+        observer.observe(card);
+      });
+    }
   </script>
 
 
