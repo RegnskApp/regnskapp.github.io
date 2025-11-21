@@ -5,8 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Apple Pay 與快捷指令設定 – BalanceTrackr</title>
   <link rel="icon" href="/images/RegnskApp-Light-Mode-Icon.jpg" type="image/jpeg" />
-  <link href="https://cdn.jsdelivr.net/npm/lightbox2@2.11.4/dist/css/lightbox.min.css" rel="stylesheet" />
+  
+  <!-- Canonical -->
   <link rel="canonical" href="https://regnskapp.github.io/SiriShortcutsSetup/zhHant.html">
+  
+  <!-- Alternate hreflang -->
   <link rel="alternate" hreflang="x-default" href="https://regnskapp.github.io/SiriShortcutsSetup/">
   <link rel="alternate" hreflang="en" href="https://regnskapp.github.io/SiriShortcutsSetup/en.html">
   <link rel="alternate" hreflang="no" href="https://regnskapp.github.io/SiriShortcutsSetup/no.html">
@@ -24,143 +27,917 @@
   <link rel="alternate" hreflang="uk" href="https://regnskapp.github.io/SiriShortcutsSetup/uk.html">
   <link rel="alternate" hreflang="zh-Hans" href="https://regnskapp.github.io/SiriShortcutsSetup/zhHans.html">
   <link rel="alternate" hreflang="zh-Hant" href="https://regnskapp.github.io/SiriShortcutsSetup/zhHant.html">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
   <style>
-    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,'Open Sans','Helvetica Neue',sans-serif;background:#f9f9f9;color:#212121;padding:2rem;max-width:800px;margin:auto}
-    h1,h2{color:#1b5e20}
-    .image-row{display:flex;flex-wrap:wrap;gap:1rem;margin-bottom:1rem}
-    .image-row a{flex:1 1 calc(33.333% - 1rem);max-width:calc(33.333% - 1rem);display:block}
-    .image-row img{width:100%;height:auto;border-radius:12px;box-shadow:0 4px 10px rgba(0,0,0,.1);transition:transform .2s;display:block;cursor:zoom-in}
-    footer{text-align:center;padding:1rem;font-size:.9rem;color:#555}
-    a{color:#1b5e20;text-decoration:none}
-    @media(prefers-color-scheme:dark){body{background:#121212;color:#e0e0e0}h1,h2,a{color:#90ee90}footer{background:#121212;color:#e0e0e0}}
-    @media screen and (max-width:768px){.image-row{gap:.5rem}.image-row a{flex:1 1 48%;max-width:48%}.image-row img{border-radius:8px}}
+    /* Modern CSS Reset & Base Styles */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --primary-color: #0f766e;
+      --primary-dark: #0d5f56;
+      --accent-color: #f59e0b;
+      --success-color: #10b981;
+      --text-primary: #111827;
+      --text-secondary: #6b7280;
+      --text-muted: #9ca3af;
+      --bg-primary: #ffffff;
+      --bg-secondary: #f0f4f8;
+      --bg-tertiary: #e2e8f0;
+      --border-color: #e5e7eb;
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      --radius-sm: 0.375rem;
+      --radius-md: 0.5rem;
+      --radius-lg: 0.75rem;
+      --radius-xl: 1rem;
+      --transition-fast: 0.15s ease;
+      --transition-normal: 0.3s ease;
+      --transition-slow: 0.5s ease;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --text-primary: #f9fafb;
+        --text-secondary: #d1d5db;
+        --text-muted: #9ca3af;
+        --bg-primary: #111827;
+        --bg-secondary: #1f2937;
+        --bg-tertiary: #374151;
+        --border-color: #374151;
+        --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+        --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+        --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
+        --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+      }
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      color: var(--text-primary);
+      background: var(--bg-primary);
+      overflow-x: hidden;
+    }
+
+    /* Modern Typography */
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 600;
+      line-height: 1.25;
+      letter-spacing: -0.025em;
+    }
+
+    h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
+    h2 { font-size: clamp(1.5rem, 4vw, 2.25rem); }
+    h3 { font-size: clamp(1.25rem, 3vw, 1.875rem); }
+
+    p { margin-bottom: 1rem; }
+
+    /* Navigation Components */
+    .nav-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-color);
+      transition: all var(--transition-normal);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .nav-container {
+        background: rgba(17, 24, 39, 0.8);
+      }
+    }
+
+    .nav-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* Language Switcher */
+    #language-switcher {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    #active-language {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    #current-lang-text {
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    #active-language:hover {
+      background: var(--bg-tertiary);
+      border-color: var(--primary-color);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+
+    #current-flag {
+      width: 20px;
+      height: 15px;
+      border-radius: 2px;
+      object-fit: cover;
+    }
+
+    #language-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      margin-top: 0.5rem;
+      background: var(--bg-primary);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-xl);
+      padding: 0.5rem;
+      min-width: 200px;
+      max-height: 300px;
+      overflow-y: auto;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all var(--transition-normal);
+      z-index: 1000;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border-color) transparent;
+    }
+
+    #language-menu::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    #language-menu::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    #language-menu::-webkit-scrollbar-thumb {
+      background: var(--border-color);
+      border-radius: 3px;
+    }
+
+    #language-menu.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    #language-menu button {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      color: var(--text-primary);
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    #language-menu button:hover {
+      background: var(--bg-secondary);
+      border-color: var(--primary-color);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-1px);
+    }
+
+    #language-menu button:active {
+      transform: translateY(0);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Hamburger Menu */
+    #hamburger-menu {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    #menu-toggle {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      font-size: 0;
+      padding: 0;
+    }
+
+    #menu-toggle::before,
+    #menu-toggle::after,
+    #menu-toggle span {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: var(--text-primary);
+      margin: 3px 0;
+      transition: all var(--transition-fast);
+      border-radius: 1px;
+    }
+
+    #menu-toggle:hover {
+      background: var(--bg-tertiary);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+
+    #menu-dropdown {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      margin-top: 0.5rem;
+      background: var(--bg-primary);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-xl);
+      padding: 0.5rem;
+      min-width: 235px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all var(--transition-normal);
+      z-index: 1000;
+    }
+
+    #menu-dropdown.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    #menu-dropdown a {
+      display: block;
+      padding: 0.75rem 1rem;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      text-decoration: none;
+      font-weight: 500;
+      border-radius: var(--radius-md);
+      transition: all var(--transition-fast);
+      margin-bottom: 0.25rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    #menu-dropdown a:hover {
+      background: var(--bg-secondary);
+      border-color: var(--primary-color);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+
+    #menu-dropdown a:active {
+      transform: translateY(0);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Modern Recipe Layout */
+    .content {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 2rem;
+      padding-top: calc(80px + 2rem);
+    }
+
+    .intro-section {
+      text-align: center;
+      margin-bottom: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 2px solid var(--border-color);
+    }
+
+    .intro-section h1 {
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+
+    .intro-section p {
+      font-size: 1.125rem;
+      color: var(--text-secondary);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* Step Card Design */
+    .step-card {
+      background: var(--bg-secondary);
+      border-radius: var(--radius-xl);
+      padding: 2rem;
+      margin-bottom: 2.5rem;
+      border: 2px solid var(--border-color);
+      box-shadow: var(--shadow-sm), 0 0 0 1px rgba(15, 118, 110, 0.15), 0 6px 18px -2px rgba(15, 118, 110, 0.3);
+      transition: all var(--transition-normal);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .step-card:hover {
+      box-shadow: var(--shadow-md), 0 0 0 1px rgba(15, 118, 110, 0.25), 0 10px 24px -4px rgba(15, 118, 110, 0.4);
+      transform: translateY(-2px);
+    }
+
+    /* Mobile: Highlight card when in viewport */
+    @media screen and (max-width: 768px) {
+      .step-card.in-view {
+        box-shadow: var(--shadow-md), 0 0 0 1px rgba(15, 118, 110, 0.25), 0 10px 24px -4px rgba(15, 118, 110, 0.4);
+        transform: translateY(-2px);
+      }
+    }
+
+    .step-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .step-number {
+      flex-shrink: 0;
+      width: 60px;
+      height: 60px;
+      background: var(--primary-color);
+      color: white;
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.75rem;
+      font-weight: 700;
+      box-shadow: var(--shadow-md);
+    }
+
+    .step-title {
+      flex: 1;
+      color: var(--primary-color);
+      font-size: clamp(1.25rem, 3vw, 1.75rem);
+      font-weight: 600;
+      line-height: 1.3;
+      margin: 0;
+      padding-top: 0.5rem;
+    }
+
+    .step-images {
+      margin: 1.5rem 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center; /* Center images on desktop */
+    }
+
+    /* Desktop: All images same size (33.333% like step 3) */
+    .step-images img {
+      flex: 1 1 calc(33.333% - 1rem);
+      max-width: calc(33.333% - 1rem);
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      transition: all var(--transition-fast);
+      display: block;
+    }
+
+    .step-images img:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .step-content {
+      color: var(--text-primary);
+      line-height: 1.7;
+    }
+
+    .step-content p {
+      margin-bottom: 1rem;
+    }
+
+    .step-content strong {
+      color: var(--primary-color);
+      font-weight: 600;
+    }
+
+    /* Important Section */
+    .important-section {
+      background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-secondary) 100%);
+      border: 2px solid var(--accent-color);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .important-section h2 {
+      color: var(--accent-color);
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .important-section p {
+      margin-bottom: 0.75rem;
+    }
+
+    .back-btn {
+      display: inline-block;
+      background: var(--primary-color);
+      color: white !important;
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      font-weight: 600;
+      transition: all var(--transition-fast);
+      margin-top: 2rem;
+      box-shadow: var(--shadow-md);
+      border: 2px solid var(--primary-color);
+    }
+
+    .back-btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .footer {
+      padding: 2rem;
+      background: var(--bg-tertiary);
+      text-align: center;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .footer-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .nav-content {
+        padding: 1rem;
+      }
+
+      .content {
+        padding: 1rem;
+        padding-top: calc(70px + 1rem);
+      }
+
+      #language-menu {
+        left: 0;
+        right: auto;
+        min-width: 180px;
+      }
+
+      #menu-dropdown {
+        min-width: 200px;
+      }
+
+      .intro-section {
+        margin-bottom: 2rem;
+        padding-bottom: 1.5rem;
+      }
+
+      .step-card {
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .step-header {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .step-number {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+      }
+
+      .step-title {
+        padding-top: 0;
+      }
+
+      /* Mobile: 2 images side by side when more than 1 image */
+      .step-images {
+        gap: 0.5rem;
+        justify-content: flex-start; /* Reset centering on mobile */
+      }
+      
+      .step-images img {
+        flex: 1 1 48%;
+        max-width: 48%;
+        border-radius: var(--radius-md);
+      }
+      
+      /* Single image on mobile takes full width */
+      .step-images img:only-child {
+        flex: 1 1 100%;
+        max-width: 100%;
+      }
+      
+      /* On mobile: when there are exactly 3 images, center the third one under the first two */
+      .step-images img:nth-child(3):last-child {
+        flex: 0 0 48%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .important-section {
+        padding: 1.25rem;
+      }
+    }
+
   </style>
 </head>
 <body>
-  <h1>Apple Pay 與快捷指令設定</h1>
-  <p>按照以下簡單步驟，在 BalanceTrackr 中設定用於記錄 Apple Pay 交易的快捷指令：</p>
+  <!-- Navigation -->
+  <nav class="nav-container">
+    <div class="nav-content">
+      <!-- 🌍 Language Switcher -->
+      <div id="language-switcher">
+        <button id="active-language" onclick="toggleLanguageMenu()" aria-label="選擇語言">
+          <img id="current-flag" src="" alt="所選語言" />
+          <span id="current-lang-text">TW</span>
+        </button>
+        <div id="language-menu">
+          <button onclick="changeLanguage('en')">
+            <img src="/images/en/gb.svg" width="20" alt="English" /> English
+          </button>
+          <button onclick="changeLanguage('no')">
+            <img src="/images/no/no.svg" width="20" alt="Norsk" /> Norsk
+          </button>
+          <button onclick="changeLanguage('da')">
+            <img src="/images/da/da.svg" width="20" alt="Dansk" /> Dansk
+          </button>
+          <button onclick="changeLanguage('sv')">
+            <img src="/images/sv/sv.svg" width="20" alt="Svenska" /> Svenska
+          </button>
+          <button onclick="changeLanguage('de')">
+            <img src="/images/de/de.svg" width="20" alt="Deutsch" /> Deutsch
+          </button>
+          <button onclick="changeLanguage('fr')">
+            <img src="/images/fr/fr.svg" width="20" alt="Français" /> Français
+          </button>
+          <button onclick="changeLanguage('es')">
+            <img src="/images/es/es.svg" width="20" alt="Español" /> Español
+          </button>
+          <button onclick="changeLanguage('it')">
+            <img src="/images/it/it.svg" width="20" alt="Italiano" /> Italiano
+          </button>
+          <button onclick="changeLanguage('nl')">
+            <img src="/images/nl/nl.svg" width="20" alt="Nederlands" /> Nederlands
+          </button>
+          <button onclick="changeLanguage('fi')">
+            <img src="/images/fi/fi.svg" width="20" alt="Suomi" /> Suomi
+          </button>
+          <button onclick="changeLanguage('ar')">
+            <img src="/images/ar/ar.svg" width="20" alt="العربية" /> العربية
+          </button>
+          <button onclick="changeLanguage('hi')">
+            <img src="/images/hi/hi.svg" width="20" alt="हिन्दी" /> हिन्दी
+          </button>
+          <button onclick="changeLanguage('ja')">
+            <img src="/images/ja/ja.svg" width="20" alt="日本語" /> 日本語
+          </button>
+          <button onclick="changeLanguage('uk')">
+            <img src="/images/uk/uk.svg" width="20" alt="Українська" /> Українська
+          </button>
+          <button onclick="changeLanguage('zhHans')">
+            <img src="/images/zhHans/zhHans.svg" width="20" alt="简体中文" /> 简体中文
+          </button>
+          <button onclick="changeLanguage('zhHant')">
+            <img src="/images/zhHant/zhHant.svg" width="20" alt="繁體中文" /> 繁體中文
+          </button>
+        </div>
+      </div>
 
-  <h2>步驟 1：開啟快捷指令 App</h2>
-  <div class="image-row">
-    <a href="/images/SiriShortcutsSetup-images/1.jpeg" data-lightbox="gallery" data-title="步驟 1">
-      <img src="/images/SiriShortcutsSetup-images/1.jpeg" alt="步驟 1" style="max-width:200px;" />
-    </a>
+      <!-- Hamburger Menu -->
+      <div id="hamburger-menu">
+        <button id="menu-toggle" aria-label="開啟選單"><span></span></button>
+        <div id="menu-dropdown">
+          <a href="/index-zhHant.html">首頁</a>
+          <a href="/privacy-policy/zhHant.html">隱私政策</a>
+          <a href="/support/zhHant.html">支援</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="content">
+    <div class="intro-section">
+      <h1>Apple Pay 與快捷指令設定</h1>
+      <p>按照以下簡單步驟，在 BalanceTrackr 中設定用於記錄 Apple Pay 交易的快捷指令：</p>
+    </div>
+
+    <!-- Step 1 -->
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-number">1</div>
+        <h2 class="step-title">開啟快捷指令 App</h2>
+      </div>
+      <div class="step-images">
+        <img src="/images/SiriShortcutsSetup-images/1.jpeg" alt="步驟 1" />
+      </div>
+      <div class="step-content">
+        <p>在你的 iPhone 上啟動內建的快捷指令 App。</p>
+      </div>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-number">2</div>
+        <h2 class="step-title">點擊底部的「自動化」</h2>
+      </div>
+      <div class="step-images">
+        <img src="/images/SiriShortcutsSetup-images/2.jpeg" alt="步驟 2" />
+      </div>
+      <div class="step-content">
+        <p>切換到<strong>自動化</strong>標籤頁以建立新的快捷指令。</p>
+      </div>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-number">3</div>
+        <h2 class="step-title">點擊「新自動化」或加號圖示，然後選擇「交易」</h2>
+      </div>
+      <div class="step-images">
+        <img src="/images/SiriShortcutsSetup-images/3.0.jpeg" alt="步驟 3.0" />
+        <img src="/images/SiriShortcutsSetup-images/3.1.jpeg" alt="步驟 3.1" />
+        <img src="/images/SiriShortcutsSetup-images/3.2.jpeg" alt="步驟 3.2" />
+      </div>
+      <div class="step-content">
+        <p>點擊右上角的<strong>新自動化</strong>或<strong>+</strong>圖示，然後選擇<strong>交易</strong>（帶錢包符號）。</p>
+      </div>
+    </div>
+
+    <!-- Step 4 -->
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-number">4</div>
+        <h2 class="step-title">在「當我點擊時」下僅保留一張卡片</h2>
+      </div>
+      <div class="step-images">
+        <img src="/images/SiriShortcutsSetup-images/4.0.jpeg" alt="步驟 4.0" />
+        <img src="/images/SiriShortcutsSetup-images/4.1.jpeg" alt="步驟 4.1" />
+      </div>
+      <div class="step-content">
+        <p>取消選擇<strong>「當我點擊時」</strong>下除要觸發快捷指令的卡片外的所有卡片。</p>
+        <p>在底部，你可以選擇在自動化執行時是否接收確認，或讓其靜默執行。</p>
+        <p>點擊<strong>新空白自動化</strong>以開始設定。</p>
+      </div>
+    </div>
+
+    <!-- Step 5 -->
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-number">5</div>
+        <h2 class="step-title">自動化設定 - 搜尋</h2>
+      </div>
+      <div class="step-images">
+        <img src="/images/SiriShortcutsSetup-images/5.0.jpeg" alt="步驟 5.0" />
+        <img src="/images/SiriShortcutsSetup-images/5.1.PNG" alt="步驟 5.1" />
+        <img src="/images/SiriShortcutsSetup-images/5.2.PNG" alt="步驟 5.2" />
+      </div>
+      <div class="step-content">
+        <p>搜尋<strong>「BalanceTrackr」</strong>，然後選擇是要新增<strong>銀行帳戶交易</strong>（金融卡）還是<strong>信用卡交易</strong>。</p>
+      </div>
+    </div>
+
+    <!-- Step 6 -->
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-number">6</div>
+        <h2 class="step-title">自動化設定 - 變數</h2>
+      </div>
+      <div class="step-images">
+        <img src="/images/SiriShortcutsSetup-images/6.0.jpeg" alt="步驟 6.0" />
+        <img src="/images/SiriShortcutsSetup-images/6.1.jpeg" alt="步驟 6.1" />
+        <img src="/images/SiriShortcutsSetup-images/6.2.jpeg" alt="步驟 6.2" />
+        <img src="/images/SiriShortcutsSetup-images/6.3.jpeg" alt="步驟 6.3" />
+        <img src="/images/SiriShortcutsSetup-images/6.4.jpeg" alt="步驟 6.4" />
+        <img src="/images/SiriShortcutsSetup-images/6.5.PNG" alt="步驟 6.5" />
+      </div>
+      <div class="step-content">
+        <p>使用<strong>「快捷指令輸入」</strong>中的變數填寫<strong>金額</strong>和<strong>商家</strong>。<br />
+        <strong>帳戶</strong>或<strong>信用卡</strong>名稱必須與 BalanceTrackr App 中使用的名稱完全匹配。</p>
+
+        <p>你可以在鍵盤上方的藍色文字行中找到可用變數：</p>
+        <p>點擊<strong>「快捷指令輸入」</strong>變數，將其新增到快捷指令後，再次點擊以從彈出式選單中選擇所需選項。</p>
+      </div>
+    </div>
+
+    <!-- Step 7 -->
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-number">7</div>
+        <h2 class="step-title">點擊「完成」</h2>
+      </div>
+      <div class="step-images">
+        <img src="/images/SiriShortcutsSetup-images/7.jpeg" alt="步驟 7" />
+      </div>
+      <div class="step-content">
+        <div class="important-section">
+          <h2>重要！</h2>
+          <p><strong>不要點擊底部的<em>「播放」</em>按鈕。</strong>由於尚未建立交易，這將導致錯誤，你必須從頭開始設定。</p>
+          <p>確保一次性完成整個過程 — 如果中途停止，將無法正常運作。</p>
+          <p>按<strong>「完成」</strong>以儲存自動化。</p>
+        </div>
+        
+        <div class="important-section">
+          <h2>重要！</h2>
+          <p>如果這是你第一次設定自動化，按「完成」時可能看起來沒有任何變化。<br>
+          這是因為快捷指令 App 與 BalanceTrackr 之間的連線在你的裝置上尚未完全初始化。</p>
+          <p><strong>但是，自動化已儲存！</strong></p>
+          <p>只需點擊左上角的<strong>返回箭頭</strong>，直到返回第一個設定畫面，然後<strong>下拉設定卡片以關閉它</strong>。<br>
+          現在你將看到自動化已成功儲存。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 8 -->
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-number">8</div>
+        <h2 class="step-title">設定完成</h2>
+      </div>
+      <div class="step-images">
+        <img src="/images/SiriShortcutsSetup-images/8.0.jpeg" alt="步驟 8.0" />
+        <img src="/images/SiriShortcutsSetup-images/8.1.jpeg" alt="步驟 8.1" />
+      </div>
+      <div class="step-content">
+        <p>全部完成！如果要進行任何變更，請點擊新建立的自動化。</p>
+        <p>你可以自訂執行時顯示的通知，或點擊<strong>「執行」</strong>下的動作以修改自動化步驟。可以自由新增點擊卡片時要觸發的其他動作。</p>
+      </div>
+    </div>
+
+    <a href="/index-zhHant.html" class="back-btn">← BalanceTrackr</a>
   </div>
-  <p>在你的 iPhone 上啟動內建的快捷指令 App。</p>
 
-  <h2>步驟 2：點擊底部的「自動化」</h2>
-  <div class="image-row">
-    <a href="/images/SiriShortcutsSetup-images/2.jpeg" data-lightbox="gallery" data-title="步驟 2">
-      <img src="/images/SiriShortcutsSetup-images/2.jpeg" alt="步驟 2" style="max-width:200px;" />
-    </a>
-  </div>
-  <p>切換到<strong>自動化</strong>標籤頁以建立新的快捷指令。</p>
+  <footer class="footer">
+    <div class="footer-content">
+      <p>&copy; 2025 BalanceTrackr (RegnskApp).<br>
+      Ole Morten Tengesdal. 版權所有。</p>
+    </div>
+  </footer>
 
-  <h2>步驟 3：點擊「新自動化」或加號圖示，然後選擇「交易」</h2>
-  <div class="image-row">
-    <a href="/images/SiriShortcutsSetup-images/3.0.jpeg" data-lightbox="gallery" data-title="步驟 3.0">
-      <img src="/images/SiriShortcutsSetup-images/3.0.jpeg" alt="步驟 3.0" style="max-width:200px;" />
-    </a>
-    <a href="/images/SiriShortcutsSetup-images/3.1.jpeg" data-lightbox="gallery" data-title="步驟 3.1">
-      <img src="/images/SiriShortcutsSetup-images/3.1.jpeg" alt="步驟 3.1" style="max-width:200px;" />
-    </a>
-    <a href="/images/SiriShortcutsSetup-images/3.2.jpeg" data-lightbox="gallery" data-title="步驟 3.2">
-      <img src="/images/SiriShortcutsSetup-images/3.2.jpeg" alt="步驟 3.2" style="max-width:200px;" />
-    </a>
-  </div>
-  <p>點擊右上角的<strong>新自動化</strong>或<strong>+</strong>圖示，然後選擇<strong>交易</strong>（帶錢包符號）。</p>
+  <script>
+    function toggleLanguageMenu() {
+      const menu = document.getElementById("language-menu");
+      menu.classList.toggle("show");
+    }
 
-  <h2>步驟 4：在「當我點擊時」下僅保留一張卡片</h2>
-  <div class="image-row">
-    <a href="/images/SiriShortcutsSetup-images/4.0.jpeg" data-lightbox="gallery" data-title="步驟 4.0">
-      <img src="/images/SiriShortcutsSetup-images/4.0.jpeg" alt="步驟 4.0" style="max-width:200px;" />
-    </a>
-    <a href="/images/SiriShortcutsSetup-images/4.1.jpeg" data-lightbox="gallery" data-title="步驟 4.1">
-      <img src="/images/SiriShortcutsSetup-images/4.1.jpeg" alt="步驟 4.1" style="max-width:200px;" />
-    </a>
-  </div>
-  <p>取消選擇<strong>「當我點擊時」</strong>下除要觸發快捷指令的卡片外的所有卡片。</p>
-  <p>在底部，你可以選擇在自動化執行時是否接收確認，或讓其靜默執行。</p>
-  <p>點擊<strong>新空白自動化</strong>以開始設定。</p>
+    function changeLanguage(langCode) {
+      // Normalize language codes (remove hyphens for zhHans/zhHant)
+      if (langCode === 'zh-Hans') langCode = 'zhHans';
+      if (langCode === 'zh-Hant') langCode = 'zhHant';
+      const flagPath = `/images/${langCode.replace('-', '')}/${langCode === 'en' ? 'gb' : langCode.replace('-', '')}.svg`;
+      document.getElementById("current-flag").src = flagPath;
 
-  <h2>步驟 5：自動化設定 - 搜尋</h2>
-  <div class="image-row">
-    <a href="/images/SiriShortcutsSetup-images/5.0.jpeg" data-lightbox="gallery" data-title="步驟 5.0">
-      <img src="/images/SiriShortcutsSetup-images/5.0.jpeg" alt="步驟 5.0" style="max-width:200px;" />
-    </a>
-    <a href="/images/SiriShortcutsSetup-images/5.1.png" data-lightbox="gallery" data-title="步驟 5.1">
-      <img src="/images/SiriShortcutsSetup-images/5.1.PNG" alt="步驟 5.1" style="max-width:200px;" />
-    </a>
-    <a href="/images/SiriShortcutsSetup-images/5.2.png" data-lightbox="gallery" data-title="步驟 5.2">
-      <img src="/images/SiriShortcutsSetup-images/5.2.PNG" alt="步驟 5.2" style="max-width:200px;" />
-    </a>
-  </div>
-  <p>搜尋<strong>「BalanceTrackr」</strong>，然後選擇是要新增<strong>銀行帳戶交易</strong>（金融卡）還是<strong>信用卡交易</strong>。</p>
+      const langTexts = {
+        'en': 'EN', 'no': 'NO', 'da': 'DA', 'sv': 'SV', 'de': 'DE',
+        'fr': 'FR', 'es': 'ES', 'ar': 'AR', 'fi': 'FI', 'hi': 'HI',
+        'it': 'IT', 'ja': 'JA', 'nl': 'NL', 'uk': 'UK', 'zhHans': 'CN', 'zhHant': 'TW'
+      };
+      document.getElementById("current-lang-text").textContent = langTexts[langCode] || 'TW';
 
-  <h2>步驟 6：自動化設定 - 變數</h2>
-  <div class="image-row">
-    <a href="/images/SiriShortcutsSetup-images/6.0.jpeg" data-lightbox="gallery" data-title="步驟 6.0">
-      <img src="/images/SiriShortcutsSetup-images/6.0.jpeg" alt="步驟 6.0" style="max-width:200px;" />
-    </a>
-    <a href="/images/SiriShortcutsSetup-images/6.1.jpeg" data-lightbox="gallery" data-title="步驟 6.1">
-      <img src="/images/SiriShortcutsSetup-images/6.1.jpeg" alt="步驟 6.1" style="max-width:200px;" />
-    </a>
-    <a href="/images/SiriShortcutsSetup-images/6.2.jpeg" data-lightbox="gallery" data-title="步驟 6.2">
-      <img src="/images/SiriShortcutsSetup-images/6.2.jpeg" alt="步驟 6.2" style="max-width:200px;" />
-    </a>
-    <a href="/images/SiriShortcutsSetup-images/6.3.jpeg" data-lightbox="gallery" data-title="步驟 6.3">
-      <img src="/images/SiriShortcutsSetup-images/6.3.jpeg" alt="步驟 6.3" style="max-width:200px;" />
-    </a>
-    <a href="/images/SiriShortcutsSetup-images/6.4.jpeg" data-lightbox="gallery" data-title="步驟 6.4">
-      <img src="/images/SiriShortcutsSetup-images/6.4.jpeg" alt="步驟 6.4" style="max-width:200px;" />
-    </a>
-    <a href="/images/SiriShortcutsSetup-images/6.5.png" data-lightbox="gallery" data-title="步驟 6.5">
-      <img src="/images/SiriShortcutsSetup-images/6.5.PNG" alt="步驟 6.5" style="max-width:200px;" />
-    </a>
-  </div>
-  <p>使用<strong>「快捷指令輸入」</strong>中的變數填寫<strong>金額</strong>和<strong>商家</strong>。<br />
-  <strong>帳戶</strong>或<strong>信用卡</strong>名稱必須與 BalanceTrackr App 中使用的名稱完全匹配。</p>
+      // Navigate to the appropriate SiriShortcutsSetup page
+      const file = langCode === 'en' ? '/SiriShortcutsSetup/en.html' : `/SiriShortcutsSetup/${langCode}.html`;
+      window.location.href = file;
+    }
 
-  <p>你可以在鍵盤上方的藍色文字行中找到可用變數：</p>
-  <p>點擊<strong>「快捷指令輸入」</strong>變數，將其新增到快捷指令後，再次點擊以從彈出式選單中選擇所需選項。</p>
+    // Determine which language is active based on URL
+    function setInitialFlag() {
+      const path = window.location.pathname;
+      let langCode = 'zhHant';
+      
+      // Extract language code from path
+      if (path.includes('/SiriShortcutsSetup/')) {
+        const match = path.match(/\/SiriShortcutsSetup\/([^\/]+)\.html/);
+        if (match) {
+          langCode = match[1];
+        }
+      }
+      
+      // Normalize language codes
+      if (langCode === 'zhHans') langCode = 'zhHans';
+      if (langCode === 'zhHant') langCode = 'zhHant';
+      
+      const flagPath = `/images/${langCode.replace('-', '')}/${langCode === 'en' ? 'gb' : langCode.replace('-', '')}.svg`;
+      const img = document.getElementById("current-flag");
+      if (img) img.src = flagPath;
+      
+      const langTexts = {
+        'en': 'EN', 'no': 'NO', 'da': 'DA', 'sv': 'SV', 'de': 'DE',
+        'fr': 'FR', 'es': 'ES', 'ar': 'AR', 'fi': 'FI', 'hi': 'HI',
+        'it': 'IT', 'ja': 'JA', 'nl': 'NL', 'uk': 'UK', 'zhHans': 'CN', 'zhHant': 'TW'
+      };
+      document.getElementById("current-lang-text").textContent = langTexts[langCode] || 'TW';
+    }
 
-  <h2>步驟 7：點擊「完成」</h2>
-  <div class="image-row">
-    <a href="/images/SiriShortcutsSetup-images/7.jpeg" data-lightbox="gallery" data-title="步驟 7">
-      <img src="/images/SiriShortcutsSetup-images/7.jpeg" alt="步驟 7" style="max-width:200px;" />
-    </a>
-  </div>
-  <h2>重要</h2>
-  <p><strong>不要點擊底部的<em>「播放」</em>按鈕。</strong>由於尚未建立交易，這將導致錯誤，你必須從頭開始設定。</p>
-  <p>確保一次性完成整個過程 — 如果中途停止，將無法正常運作。</p>
+    setInitialFlag(); // call the function on load
 
-  <p>按<strong>「完成」</strong>以儲存自動化。</p>
-  <p><strong>重要！</strong><br>
-  如果這是你第一次設定自動化，按「完成」時可能看起來沒有任何變化。<br>
-  這是因為快捷指令 App 與 BalanceTrackr 之間的連線在你的裝置上尚未完全初始化。</p>
-  <p><strong>但是，自動化已儲存！</strong></p>
-  <p>只需點擊左上角的<strong>返回箭頭</strong>，直到返回第一個設定畫面，然後<strong>下拉設定卡片以關閉它</strong>。<br>
-  現在你將看到自動化已成功儲存。</p>
+    // Hamburger Menu Functions
+    const toggleButton = document.getElementById('menu-toggle');
+    const dropdown = document.getElementById('menu-dropdown');
 
-  <h2>步驟 8：設定完成</h2>
-  <div class="image-row">
-    <a href="/images/SiriShortcutsSetup-images/8.0.jpeg" data-lightbox="gallery" data-title="步驟 8.0">
-      <img src="/images/SiriShortcutsSetup-images/8.0.jpeg" alt="步驟 8.0" style="max-width:200px;" />
-    </a>
-    <a href="/images/SiriShortcutsSetup-images/8.1.jpeg" data-lightbox="gallery" data-title="步驟 8.1">
-      <img src="/images/SiriShortcutsSetup-images/8.1.jpeg" alt="步驟 8.1" style="max-width:200px;" />
-    </a>
-  </div>
-  <p>全部完成！如果要進行任何變更，請點擊新建立的自動化。</p>
-  <p>你可以自訂執行時顯示的通知，或點擊<strong>「執行」</strong>下的動作以修改自動化步驟。可以自由新增點擊卡片時要觸發的其他動作。</p>
+    toggleButton.addEventListener('click', () => {
+      dropdown.classList.toggle('show');
+    });
 
-  <p><a href="/index-zhHant.html" style="display:inline-block;background-color:#1b5e20;color:#fff;padding:10px 20px;border-radius:8px;text-decoration:none;font-weight:bold;margin-top:2rem;">← BalanceTrackr</a></p>
+    // Close menu when clicking outside
+    document.addEventListener("click", function (event) {
+      const switcher = document.getElementById("language-switcher");
+      if (!switcher.contains(event.target)) {
+        document.getElementById("language-menu").classList.remove("show");
+      }
 
-  <footer>&copy; 2025 BalanceTrackr (RegnskApp) – Ole Morten Tengesdal. 版權所有。</footer>
+      if (!document.getElementById('hamburger-menu').contains(event.target)) {
+        dropdown.classList.remove('show');
+      }
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Mobile: Highlight step cards when they come into viewport
+    if (window.matchMedia('(max-width: 768px)').matches) {
+      const stepCards = document.querySelectorAll('.step-card');
+      
+      const observerOptions = {
+        root: null,
+        rootMargin: '-20% 0px -20% 0px', // Trigger when card is in middle 60% of viewport
+        threshold: 0.1
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+          } else {
+            entry.target.classList.remove('in-view');
+          }
+        });
+      }, observerOptions);
+
+      stepCards.forEach(card => {
+        observer.observe(card);
+      });
+    }
+  </script>
 
   <script data-goatcounter="https://regnskapp.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/lightbox2@2.11.4/dist/js/lightbox.min.js"></script>
+
 </body>
 </html>
-
