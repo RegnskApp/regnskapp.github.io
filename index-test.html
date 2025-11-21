@@ -1,781 +1,753 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Basic Meta Tags -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BalanceTrackr (RegnskApp) – iOS Budget & Expense App</title>
-  <meta name="description" content="BalanceTrackr is a privacy-first budgeting app for iOS. Track your income and expenses easily, with no ads or subscriptions." />
-  <meta name="keywords" content="budget app, expense tracker, personal finance, iOS, BalanceTrackr, RegnskApp, money management, finance app" />
-  <meta name="author" content="Ole Morten Tengesdal" />
- 
-  <!-- Canonical URL: must match this exact language version -->
-  <link rel="canonical" href="https://regnskapp.github.io/index.html" />
+  <title>Apple Pay & Shortcuts Setup – BalanceTrackr</title>
+  <link rel="icon" href="/images/RegnskApp-Light-Mode-Icon.jpg" type="image/jpeg" />
+  <link href="https://cdn.jsdelivr.net/npm/lightbox2@2.11.4/dist/css/lightbox.min.css" rel="stylesheet" />
+  
+  <!-- Canonical -->
+  <link rel="canonical" href="https://regnskapp.github.io/index-test.html">
+  
+  <!-- Alternate hreflang -->
+  <link rel="alternate" hreflang="x-default" href="https://regnskapp.github.io/SiriShortcutsSetup/">
+  <link rel="alternate" hreflang="en" href="https://regnskapp.github.io/SiriShortcutsSetup/en.html">
+  <link rel="alternate" hreflang="no" href="https://regnskapp.github.io/SiriShortcutsSetup/no.html">
+  <link rel="alternate" hreflang="sv" href="https://regnskapp.github.io/SiriShortcutsSetup/sv.html">
+  <link rel="alternate" hreflang="da" href="https://regnskapp.github.io/SiriShortcutsSetup/da.html">
+  <link rel="alternate" hreflang="de" href="https://regnskapp.github.io/SiriShortcutsSetup/de.html">
+  <link rel="alternate" hreflang="fr" href="https://regnskapp.github.io/SiriShortcutsSetup/fr.html">
+  <link rel="alternate" hreflang="es" href="https://regnskapp.github.io/SiriShortcutsSetup/es.html">
+  <link rel="alternate" hreflang="ar" href="https://regnskapp.github.io/SiriShortcutsSetup/ar.html">
+  <link rel="alternate" hreflang="fi" href="https://regnskapp.github.io/SiriShortcutsSetup/fi.html">
+  <link rel="alternate" hreflang="hi" href="https://regnskapp.github.io/SiriShortcutsSetup/hi.html">
+  <link rel="alternate" hreflang="it" href="https://regnskapp.github.io/SiriShortcutsSetup/it.html">
+  <link rel="alternate" hreflang="ja" href="https://regnskapp.github.io/SiriShortcutsSetup/ja.html">
+  <link rel="alternate" hreflang="nl" href="https://regnskapp.github.io/SiriShortcutsSetup/nl.html">
+  <link rel="alternate" hreflang="uk" href="https://regnskapp.github.io/SiriShortcutsSetup/uk.html">
+  <link rel="alternate" hreflang="zh-Hans" href="https://regnskapp.github.io/SiriShortcutsSetup/zhHans.html">
+  <link rel="alternate" hreflang="zh-Hant" href="https://regnskapp.github.io/SiriShortcutsSetup/zhHant.html">
 
-  <!-- Hreflang for all language versions -->
-  <link rel="alternate" hreflang="en" href="https://regnskapp.github.io/index.html" />
-  <link rel="alternate" hreflang="no" href="https://regnskapp.github.io/index-no.html" />
-  <link rel="alternate" hreflang="da" href="https://regnskapp.github.io/index-da.html" />
-  <link rel="alternate" hreflang="de" href="https://regnskapp.github.io/index-de.html" />
-  <link rel="alternate" hreflang="es" href="https://regnskapp.github.io/index-es.html" />
-  <link rel="alternate" hreflang="fr" href="https://regnskapp.github.io/index-fr.html" />
-  <link rel="alternate" hreflang="sv" href="https://regnskapp.github.io/index-sv.html" />
-  <!-- x-default for generic version -->
-  <link rel="alternate" hreflang="x-default" href="https://regnskapp.github.io/index.html" />
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  <!-- Apple Smart Banner -->
-  <meta name="apple-itunes-app" content="app-id=6743946348, app-argument=https://regnskapp.github.io/" />
-
-  <!-- Favicon -->
-  <link rel="icon" href="images/RegnskApp-Light-Mode-Icon.jpg" type="image/jpeg" />
-
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="BalanceTrackr – iOS Budget & Expense App" />
-  <meta property="og:description" content="Track your income and expenses over time with BalanceTrackr. Clean, private, and ad-free." />
-  <meta property="og:image" content="https://regnskapp.github.io/images/RegnskApp-Light-Mode-Icon.jpg" />
-  <meta property="og:url" content="https://regnskapp.github.io/" />
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="BalanceTrackr – iOS Budget & Expense App" />
-  <meta name="twitter:description" content="Track your income and expenses over time with BalanceTrackr. Clean, private, and ad-free." />
-  <meta name="twitter:image" content="https://regnskapp.github.io/images/RegnskApp-Light-Mode-Icon.jpg" />
-
-  <!-- Google Search Console -->
-  <meta name="google-site-verification" content="z2cVAhGqX7qGGwkdcP_SlnGftVeSXB4nG2K1egdlYOo" />
   <style>
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-        Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-      background-color: #f9f9f9;
-      color: #1b5e20;
-      text-align: center;
-      padding: 2rem 1rem;
+    /* Modern CSS Reset & Base Styles */
+    *, *::before, *::after {
+      box-sizing: border-box;
       margin: 0;
+      padding: 0;
     }
 
-    a.button {
-      display: inline-block;
-      margin: 1rem;
-      padding: 0.75rem 1.5rem;
-      background-color: #1b5e20;
-      color: white;
-      text-decoration: none;
-      border-radius: 0.5rem;
-      font-weight: bold;
-    }
-
-    img.app-icon {
-      width: 150px;
-      height: auto;
-      margin-bottom: 1rem;
-    }
-
-    .carousel-wrapper {
-      position: relative;
-      margin-top: 2rem;
-    }
-
-    .carousel {
-      display: flex;
-      overflow-x: visible; /* La innhold stikke utenfor */
-      gap: 1rem;
-      scroll-snap-type: x mandatory;
-      padding: 1rem;
-      scroll-behavior: smooth;
-      position: relative; /* Viktig for absolutt posisjonering av barn */
-      z-index: 0;
-    }
-
-    .carousel img {
-      flex: 0 0 auto;
-      width: calc(100% - 40px);
-      max-width: 350px;
-      border-radius: 1rem;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-      scroll-snap-align: center;
-      transition: transform 0.3s ease, z-index 0.3s ease;
-      position: relative;
-      z-index: 1;
-    }
-
-    @media (hover: hover) and (pointer: fine) {
-      .carousel img:hover {
-        transform: scale(2.02);
-        z-index: 10;
-        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
-      }
-    }
-
-    .carousel-dots {
-      display: none;
-      justify-content: center;
-      margin-top: 0.5rem;
-      gap: 0.5rem;
-    }
-
-    .carousel-dots .dot {
-      width: 10px;
-      height: 10px;
-      background-color: #bbb;
-      border-radius: 50%;
-      display: inline-block;
-      transition: background-color 0.3s;
-    }
-
-    .carousel-dots .dot.active {
-      background-color: #1b5e20;
-    }
-    
-    footer {
-      background-color: #f9f9f9;
-      text-align: center;
-      padding: 1rem;
-      font-size: 0.9rem;
-    }
-
-    /* Dette er for storskjermvisning - viser 5 bilder */
-    @media (min-width: 768px) {
-      .carousel {
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: nowrap;
-        max-width: 1200px;
-        margin: 0 auto;
-        overflow-x: visible;
-        gap: 16px; /* mellomrom mellom bilder */
-      }
-    
-      .carousel img {
-        width: 100%;
-        max-width: 200px; /* Juster etter behov */
-        scroll-snap-align: none; /* Deaktiver snapping */
-        flex: 0 0 auto;
-        position: relative;
-        z-index: 1;
-      }
-    
-      .carousel-dots {
-        display: none !important; /* skjul dots */
-      }
-    }
-    
-    /* Dette er for mobilvisning - viser bare 1 bilde */
-    @media (max-width: 768px) {
-      .carousel {
-        overflow-x: scroll;
-        scroll-snap-type: x mandatory;
-        scroll-behavior: smooth;
-        -webkit-overflow-scrolling: touch;
-      }
-    
-      .carousel img {
-        flex: 0 0 100%;
-        width: 100%;
-        object-fit: cover;
-        scroll-snap-align: start;
-      }
-    
-      .carousel-dots {
-        display: flex;
-      }
+    :root {
+      --primary-color: #0f766e;
+      --primary-dark: #0d5f56;
+      --accent-color: #f59e0b;
+      --success-color: #10b981;
+      --text-primary: #111827;
+      --text-secondary: #6b7280;
+      --text-muted: #9ca3af;
+      --bg-primary: #ffffff;
+      --bg-secondary: #f8fafc;
+      --bg-tertiary: #f1f5f9;
+      --border-color: #e5e7eb;
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      --radius-sm: 0.375rem;
+      --radius-md: 0.5rem;
+      --radius-lg: 0.75rem;
+      --radius-xl: 1rem;
+      --transition-fast: 0.15s ease;
+      --transition-normal: 0.3s ease;
+      --transition-slow: 0.5s ease;
     }
 
     @media (prefers-color-scheme: dark) {
-      body {
-        background-color: #121212;
-        color: #e0e0e0;
-      }
-
-      a.button {
-        background-color: #388e3c;
-        color: white;
-      }
-      footer {
-        background-color: #121212;
-        color: #e0e0e0;
-      }
-    }
-
-    /* Legg til dette for å gjøre prikkene klikkbare */
-    .carousel-dots .dot {
-      cursor: pointer;
-     } 
-
-    .subtle {
-      color: #6c757d; /* en nøytral grå som fungerer i lysmodus */
-    }
-    
-    @media (prefers-color-scheme: dark) {
-      .subtle {
-        color: #a0a0a0; /* en lysere grå som vises tydelig i mørk modus */
+      :root {
+        --text-primary: #f9fafb;
+        --text-secondary: #d1d5db;
+        --text-muted: #9ca3af;
+        --bg-primary: #111827;
+        --bg-secondary: #1f2937;
+        --bg-tertiary: #374151;
+        --border-color: #374151;
+        --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+        --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+        --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
+        --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
       }
     }
-    
-    /* Språkvelger */
-    #language-switcher {
-      position: absolute;
-      top: 1.25rem;
-      right: 4rem; /* til venstre for hamburger */
-      z-index: 9999;
-      display: flex;
-      gap: 0.5rem;
-      background: transparent;
-      pointer-events: auto;
-      width: fit-content;
-      text-align: right;
-    }
-    
-     #language-switcher button {
-      background: transparent;
-      border: none;
-      font-size: 1.5rem;
-      padding: 0.2rem;
-      cursor: pointer;
-      transition: transform 0.2s ease;
-      text-align: right;
-    }
-    
-    #language-switcher button:hover {
-      transform: scale(1.1);
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      color: var(--text-primary);
+      background: var(--bg-primary);
+      overflow-x: hidden;
     }
 
-    #language-menu {
-      display: none;
-      position: absolute;
-      top: 2.5rem;
+    /* Modern Typography */
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 600;
+      line-height: 1.25;
+      letter-spacing: -0.025em;
+    }
+
+    h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
+    h2 { font-size: clamp(1.5rem, 4vw, 2.25rem); }
+    h3 { font-size: clamp(1.25rem, 3vw, 1.875rem); }
+
+    p { margin-bottom: 1rem; }
+
+    /* Navigation Components */
+    .nav-container {
+      position: fixed;
+      top: 0;
+      left: 0;
       right: 0;
-      background: white;
-      border: 1px solid #ccc;
-      border-radius: 0.5rem;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-      padding: 0.5rem;
-      z-index: 10000;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-color);
+      transition: all var(--transition-normal);
     }
 
-    #language-menu button {
+    @media (prefers-color-scheme: dark) {
+      .nav-container {
+        background: rgba(17, 24, 39, 0.8);
+      }
+    }
+
+    .nav-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* Language Switcher */
+    #language-switcher {
+      position: relative;
       display: flex;
       align-items: center;
       gap: 0.5rem;
-      white-space: nowrap;
-      width: 100%;
-      background: transparent;
-      border: none;
-      font-size: 1rem;
-      padding: 0.3rem 0.5rem;
-      cursor: pointer;
-      text-align: left;
-      color: #1b5e20; /* <-- legg til denne i lys modus */
-    }
-    
-    #language-menu button:hover {
-      background-color: #f0f0f0;
     }
 
-    /* Hamburger Meny */
-    #hamburger-menu {
-      position: absolute;
-      top: 0.85rem;
-      right: 1rem; /* til høyre for språkvelger */
-      z-index: 9998;
-    }
-    
-    #menu-toggle {
-      font-size: 1.8rem;
-      background: transparent;
-      border: none;
-      color: #1b5e20;
+    #active-language {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
       cursor: pointer;
-      transition: transform 0.2s ease;
+      transition: all var(--transition-fast);
+      color: var(--text-primary);
+      font-weight: 500;
     }
-    
-    #menu-toggle:hover {
-      transform: scale(1.1);
+
+    #current-lang-text {
+      color: var(--text-primary);
+      font-weight: 500;
     }
-    
-    #menu-dropdown {
-      display: none;
+
+    #active-language:hover {
+      background: var(--bg-tertiary);
+      border-color: var(--primary-color);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+
+    #current-flag {
+      width: 20px;
+      height: 15px;
+      border-radius: 2px;
+      object-fit: cover;
+    }
+
+    #language-menu {
       position: absolute;
-      top: 2.5rem;
-      right: 0;
-      background: white;
-      border: 1px solid #ccc;
-      border-radius: 0.5rem;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+      top: 100%;
+      left: 0;
+      margin-top: 0.5rem;
+      background: var(--bg-primary);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-xl);
       padding: 0.5rem;
-      text-align: left;
-      min-width: 150px;
+      min-width: 200px;
+      max-height: 300px;
+      overflow-y: auto;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all var(--transition-normal);
+      z-index: 1000;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border-color) transparent;
     }
-    
+
+    #language-menu::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    #language-menu::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    #language-menu::-webkit-scrollbar-thumb {
+      background: var(--border-color);
+      border-radius: 3px;
+    }
+
+    #language-menu.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    #language-menu button {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      color: var(--text-primary);
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    #language-menu button:hover {
+      background: var(--bg-secondary);
+      border-color: var(--primary-color);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-1px);
+    }
+
+    #language-menu button:active {
+      transform: translateY(0);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Hamburger Menu */
+    #hamburger-menu {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    #menu-toggle {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      font-size: 0;
+      padding: 0;
+    }
+
+    #menu-toggle::before,
+    #menu-toggle::after,
+    #menu-toggle span {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: var(--text-primary);
+      margin: 3px 0;
+      transition: all var(--transition-fast);
+      border-radius: 1px;
+    }
+
+    #menu-toggle:hover {
+      background: var(--bg-tertiary);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+
+    #menu-dropdown {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      margin-top: 0.5rem;
+      background: var(--bg-primary);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-xl);
+      padding: 0.5rem;
+      min-width: 235px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all var(--transition-normal);
+      z-index: 1000;
+    }
+
+    #menu-dropdown.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
     #menu-dropdown a {
       display: block;
-      padding: 0.4rem 0.6rem;
-      color: #1b5e20;
+      padding: 0.75rem 1rem;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
       text-decoration: none;
-      font-weight: bold;
+      font-weight: 500;
+      border-radius: var(--radius-md);
+      transition: all var(--transition-fast);
+      margin-bottom: 0.25rem;
+      box-shadow: var(--shadow-sm);
     }
-    
+
     #menu-dropdown a:hover {
-      background-color: #f0f0f0;
+      background: var(--bg-secondary);
+      border-color: var(--primary-color);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
     }
-    
-    @media (prefers-color-scheme: dark) {
-      #menu-toggle {
-        color: #e0e0e0;
-      }
-    
-      #menu-dropdown {
-        background-color: #1e1e1e;
-        border: 1px solid #444;
-      }
-    
-      #menu-dropdown a {
-        color: #e0e0e0;
-      }
-    
-      #menu-dropdown a:hover {
-        background-color: #2a2a2a;
-      }
+
+    #menu-dropdown a:active {
+      transform: translateY(0);
+      box-shadow: var(--shadow-sm);
     }
-    
-    /* Mørk modus */
-    @media (prefers-color-scheme: dark) {
+
+    /* Content Styles */
+    .content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
+      padding-top: calc(80px + 2rem);
+    }
+
+    .content h1, .content h2, .content h3 {
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+
+    .content h1 {
+      margin-top: 2rem;
+    }
+
+    .content h2 {
+      margin-top: 1.5rem;
+    }
+
+    .content h3 {
+      margin-top: 1.25rem;
+    }
+
+    .content a {
+      color: var(--primary-color);
+      text-decoration: none;
+      transition: color var(--transition-fast);
+    }
+
+    .content a:hover {
+      color: var(--primary-dark);
+      text-decoration: underline;
+    }
+
+    /* Image Gallery Styles */
+    .image-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    /* 3 bilder per rad på desktop */
+    .image-row a {
+      flex: 1 1 calc(33.333% - 1rem);
+      max-width: calc(33.333% - 1rem);
+      display: block;
+    }
+
+    .image-row img {
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      transition: transform var(--transition-fast);
+      display: block;
+      cursor: zoom-in;
+    }
+
+    .image-row img:hover {
+      transform: scale(1.02);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .back-btn {
+      display: inline-block;
+      background: var(--primary-color);
+      color: white !important;
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      font-weight: 600;
+      transition: all var(--transition-fast);
+      margin-top: 2rem;
+      box-shadow: var(--shadow-md);
+      border: 2px solid var(--primary-color);
+    }
+
+    .back-btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .footer {
+      padding: 2rem;
+      background: var(--bg-tertiary);
+      text-align: center;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .footer-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .nav-content {
+        padding: 1rem;
+      }
+
+      .content {
+        padding: 1rem;
+        padding-top: calc(70px + 1rem);
+      }
+
       #language-menu {
-        background: #1e1e1e;
-        border: 1px solid #444;
+        left: 0;
+        right: auto;
+        min-width: 180px;
       }
-    
-      #language-menu button {
-        color: #e0e0e0; /* <-- Lys farge på teksten */
+
+      #menu-dropdown {
+        min-width: 200px;
       }
-    
-      #language-menu button:hover {
-        background-color: #2a2a2a;
+
+      /* 2 bilder per rad på mobil */
+      .image-row {
+        gap: 0.5rem;
+      }
+      .image-row a {
+        flex: 1 1 48%;
+        max-width: 48%;
+      }
+      .image-row img {
+        border-radius: var(--radius-md);
       }
     }
   </style>
 </head>
 <body>
-  <!-- 🌍 Språkvelger -->
-  <div id="language-switcher">
-    <button id="active-language" onclick="toggleLanguageMenu()" aria-label="Valgt språk">
-      <img id="current-flag" src="" alt="Valgt språk" width="24" />
-    </button>
-    <div id="language-menu">
-      <button onclick="changeLanguage('en')">
-        <img src="images/en/gb.svg" width="20" alt="English" /> English
-      </button>
-      <button onclick="changeLanguage('no')">
-        <img src="images/no/no.svg" width="20" alt="Norsk" /> Norsk
-      </button>
-      <button onclick="changeLanguage('da')">
-        <img src="images/da/da.svg" width="20" alt="Dansk" /> Dansk
-      </button>
-      <button onclick="changeLanguage('sv')">
-        <img src="images/sv/sv.svg" width="20" alt="Svenska" /> Svenska
-      </button>
-      <button onclick="changeLanguage('de')">
-        <img src="images/de/de.svg" width="20" alt="Deutsch" /> Deutsch
-      </button>
-      <button onclick="changeLanguage('fr')">
-        <img src="images/fr/fr.svg" width="20" alt="Français" /> Français
-      </button>
-      <button onclick="changeLanguage('es')">
-        <img src="images/es/es.svg" width="20" alt="Español" /> Español
-      </button>
-      <button onclick="changeLanguage('ar')">
-        <img src="images/ar/ar.svg" width="20" alt="العربية" /> العربية
-      </button>
-      <button onclick="changeLanguage('fi')">
-        <img src="images/fi/fi.svg" width="20" alt="Suomi" /> Suomi
-      </button>
-      <button onclick="changeLanguage('hi')">
-        <img src="images/hi/hi.svg" width="20" alt="हिन्दी" /> हिन्दी
-      </button>
-      <button onclick="changeLanguage('it')">
-        <img src="images/it/it.svg" width="20" alt="Italiano" /> Italiano
-      </button>
-      <button onclick="changeLanguage('ja')">
-        <img src="images/ja/ja.svg" width="20" alt="日本語" /> 日本語
-      </button>
-      <button onclick="changeLanguage('nl')">
-        <img src="images/nl/nl.svg" width="20" alt="Nederlands" /> Nederlands
-      </button>
-      <button onclick="changeLanguage('uk')">
-        <img src="images/uk/uk.svg" width="20" alt="Українська" /> Українська
-      </button>
-      <button onclick="changeLanguage('zhHans')">
-        <img src="images/zhHans/zhHans.svg" width="20" alt="简体中文" /> 简体中文
-      </button>
-      <button onclick="changeLanguage('zhHant')">
-        <img src="images/zhHant/zhHant.svg" width="20" alt="繁體中文" /> 繁體中文
-      </button>
+  <!-- Navigation -->
+  <nav class="nav-container">
+    <div class="nav-content">
+      <!-- 🌍 Language Switcher -->
+      <div id="language-switcher">
+        <button id="active-language" onclick="toggleLanguageMenu()" aria-label="Select language">
+          <img id="current-flag" src="" alt="Selected language" />
+          <span id="current-lang-text">EN</span>
+        </button>
+        <div id="language-menu">
+          <button onclick="changeLanguage('en')">
+            <img src="/images/en/gb.svg" width="20" alt="English" /> English
+          </button>
+          <button onclick="changeLanguage('no')">
+            <img src="/images/no/no.svg" width="20" alt="Norsk" /> Norsk
+          </button>
+          <button onclick="changeLanguage('da')">
+            <img src="/images/da/da.svg" width="20" alt="Dansk" /> Dansk
+          </button>
+          <button onclick="changeLanguage('sv')">
+            <img src="/images/sv/sv.svg" width="20" alt="Svenska" /> Svenska
+          </button>
+          <button onclick="changeLanguage('de')">
+            <img src="/images/de/de.svg" width="20" alt="Deutsch" /> Deutsch
+          </button>
+          <button onclick="changeLanguage('fr')">
+            <img src="/images/fr/fr.svg" width="20" alt="Français" /> Français
+          </button>
+          <button onclick="changeLanguage('es')">
+            <img src="/images/es/es.svg" width="20" alt="Español" /> Español
+          </button>
+          <button onclick="changeLanguage('it')">
+            <img src="/images/it/it.svg" width="20" alt="Italiano" /> Italiano
+          </button>
+          <button onclick="changeLanguage('nl')">
+            <img src="/images/nl/nl.svg" width="20" alt="Nederlands" /> Nederlands
+          </button>
+          <button onclick="changeLanguage('fi')">
+            <img src="/images/fi/fi.svg" width="20" alt="Suomi" /> Suomi
+          </button>
+          <button onclick="changeLanguage('ar')">
+            <img src="/images/ar/ar.svg" width="20" alt="العربية" /> العربية
+          </button>
+          <button onclick="changeLanguage('hi')">
+            <img src="/images/hi/hi.svg" width="20" alt="हिन्दी" /> हिन्दी
+          </button>
+          <button onclick="changeLanguage('ja')">
+            <img src="/images/ja/ja.svg" width="20" alt="日本語" /> 日本語
+          </button>
+          <button onclick="changeLanguage('uk')">
+            <img src="/images/uk/uk.svg" width="20" alt="Українська" /> Українська
+          </button>
+          <button onclick="changeLanguage('zhHans')">
+            <img src="/images/zhHans/zhHans.svg" width="20" alt="简体中文" /> 简体中文
+          </button>
+          <button onclick="changeLanguage('zhHant')">
+            <img src="/images/zhHant/zhHant.svg" width="20" alt="繁體中文" /> 繁體中文
+          </button>
+        </div>
+      </div>
+
+      <!-- Hamburger Menu -->
+      <div id="hamburger-menu">
+        <button id="menu-toggle" aria-label="Open menu"><span></span></button>
+        <div id="menu-dropdown">
+          <a href="/index.html">Home</a>
+          <a href="/SiriShortcutsSetup/en.html">Apple Pay & Shortcuts</a>
+          <a href="/support/en.html">Support</a>
+        </div>
+      </div>
     </div>
-  </div>
-  <!-- 🍔 Hamburgermeny -->
-  <div id="hamburger-menu">
-    <button id="menu-toggle" aria-label="Åpne meny">☰</button>
-    <div id="menu-dropdown">
-      <a href="SiriShortcutsSetup/en.html">Apple Pay & Shortcuts Setup</a>
-      <a href="privacy-policy/en.html">Privacy Policy</a>
-      <a href="support/en.html">Support</a>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="content">
+    <h1>Apple Pay & Shortcuts Setup</h1>
+    <p>Follow these simple steps to set up a Shortcut for logging Apple Pay transactions in BalanceTrackr:</p>
+
+    <h2>Step 1: Open the Shortcuts app</h2>
+    <div class="image-row">
+      <a href="/images/SiriShortcutsSetup-images/1.jpeg" data-lightbox="gallery" data-title="Step 1">
+        <img src="/images/SiriShortcutsSetup-images/1.jpeg" alt="Step 1" style="max-width: 200px;" />
+      </a>
     </div>
-  </div>
-  <picture>
-    <source srcset="images/RegnskApp-Dark-Mode-Icon.jpg" media="(prefers-color-scheme: dark)" />
-    <img src="images/RegnskApp-Light-Mode-Icon.jpg" alt="RegnskApp Icon" class="app-icon" />
-  </picture>
+    <p>Launch the built-in Shortcuts app on your iPhone.</p>
 
-  <h1 style="margin-top: 0.25rem;">
-    BalanceTrackr <span class="subtle">(RegnskApp)</span>
-  </h1>
-  
-  <p style="max-width: 600px; margin: 2rem auto 1rem; line-height: 1.6;">
-    💼 <strong>BalanceTrackr</strong> is your personal budgeting and balance tracker!  
-    Built for those who want <em>full control over their finances</em> — clearly, privately, and without ads or subscriptions.
-  </p>
-  
-  <p style="max-width: 600px; margin: 1rem auto 2rem; line-height: 1.6;">
-    Instead of juggling spreadsheets, this app lets you enter income, expenses, and transfers quickly and intuitively – and watch how your balance evolves over time 📈.  
-    You’re in control: manually if you prefer, or semi-automatically by using shortcuts to speed things up — all without connecting to your bank.
-  </p>
-
-  <!-- Første karusell før Features -->
-  <div class="carousel-wrapper">
-    <div class="carousel carousel-1">
-      <img src="images/en/1.png" alt="App screenshot 1" />
-      <img src="images/en/2.png" alt="App screenshot 2" />
-      <img src="images/en/3.png" alt="App screenshot 3" />
-      <img src="images/en/4.png" alt="App screenshot 4" />
+    <h2>Step 2: Tap "Automation" at the bottom</h2>
+    <div class="image-row">
+      <a href="/images/SiriShortcutsSetup-images/2.jpeg" data-lightbox="gallery" data-title="Step 2">
+        <img src="/images/SiriShortcutsSetup-images/2.jpeg" alt="Step 2" style="max-width: 200px;" />
+      </a>
     </div>
+    <p>Switch to the <strong>Automation</strong> tab to create a new shortcut.</p>
 
-    <div class="carousel-dots carousel-dots-1">
-      <span class="dot"></span>
-      <span class="dot"></span>
-      <span class="dot"></span>
-      <span class="dot"></span>
+    <h2>Step 3: Tap the "New Automation" or the plus icon and choose "Transaction"</h2>
+    <div class="image-row">
+      <a href="/images/SiriShortcutsSetup-images/3.0.jpeg" data-lightbox="gallery" data-title="Step 3.0">
+        <img src="/images/SiriShortcutsSetup-images/3.0.jpeg" alt="Step 3.0" style="max-width: 200px;" />
+      </a>
+      <a href="/images/SiriShortcutsSetup-images/3.1.jpeg" data-lightbox="gallery" data-title="Step 3.1">
+        <img src="/images/SiriShortcutsSetup-images/3.1.jpeg" alt="Step 3.1" style="max-width: 200px;" />
+      </a>
+      <a href="/images/SiriShortcutsSetup-images/3.2.jpeg" data-lightbox="gallery" data-title="Step 3.2">
+        <img src="/images/SiriShortcutsSetup-images/3.2.jpeg" alt="Step 3.2" style="max-width: 200px;" />
+      </a>
     </div>
-  </div>
+    <p>Tap the <strong>New Automation</strong> or the <strong>+</strong> icon at the top right, then select <strong>Transaction</strong> (with the Wallet symbol).</p>
 
-  <p style="max-width: 600px; margin: 2rem auto 1rem; font-size: 1.1rem; font-weight: 500;">
-    📲 <strong>Features</strong> you'll love:
-  </p>
-
-  <ul style="max-width: 600px; margin: 0 auto 2rem; text-align: left; line-height: 1.6;">
-    <li>🏦 Add as many accounts as you want – personal, shared, or side projects</li>
-    <li>💸 Log salary, expenses, and transfers with just a few taps</li>
-    <li>📊 Track your balance over time with clear line graphs</li>
-    <li>📅 See how many days are left until your next paycheck</li>
-    <li>💰 Watch your balance update in real time</li>
-    <li>🧠 Clean, ad-free design – focused on <em>you and your money</em></li>
-  </ul>
-
-  <!-- Andre karusell etter Features -->
-  <div class="carousel-wrapper">
-    <div class="carousel carousel-2">
-      <img src="images/en/5.png" alt="App screenshot 5" />
-      <img src="images/en/6.png" alt="App screenshot 6" />
-      <img src="images/en/7.png" alt="App screenshot 7" />
-      <img src="images/en/8.png" alt="App screenshot 8" />
+    <h2>Step 4: Leave only one card under "When I tap"</h2>
+    <div class="image-row">
+      <a href="/images/SiriShortcutsSetup-images/4.0.jpeg" data-lightbox="gallery" data-title="Step 4.0">
+        <img src="/images/SiriShortcutsSetup-images/4.0.jpeg" alt="Step 4.0" style="max-width: 200px;" />
+      </a>
+      <a href="/images/SiriShortcutsSetup-images/4.1.jpeg" data-lightbox="gallery" data-title="Step 4.1">
+        <img src="/images/SiriShortcutsSetup-images/4.1.jpeg" alt="Step 4.1" style="max-width: 200px;" />
+      </a>
     </div>
+    <p>Deselect all cards except the one you want to trigger the shortcut from under <strong>"When I tap"</strong>.</p>
+    <p>At the bottom, you can choose whether you want to receive a confirmation when the automation runs, or let it run silently.</p>
+    <p>Tap <strong>New Blank Automation</strong> to start the setup.</p>
 
-    <div class="carousel-dots carousel-dots-2">
-      <span class="dot"></span>
-      <span class="dot"></span>
-      <span class="dot"></span>
-      <span class="dot"></span>
+    <h2>Step 5: Automation setup - Search</h2>
+    <div class="image-row">
+      <a href="/images/SiriShortcutsSetup-images/5.0.jpeg" data-lightbox="gallery" data-title="Step 5.0">
+        <img src="/images/SiriShortcutsSetup-images/5.0.jpeg" alt="Step 5.0" style="max-width: 200px;" />
+      </a>
+      <a href="/images/SiriShortcutsSetup-images/5.1.png" data-lightbox="gallery" data-title="Step 5.1">
+        <img src="/images/SiriShortcutsSetup-images/5.1.PNG" alt="Step 5.1" style="max-width: 200px;" />
+      </a>
+      <a href="/images/SiriShortcutsSetup-images/5.2.png" data-lightbox="gallery" data-title="Step 5.2">
+        <img src="/images/SiriShortcutsSetup-images/5.2.PNG" alt="Step 5.2" style="max-width: 200px;" />
+      </a>
     </div>
+    <p>Search for <strong>"BalanceTrackr"</strong> and select whether you want to add a <strong>bank account transaction</strong> (debit card) or a <strong>credit card transaction</strong>.</p>
+
+    <h2>Step 6: Automation setup - Variables</h2>
+    <div class="image-row">
+      <a href="/images/SiriShortcutsSetup-images/6.0.jpeg" data-lightbox="gallery" data-title="Step 6.0">
+        <img src="/images/SiriShortcutsSetup-images/6.0.jpeg" alt="Step 6.0" style="max-width: 200px;" />
+      </a>
+      <a href="/images/SiriShortcutsSetup-images/6.1.jpeg" data-lightbox="gallery" data-title="Step 6.1">
+        <img src="/images/SiriShortcutsSetup-images/6.1.jpeg" alt="Step 6.1" style="max-width: 200px;" />
+      </a>
+      <a href="/images/SiriShortcutsSetup-images/6.2.jpeg" data-lightbox="gallery" data-title="Step 6.2">
+        <img src="/images/SiriShortcutsSetup-images/6.2.jpeg" alt="Step 6.2" style="max-width: 200px;" />
+      </a>
+      <a href="/images/SiriShortcutsSetup-images/6.3.jpeg" data-lightbox="gallery" data-title="Step 6.3">
+        <img src="/images/SiriShortcutsSetup-images/6.3.jpeg" alt="Step 6.3" style="max-width: 200px;" />
+      </a>
+      <a href="/images/SiriShortcutsSetup-images/6.4.jpeg" data-lightbox="gallery" data-title="Step 6.4">
+        <img src="/images/SiriShortcutsSetup-images/6.4.jpeg" alt="Step 6.4" style="max-width: 200px;" />
+      </a>
+      <a href="/images/SiriShortcutsSetup-images/6.5.png" data-lightbox="gallery" data-title="Step 6.5">
+        <img src="/images/SiriShortcutsSetup-images/6.5.PNG" alt="Step 6.5" style="max-width: 200px;" />
+      </a>
+    </div>
+    <p>Use variables from <strong>"Shortcut Input"</strong> to fill in <strong>Amount</strong> and <strong>Merchant</strong>.<br />
+    The <strong>Account</strong> or <strong>Credit Card</strong> name must match exactly the name used in the BalanceTrackr app.</p>
+
+    <p>You'll find the available variables in the blue text line above the keyboard:</p>
+    <p>
+      Tap the <strong>"Shortcut Input"</strong> variable, and once it's added to the shortcut, 
+      tap it again to select the desired option from the pop-up menu.
+    </p>
+    
+    <h2>Step 7: Tap "Done"</h2>
+    <div class="image-row">
+      <a href="/images/SiriShortcutsSetup-images/7.jpeg" data-lightbox="gallery" data-title="Step 7">
+        <img src="/images/SiriShortcutsSetup-images/7.jpeg" alt="Step 7" style="max-width: 200px;" />
+      </a>
+    </div>
+    <h2>Important</h2>
+    <p><strong>Do not tap the <em>"Play"</em> button at the bottom.</strong> Since no transaction has been created yet, this will result in an error and you'll have to start the setup from scratch.</p>
+    <p>Make sure to complete the entire process in one go — it won't work properly if you stop midway.</p>
+    
+    <p>Press <strong>"Done"</strong> to save the automation.</p>
+    <p><strong>Important!</strong><br>
+    If this is your first time setting up the automation, nothing might appear to happen when you press "Done."<br>
+    This is because the connection between the Shortcuts app and BalanceTrackr hasn't been fully initialized on your device yet.</p>
+    <p><strong>However, the automation has been saved!</strong></p>
+    <p>Simply tap the <strong>back arrow</strong> in the top left corner until you return to the first setup screen, then <strong>pull down to on the setup card to dismiss it</strong>.<br>
+    You will now see that the automation has been saved successfully.</p>
+
+    <h2>Step 8: Finished Setup</h2>
+    <div class="image-row">
+      <a href="/images/SiriShortcutsSetup-images/8.0.jpeg" data-lightbox="gallery" data-title="Step 8.0">
+        <img src="/images/SiriShortcutsSetup-images/8.0.jpeg" alt="Step 8.0" style="max-width: 200px;" />
+      </a>
+      <a href="/images/SiriShortcutsSetup-images/8.1.jpeg" data-lightbox="gallery" data-title="Step 8.1">
+        <img src="/images/SiriShortcutsSetup-images/8.1.jpeg" alt="Step 8.1" style="max-width: 200px;" />
+      </a>
+    </div>
+    <p>You're all set! Tap the newly created automation if you want to make any changes.</p>
+    <p>You can customize the notification that appears when it runs, or tap the action under <strong>"Do"</strong> to modify the automation steps. Feel free to add other actions you'd like to trigger when the card is tapped.</p>
+
+    <a href="/index.html" class="back-btn">← BalanceTrackr</a>
   </div>
 
-  <p style="max-width: 600px; margin: 2rem auto 1rem; line-height: 1.6;">
-    This is the app for anyone who wants <strong>simple and total control without extra noise</strong>.  
-    You stay in charge – with flexible accounts, manual entries, and a balance that updates as you go.  
-    And yes, if you like a bit of fun:  
-    <strong>It even makes it rain money! 💸</strong>
-  </p>
-
-  <video autoplay muted playsinline loop style="margin-top: 1rem; max-width: 90%; max-width: 350px; border-radius: 1rem; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);">
-  <source src="images/LadetRegneiMovie.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-  </video>
-
-  <div style="margin-top: 2rem; margin-bottom: 1.5rem;">
-    <a href="https://apps.apple.com/us/app/regnskapp/id6743946348" target="_blank">
-      <img src="images/black.svg" alt="Download on the App Store" style="width: 180px;" />
-    </a>
-  </div>
-
-  <div style="margin-bottom: 2rem;">
-    <a class="button" href="SiriShortcutsSetup/en.html">Apple Pay & Shortcuts Setup</a>
-    <a class="button" href="privacy-policy/en.html">Privacy Policy</a>
-    <a class="button" href="support/en.html">Support</a>
-  </div>
-
-  <!-- 🌟 Featured Review Section -->
-  <section style="padding: 2rem 1rem; border-top: 1px solid #ddd;">
-    <h2 style="margin-bottom: 1rem; font-size: 1.4rem; color: #1b5e20;">
-      📰 Featured on KrispiTech
-    </h2>
-    <blockquote style="font-style: italic; color: #444; max-width: 700px; margin: 0 auto 1rem;">
-      “BalanceTrackr proves that ad-free apps can revolutionize budget management.”
-    </blockquote>
-    <a href="https://krispitech.com/why-ad-free-apps-like-balancetrackr-are-revolutionizing-budget-management/"
-       target="_blank"
-       rel="noopener noreferrer"
-       class="button">
-      Read the full review
-    </a>
-  </section>
-
-    <!-- 📷 Instagram Follow Section -->
-  <section style="padding: 2rem 1rem; border-top: 1px solid #ddd;">
-    <a href="https://www.instagram.com/balancetrackr/" 
-       target="_blank" 
-       rel="noopener noreferrer" 
-       style="display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none; color: #1b5e20; font-weight: bold;">
-      <img src="images/Instagram_logo_2016.svg.webp" 
-           alt="Instagram" 
-           style="width: 32px; height: 32px;">
-      Follow BalanceTrackr on Instagram
-    </a>
-  </section>
-  
-  <footer>
-    &copy; 2025 BalanceTrackr (RegnskApp) - Ole Morten Tengesdal. All rights reserved.
+  <footer class="footer">
+    <div class="footer-content">
+      <p>&copy; 2025 BalanceTrackr (RegnskApp) – Ole Morten Tengesdal. All rights reserved.</p>
+    </div>
   </footer>
 
   <script>
-     let currentLang = 'en'; // kan settes dynamisk senere
-  
     function toggleLanguageMenu() {
       const menu = document.getElementById("language-menu");
-      menu.style.display = menu.style.display === "block" ? "none" : "block";
+      menu.classList.toggle("show");
     }
-  
+
     function changeLanguage(langCode) {
-      const flagPath = `images/${langCode}/${langCode === 'en' ? 'gb' : langCode}.svg`;
+      // Normalize language codes (remove hyphens for zhHans/zhHant)
+      if (langCode === 'zh-Hans') langCode = 'zhHans';
+      if (langCode === 'zh-Hant') langCode = 'zhHant';
+      const flagPath = `/images/${langCode.replace('-', '')}/${langCode === 'en' ? 'gb' : langCode.replace('-', '')}.svg`;
       document.getElementById("current-flag").src = flagPath;
-  
-      const file = langCode === 'en' ? 'index.html' : `index-${langCode}.html`;
+
+      const langTexts = {
+        'en': 'EN', 'no': 'NO', 'da': 'DA', 'sv': 'SV', 'de': 'DE',
+        'fr': 'FR', 'es': 'ES', 'ar': 'AR', 'fi': 'FI', 'hi': 'HI',
+        'it': 'IT', 'ja': 'JA', 'nl': 'NL', 'uk': 'UK', 'zhHans': 'CN', 'zhHant': 'TW'
+      };
+      document.getElementById("current-lang-text").textContent = langTexts[langCode] || 'EN';
+
+      // Navigate to the appropriate SiriShortcutsSetup page
+      const file = langCode === 'en' ? '/SiriShortcutsSetup/en.html' : `/SiriShortcutsSetup/${langCode}.html`;
       window.location.href = file;
     }
-  
-    // Bestem hvilket språk som er aktivt basert på URL
+
+    // Determine which language is active based on URL
     function setInitialFlag() {
-      const filename = window.location.pathname.split('/').pop();
-      // Allowed language codes (matches the menu options)
-      const langCodes = ['en','no','da','sv','de','fr','es','ar','fi','hi','it','ja','nl','uk','zhHans','zhHant'];
-      let langCode = 'en'; // fallback
-      
-      // match index.html or index-<code>.html
-      const m = filename.match(/^index(?:-([^.]+))?\.html$/);
-      if (m && m[1] && langCodes.includes(m[1])) {
-        langCode = m[1];
-      } else {
-        // fallback to 'en' if unknown or no match
-        langCode = 'en';
-      }
-      
-      const flagPath = `images/${langCode}/${langCode === 'en' ? 'gb' : langCode}.svg`;
+      // Since this is a test page, default to English
+      const flagPath = `/images/en/gb.svg`;
       const img = document.getElementById("current-flag");
       if (img) img.src = flagPath;
+      document.getElementById("current-lang-text").textContent = 'EN';
     }
-  
-    setInitialFlag(); // kall funksjonen ved innlasting
-  
-    // Lukk meny ved klikk utenfor
+
+    setInitialFlag(); // call the function on load
+
+    // Hamburger Menu Functions
+    const toggleButton = document.getElementById('menu-toggle');
+    const dropdown = document.getElementById('menu-dropdown');
+
+    toggleButton.addEventListener('click', () => {
+      dropdown.classList.toggle('show');
+    });
+
+    // Close menu when clicking outside
     document.addEventListener("click", function (event) {
       const switcher = document.getElementById("language-switcher");
       if (!switcher.contains(event.target)) {
-        document.getElementById("language-menu").style.display = "none";
+        document.getElementById("language-menu").classList.remove("show");
       }
-    });
-    
-    function setupCarousel(carouselNumber) {
-      const carousel = document.querySelector(`.carousel-${carouselNumber}`);
-      const dotsContainer = document.querySelector(`.carousel-dots-${carouselNumber}`);
-      const images = carousel.querySelectorAll('img');
-      let dots = [];
-      let autoplayInterval;
-      let resumeTimeout;
-      let currentIndex = 0;
-  
-      function createDots() {
-        dotsContainer.innerHTML = '';
-        dots = [];
-  
-        const isDesktop = window.innerWidth >= 768;
-        const dotsCount = isDesktop ? 3 : images.length;
-  
-        for (let i = 0; i < dotsCount; i++) {
-          const dot = document.createElement('span');
-          dot.className = 'dot';
-          dot.addEventListener('click', () => {
-            if (isDesktop) {
-              // Mappe dotter for desktop: 1 -> bilde 0, 2 -> bilde 2, 3 -> bilde 4 (for 5 bilder)
-              const desktopIndexes = [0, 2, 4];
-              scrollToImage(desktopIndexes[i]);
-            } else {
-              scrollToImage(i);
-            }
-            restartAutoplayWithDelay();
-          });
-          dotsContainer.appendChild(dot);
-          dots.push(dot);
-        }
-  
-        updateDots();
+
+      if (!document.getElementById('hamburger-menu').contains(event.target)) {
+        dropdown.classList.remove('show');
       }
-  
-      function updateDots() {
-        const scrollLeft = carousel.scrollLeft;
-        const carouselWidth = carousel.offsetWidth;
-        const totalWidth = carousel.scrollWidth;
-  
-        let closestIndex = 0;
-        let closestDistance = Infinity;
-  
-        images.forEach((img, index) => {
-          const imgLeft = img.offsetLeft - carousel.offsetLeft;
-          const imgCenter = imgLeft + (img.offsetWidth / 2);
-          const viewportCenter = scrollLeft + (carouselWidth / 2);
-          const distance = Math.abs(viewportCenter - imgCenter);
-          if (distance < closestDistance) {
-            closestDistance = distance;
-            closestIndex = index;
-          }
-        });
-  
-        const isDesktop = window.innerWidth >= 768;
-        let activeDotIndex;
-  
-        if (isDesktop) {
-          // Bestem hvilken dot som skal være aktiv basert på nærmeste bilde
-          if (closestIndex <= 1) activeDotIndex = 0;
-          else if (closestIndex >= 3) activeDotIndex = 2;
-          else activeDotIndex = 1;
-        } else {
-          activeDotIndex = closestIndex;
-        }
-  
-        dots.forEach(dot => dot.classList.remove('active'));
-        if (dots[activeDotIndex]) dots[activeDotIndex].classList.add('active');
-        currentIndex = closestIndex;
-      }
-  
-      function scrollToImage(index) {
-        const targetIndex = (index + images.length) % images.length;
-        const targetImage = images[targetIndex];
-        const imgLeft = targetImage.offsetLeft - carousel.offsetLeft;
-        const imgCenter = imgLeft + (targetImage.offsetWidth / 2);
-        const carouselCenter = carousel.offsetWidth / 2;
-        const scrollTo = imgCenter - carouselCenter;
-        
-        carousel.scrollTo({
-          left: scrollTo, 
-          behavior: smooth ? 'smooth' : 'auto' 
-        });
-        
-        currentIndex = targetIndex;
-        updateDots();
-      }
-  
-      function startAutoplay() {
-        const isDesktop = window.innerWidth >= 768;
-        const interval = isDesktop ? 4000 : 3000;
-        stopAutoplay();
-        
-        let desktopIndexes = [0, 2, 4]; // For 5 bilder
-        // For desktop: start med dot 1 (bilde 0)
-        let currentDot = isDesktop ? desktopIndexes.indexOf(currentIndex) : currentIndex;
-        
-        autoplayInterval = setInterval(() => {
-          if (isDesktop) {
-            currentDot = (currentDot + 1) % desktopIndexes.length;
-            const nextIndex = desktopIndexes[currentDot];
-            scrollToImage(nextIndex);
-          } else {
-            scrollToImage((currentIndex + 1) % images.length);
-          }
-        }, interval);
-      }
-  
-      function stopAutoplay() {
-        clearInterval(autoplayInterval);
-      }
-  
-      function restartAutoplayWithDelay() {
-        stopAutoplay();
-        clearTimeout(resumeTimeout);
-        resumeTimeout = setTimeout(startAutoplay, 3500);
-      }
-  
-      carousel.addEventListener('scroll', () => {
-        if (!carousel.scrollTimeout) {
-          carousel.scrollTimeout = setTimeout(() => {
-            updateDots();
-            carousel.scrollTimeout = null;
-          }, 100);
-        }
-      });
-  
-      carousel.addEventListener('touchstart', stopAutoplay);
-      carousel.addEventListener('touchend', restartAutoplayWithDelay);
-      carousel.addEventListener('mousedown', stopAutoplay);
-      carousel.addEventListener('mouseup', restartAutoplayWithDelay);
-  
-      function initialize() {
-        createDots();
-        smooth = false;             // Deaktiver smooth scroll ved start
-        scrollToImage(0);           // Start på første bilde
-        smooth = true;              // Aktiver smooth scroll igjen
-      
-        const isDesktop = window.innerWidth >= 768;
-        if (!isDesktop) {
-          setTimeout(() => {
-            startAutoplay();
-          }, 300);
-        }
-      }
-  
-      window.addEventListener('resize', () => {
-        createDots();
-        updateDots();
-        const isDesktop = window.innerWidth >= 768;
-        if (!isDesktop) {
-          restartAutoplayWithDelay(); // Bare på mobil
-        } else {
-          stopAutoplay(); // Sørg for at desktop ikke får autoplay
-        }
-      });
-  
-      window.addEventListener('load', initialize);
-      if (document.readyState === 'complete') {
-        initialize();
-      }
-  
-      return { updateDots, startAutoplay, scrollToImage };
-    }
-  
-    document.addEventListener('DOMContentLoaded', () => {
-      setupCarousel(1);
-      setupCarousel(2);
     });
 
-    const toggleButton = document.getElementById('menu-toggle');
-    const dropdown = document.getElementById('menu-dropdown');
-  
-    toggleButton.addEventListener('click', () => {
-      dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
-    });
-  
-    // Lukk menyen hvis man klikker utenfor
-    document.addEventListener('click', (event) => {
-      if (!document.getElementById('hamburger-menu').contains(event.target)) {
-        dropdown.style.display = 'none';
-      }
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
     });
   </script>
+
+  <!-- Last jQuery først -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  
+  <!-- Deretter Lightbox -->
+  <script src="https://cdn.jsdelivr.net/npm/lightbox2@2.11.4/dist/js/lightbox.min.js"></script>
+
 </body>
 </html>
