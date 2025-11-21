@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Apple Pay & Shortcuts Setup – BalanceTrackr</title>
   <link rel="icon" href="/images/RegnskApp-Light-Mode-Icon.jpg" type="image/jpeg" />
-  <link href="https://cdn.jsdelivr.net/npm/lightbox2@2.11.4/dist/css/lightbox.min.css" rel="stylesheet" />
   
   <!-- Canonical -->
   <link rel="canonical" href="https://regnskapp.github.io/index-test2.html">
@@ -423,29 +422,26 @@
 
     .step-images {
       margin: 1.5rem 0;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      display: flex;
+      flex-wrap: wrap;
       gap: 1rem;
     }
 
-    .step-images a {
-      display: block;
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      box-shadow: var(--shadow-md);
-      transition: all var(--transition-fast);
-    }
-
-    .step-images a:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-lg);
-    }
-
+    /* Desktop: All images same size (33.333% like step 3) */
     .step-images img {
+      flex: 1 1 calc(33.333% - 1rem);
+      max-width: calc(33.333% - 1rem);
       width: 100%;
       height: auto;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      transition: all var(--transition-fast);
       display: block;
-      cursor: zoom-in;
+    }
+
+    .step-images img:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
     }
 
     .step-content {
@@ -559,9 +555,21 @@
         padding-top: 0;
       }
 
+      /* Mobile: 2 images side by side when more than 1 image */
       .step-images {
-        grid-template-columns: 1fr;
-        gap: 0.75rem;
+        gap: 0.5rem;
+      }
+      
+      .step-images img {
+        flex: 1 1 48%;
+        max-width: 48%;
+        border-radius: var(--radius-md);
+      }
+      
+      /* Single image on mobile takes full width */
+      .step-images img:only-child {
+        flex: 1 1 100%;
+        max-width: 100%;
       }
 
       .important-section {
@@ -569,11 +577,6 @@
       }
     }
 
-    @media (min-width: 769px) and (max-width: 1024px) {
-      .step-images {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
   </style>
 </head>
 <body>
@@ -664,9 +667,7 @@
         <h2 class="step-title">Open the Shortcuts app</h2>
       </div>
       <div class="step-images">
-        <a href="/images/SiriShortcutsSetup-images/1.jpeg" data-lightbox="gallery" data-title="Step 1">
-          <img src="/images/SiriShortcutsSetup-images/1.jpeg" alt="Step 1" />
-        </a>
+        <img src="/images/SiriShortcutsSetup-images/1.jpeg" alt="Step 1" />
       </div>
       <div class="step-content">
         <p>Launch the built-in Shortcuts app on your iPhone.</p>
@@ -680,9 +681,7 @@
         <h2 class="step-title">Tap "Automation" at the bottom</h2>
       </div>
       <div class="step-images">
-        <a href="/images/SiriShortcutsSetup-images/2.jpeg" data-lightbox="gallery" data-title="Step 2">
-          <img src="/images/SiriShortcutsSetup-images/2.jpeg" alt="Step 2" />
-        </a>
+        <img src="/images/SiriShortcutsSetup-images/2.jpeg" alt="Step 2" />
       </div>
       <div class="step-content">
         <p>Switch to the <strong>Automation</strong> tab to create a new shortcut.</p>
@@ -696,15 +695,9 @@
         <h2 class="step-title">Tap the "New Automation" or the plus icon and choose "Transaction"</h2>
       </div>
       <div class="step-images">
-        <a href="/images/SiriShortcutsSetup-images/3.0.jpeg" data-lightbox="gallery" data-title="Step 3.0">
-          <img src="/images/SiriShortcutsSetup-images/3.0.jpeg" alt="Step 3.0" />
-        </a>
-        <a href="/images/SiriShortcutsSetup-images/3.1.jpeg" data-lightbox="gallery" data-title="Step 3.1">
-          <img src="/images/SiriShortcutsSetup-images/3.1.jpeg" alt="Step 3.1" />
-        </a>
-        <a href="/images/SiriShortcutsSetup-images/3.2.jpeg" data-lightbox="gallery" data-title="Step 3.2">
-          <img src="/images/SiriShortcutsSetup-images/3.2.jpeg" alt="Step 3.2" />
-        </a>
+        <img src="/images/SiriShortcutsSetup-images/3.0.jpeg" alt="Step 3.0" />
+        <img src="/images/SiriShortcutsSetup-images/3.1.jpeg" alt="Step 3.1" />
+        <img src="/images/SiriShortcutsSetup-images/3.2.jpeg" alt="Step 3.2" />
       </div>
       <div class="step-content">
         <p>Tap the <strong>New Automation</strong> or the <strong>+</strong> icon at the top right, then select <strong>Transaction</strong> (with the Wallet symbol).</p>
@@ -718,12 +711,8 @@
         <h2 class="step-title">Leave only one card under "When I tap"</h2>
       </div>
       <div class="step-images">
-        <a href="/images/SiriShortcutsSetup-images/4.0.jpeg" data-lightbox="gallery" data-title="Step 4.0">
-          <img src="/images/SiriShortcutsSetup-images/4.0.jpeg" alt="Step 4.0" />
-        </a>
-        <a href="/images/SiriShortcutsSetup-images/4.1.jpeg" data-lightbox="gallery" data-title="Step 4.1">
-          <img src="/images/SiriShortcutsSetup-images/4.1.jpeg" alt="Step 4.1" />
-        </a>
+        <img src="/images/SiriShortcutsSetup-images/4.0.jpeg" alt="Step 4.0" />
+        <img src="/images/SiriShortcutsSetup-images/4.1.jpeg" alt="Step 4.1" />
       </div>
       <div class="step-content">
         <p>Deselect all cards except the one you want to trigger the shortcut from under <strong>"When I tap"</strong>.</p>
@@ -739,15 +728,9 @@
         <h2 class="step-title">Automation setup - Search</h2>
       </div>
       <div class="step-images">
-        <a href="/images/SiriShortcutsSetup-images/5.0.jpeg" data-lightbox="gallery" data-title="Step 5.0">
-          <img src="/images/SiriShortcutsSetup-images/5.0.jpeg" alt="Step 5.0" />
-        </a>
-        <a href="/images/SiriShortcutsSetup-images/5.1.png" data-lightbox="gallery" data-title="Step 5.1">
-          <img src="/images/SiriShortcutsSetup-images/5.1.PNG" alt="Step 5.1" />
-        </a>
-        <a href="/images/SiriShortcutsSetup-images/5.2.png" data-lightbox="gallery" data-title="Step 5.2">
-          <img src="/images/SiriShortcutsSetup-images/5.2.PNG" alt="Step 5.2" />
-        </a>
+        <img src="/images/SiriShortcutsSetup-images/5.0.jpeg" alt="Step 5.0" />
+        <img src="/images/SiriShortcutsSetup-images/5.1.PNG" alt="Step 5.1" />
+        <img src="/images/SiriShortcutsSetup-images/5.2.PNG" alt="Step 5.2" />
       </div>
       <div class="step-content">
         <p>Search for <strong>"BalanceTrackr"</strong> and select whether you want to add a <strong>bank account transaction</strong> (debit card) or a <strong>credit card transaction</strong>.</p>
@@ -761,24 +744,12 @@
         <h2 class="step-title">Automation setup - Variables</h2>
       </div>
       <div class="step-images">
-        <a href="/images/SiriShortcutsSetup-images/6.0.jpeg" data-lightbox="gallery" data-title="Step 6.0">
-          <img src="/images/SiriShortcutsSetup-images/6.0.jpeg" alt="Step 6.0" />
-        </a>
-        <a href="/images/SiriShortcutsSetup-images/6.1.jpeg" data-lightbox="gallery" data-title="Step 6.1">
-          <img src="/images/SiriShortcutsSetup-images/6.1.jpeg" alt="Step 6.1" />
-        </a>
-        <a href="/images/SiriShortcutsSetup-images/6.2.jpeg" data-lightbox="gallery" data-title="Step 6.2">
-          <img src="/images/SiriShortcutsSetup-images/6.2.jpeg" alt="Step 6.2" />
-        </a>
-        <a href="/images/SiriShortcutsSetup-images/6.3.jpeg" data-lightbox="gallery" data-title="Step 6.3">
-          <img src="/images/SiriShortcutsSetup-images/6.3.jpeg" alt="Step 6.3" />
-        </a>
-        <a href="/images/SiriShortcutsSetup-images/6.4.jpeg" data-lightbox="gallery" data-title="Step 6.4">
-          <img src="/images/SiriShortcutsSetup-images/6.4.jpeg" alt="Step 6.4" />
-        </a>
-        <a href="/images/SiriShortcutsSetup-images/6.5.png" data-lightbox="gallery" data-title="Step 6.5">
-          <img src="/images/SiriShortcutsSetup-images/6.5.PNG" alt="Step 6.5" />
-        </a>
+        <img src="/images/SiriShortcutsSetup-images/6.0.jpeg" alt="Step 6.0" />
+        <img src="/images/SiriShortcutsSetup-images/6.1.jpeg" alt="Step 6.1" />
+        <img src="/images/SiriShortcutsSetup-images/6.2.jpeg" alt="Step 6.2" />
+        <img src="/images/SiriShortcutsSetup-images/6.3.jpeg" alt="Step 6.3" />
+        <img src="/images/SiriShortcutsSetup-images/6.4.jpeg" alt="Step 6.4" />
+        <img src="/images/SiriShortcutsSetup-images/6.5.PNG" alt="Step 6.5" />
       </div>
       <div class="step-content">
         <p>Use variables from <strong>"Shortcut Input"</strong> to fill in <strong>Amount</strong> and <strong>Merchant</strong>.<br />
@@ -799,19 +770,19 @@
         <h2 class="step-title">Tap "Done"</h2>
       </div>
       <div class="step-images">
-        <a href="/images/SiriShortcutsSetup-images/7.jpeg" data-lightbox="gallery" data-title="Step 7">
-          <img src="/images/SiriShortcutsSetup-images/7.jpeg" alt="Step 7" />
-        </a>
+        <img src="/images/SiriShortcutsSetup-images/7.jpeg" alt="Step 7" />
       </div>
       <div class="step-content">
         <div class="important-section">
           <h2>Important</h2>
           <p><strong>Do not tap the <em>"Play"</em> button at the bottom.</strong> Since no transaction has been created yet, this will result in an error and you'll have to start the setup from scratch.</p>
           <p>Make sure to complete the entire process in one go — it won't work properly if you stop midway.</p>
-          
           <p>Press <strong>"Done"</strong> to save the automation.</p>
-          <p><strong>Important!</strong><br>
-          If this is your first time setting up the automation, nothing might appear to happen when you press "Done."<br>
+        </div>
+        
+        <div class="important-section">
+          <h2>Important!</h2>
+          <p>If this is your first time setting up the automation, nothing might appear to happen when you press "Done."<br>
           This is because the connection between the Shortcuts app and BalanceTrackr hasn't been fully initialized on your device yet.</p>
           <p><strong>However, the automation has been saved!</strong></p>
           <p>Simply tap the <strong>back arrow</strong> in the top left corner until you return to the first setup screen, then <strong>pull down to on the setup card to dismiss it</strong>.<br>
@@ -827,12 +798,8 @@
         <h2 class="step-title">Finished Setup</h2>
       </div>
       <div class="step-images">
-        <a href="/images/SiriShortcutsSetup-images/8.0.jpeg" data-lightbox="gallery" data-title="Step 8.0">
-          <img src="/images/SiriShortcutsSetup-images/8.0.jpeg" alt="Step 8.0" />
-        </a>
-        <a href="/images/SiriShortcutsSetup-images/8.1.jpeg" data-lightbox="gallery" data-title="Step 8.1">
-          <img src="/images/SiriShortcutsSetup-images/8.1.jpeg" alt="Step 8.1" />
-        </a>
+        <img src="/images/SiriShortcutsSetup-images/8.0.jpeg" alt="Step 8.0" />
+        <img src="/images/SiriShortcutsSetup-images/8.1.jpeg" alt="Step 8.1" />
       </div>
       <div class="step-content">
         <p>You're all set! Tap the newly created automation if you want to make any changes.</p>
@@ -921,11 +888,6 @@
     });
   </script>
 
-  <!-- Last jQuery først -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  
-  <!-- Deretter Lightbox -->
-  <script src="https://cdn.jsdelivr.net/npm/lightbox2@2.11.4/dist/js/lightbox.min.js"></script>
 
 </body>
 </html>
