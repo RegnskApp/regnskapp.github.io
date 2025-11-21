@@ -50,8 +50,8 @@
       --text-secondary: #6b7280;
       --text-muted: #9ca3af;
       --bg-primary: #ffffff;
-      --bg-secondary: #f8fafc;
-      --bg-tertiary: #f1f5f9;
+      --bg-secondary: #f0f4f8;
+      --bg-tertiary: #e2e8f0;
       --border-color: #e5e7eb;
       --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
       --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
@@ -425,6 +425,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 1rem;
+      justify-content: center; /* Center images on desktop */
     }
 
     /* Desktop: All images same size (33.333% like step 3) */
@@ -437,6 +438,12 @@
       box-shadow: var(--shadow-md);
       transition: all var(--transition-fast);
       display: block;
+    }
+
+    /* When there are exactly 3 images, center the third one under the first two */
+    .step-images img:nth-child(3):last-child {
+      flex: 0 0 calc(33.333% - 1rem);
+      margin-left: calc(16.666% - 0.5rem);
     }
 
     .step-images img:hover {
@@ -461,7 +468,7 @@
     /* Important Section */
     .important-section {
       background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-secondary) 100%);
-      border-left: 4px solid var(--accent-color);
+      border: 2px solid var(--accent-color);
       border-radius: var(--radius-lg);
       padding: 1.5rem;
       margin: 2rem 0;
@@ -558,6 +565,7 @@
       /* Mobile: 2 images side by side when more than 1 image */
       .step-images {
         gap: 0.5rem;
+        justify-content: flex-start; /* Reset centering on mobile */
       }
       
       .step-images img {
@@ -570,6 +578,13 @@
       .step-images img:only-child {
         flex: 1 1 100%;
         max-width: 100%;
+      }
+      
+      /* Reset third image centering on mobile */
+      .step-images img:nth-child(3):last-child {
+        margin-left: 0;
+        flex: 1 1 48%;
+        max-width: 48%;
       }
 
       .important-section {
@@ -774,7 +789,7 @@
       </div>
       <div class="step-content">
         <div class="important-section">
-          <h2>Important</h2>
+          <h2>Important!</h2>
           <p><strong>Do not tap the <em>"Play"</em> button at the bottom.</strong> Since no transaction has been created yet, this will result in an error and you'll have to start the setup from scratch.</p>
           <p>Make sure to complete the entire process in one go — it won't work properly if you stop midway.</p>
           <p>Press <strong>"Done"</strong> to save the automation.</p>
