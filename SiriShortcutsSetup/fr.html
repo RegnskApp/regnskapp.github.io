@@ -5,9 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Configuration de Apple Pay & Raccourcis – BalanceTrackr</title>
   <link rel="icon" href="/images/RegnskApp-Light-Mode-Icon.jpg" type="image/jpeg" />
-  <link href="https://cdn.jsdelivr.net/npm/lightbox2@2.11.4/dist/css/lightbox.min.css" rel="stylesheet" />
   
-    <!-- Canonical -->
+  <!-- Canonical -->
   <link rel="canonical" href="https://regnskapp.github.io/SiriShortcutsSetup/fr.html">
   
   <!-- Alternate hreflang -->
@@ -28,235 +27,920 @@
   <link rel="alternate" hreflang="uk" href="https://regnskapp.github.io/SiriShortcutsSetup/uk.html">
   <link rel="alternate" hreflang="zh-Hans" href="https://regnskapp.github.io/SiriShortcutsSetup/zhHans.html">
   <link rel="alternate" hreflang="zh-Hant" href="https://regnskapp.github.io/SiriShortcutsSetup/zhHant.html">
-  
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
   <style>
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-        Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-      background-color: #f9f9f9;
-      color: #212121;
-      padding: 2rem;
-      max-width: 800px;
-      margin: auto;
+    /* Modern CSS Reset & Base Styles */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
-    h1, h2 {
-      color: #1b5e20;
-    }
-
-    .image-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin-bottom: 1rem;
-    }
-
-    /* 3 bilder per rad på desktop */
-    .image-row a {
-      flex: 1 1 calc(33.333% - 1rem);
-      max-width: calc(33.333% - 1rem);
-      display: block;
-    }
-
-    .image-row img {
-      width: 100%;
-      height: auto;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      transition: transform 0.2s;
-      display: block;
-      cursor: zoom-in;
-    }
-
-    footer {
-      text-align: center;
-      padding: 1rem;
-      font-size: 0.9rem;
-      color: #555;
-    }
-
-    a {
-      color: #1b5e20;
-      text-decoration: none;
+    :root {
+      --primary-color: #0f766e;
+      --primary-dark: #0d5f56;
+      --accent-color: #f59e0b;
+      --success-color: #10b981;
+      --text-primary: #111827;
+      --text-secondary: #6b7280;
+      --text-muted: #9ca3af;
+      --bg-primary: #ffffff;
+      --bg-secondary: #f0f4f8;
+      --bg-tertiary: #e2e8f0;
+      --border-color: #e5e7eb;
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      --radius-sm: 0.375rem;
+      --radius-md: 0.5rem;
+      --radius-lg: 0.75rem;
+      --radius-xl: 1rem;
+      --transition-fast: 0.15s ease;
+      --transition-normal: 0.3s ease;
+      --transition-slow: 0.5s ease;
     }
 
     @media (prefers-color-scheme: dark) {
-      body {
-        background-color: #121212;
-        color: #e0e0e0;
-      }
-
-      h1, h2, a {
-        color: #90ee90;
-      }
-
-      footer {
-        background-color: #121212;
-        color: #e0e0e0;
+      :root {
+        --text-primary: #f9fafb;
+        --text-secondary: #d1d5db;
+        --text-muted: #9ca3af;
+        --bg-primary: #111827;
+        --bg-secondary: #1f2937;
+        --bg-tertiary: #374151;
+        --border-color: #374151;
+        --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+        --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+        --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
+        --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
       }
     }
 
-    /* 2 bilder per rad på mobil */
-    @media screen and (max-width: 768px) {
-      .image-row {
-        gap: 0.5rem;
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      color: var(--text-primary);
+      background: var(--bg-primary);
+      overflow-x: hidden;
+    }
+
+    /* Modern Typography */
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 600;
+      line-height: 1.25;
+      letter-spacing: -0.025em;
+    }
+
+    h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
+    h2 { font-size: clamp(1.5rem, 4vw, 2.25rem); }
+    h3 { font-size: clamp(1.25rem, 3vw, 1.875rem); }
+
+    p { margin-bottom: 1rem; }
+
+    /* Navigation Components */
+    .nav-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-color);
+      transition: all var(--transition-normal);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .nav-container {
+        background: rgba(17, 24, 39, 0.8);
       }
-      .image-row a {
+    }
+
+    .nav-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* Language Switcher */
+    #language-switcher {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    #active-language {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    #current-lang-text {
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    #active-language:hover {
+      background: var(--bg-tertiary);
+      border-color: var(--primary-color);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+
+    #current-flag {
+      width: 20px;
+      height: 15px;
+      border-radius: 2px;
+      object-fit: cover;
+    }
+
+    #language-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      margin-top: 0.5rem;
+      background: var(--bg-primary);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-xl);
+      padding: 0.5rem;
+      min-width: 200px;
+      max-height: 300px;
+      overflow-y: auto;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all var(--transition-normal);
+      z-index: 1000;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border-color) transparent;
+    }
+
+    #language-menu::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    #language-menu::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    #language-menu::-webkit-scrollbar-thumb {
+      background: var(--border-color);
+      border-radius: 3px;
+    }
+
+    #language-menu.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    #language-menu button {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      color: var(--text-primary);
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    #language-menu button:hover {
+      background: var(--bg-secondary);
+      border-color: var(--primary-color);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-1px);
+    }
+
+    #language-menu button:active {
+      transform: translateY(0);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Hamburger Menu */
+    #hamburger-menu {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    #menu-toggle {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      font-size: 0;
+      padding: 0;
+    }
+
+    #menu-toggle::before,
+    #menu-toggle::after,
+    #menu-toggle span {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: var(--text-primary);
+      margin: 3px 0;
+      transition: all var(--transition-fast);
+      border-radius: 1px;
+    }
+
+    #menu-toggle:hover {
+      background: var(--bg-tertiary);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+
+    #menu-dropdown {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      margin-top: 0.5rem;
+      background: var(--bg-primary);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-xl);
+      padding: 0.5rem;
+      min-width: 235px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all var(--transition-normal);
+      z-index: 1000;
+    }
+
+    #menu-dropdown.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    #menu-dropdown a {
+      display: block;
+      padding: 0.75rem 1rem;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      text-decoration: none;
+      font-weight: 500;
+      border-radius: var(--radius-md);
+      transition: all var(--transition-fast);
+      margin-bottom: 0.25rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    #menu-dropdown a:hover {
+      background: var(--bg-secondary);
+      border-color: var(--primary-color);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+
+    #menu-dropdown a:active {
+      transform: translateY(0);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Modern Recipe Layout */
+    .content {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 2rem;
+      padding-top: calc(80px + 2rem);
+    }
+
+    .intro-section {
+      text-align: center;
+      margin-bottom: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 2px solid var(--border-color);
+    }
+
+    .intro-section h1 {
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+
+    .intro-section p {
+      font-size: 1.125rem;
+      color: var(--text-secondary);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* Step Card Design */
+    .step-card {
+      background: var(--bg-secondary);
+      border-radius: var(--radius-xl);
+      padding: 2rem;
+      margin-bottom: 2.5rem;
+      border: 2px solid var(--border-color);
+      box-shadow: var(--shadow-sm), 0 0 0 1px rgba(15, 118, 110, 0.15), 0 6px 18px -2px rgba(15, 118, 110, 0.3);
+      transition: all var(--transition-normal);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .step-card:hover {
+      box-shadow: var(--shadow-md), 0 0 0 1px rgba(15, 118, 110, 0.25), 0 10px 24px -4px rgba(15, 118, 110, 0.4);
+      transform: translateY(-2px);
+    }
+
+    /* Mobile: Highlight card when in viewport */
+    @media screen and (max-width: 768px) {
+      .step-card.in-view {
+        box-shadow: var(--shadow-md), 0 0 0 1px rgba(15, 118, 110, 0.25), 0 10px 24px -4px rgba(15, 118, 110, 0.4);
+        transform: translateY(-2px);
+      }
+    }
+
+    .step-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .step-number {
+      flex-shrink: 0;
+      width: 60px;
+      height: 60px;
+      background: var(--primary-color);
+      color: white;
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.75rem;
+      font-weight: 700;
+      box-shadow: var(--shadow-md);
+    }
+
+    .step-title {
+      flex: 1;
+      color: var(--primary-color);
+      font-size: clamp(1.25rem, 3vw, 1.75rem);
+      font-weight: 600;
+      line-height: 1.3;
+      margin: 0;
+      padding-top: 0.5rem;
+    }
+
+    .step-images {
+      margin: 1.5rem 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center; /* Center images on desktop */
+    }
+
+    /* Desktop: All images same size (33.333% like step 3) */
+    .step-images img {
+      flex: 1 1 calc(33.333% - 1rem);
+      max-width: calc(33.333% - 1rem);
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      transition: all var(--transition-fast);
+      display: block;
+    }
+
+    .step-images img:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .step-content {
+      color: var(--text-primary);
+      line-height: 1.7;
+    }
+
+    .step-content p {
+      margin-bottom: 1rem;
+    }
+
+    .step-content strong {
+      color: var(--primary-color);
+      font-weight: 600;
+    }
+
+    /* Important Section */
+    .important-section {
+      background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-secondary) 100%);
+      border: 2px solid var(--accent-color);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .important-section h2 {
+      color: var(--accent-color);
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .important-section p {
+      margin-bottom: 0.75rem;
+    }
+
+    .back-btn {
+      display: inline-block;
+      background: var(--primary-color);
+      color: white !important;
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      font-weight: 600;
+      transition: all var(--transition-fast);
+      margin-top: 2rem;
+      box-shadow: var(--shadow-md);
+      border: 2px solid var(--primary-color);
+    }
+
+    .back-btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .footer {
+      padding: 2rem;
+      background: var(--bg-tertiary);
+      text-align: center;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .footer-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .nav-content {
+        padding: 1rem;
+      }
+
+      .content {
+        padding: 1rem;
+        padding-top: calc(70px + 1rem);
+      }
+
+      #language-menu {
+        left: 0;
+        right: auto;
+        min-width: 180px;
+      }
+
+      #menu-dropdown {
+        min-width: 200px;
+      }
+
+      .intro-section {
+        margin-bottom: 2rem;
+        padding-bottom: 1.5rem;
+      }
+
+      .step-card {
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .step-header {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .step-number {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+      }
+
+      .step-title {
+        padding-top: 0;
+      }
+
+      /* Mobile: 2 images side by side when more than 1 image */
+      .step-images {
+        gap: 0.5rem;
+        justify-content: flex-start; /* Reset centering on mobile */
+      }
+      
+      .step-images img {
         flex: 1 1 48%;
         max-width: 48%;
+        border-radius: var(--radius-md);
       }
-      .image-row img {
-        border-radius: 8px;
+      
+      /* Single image on mobile takes full width */
+      .step-images img:only-child {
+        flex: 1 1 100%;
+        max-width: 100%;
+      }
+      
+      /* On mobile: when there are exactly 3 images, center the third one under the first two */
+      .step-images img:nth-child(3):last-child {
+        flex: 0 0 48%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .important-section {
+        padding: 1.25rem;
       }
     }
+
   </style>
 </head>
 <body>
-  <h1>Configuration de Apple Pay & Raccourcis</h1>
-  <p>Suivez ces étapes simples pour configurer un raccourci permettant d’enregistrer les transactions Apple Pay dans BalanceTrackr.</p>
-  <p>Je suis désolé, mais les images ne sont disponibles qu’en anglais. J’espère néanmoins qu’elles vous aideront à configurer plus facilement.</p>
+  <!-- Navigation -->
+  <nav class="nav-container">
+    <div class="nav-content">
+      <!-- 🌍 Language Switcher -->
+      <div id="language-switcher">
+        <button id="active-language" onclick="toggleLanguageMenu()" aria-label="Sélectionner la langue">
+          <img id="current-flag" src="" alt="Langue sélectionnée" />
+          <span id="current-lang-text">FR</span>
+        </button>
+        <div id="language-menu">
+          <button onclick="changeLanguage('en')">
+            <img src="/images/en/gb.svg" width="20" alt="English" /> English
+          </button>
+          <button onclick="changeLanguage('no')">
+            <img src="/images/no/no.svg" width="20" alt="Norsk" /> Norsk
+          </button>
+          <button onclick="changeLanguage('da')">
+            <img src="/images/da/da.svg" width="20" alt="Dansk" /> Dansk
+          </button>
+          <button onclick="changeLanguage('sv')">
+            <img src="/images/sv/sv.svg" width="20" alt="Svenska" /> Svenska
+          </button>
+          <button onclick="changeLanguage('de')">
+            <img src="/images/de/de.svg" width="20" alt="Deutsch" /> Deutsch
+          </button>
+          <button onclick="changeLanguage('fr')">
+            <img src="/images/fr/fr.svg" width="20" alt="Français" /> Français
+          </button>
+          <button onclick="changeLanguage('es')">
+            <img src="/images/es/es.svg" width="20" alt="Español" /> Español
+          </button>
+          <button onclick="changeLanguage('it')">
+            <img src="/images/it/it.svg" width="20" alt="Italiano" /> Italiano
+          </button>
+          <button onclick="changeLanguage('nl')">
+            <img src="/images/nl/nl.svg" width="20" alt="Nederlands" /> Nederlands
+          </button>
+          <button onclick="changeLanguage('fi')">
+            <img src="/images/fi/fi.svg" width="20" alt="Suomi" /> Suomi
+          </button>
+          <button onclick="changeLanguage('ar')">
+            <img src="/images/ar/ar.svg" width="20" alt="العربية" /> العربية
+          </button>
+          <button onclick="changeLanguage('hi')">
+            <img src="/images/hi/hi.svg" width="20" alt="हिन्दी" /> हिन्दी
+          </button>
+          <button onclick="changeLanguage('ja')">
+            <img src="/images/ja/ja.svg" width="20" alt="日本語" /> 日本語
+          </button>
+          <button onclick="changeLanguage('uk')">
+            <img src="/images/uk/uk.svg" width="20" alt="Українська" /> Українська
+          </button>
+          <button onclick="changeLanguage('zhHans')">
+            <img src="/images/zhHans/zhHans.svg" width="20" alt="简体中文" /> 简体中文
+          </button>
+          <button onclick="changeLanguage('zhHant')">
+            <img src="/images/zhHant/zhHant.svg" width="20" alt="繁體中文" /> 繁體中文
+          </button>
+        </div>
+      </div>
 
-  <h2>Étape 1 : Ouvrez l’application Raccourcis</h2>
-  <div class="image-row">
-    <a href="/images/SiriShortcutsSetup-images/1.jpeg" data-lightbox="gallery" data-title="Étape 1">
-      <img src="/images/SiriShortcutsSetup-images/1.jpeg" alt="Étape 1" style="max-width: 200px;" />
-    </a>
+      <!-- Hamburger Menu -->
+      <div id="hamburger-menu">
+        <button id="menu-toggle" aria-label="Ouvrir le menu"><span></span></button>
+        <div id="menu-dropdown">
+          <a href="/index-fr.html">Accueil</a>
+          <a href="/privacy-policy/fr.html">Politique de confidentialité</a>
+          <a href="/support/fr.html">Support</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="content">
+    <div class="intro-section">
+      <h1>Configuration de Apple Pay & Raccourcis</h1>
+      <p>Suivez ces étapes simples pour configurer un raccourci permettant d'enregistrer les transactions Apple Pay dans BalanceTrackr.</p>
+    </div>
+
+    <!-- Step 1 -->
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-number">1</div>
+        <h2 class="step-title">Ouvrez l'application Raccourcis</h2>
+      </div>
+      <div class="step-images">
+        <img src="/images/SiriShortcutsSetup-images/1.jpeg" alt="Étape 1" />
+      </div>
+      <div class="step-content">
+        <p>Lancez l'application Raccourcis intégrée sur votre iPhone.</p>
+      </div>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-number">2</div>
+        <h2 class="step-title">Appuyez sur « Automatisation » en bas</h2>
+      </div>
+      <div class="step-images">
+        <img src="/images/SiriShortcutsSetup-images/2.jpeg" alt="Étape 2" />
+      </div>
+      <div class="step-content">
+        <p>Allez à l'onglet <strong>Automatisation</strong> pour créer un nouveau raccourci.</p>
+      </div>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-number">3</div>
+        <h2 class="step-title">Appuyez sur « Nouvelle automatisation » ou l'icône plus, puis choisissez « Transaction »</h2>
+      </div>
+      <div class="step-images">
+        <img src="/images/SiriShortcutsSetup-images/3.0.jpeg" alt="Étape 3.0" />
+        <img src="/images/SiriShortcutsSetup-images/3.1.jpeg" alt="Étape 3.1" />
+        <img src="/images/SiriShortcutsSetup-images/3.2.jpeg" alt="Étape 3.2" />
+      </div>
+      <div class="step-content">
+        <p>Appuyez sur <strong>Nouvelle automatisation</strong> ou l'icône <strong>+</strong> en haut à droite, puis sélectionnez <strong>Transaction</strong> (avec le symbole du portefeuille).</p>
+      </div>
+    </div>
+
+    <!-- Step 4 -->
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-number">4</div>
+        <h2 class="step-title">Ne laissez qu'une seule carte sous « Lorsque je touche »</h2>
+      </div>
+      <div class="step-images">
+        <img src="/images/SiriShortcutsSetup-images/4.0.jpeg" alt="Étape 4.0" />
+        <img src="/images/SiriShortcutsSetup-images/4.1.jpeg" alt="Étape 4.1" />
+      </div>
+      <div class="step-content">
+        <p>Désélectionnez toutes les cartes sauf celle que vous souhaitez utiliser pour déclencher le raccourci sous <strong>« Lorsque je touche »</strong>.</p>
+        <p>En bas, vous pouvez choisir si vous souhaitez recevoir une confirmation lors de l'exécution de l'automatisation, ou la laisser s'exécuter silencieusement.</p>
+        <p>Appuyez sur <strong>Nouvelle automatisation vierge</strong> pour commencer la configuration.</p>
+      </div>
+    </div>
+
+    <!-- Step 5 -->
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-number">5</div>
+        <h2 class="step-title">Configuration de l'automatisation – Recherche</h2>
+      </div>
+      <div class="step-images">
+        <img src="/images/SiriShortcutsSetup-images/5.0.jpeg" alt="Étape 5.0" />
+        <img src="/images/SiriShortcutsSetup-images/5.1.PNG" alt="Étape 5.1" />
+        <img src="/images/SiriShortcutsSetup-images/5.2.PNG" alt="Étape 5.2" />
+      </div>
+      <div class="step-content">
+        <p>Recherchez <strong>« BalanceTrackr »</strong> et sélectionnez si vous souhaitez ajouter une <strong>transaction de compte bancaire</strong> (carte de débit) ou une <strong>transaction par carte de crédit</strong>.</p>
+      </div>
+    </div>
+
+    <!-- Step 6 -->
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-number">6</div>
+        <h2 class="step-title">Configuration de l'automatisation – Variables</h2>
+      </div>
+      <div class="step-images">
+        <img src="/images/SiriShortcutsSetup-images/6.0.jpeg" alt="Étape 6.0" />
+        <img src="/images/SiriShortcutsSetup-images/6.1.jpeg" alt="Étape 6.1" />
+        <img src="/images/SiriShortcutsSetup-images/6.2.jpeg" alt="Étape 6.2" />
+        <img src="/images/SiriShortcutsSetup-images/6.3.jpeg" alt="Étape 6.3" />
+        <img src="/images/SiriShortcutsSetup-images/6.4.jpeg" alt="Étape 6.4" />
+        <img src="/images/SiriShortcutsSetup-images/6.5.PNG" alt="Étape 6.5" />
+      </div>
+      <div class="step-content">
+        <p>Utilisez les variables de <strong>« Entrée du raccourci »</strong> pour remplir le <strong>Montant</strong> et le <strong>Commerçant</strong>.<br />
+        Le nom du <strong>Compte</strong> ou de la <strong>Carte de crédit</strong> doit correspondre exactement au nom utilisé dans l'application BalanceTrackr.</p>
+
+        <p>Vous trouverez les variables dans la ligne de texte bleue au-dessus du clavier :</p>
+        <p>
+          Appuyez sur la variable <strong>« Entrée de raccourci »</strong>, et une fois qu'elle est ajoutée au raccourci, 
+          appuyez à nouveau dessus pour choisir l'option souhaitée dans le menu contextuel.
+        </p>
+      </div>
+    </div>
+
+    <!-- Step 7 -->
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-number">7</div>
+        <h2 class="step-title">Appuyez sur « Terminé »</h2>
+      </div>
+      <div class="step-images">
+        <img src="/images/SiriShortcutsSetup-images/7.jpeg" alt="Étape 7" />
+      </div>
+      <div class="step-content">
+        <div class="important-section">
+          <h2>Important !</h2>
+          <p><strong>Ne cliquez pas sur l'icône <em>« lecture »</em> en bas.</strong> Car il n'y a pas encore de transaction et une erreur apparaîtra – vous devrez tout recommencer.</p>
+          <p>Vous devez effectuer tout le processus d'un seul coup, sinon cela ne fonctionnera pas.</p>
+          <p>Appuyez sur <strong>« Terminé »</strong> pour enregistrer l'automatisation.</p>
+        </div>
+        
+        <div class="important-section">
+          <h2>Important !</h2>
+          <p>Si c'est la première fois que vous configurez cette automatisation, il se peut que rien ne semble se passer lorsque vous appuyez sur « Terminé ».<br>
+          Cela est dû au fait que la connexion entre l'application Raccourcis et BalanceTrackr n'a pas encore été entièrement initialisée sur votre appareil.</p>
+          <p><strong>Cependant, l'automatisation a bien été enregistrée !</strong></p>
+          <p>Il suffit d'appuyer sur la <strong>flèche de retour</strong> en haut à gauche jusqu'à revenir à l'écran de configuration initial, puis de <strong>tirer vers le bas sur la carte de configuration pour la fermer</strong>.<br>
+          Vous verrez alors que l'automatisation a bien été enregistrée avec succès.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 8 -->
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-number">8</div>
+        <h2 class="step-title">Configuration terminée</h2>
+      </div>
+      <div class="step-images">
+        <img src="/images/SiriShortcutsSetup-images/8.0.jpeg" alt="Étape 8.0" />
+        <img src="/images/SiriShortcutsSetup-images/8.1.jpeg" alt="Étape 8.1" />
+      </div>
+      <div class="step-content">
+        <p>Tout est prêt ! Appuyez sur l'automatisation nouvellement créée si vous souhaitez effectuer des modifications.</p>
+        <p>Vous pouvez personnaliser la notification qui apparaît lors de l'exécution du raccourci dans l'application Raccourcis, ou appuyer sur l'action sous <strong>« Faire »</strong> pour modifier les étapes de l'automatisation. N'hésitez pas à ajouter d'autres actions que vous souhaitez déclencher lorsque la carte est touchée.</p>
+      </div>
+    </div>
+
+    <a href="/index-fr.html" class="back-btn">← BalanceTrackr</a>
   </div>
-  <p>Lancez l’application Raccourcis intégrée sur votre iPhone.</p>
 
-  <h2>Étape 2 : Appuyez sur « Automatisation » en bas</h2>
-  <div class="image-row">
-    <a href="/images/SiriShortcutsSetup-images/2.jpeg" data-lightbox="gallery" data-title="Étape 2">
-      <img src="/images/SiriShortcutsSetup-images/2.jpeg" alt="Étape 2" style="max-width: 200px;" />
-    </a>
-  </div>
-  <p>Allez à l’onglet <strong>Automatisation</strong> pour créer un nouveau raccourci.</p>
-
-  <h2>Étape 3 : Appuyez sur « Nouvelle automatisation » ou l’icône plus, puis choisissez « Transaction »</h2>
-  <div class="image-row">
-    <a href="/images/SiriShortcutsSetup-images/3.0.jpeg" data-lightbox="gallery" data-title="Étape 3.0">
-      <img src="/images/SiriShortcutsSetup-images/3.0.jpeg" alt="Étape 3.0" style="max-width: 200px;" />
-    </a>
-    <a href="/images/SiriShortcutsSetup-images/3.1.jpeg" data-lightbox="gallery" data-title="Étape 3.1">
-      <img src="/images/SiriShortcutsSetup-images/3.1.jpeg" alt="Étape 3.1" style="max-width: 200px;" />
-    </a>
-    <a href="/images/SiriShortcutsSetup-images/3.2.jpeg" data-lightbox="gallery" data-title="Étape 3.2">
-      <img src="/images/SiriShortcutsSetup-images/3.2.jpeg" alt="Étape 3.2" style="max-width: 200px;" />
-    </a>
-  </div>
-  <p>Appuyez sur <strong>Nouvelle automatisation</strong> ou l’icône <strong>+</strong> en haut à droite, puis sélectionnez <strong>Transaction</strong> (avec le symbole du portefeuille).</p>
-
-  <h2>Étape 4 : Ne laissez qu’une seule carte sous « Lorsque je touche »</h2>
-  <div class="image-row">
-    <a href="/images/SiriShortcutsSetup-images/4.0.jpeg" data-lightbox="gallery" data-title="Étape 4.0">
-      <img src="/images/SiriShortcutsSetup-images/4.0.jpeg" alt="Étape 4.0" style="max-width: 200px;" />
-    </a>
-    <a href="/images/SiriShortcutsSetup-images/4.1.jpeg" data-lightbox="gallery" data-title="Étape 4.1">
-      <img src="/images/SiriShortcutsSetup-images/4.1.jpeg" alt="Étape 4.1" style="max-width: 200px;" />
-    </a>
-  </div>
-  <p>Désélectionnez toutes les cartes sauf celle que vous souhaitez utiliser pour déclencher le raccourci sous <strong>« Lorsque je touche »</strong>.</p>
-  <p>En bas, vous pouvez choisir si vous souhaitez recevoir une confirmation lors de l’exécution de l’automatisation, ou la laisser s’exécuter silencieusement.</p>
-  <p>Appuyez sur <strong>Nouvelle automatisation vierge</strong> pour commencer la configuration.</p>
-
-  <h2>Étape 5 : Configuration de l’automatisation – Recherche</h2>
-  <div class="image-row">
-    <a href="/images/SiriShortcutsSetup-images/5.0.jpeg" data-lightbox="gallery" data-title="Étape 5.0">
-      <img src="/images/SiriShortcutsSetup-images/5.0.jpeg" alt="Étape 5.0" style="max-width: 200px;" />
-    </a>
-    <a href="/images/SiriShortcutsSetup-images/5.1.png" data-lightbox="gallery" data-title="Étape 5.1">
-      <img src="/images/SiriShortcutsSetup-images/5.1.PNG" alt="Étape 5.1" style="max-width: 200px;" />
-    </a>
-    <a href="/images/SiriShortcutsSetup-images/5.2.png" data-lightbox="gallery" data-title="Étape 5.2">
-      <img src="/images/SiriShortcutsSetup-images/5.2.PNG" alt="Étape 5.2" style="max-width: 200px;" />
-    </a>
-  </div>
-  <p>Recherchez <strong>« BalanceTrackr »</strong> et sélectionnez si vous souhaitez ajouter une <strong>transaction de compte bancaire</strong> (carte de débit) ou une <strong>transaction par carte de crédit</strong>.</p>
-
-  <h2>Étape 6 : Configuration de l’automatisation – Variables</h2>
-  <div class="image-row">
-    <a href="/images/SiriShortcutsSetup-images/6.0.jpeg" data-lightbox="gallery" data-title="Étape 6.0">
-      <img src="/images/SiriShortcutsSetup-images/6.0.jpeg" alt="Étape 6.0" style="max-width: 200px;" />
-    </a>
-    <a href="/images/SiriShortcutsSetup-images/6.1.jpeg" data-lightbox="gallery" data-title="Étape 6.1">
-      <img src="/images/SiriShortcutsSetup-images/6.1.jpeg" alt="Étape 6.1" style="max-width: 200px;" />
-    </a>
-    <a href="/images/SiriShortcutsSetup-images/6.2.jpeg" data-lightbox="gallery" data-title="Étape 6.2">
-      <img src="/images/SiriShortcutsSetup-images/6.2.jpeg" alt="Étape 6.2" style="max-width: 200px;" />
-    </a>
-    <a href="/images/SiriShortcutsSetup-images/6.3.jpeg" data-lightbox="gallery" data-title="Étape 6.3">
-      <img src="/images/SiriShortcutsSetup-images/6.3.jpeg" alt="Étape 6.3" style="max-width: 200px;" />
-    </a>
-    <a href="/images/SiriShortcutsSetup-images/6.4.jpeg" data-lightbox="gallery" data-title="Étape 6.4">
-      <img src="/images/SiriShortcutsSetup-images/6.4.jpeg" alt="Étape 6.4" style="max-width: 200px;" />
-    </a>
-    <a href="/images/SiriShortcutsSetup-images/6.5.png" data-lightbox="gallery" data-title="Étape 6.5">
-      <img src="/images/SiriShortcutsSetup-images/6.5.PNG" alt="Étape 6.5" style="max-width: 200px;" />
-    </a>
-  </div>
-  <p>Utilisez les variables de <strong>« Entrée du raccourci »</strong> pour remplir le <strong>Montant</strong> et le <strong>Commerçant</strong>.<br />
-  Le nom du <strong>Compte</strong> ou de la <strong>Carte de crédit</strong> doit correspondre exactement au nom utilisé dans l’application BalanceTrackr.</p>
-
-  <p>Vous trouverez les variables dans la ligne de texte bleue au-dessus du clavier :</p>
-  <p>
-    Appuyez sur la variable <strong>« Entrée de raccourci »</strong>, et une fois qu’elle est ajoutée au raccourci, 
-    appuyez à nouveau dessus pour choisir l’option souhaitée dans le menu contextuel.
-  </p>
-  
-  <h2>Étape 7 : Appuyez sur « Terminé »</h2>
-  <div class="image-row">
-    <a href="/images/SiriShortcutsSetup-images/7.jpeg" data-lightbox="gallery" data-title="Étape 7">
-      <img src="/images/SiriShortcutsSetup-images/7.jpeg" alt="Étape 7" style="max-width: 200px;" />
-    </a>
-  </div>
-  <p><strong>Attention&nbsp;!</strong> Ne cliquez pas sur l’icône «&nbsp;lecture&nbsp;» en bas, car il n’y a pas encore de transaction et une erreur apparaîtra – vous devrez tout recommencer.</p>
-  <p>(Vous devez effectuer tout le processus d’un seul coup, sinon cela ne fonctionnera pas.)</p>
-  
-  <p>Appuyez sur <strong>« Terminé »</strong> pour enregistrer l’automatisation.</p>
-  <p><strong>Important !</strong><br>
-  Si c’est la première fois que vous configurez cette automatisation, il se peut que rien ne semble se passer lorsque vous appuyez sur « Terminé ».<br>
-  Cela est dû au fait que la connexion entre l’application Raccourcis et BalanceTrackr n’a pas encore été entièrement initialisée sur votre appareil.</p>
-  <p><strong>Cependant, l’automatisation a bien été enregistrée !</strong></p>
-  <p>Il suffit d’appuyer sur la <strong>flèche de retour</strong> en haut à gauche jusqu’à revenir à l’écran de configuration initial, puis de <strong>tirer vers le bas sur la carte de configuration pour la fermer</strong>.<br>
-  Vous verrez alors que l’automatisation a bien été enregistrée avec succès.</p>
-
-  <h2>Étape 8 : Configuration terminée</h2>
-  <div class="image-row">
-    <a href="/images/SiriShortcutsSetup-images/8.0.jpeg" data-lightbox="gallery" data-title="Étape 8.0">
-      <img src="/images/SiriShortcutsSetup-images/8.0.jpeg" alt="Étape 8.0" style="max-width: 200px;" />
-    </a>
-    <a href="/images/SiriShortcutsSetup-images/8.1.jpeg" data-lightbox="gallery" data-title="Étape 8.1">
-      <img src="/images/SiriShortcutsSetup-images/8.1.jpeg" alt="Étape 8.1" style="max-width: 200px;" />
-    </a>
-  </div>
-  <p>Tout est prêt ! Appuyez sur l’automatisation nouvellement créée si vous souhaitez effectuer des modifications.</p>
-  <p>Vous pouvez personnaliser la notification qui apparaît lors de l’exécution du raccourci dans l’application Raccourcis.</p>
-  <p>Merci d’utiliser BalanceTrackr !</p>
-  
-  <p>
-    <a href="/index-fr.html" style="
-      display: inline-block;
-      background-color: #1b5e20;
-      color: white;
-      padding: 10px 20px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-      margin-top: 2rem;
-    ">← BalanceTrackr</a>
-  </p>
-
-  <footer>
-    &copy; 2025 BalanceTrackr (RegnskApp) – Ole Morten Tengesdal. Tous droits réservés.
+  <footer class="footer">
+    <div class="footer-content">
+      <p>&copy; 2025 BalanceTrackr (RegnskApp).<br>
+      Ole Morten Tengesdal. Tous droits réservés.</p>
+    </div>
   </footer>
+
+  <script>
+    function toggleLanguageMenu() {
+      const menu = document.getElementById("language-menu");
+      menu.classList.toggle("show");
+    }
+
+    function changeLanguage(langCode) {
+      // Normalize language codes (remove hyphens for zhHans/zhHant)
+      if (langCode === 'zh-Hans') langCode = 'zhHans';
+      if (langCode === 'zh-Hant') langCode = 'zhHant';
+      const flagPath = `/images/${langCode.replace('-', '')}/${langCode === 'en' ? 'gb' : langCode.replace('-', '')}.svg`;
+      document.getElementById("current-flag").src = flagPath;
+
+      const langTexts = {
+        'en': 'EN', 'no': 'NO', 'da': 'DA', 'sv': 'SV', 'de': 'DE',
+        'fr': 'FR', 'es': 'ES', 'ar': 'AR', 'fi': 'FI', 'hi': 'HI',
+        'it': 'IT', 'ja': 'JA', 'nl': 'NL', 'uk': 'UK', 'zhHans': 'CN', 'zhHant': 'TW'
+      };
+      document.getElementById("current-lang-text").textContent = langTexts[langCode] || 'FR';
+
+      // Navigate to the appropriate SiriShortcutsSetup page
+      const file = langCode === 'en' ? '/SiriShortcutsSetup/en.html' : `/SiriShortcutsSetup/${langCode}.html`;
+      window.location.href = file;
+    }
+
+    // Determine which language is active based on URL
+    function setInitialFlag() {
+      const path = window.location.pathname;
+      let langCode = 'fr';
+      
+      // Extract language code from path
+      if (path.includes('/SiriShortcutsSetup/')) {
+        const match = path.match(/\/SiriShortcutsSetup\/([^\/]+)\.html/);
+        if (match) {
+          langCode = match[1];
+        }
+      }
+      
+      // Normalize language codes
+      if (langCode === 'zhHans') langCode = 'zhHans';
+      if (langCode === 'zhHant') langCode = 'zhHant';
+      
+      const flagPath = `/images/${langCode.replace('-', '')}/${langCode === 'en' ? 'gb' : langCode.replace('-', '')}.svg`;
+      const img = document.getElementById("current-flag");
+      if (img) img.src = flagPath;
+      
+      const langTexts = {
+        'en': 'EN', 'no': 'NO', 'da': 'DA', 'sv': 'SV', 'de': 'DE',
+        'fr': 'FR', 'es': 'ES', 'ar': 'AR', 'fi': 'FI', 'hi': 'HI',
+        'it': 'IT', 'ja': 'JA', 'nl': 'NL', 'uk': 'UK', 'zhHans': 'CN', 'zhHant': 'TW'
+      };
+      document.getElementById("current-lang-text").textContent = langTexts[langCode] || 'FR';
+    }
+
+    setInitialFlag(); // call the function on load
+
+    // Hamburger Menu Functions
+    const toggleButton = document.getElementById('menu-toggle');
+    const dropdown = document.getElementById('menu-dropdown');
+
+    toggleButton.addEventListener('click', () => {
+      dropdown.classList.toggle('show');
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener("click", function (event) {
+      const switcher = document.getElementById("language-switcher");
+      if (!switcher.contains(event.target)) {
+        document.getElementById("language-menu").classList.remove("show");
+      }
+
+      if (!document.getElementById('hamburger-menu').contains(event.target)) {
+        dropdown.classList.remove('show');
+      }
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Mobile: Highlight step cards when they come into viewport
+    if (window.matchMedia('(max-width: 768px)').matches) {
+      const stepCards = document.querySelectorAll('.step-card');
+      
+      const observerOptions = {
+        root: null,
+        rootMargin: '-20% 0px -20% 0px', // Trigger when card is in middle 60% of viewport
+        threshold: 0.1
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+          } else {
+            entry.target.classList.remove('in-view');
+          }
+        });
+      }, observerOptions);
+
+      stepCards.forEach(card => {
+        observer.observe(card);
+      });
+    }
+  </script>
 
   <script data-goatcounter="https://regnskapp.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
-   <!-- Last jQuery først -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  
-  <!-- Deretter Lightbox -->
-  <script src="https://cdn.jsdelivr.net/npm/lightbox2@2.11.4/dist/js/lightbox.min.js"></script>
-  
 </body>
 </html>
