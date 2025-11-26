@@ -498,6 +498,41 @@
       margin-bottom: 1rem;
     }
 
+    .step-content .inline-images {
+      margin: 1rem 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: flex-start;
+    }
+
+    .step-content .inline-images img {
+      flex: 0 1 auto;
+      max-width: calc(33.333% - 1rem);
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-md);
+      transition: all var(--transition-fast);
+    }
+
+    .step-content .inline-images img:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    @media (max-width: 768px) {
+      .step-content .inline-images img {
+        flex: 1 1 48%;
+        max-width: 48%;
+      }
+      
+      .step-content .inline-images img:only-child {
+        flex: 1 1 100%;
+        max-width: 100%;
+      }
+    }
+
     .step-content strong {
       color: var(--primary-color);
       font-weight: 600;
@@ -520,6 +555,52 @@
 
     .step-content ul li {
       margin-bottom: 0.5rem;
+    }
+
+    /* Copy Box */
+    .copy-box {
+      background: var(--bg-tertiary);
+      border: 2px solid var(--primary-color);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+      margin: 1rem 0;
+      position: relative;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      color: var(--text-primary);
+    }
+
+    .copy-box-button {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: var(--radius-sm);
+      padding: 0.5rem 1rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      font-family: 'Inter', sans-serif;
+    }
+
+    .copy-box-button:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .copy-box-button:active {
+      transform: translateY(0);
+    }
+
+    .copy-box-button.copied {
+      background: var(--success-color);
     }
 
     /* Important Section */
@@ -646,6 +727,16 @@
 
       .important-section {
         padding: 1.25rem;
+      }
+
+      .copy-box {
+        font-size: 0.85rem;
+        padding: 0.75rem;
+      }
+
+      .copy-box-button {
+        padding: 0.4rem 0.75rem;
+        font-size: 0.8rem;
       }
     }
 
@@ -832,14 +923,18 @@
       <div class="step-content">
         <p>Search for <strong>"Use Model"</strong> and tap <strong>"On-Device"</strong>.</p>
         <p>Click in the box and remove the text so it says: <strong>"Request…"</strong>. Write the following text:</p>
-        <p><strong>Extract the following information from TEXT:</strong></p>
-        <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
-          <li>Recipient</li>
-          <li>Due date</li>
-          <li>Amount</li>
-        </ul>
-        <p><strong>Return the answer like this:</strong></p>
-        <p><code>{"recipient": "...", "dueDate": "...", "amount": "..."}</code></p>
+        <div class="copy-box">
+          <button class="copy-box-button" onclick="copyToClipboard(this, 'copy-text-step6')">Copy</button>
+          <div id="copy-text-step6">Extract the following information from TEXT:
+
+Recipient
+Due date
+Amount
+
+Return the answer like this:
+
+{"recipient": "...", "dueDate": "...", "amount": "..."}</div>
+        </div>
         <p>Remove the large <strong>TEXT</strong> and select the variable that shows a yellow text symbol and the word <strong>Text</strong>.</p>
         <p>Click the little chevron next to model and select <strong>"Text"</strong> from the Output selector.</p>
       </div>
@@ -920,30 +1015,49 @@
         <div class="step-number">10</div>
         <h2 class="step-title">Configure BalanceTrackr Action</h2>
       </div>
-      <div class="step-images">
-        <img src="/images/SiriShortcuts-images/23.PNG" alt="Step 10.1" />
-        <img src="/images/SiriShortcuts-images/24.PNG" alt="Step 10.2" />
-        <img src="/images/SiriShortcuts-images/25.PNG" alt="Step 10.3" />
-        <img src="/images/SiriShortcuts-images/26.PNG" alt="Step 10.4" />
-        <img src="/images/SiriShortcuts-images/27.PNG" alt="Step 10.5" />
-        <img src="/images/SiriShortcuts-images/28.PNG" alt="Step 10.6" />
-        <img src="/images/SiriShortcuts-images/29.PNG" alt="Step 10.7" />
-        <img src="/images/SiriShortcuts-images/30.PNG" alt="Step 10.8" />
-        <img src="/images/SiriShortcuts-images/31.PNG" alt="Step 10.9" />
-        <img src="/images/SiriShortcuts-images/32.PNG" alt="Step 10.10" />
-        <img src="/images/SiriShortcuts-images/33.PNG" alt="Step 10.11" />
-      </div>
       <div class="step-content">
+        <div class="inline-images">
+          <img src="/images/SiriShortcuts-images/23.PNG" alt="Step 10.1" />
+          <img src="/images/SiriShortcuts-images/24.PNG" alt="Step 10.2" />
+          <img src="/images/SiriShortcuts-images/25.PNG" alt="Step 10.3" />
+        </div>
         <p>Search <strong>"BalanceTrackr"</strong> and select <strong>"Log scheduled transaction"</strong>.</p>
         <p>Click <strong>"Amount"</strong> and then click <strong>"Select Variable"</strong>. Scroll upwards and find the <strong>"Dictionary Value"</strong> that is after the <strong>"Get Value for amount in AI Dictionary"</strong>. Click the newly added <strong>"Dictionary Value"</strong> and rename it to <strong>"Amount Value"</strong>.</p>
+        
+        <div class="inline-images">
+          <img src="/images/SiriShortcuts-images/26.PNG" alt="Step 10.4" />
+        </div>
         <p>Click <strong>Type</strong> and select if the transaction should be an <strong>Expense</strong> or <strong>Income</strong>.</p>
+        
+        <div class="inline-images">
+          <img src="/images/SiriShortcuts-images/27.PNG" alt="Step 10.5" />
+        </div>
         <p>Click <strong>"Account"</strong> and then click <strong>"Select Variable"</strong>. Scroll upwards and find the <strong>"Dictionary Value"</strong> that is after the <strong>"Get Value for Recipient Value in Accounts"</strong>. Click the newly added <strong>"Dictionary Value"</strong> and rename it to <strong>"Account Value"</strong>.</p>
+        
+        <div class="inline-images">
+          <img src="/images/SiriShortcuts-images/28.PNG" alt="Step 10.6" />
+        </div>
         <p>Click <strong>"Category"</strong> and then click <strong>"Select Variable"</strong>. Scroll upwards and find the <strong>"Dictionary Value"</strong> that is after the <strong>"Get Value for Recipient Value in Categories"</strong>. Click the newly added <strong>"Dictionary Value"</strong> and rename it to <strong>"Category Value"</strong>.</p>
+        
+        <div class="inline-images">
+          <img src="/images/SiriShortcuts-images/29.PNG" alt="Step 10.7" />
+        </div>
         <p>Click <strong>"Date"</strong> and then click <strong>"Select Variable"</strong>. Scroll upwards and find the <strong>"Dictionary Value"</strong> that is after the <strong>"Get Value for dueDate in AI Dictionary"</strong>.</p>
         <p>Click the newly added <strong>"Dictionary Value"</strong> and rename it to <strong>"dueDate Value"</strong>.</p>
         <p>Click <strong>"Time"</strong> and write the clock you want the transaction to happen this date. In my guide I use <strong>12:34</strong>.</p>
+        
+        <div class="inline-images">
+          <img src="/images/SiriShortcuts-images/30.PNG" alt="Step 10.8" />
+        </div>
         <p>Click <strong>"Description"</strong>, scroll to the right and select <strong>"Recipient Value"</strong>. This will be the note for the transaction in BalanceTrackr.</p>
-        <p>If all have been entered correctly, the automation is now complete. Press the big white check mark on blue background at the top right corner, and the automation is saved and ready to be used! It should then run in the background when an email with the selected keywords enters your email, and magically it should be entered into BalanceTrackr.</p>
+        
+        <div class="inline-images">
+          <img src="/images/SiriShortcuts-images/31.PNG" alt="Step 10.9" />
+          <img src="/images/SiriShortcuts-images/32.PNG" alt="Step 10.10" />
+          <img src="/images/SiriShortcuts-images/33.PNG" alt="Step 10.11" />
+        </div>
+        <p>If all have been entered correctly, these three pictures show how it should look like.</p>
+        <p>Now press the big white check mark on blue background at the top right corner, and the automation is saved and ready to be used! It should then run in the background when an email with the selected keywords enters your email, and magically it should be entered into BalanceTrackr.</p>
       </div>
     </div>
 
@@ -1080,6 +1194,26 @@
 
       stepCards.forEach(card => {
         observer.observe(card);
+      });
+    }
+
+    // Copy to clipboard function
+    function copyToClipboard(button, textId) {
+      const textElement = document.getElementById(textId);
+      const text = textElement.textContent || textElement.innerText;
+      
+      navigator.clipboard.writeText(text).then(() => {
+        const originalText = button.textContent;
+        button.textContent = 'Copied!';
+        button.classList.add('copied');
+        
+        setTimeout(() => {
+          button.textContent = originalText;
+          button.classList.remove('copied');
+        }, 2000);
+      }).catch(err => {
+        console.error('Failed to copy text: ', err);
+        alert('Failed to copy text. Please select and copy manually.');
       });
     }
   </script>
