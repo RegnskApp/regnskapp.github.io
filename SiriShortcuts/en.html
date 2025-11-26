@@ -449,6 +449,11 @@
       box-shadow: var(--shadow-md);
     }
 
+    .step-card.pro-tip .step-number {
+      background: var(--accent-color);
+      font-size: 2rem;
+    }
+
     .step-title {
       flex: 1;
       color: var(--primary-color);
@@ -496,6 +501,25 @@
     .step-content strong {
       color: var(--primary-color);
       font-weight: 600;
+    }
+
+    .step-content code {
+      background: var(--bg-tertiary);
+      padding: 0.25rem 0.5rem;
+      border-radius: var(--radius-sm);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9em;
+      color: var(--text-primary);
+      border: 1px solid var(--border-color);
+    }
+
+    .step-content ul {
+      margin-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .step-content ul li {
+      margin-bottom: 0.5rem;
     }
 
     /* Important Section */
@@ -750,15 +774,15 @@
     <div class="step-card">
       <div class="step-header">
         <div class="step-number">3</div>
-        <h2 class="step-title">Tap the "New Automation" or the plus icon and choose "Transaction"</h2>
+        <h2 class="step-title">Tap the "New Automation" or the plus icon and choose "Email"</h2>
       </div>
       <div class="step-images">
         <img src="/images/SiriShortcutsSetup-images/3.0.jpeg" alt="Step 3.0" />
         <img src="/images/SiriShortcutsSetup-images/3.1.jpeg" alt="Step 3.1" />
-        <img src="/images/SiriShortcutsSetup-images/3.2.jpeg" alt="Step 3.2" />
+        <img src="/images/SiriShortcuts-images/1.PNG" alt="Step 3.2" />
       </div>
       <div class="step-content">
-        <p>Tap the <strong>New Automation</strong> or the <strong>+</strong> icon at the top right, then select <strong>Transaction</strong> (with the Wallet symbol).</p>
+        <p>Tap the <strong>New Automation</strong> or the <strong>+</strong> icon at the top right, then select <strong>Email</strong>.</p>
       </div>
     </div>
 
@@ -766,13 +790,171 @@
     <div class="step-card">
       <div class="step-header">
         <div class="step-number">4</div>
-        <h2 class="step-title">[Step 4 Title]</h2>
+        <h2 class="step-title">Add keyword and configure automation</h2>
       </div>
       <div class="step-images">
-        <!-- Images will be added here -->
+        <img src="/images/SiriShortcuts-images/2.PNG" alt="Step 4" />
       </div>
       <div class="step-content">
-        <p>[Step 4 content will be added here]</p>
+        <p>Add a keyword in <strong>"Subject Contains"</strong>. Click <strong>Run Immediately</strong> to make the shortcut run completely in the background. Tap <strong>Next</strong>.</p>
+        <p>Tap <strong>Create New Shortcut</strong> to start the setup.</p>
+      </div>
+    </div>
+
+    <!-- Step 5 -->
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-number">5</div>
+        <h2 class="step-title">Get Text from Input</h2>
+      </div>
+      <div class="step-images">
+        <img src="/images/SiriShortcuts-images/3.PNG" alt="Step 5.1" />
+        <img src="/images/SiriShortcuts-images/4.PNG" alt="Step 5.2" />
+        <img src="/images/SiriShortcuts-images/5.PNG" alt="Step 5.3" />
+      </div>
+      <div class="step-content">
+        <p>Search for <strong>"Get Text from Input"</strong> and tap it to add it.</p>
+        <p>Tap <strong>Input</strong> and select <strong>Shortcut Input</strong>.</p>
+        <p>Tap <strong>Shortcut Input</strong> and select <strong>Content</strong>.</p>
+      </div>
+    </div>
+
+    <!-- Step 6 -->
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-number">6</div>
+        <h2 class="step-title">Use Model with Apple Intelligence</h2>
+      </div>
+      <div class="step-images">
+        <img src="/images/SiriShortcuts-images/6.PNG" alt="Step 6.1" />
+        <img src="/images/SiriShortcuts-images/7.PNG" alt="Step 6.2" />
+      </div>
+      <div class="step-content">
+        <p>Search for <strong>"Use Model"</strong> and tap <strong>"On-Device"</strong>.</p>
+        <p>Click in the box and remove the text so it says: <strong>"Request…"</strong>. Write the following text:</p>
+        <p><strong>Extract the following information from TEXT:</strong></p>
+        <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+          <li>Recipient</li>
+          <li>Due date</li>
+          <li>Amount</li>
+        </ul>
+        <p><strong>Return the answer like this:</strong></p>
+        <p><code>{"recipient": "...", "dueDate": "...", "amount": "..."}</code></p>
+        <p>Remove the large <strong>TEXT</strong> and select the variable that shows a yellow text symbol and the word <strong>Text</strong>.</p>
+        <p>Click the little chevron next to model and select <strong>"Text"</strong> from the Output selector.</p>
+      </div>
+    </div>
+
+    <!-- Step 7 -->
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-number">7</div>
+        <h2 class="step-title">Get Dictionary Values</h2>
+      </div>
+      <div class="step-images">
+        <img src="/images/SiriShortcuts-images/8.PNG" alt="Step 7.1" />
+        <img src="/images/SiriShortcuts-images/9.PNG" alt="Step 7.2" />
+        <img src="/images/SiriShortcuts-images/10.PNG" alt="Step 7.3" />
+        <img src="/images/SiriShortcuts-images/11.PNG" alt="Step 7.4" />
+      </div>
+      <div class="step-content">
+        <p>Search <strong>"Dictionary"</strong> and select <strong>"Get Dictionary from Input"</strong>.</p>
+        <p>Search <strong>"Dictionary"</strong> again and select <strong>"Get Dictionary Value"</strong>.</p>
+        <p>In the <strong>Key</strong> field write <strong>"recipient"</strong>.</p>
+        <p>Click the <strong>Dictionary</strong> after "in", and rename the Variable Name to <strong>"AI Dictionary"</strong>.</p>
+        <p>Now click the Dictionary symbol and click <strong>"Duplicate"</strong>. Change the field <strong>"recipient"</strong> to <strong>"dueDate"</strong> and <strong>"amount"</strong>.</p>
+      </div>
+    </div>
+
+    <!-- Step 8 -->
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-number">8</div>
+        <h2 class="step-title">Create Account and Category Routing Dictionaries</h2>
+      </div>
+      <div class="step-images">
+        <img src="/images/SiriShortcuts-images/12.PNG" alt="Step 8.1" />
+        <img src="/images/SiriShortcuts-images/13.PNG" alt="Step 8.2" />
+        <img src="/images/SiriShortcuts-images/14.PNG" alt="Step 8.3" />
+        <img src="/images/SiriShortcuts-images/15.PNG" alt="Step 8.4" />
+        <img src="/images/SiriShortcuts-images/16.PNG" alt="Step 8.5" />
+      </div>
+      <div class="step-content">
+        <p>Make two new Dictionaries. This is to be used as routing options for the accounts and categories you have based on the Recipient from the emails. This way you can get emails from multiple senders, and the payments will be charged to the correct accounts.</p>
+        <p>Search <strong>"Dictionary"</strong> and select that option. Click <strong>"Add New Item"</strong> and select <strong>"Text"</strong>.</p>
+        <p>Write the Recipient's name in the Key, ex <strong>"Electrical Power Company"</strong> and in the Text field write the name of the account you want this Recipient to be deducted from. In my example I use <strong>"House"</strong>. Add as many recipients as you would like, and they will all be routed to the correct account.</p>
+        <p>Again <strong>Duplicate</strong> the newly created Dictionary. This new Dictionary is going to select the correct category you want the payment to have. The Key is the same as the first Dictionary, and the Text is the category you want to use.</p>
+        <div class="important-section">
+          <h2>Important!</h2>
+          <p>Keep in mind that the account and category name must <strong>MATCH 100%</strong> with the names used in the BalanceTrackr app.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 9 -->
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-number">9</div>
+        <h2 class="step-title">Get Account and Category Values</h2>
+      </div>
+      <div class="step-images">
+        <img src="/images/SiriShortcuts-images/17.PNG" alt="Step 9.1" />
+        <img src="/images/SiriShortcuts-images/18.PNG" alt="Step 9.2" />
+        <img src="/images/SiriShortcuts-images/19.PNG" alt="Step 9.3" />
+        <img src="/images/SiriShortcuts-images/20.PNG" alt="Step 9.4" />
+        <img src="/images/SiriShortcuts-images/21.PNG" alt="Step 9.5" />
+        <img src="/images/SiriShortcuts-images/22.PNG" alt="Step 9.6" />
+      </div>
+      <div class="step-content">
+        <p>Now you will have to search <strong>"Dictionary"</strong> again, and again select <strong>"Get Dictionary Value"</strong>.</p>
+        <p>The action will automatically select the last Dictionary you created. Tap <strong>"Key"</strong> and then tap <strong>"Select Variable"</strong>. Scroll upwards and find the first <strong>"Get Dictionary Value"</strong> that have the text <strong>"Get Value for recipient in AI Dictionary"</strong>. Tap the <strong>"Dictionary Value"</strong> under. Give the variable a name, like <strong>"Recipient Value"</strong> and slide the sheet down to save it.</p>
+        <p>Then click the <strong>"Dictionary"</strong> after "in", and rename the Variable Name to <strong>"Accounts"</strong>.</p>
+        <p><strong>Duplicate</strong> this Get Dictionary Value. Clear the <strong>"Accounts"</strong> name you just created, and click the text <strong>"Dictionary"</strong>. Then click <strong>"Select Variable"</strong> and then select the <strong>"Dictionary Value"</strong> for the second Dictionary.</p>
+        <p>Then click the <strong>"Dictionary"</strong> after "in", and rename the Variable Name to <strong>"Categories"</strong>.</p>
+      </div>
+    </div>
+
+    <!-- Step 10 -->
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-number">10</div>
+        <h2 class="step-title">Configure BalanceTrackr Action</h2>
+      </div>
+      <div class="step-images">
+        <img src="/images/SiriShortcuts-images/23.PNG" alt="Step 10.1" />
+        <img src="/images/SiriShortcuts-images/24.PNG" alt="Step 10.2" />
+        <img src="/images/SiriShortcuts-images/25.PNG" alt="Step 10.3" />
+        <img src="/images/SiriShortcuts-images/26.PNG" alt="Step 10.4" />
+        <img src="/images/SiriShortcuts-images/27.PNG" alt="Step 10.5" />
+        <img src="/images/SiriShortcuts-images/28.PNG" alt="Step 10.6" />
+        <img src="/images/SiriShortcuts-images/29.PNG" alt="Step 10.7" />
+        <img src="/images/SiriShortcuts-images/30.PNG" alt="Step 10.8" />
+        <img src="/images/SiriShortcuts-images/31.PNG" alt="Step 10.9" />
+        <img src="/images/SiriShortcuts-images/32.PNG" alt="Step 10.10" />
+        <img src="/images/SiriShortcuts-images/33.PNG" alt="Step 10.11" />
+      </div>
+      <div class="step-content">
+        <p>Search <strong>"BalanceTrackr"</strong> and select <strong>"Log scheduled transaction"</strong>.</p>
+        <p>Click <strong>"Amount"</strong> and then click <strong>"Select Variable"</strong>. Scroll upwards and find the <strong>"Dictionary Value"</strong> that is after the <strong>"Get Value for amount in AI Dictionary"</strong>. Click the newly added <strong>"Dictionary Value"</strong> and rename it to <strong>"Amount Value"</strong>.</p>
+        <p>Click <strong>Type</strong> and select if the transaction should be an <strong>Expense</strong> or <strong>Income</strong>.</p>
+        <p>Click <strong>"Account"</strong> and then click <strong>"Select Variable"</strong>. Scroll upwards and find the <strong>"Dictionary Value"</strong> that is after the <strong>"Get Value for Recipient Value in Accounts"</strong>. Click the newly added <strong>"Dictionary Value"</strong> and rename it to <strong>"Account Value"</strong>.</p>
+        <p>Click <strong>"Category"</strong> and then click <strong>"Select Variable"</strong>. Scroll upwards and find the <strong>"Dictionary Value"</strong> that is after the <strong>"Get Value for Recipient Value in Categories"</strong>. Click the newly added <strong>"Dictionary Value"</strong> and rename it to <strong>"Category Value"</strong>.</p>
+        <p>Click <strong>"Date"</strong> and then click <strong>"Select Variable"</strong>. Scroll upwards and find the <strong>"Dictionary Value"</strong> that is after the <strong>"Get Value for dueDate in AI Dictionary"</strong>.</p>
+        <p>Click the newly added <strong>"Dictionary Value"</strong> and rename it to <strong>"dueDate Value"</strong>.</p>
+        <p>Click <strong>"Time"</strong> and write the clock you want the transaction to happen this date. In my guide I use <strong>12:34</strong>.</p>
+        <p>Click <strong>"Description"</strong>, scroll to the right and select <strong>"Recipient Value"</strong>. This will be the note for the transaction in BalanceTrackr.</p>
+        <p>If all have been entered correctly, the automation is now complete. Press the big white check mark on blue background at the top right corner, and the automation is saved and ready to be used! It should then run in the background when an email with the selected keywords enters your email, and magically it should be entered into BalanceTrackr.</p>
+      </div>
+    </div>
+
+    <!-- Pro Tip -->
+    <div class="step-card pro-tip">
+      <div class="step-header">
+        <div class="step-number">💡</div>
+        <h2 class="step-title">Pro Tip</h2>
+      </div>
+      <div class="step-content">
+        <p>Set up notifications in BalanceTrackr to get notifications about the transactions that have been entered.</p>
       </div>
     </div>
 
