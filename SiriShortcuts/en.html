@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Log Scheduled Transaction Setup – BalanceTrackr</title>
+  <title>Transaction & Shortcuts Setup – BalanceTrackr</title>
   <link rel="icon" href="/images/RegnskApp-Light-Mode-Icon.jpg" type="image/jpeg" />
   
   <!-- Canonical -->
@@ -357,7 +357,43 @@
       font-size: 1.125rem;
       color: var(--text-secondary);
       max-width: 700px;
-      margin: 0 auto;
+      margin: 0 auto 1rem;
+    }
+
+    .intro-section p:last-child {
+      margin-bottom: 0;
+    }
+
+    .device-info-box {
+      background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-secondary) 100%);
+      border: 2px solid var(--primary-color);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      margin: 1.5rem auto;
+      max-width: 700px;
+      text-align: left;
+    }
+
+    .device-info-box h2 {
+      color: var(--primary-color);
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+    }
+
+    .device-info-box p {
+      margin-bottom: 0.75rem;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .device-info-box p:last-child {
+      margin-bottom: 0;
+    }
+
+    .device-info-box strong {
+      color: var(--primary-color);
+      font-weight: 600;
     }
 
     /* Step Card Design */
@@ -653,6 +689,7 @@
         <button id="menu-toggle" aria-label="Open menu"><span></span></button>
         <div id="menu-dropdown">
           <a href="/index.html">Home</a>
+          <a href="/SiriShortcutsSetup/en.html">Apple Pay & Shortcuts Setup</a>
           <a href="/privacy-policy/en.html">Privacy Policy</a>
           <a href="/support/en.html">Support</a>
         </div>
@@ -663,10 +700,15 @@
   <!-- Main Content -->
   <div class="content">
     <div class="intro-section">
-      <h1>Log Scheduled Transaction Setup</h1>
-      <p>This guide is intended for users who have access to Apple Intelligence on their devices.</p>
-      <p>Apple Intelligence is available on the iPhone 15 Pro and iPhone 15 Pro Max, and will be available on all iPhone 16 models and later. These devices have the necessary A17 Pro or newer chips required for the AI features, which include on-device processing for enhanced security and speed.</p>
-      <p>Follow these simple steps to set up a Shortcut for logging scheduled transactions in BalanceTrackr:</p>
+      <h1>Transaction & Shortcuts Setup</h1>
+      <p>Follow these simple steps to set up a Shortcut for logging scheduled transactions in BalanceTrackr with full flexibility.</p>
+      
+      <div class="device-info-box">
+        <h2>📱 Device Requirements</h2>
+        <p><strong>This guide requires Apple Intelligence.</strong></p>
+        <p>Apple Intelligence is available on the <strong>iPhone 15 Pro</strong> and <strong>iPhone 15 Pro Max</strong>, and will be available on all <strong>iPhone 16 models and later</strong>.</p>
+        <p>These devices have the necessary <strong>A17 Pro or newer chips</strong> required for the AI features, which include on-device processing for enhanced security and speed.</p>
+      </div>
     </div>
 
     <!-- Step 1 -->
