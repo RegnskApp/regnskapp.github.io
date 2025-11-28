@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Transaktioner & Genveje Opsætning – BalanceTrackr</title>
+  <link rel="icon" href="/images/RegnskApp-Light-Mode-Icon.jpg" type="image/jpeg" />
+  
+  <!-- Canonical -->
+  <link rel="canonical" href="https://regnskapp.github.io/SiriShortcuts/da.html">
+  
+  <!-- Alternate hreflang -->
+  <link rel="alternate" hreflang="x-default" href="https://regnskapp.github.io/SiriShortcuts/">
+  <link rel="alternate" hreflang="en" href="https://regnskapp.github.io/SiriShortcuts/en.html">
+  <link rel="alternate" hreflang="no" href="https://regnskapp.github.io/SiriShortcuts/no.html">
+  <link rel="alternate" hreflang="sv" href="https://regnskapp.github.io/SiriShortcuts/sv.html">
+  <link rel="alternate" hreflang="da" href="https://regnskapp.github.io/SiriShortcuts/da.html">
+  <link rel="alternate" hreflang="de" href="https://regnskapp.github.io/SiriShortcuts/de.html">
+  <link rel="alternate" hreflang="fr" href="https://regnskapp.github.io/SiriShortcuts/fr.html">
+  <link rel="alternate" hreflang="es" href="https://regnskapp.github.io/SiriShortcuts/es.html">
+  <link rel="alternate" hreflang="ar" href="https://regnskapp.github.io/SiriShortcuts/ar.html">
+  <link rel="alternate" hreflang="fi" href="https://regnskapp.github.io/SiriShortcuts/fi.html">
+  <link rel="alternate" hreflang="hi" href="https://regnskapp.github.io/SiriShortcuts/hi.html">
+  <link rel="alternate" hreflang="it" href="https://regnskapp.github.io/SiriShortcuts/it.html">
+  <link rel="alternate" hreflang="ja" href="https://regnskapp.github.io/SiriShortcuts/ja.html">
+  <link rel="alternate" hreflang="nl" href="https://regnskapp.github.io/SiriShortcuts/nl.html">
+  <link rel="alternate" hreflang="uk" href="https://regnskapp.github.io/SiriShortcuts/uk.html">
+  <link rel="alternate" hreflang="zh-Hans" href="https://regnskapp.github.io/SiriShortcuts/zhHans.html">
+  <link rel="alternate" hreflang="zh-Hant" href="https://regnskapp.github.io/SiriShortcuts/zhHant.html">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* Modern CSS Reset & Base Styles */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --primary-color: #0f766e;
+      --primary-dark: #0d5f56;
+      --accent-color: #f59e0b;
+      --success-color: #10b981;
+      --text-primary: #111827;
+      --text-secondary: #6b7280;
+      --text-muted: #9ca3af;
+      --bg-primary: #ffffff;
+      --bg-secondary: #f0f4f8;
+      --bg-tertiary: #e2e8f0;
+      --border-color: #e5e7eb;
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      --radius-sm: 0.375rem;
+      --radius-md: 0.5rem;
+      --radius-lg: 0.75rem;
+      --radius-xl: 1rem;
+      --transition-fast: 0.15s ease;
+      --transition-normal: 0.3s ease;
+      --transition-slow: 0.5s ease;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --text-primary: #f9fafb;
+        --text-secondary: #d1d5db;
+        --text-muted: #9ca3af;
+        --bg-primary: #111827;
+        --bg-secondary: #1f2937;
+        --bg-tertiary: #374151;
+        --border-color: #374151;
+        --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+        --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+        --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
+        --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+      }
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      color: var(--text-primary);
+      background: var(--bg-primary);
+      overflow-x: hidden;
+    }
+
+    /* Modern Typography */
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 600;
+      line-height: 1.25;
+      letter-spacing: -0.025em;
+    }
+
+    h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
+    h2 { font-size: clamp(1.5rem, 4vw, 2.25rem); }
+    h3 { font-size: clamp(1.25rem, 3vw, 1.875rem); }
+
+    p { margin-bottom: 1rem; }
+
+    /* Navigation Components */
+    .nav-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-color);
+      transition: all var(--transition-normal);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .nav-container {
+        background: rgba(17, 24, 39, 0.8);
+      }
+    }
+
+    .nav-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* Language Switcher */
+    #language-switcher {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    #active-language {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    #current-lang-text {
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    #active-language:hover {
+      background: var(--bg-tertiary);
+      border-color: var(--primary-color);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+
+    #current-flag {
+      width: 20px;
+      height: 15px;
+      border-radius: 2px;
+      object-fit: cover;
+    }
+
+    #language-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      margin-top: 0.5rem;
+      background: var(--bg-primary);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-xl);
+      padding: 0.5rem;
+      min-width: 200px;
+      max-height: 300px;
+      overflow-y: auto;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all var(--transition-normal);
+      z-index: 1000;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border-color) transparent;
+    }
+
+    #language-menu::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    #language-menu::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    #language-menu::-webkit-scrollbar-thumb {
+      background: var(--border-color);
+      border-radius: 3px;
+    }
+
+    #language-menu.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    #language-menu button {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      color: var(--text-primary);
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    #language-menu button:hover {
+      background: var(--bg-secondary);
+      border-color: var(--primary-color);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-1px);
+    }
+
+    #language-menu button:active {
+      transform: translateY(0);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Hamburger Menu */
+    #hamburger-menu {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    #menu-toggle {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      font-size: 0;
+      padding: 0;
+    }
+
+    #menu-toggle::before,
+    #menu-toggle::after,
+    #menu-toggle span {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: var(--text-primary);
+      margin: 3px 0;
+      transition: all var(--transition-fast);
+      border-radius: 1px;
+    }
+
+    #menu-toggle:hover {
+      background: var(--bg-tertiary);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+
+    #menu-dropdown {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      margin-top: 0.5rem;
+      background: var(--bg-primary);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-xl);
+      padding: 0.5rem;
+      min-width: 235px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all var(--transition-normal);
+      z-index: 1000;
+    }
+
+    #menu-dropdown.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    #menu-dropdown a {
+      display: block;
+      padding: 0.75rem 1rem;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      text-decoration: none;
+      font-weight: 500;
+      border-radius: var(--radius-md);
+      transition: all var(--transition-fast);
+      margin-bottom: 0.25rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    #menu-dropdown a:hover {
+      background: var(--bg-secondary);
+      border-color: var(--primary-color);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+
+    #menu-dropdown a:active {
+      transform: translateY(0);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Modern Recipe Layout */
+    .content {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 2rem;
+      padding-top: calc(80px + 2rem);
+    }
+
+    .intro-section {
+      text-align: center;
+      margin-bottom: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 2px solid var(--border-color);
+    }
+
+    .intro-section h1 {
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+
+    .intro-section p {
+      font-size: 1.125rem;
+      color: var(--text-secondary);
+      max-width: 700px;
+      margin: 0 auto 1rem;
+    }
+
+    .intro-section p:last-child {
+      margin-bottom: 0;
+    }
+
+    .device-info-box {
+      background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-secondary) 100%);
+      border: 2px solid var(--primary-color);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      margin: 1.5rem auto;
+      max-width: 700px;
+      text-align: left;
+    }
+
+    .device-info-box h2 {
+      color: var(--primary-color);
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .device-info-box h2 + p {
+      text-align: center;
+    }
+
+    .device-info-box p {
+      margin-bottom: 0.75rem;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .device-info-box p:last-child {
+      margin-bottom: 0;
+    }
+
+    .device-info-box strong {
+      color: var(--primary-color);
+      font-weight: 600;
+    }
+
+    /* Step Card Design */
+    .step-card {
+      background: var(--bg-secondary);
+      border-radius: var(--radius-xl);
+      padding: 2rem;
+      margin-bottom: 2.5rem;
+      border: 2px solid var(--border-color);
+      box-shadow: var(--shadow-sm), 0 0 0 1px rgba(15, 118, 110, 0.15), 0 6px 18px -2px rgba(15, 118, 110, 0.3);
+      transition: all var(--transition-normal);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .step-card:hover {
+      box-shadow: var(--shadow-md), 0 0 0 1px rgba(15, 118, 110, 0.25), 0 10px 24px -4px rgba(15, 118, 110, 0.4);
+      transform: translateY(-2px);
+    }
+
+    /* Mobile: Highlight card when in viewport */
+    @media screen and (max-width: 768px) {
+      .step-card.in-view {
+        box-shadow: var(--shadow-md), 0 0 0 1px rgba(15, 118, 110, 0.25), 0 10px 24px -4px rgba(15, 118, 110, 0.4);
+        transform: translateY(-2px);
+      }
+    }
+
+    .step-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .step-number {
+      flex-shrink: 0;
+      width: 60px;
+      height: 60px;
+      background: var(--primary-color);
+      color: white;
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.75rem;
+      font-weight: 700;
+      box-shadow: var(--shadow-md);
+    }
+
+    .step-card.pro-tip .step-number {
+      background: var(--accent-color);
+      font-size: 2rem;
+    }
+
+    .step-title {
+      flex: 1;
+      color: var(--primary-color);
+      font-size: clamp(1.25rem, 3vw, 1.75rem);
+      font-weight: 600;
+      line-height: 1.3;
+      margin: 0;
+      padding-top: 0.5rem;
+    }
+
+    .step-images {
+      margin: 1.5rem 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center; /* Center images on desktop */
+    }
+
+    /* Desktop: All images same size (33.333% like step 3) */
+    .step-images img {
+      flex: 1 1 calc(33.333% - 1rem);
+      max-width: calc(33.333% - 1rem);
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      transition: all var(--transition-fast);
+      display: block;
+    }
+
+    .step-images img:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .step-content {
+      color: var(--text-primary);
+      line-height: 1.7;
+    }
+
+    .step-content p {
+      margin-bottom: 1rem;
+    }
+
+    .step-content .inline-images {
+      margin: 1rem 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: flex-start;
+    }
+
+    /* Center single images on desktop */
+    .step-content .inline-images:has(img:only-child) {
+      justify-content: center;
+    }
+
+    /* Center when there are exactly 2 images (for step 7) */
+    .step-content .inline-images:has(img:nth-child(2):last-child) {
+      justify-content: center;
+    }
+
+    .step-content .inline-images img {
+      flex: 0 1 auto;
+      max-width: calc(33.333% - 1rem);
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-md);
+      transition: all var(--transition-fast);
+    }
+
+    .step-content .inline-images img:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    @media (max-width: 768px) {
+      .step-content .inline-images {
+        gap: 0.5rem;
+      }
+      
+      .step-content .inline-images img {
+        flex: 1 1 48%;
+        max-width: 48%;
+      }
+      
+      /* Single image uses same size as multiple images and is centered */
+      .step-content .inline-images img:only-child {
+        flex: 1 1 48%;
+        max-width: 48%;
+      }
+      
+      .step-content .inline-images:has(img:only-child) {
+        justify-content: center;
+      }
+      
+      /* Ensure multiple images stay side by side */
+      .step-content .inline-images:not(:has(img:only-child)) {
+        justify-content: flex-start;
+      }
+      
+      /* On mobile: when there are exactly 3 images, center the third one under the first two */
+      .step-content .inline-images img:nth-child(3):last-child {
+        flex: 0 0 48%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+
+    .step-content strong {
+      color: var(--primary-color);
+      font-weight: 600;
+    }
+
+    .step-content code {
+      background: var(--bg-tertiary);
+      padding: 0.25rem 0.5rem;
+      border-radius: var(--radius-sm);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9em;
+      color: var(--text-primary);
+      border: 1px solid var(--border-color);
+    }
+
+    .step-content ul {
+      margin-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .step-content ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    /* Copy Box */
+    .copy-box {
+      background: var(--bg-tertiary);
+      border: 2px solid var(--primary-color);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+      margin: 1rem 0;
+      position: relative;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      color: var(--text-primary);
+    }
+
+    .copy-box-button {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: var(--radius-sm);
+      padding: 0.5rem 1rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      font-family: 'Inter', sans-serif;
+    }
+
+    .copy-box-button:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .copy-box-button:active {
+      transform: translateY(0);
+    }
+
+    .copy-box-button.copied {
+      background: var(--success-color);
+    }
+
+    /* Important Section */
+    .important-section {
+      background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-secondary) 100%);
+      border: 2px solid var(--accent-color);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .important-section h2 {
+      color: var(--accent-color);
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .important-section p {
+      margin-bottom: 0.75rem;
+    }
+
+    .back-btn {
+      display: inline-block;
+      background: var(--primary-color);
+      color: white !important;
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      font-weight: 600;
+      transition: all var(--transition-fast);
+      margin-top: 2rem;
+      box-shadow: var(--shadow-md);
+      border: 2px solid var(--primary-color);
+    }
+
+    .back-btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .footer {
+      padding: 2rem;
+      background: var(--bg-tertiary);
+      text-align: center;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .footer-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .nav-content {
+        padding: 1rem;
+      }
+
+      .content {
+        padding: 1rem;
+        padding-top: calc(70px + 1rem);
+      }
+
+      #language-menu {
+        left: 0;
+        right: auto;
+        min-width: 180px;
+      }
+
+      #menu-dropdown {
+        min-width: 200px;
+      }
+
+      .intro-section {
+        margin-bottom: 2rem;
+        padding-bottom: 1.5rem;
+      }
+
+      .step-card {
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .step-header {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .step-number {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+      }
+
+      .step-title {
+        padding-top: 0;
+      }
+
+      /* Mobile: 2 images side by side when more than 1 image */
+      .step-images {
+        gap: 0.5rem;
+        justify-content: flex-start; /* Reset centering on mobile */
+      }
+      
+      /* Center single images in step-images on mobile */
+      .step-images:has(img:only-child) {
+        justify-content: center;
+      }
+      
+      .step-images img {
+        flex: 1 1 48%;
+        max-width: 48%;
+        border-radius: var(--radius-md);
+      }
+      
+      /* Single image on mobile uses same size as multiple images */
+      .step-images img:only-child {
+        flex: 1 1 48%;
+        max-width: 48%;
+      }
+      
+      /* On mobile: when there are exactly 3 images, center the third one under the first two */
+      .step-images img:nth-child(3):last-child {
+        flex: 0 0 48%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .important-section {
+        padding: 1.25rem;
+      }
+
+      .copy-box {
+        font-size: 0.85rem;
+        padding: 0.75rem;
+      }
+
+      .copy-box-button {
+        padding: 0.4rem 0.75rem;
+        font-size: 0.8rem;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav-container">
+    <div class="nav-content">
+      <!-- 🌍 Language Switcher -->
+      <div id="language-switcher">
+        <button id="active-language" onclick="toggleLanguageMenu()" aria-label="Vælg sprog">
+          <img id="current-flag" src="" alt="Valgt sprog" />
+          <span id="current-lang-text">DA</span>
+        </button>
+        <div id="language-menu">
+          <button onclick="changeLanguage('en')">
+            <img src="/images/en/gb.svg" width="20" alt="English" /> English
+          </button>
+          <button onclick="changeLanguage('no')">
+            <img src="/images/no/no.svg" width="20" alt="Norsk" /> Norsk
+          </button>
+          <button onclick="changeLanguage('da')">
+            <img src="/images/da/da.svg" width="20" alt="Dansk" /> Dansk
+          </button>
+          <button onclick="changeLanguage('sv')">
+            <img src="/images/sv/sv.svg" width="20" alt="Svenska" /> Svenska
+          </button>
+          <button onclick="changeLanguage('de')">
+            <img src="/images/de/de.svg" width="20" alt="Deutsch" /> Deutsch
+          </button>
+          <button onclick="changeLanguage('fr')">
+            <img src="/images/fr/fr.svg" width="20" alt="Français" /> Français
+          </button>
+          <button onclick="changeLanguage('es')">
+            <img src="/images/es/es.svg" width="20" alt="Español" /> Español
+          </button>
+          <button onclick="changeLanguage('it')">
+            <img src="/images/it/it.svg" width="20" alt="Italiano" /> Italiano
+          </button>
+          <button onclick="changeLanguage('nl')">
+            <img src="/images/nl/nl.svg" width="20" alt="Nederlands" /> Nederlands
+          </button>
+          <button onclick="changeLanguage('fi')">
+            <img src="/images/fi/fi.svg" width="20" alt="Suomi" /> Suomi
+          </button>
+          <button onclick="changeLanguage('ar')">
+            <img src="/images/ar/ar.svg" width="20" alt="العربية" /> العربية
+          </button>
+          <button onclick="changeLanguage('hi')">
+            <img src="/images/hi/hi.svg" width="20" alt="हिन्दी" /> हिन्दी
+          </button>
+          <button onclick="changeLanguage('ja')">
+            <img src="/images/ja/ja.svg" width="20" alt="日本語" /> 日本語
+          </button>
+          <button onclick="changeLanguage('uk')">
+            <img src="/images/uk/uk.svg" width="20" alt="Українська" /> Українська
+          </button>
+          <button onclick="changeLanguage('zhHans')">
+            <img src="/images/zhHans/zhHans.svg" width="20" alt="简体中文" /> 简体中文
+          </button>
+          <button onclick="changeLanguage('zhHant')">
+            <img src="/images/zhHant/zhHant.svg" width="20" alt="繁體中文" /> 繁體中文
+          </button>
+        </div>
+      </div>
+
+      <!-- Hamburger Menu -->
+      <div id="hamburger-menu">
+        <button id="menu-toggle" aria-label="Åbn menu"><span></span></button>
+        <div id="menu-dropdown">
+          <a href="/index-da.html">Hjem</a>
+          <a href="/SiriShortcutsSetup/da.html">Apple Pay & Genveje</a>
+          <a href="/privacy-policy/da.html">Fortrolighedspolitik</a>
+          <a href="/support/da.html">Support</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="content">
+    <div class="intro-section">
+      <h1>Transaktioner & Genveje Opsætning</h1>
+      <p>Følg disse trin for at opsætte en Genvej til at logge planlagte transaktioner i BalanceTrackr med fuld fleksibilitet.</p>
+      <p>Denne guide demonstrerer, hvordan du bruger <strong>E-mail trigger</strong> med specifikke nøgleord i e-mailens emnelinje. Dette er særligt nyttigt, hvis du ofte modtager e-mails om kommende regninger, da informationen fra disse e-mails automatisk kan logges i baggrunden til BalanceTrackr.</p>
+      <p>Selvom du også kan bruge andre triggere til at fange transaktionsinformation, fokuserer denne opsætning på e-mail triggeren. Genveje bliver utroligt kraftige, når de kombineres med Apple Intelligence.</p>
+      
+      <div class="device-info-box">
+        <h2>📱 Enhedskrav</h2>
+        <p><strong>Denne guide kræver Apple Intelligence.</strong></p>
+        <p>Apple Intelligence er tilgængelig på <strong>iPhone 15 Pro</strong> og <strong>iPhone 15 Pro Max</strong>, og vil være tilgængelig på alle <strong>iPhone 16-modeller og nyere</strong>.</p>
+        <p>Disse enheder har de nødvendige <strong>A17 Pro eller nyere chips</strong>, der kræves til AI-funktionerne, som inkluderer behandling på enheden til forbedret sikkerhed og hastighed.</p>
+      </div>
+    </div>
+
+    <!-- Step 1 -->
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-number">1</div>
+        <h2 class="step-title">Åbn Genveje-appen</h2>
+      </div>
+      <div class="step-images">
+        <img src="/images/SiriShortcutsSetup-images/1.jpeg" alt="Trin 1" />
+      </div>
+      <div class="step-content">
+        <p>Start den indbyggede Genveje-app på din iPhone.</p>
+      </div>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-number">2</div>
+        <h2 class="step-title">Tryk på "Automatisering" nederst</h2>
+      </div>
+      <div class="step-images">
+        <img src="/images/SiriShortcutsSetup-images/2.jpeg" alt="Trin 2" />
+      </div>
+      <div class="step-content">
+        <p>Skift til <strong>Automatisering</strong>-fanen for at oprette en ny genvej.</p>
+      </div>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-number">3</div>
+        <h2 class="step-title">Tryk på "Ny automatisering" eller plusikonet og vælg "E-mail"</h2>
+      </div>
+      <div class="step-images">
+        <img src="/images/SiriShortcutsSetup-images/3.0.jpeg" alt="Trin 3.0" />
+        <img src="/images/SiriShortcutsSetup-images/3.1.jpeg" alt="Trin 3.1" />
+        <img src="/images/SiriShortcuts-images/1.PNG" alt="Trin 3.2" />
+      </div>
+      <div class="step-content">
+        <p>Tryk på <strong>Ny automatisering</strong> eller <strong>+</strong>-ikonet øverst til højre, og vælg derefter <strong>E-mail</strong>.</p>
+      </div>
+    </div>
+
+    <!-- Step 4 -->
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-number">4</div>
+        <h2 class="step-title">Tilføj nøgleord og konfigurer automatisering</h2>
+      </div>
+      <div class="step-images">
+        <img src="/images/SiriShortcuts-images/2.PNG" alt="Trin 4" />
+        <img src="/images/SiriShortcuts-images/34.PNG" alt="Trin 4.2" />
+      </div>
+      <div class="step-content">
+        <p>Tilføj et nøgleord i <strong>"Emne indeholder"</strong>. Klik på <strong>Kør med det samme</strong> for at få genvejen til at køre helt i baggrunden. Tryk på <strong>Næste</strong>.</p>
+        <p>Tryk på <strong>Opret ny genvej</strong> for at starte opsætningen.</p>
+      </div>
+    </div>
+
+    <!-- Step 5 -->
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-number">5</div>
+        <h2 class="step-title">Hent tekst fra input</h2>
+      </div>
+      <div class="step-images">
+        <img src="/images/SiriShortcuts-images/3.PNG" alt="Trin 5.1" />
+        <img src="/images/SiriShortcuts-images/4.PNG" alt="Trin 5.2" />
+        <img src="/images/SiriShortcuts-images/5.PNG" alt="Trin 5.3" />
+      </div>
+      <div class="step-content">
+        <p>Søg efter <strong>"Hent tekst fra input"</strong> og tryk på den for at tilføje den.</p>
+        <p>Tryk på <strong>Input</strong> og vælg <strong>Genvej-input</strong>.</p>
+        <p>Vælg <strong>Indhold</strong>.</p>
+      </div>
+    </div>
+
+    <!-- Step 6 -->
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-number">6</div>
+        <h2 class="step-title">Brug model med Apple Intelligence</h2>
+      </div>
+      <div class="step-images">
+        <img src="/images/SiriShortcuts-images/6.PNG" alt="Trin 6.1" />
+        <img src="/images/SiriShortcuts-images/7.PNG" alt="Trin 6.2" />
+      </div>
+      <div class="step-content">
+        <p>Søg efter <strong>"Brug model"</strong> og tryk på <strong>"På enheden"</strong>.</p>
+        <p>Klik i boksen og fjern teksten, så den siger: <strong>"Anmodning…"</strong>. Skriv følgende tekst:</p>
+        <div class="copy-box">
+          <button class="copy-box-button" onclick="copyToClipboard(this, 'copy-text-step6')">Kopier</button>
+          <div id="copy-text-step6">Extract the following information from TEXT:
+
+Recipient
+Due date
+Amount
+
+Return the answer like this:
+
+{"recipient": "...", "dueDate": "...", "amount": "..."}</div>
+        </div>
+        <p>Fjern den store <strong>TEXT</strong> og vælg variablen, der viser et gult tekstsymbol og ordet <strong>Tekst</strong>.</p>
+        <p>Klik på den lille chevron ved siden af model og vælg <strong>"Tekst"</strong> fra Output-vælgeren.</p>
+      </div>
+    </div>
+
+    <!-- Step 7 -->
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-number">7</div>
+        <h2 class="step-title">Hent ordbogsværdier</h2>
+      </div>
+      <div class="step-images">
+        <img src="/images/SiriShortcuts-images/8.PNG" alt="Trin 7.1" />
+        <img src="/images/SiriShortcuts-images/9.PNG" alt="Trin 7.2" />
+      </div>
+      <div class="step-content">
+        <p>Søg efter <strong>"Ordbog"</strong> og vælg <strong>"Hent ordbog fra input"</strong>.</p>
+        <p>Søg efter <strong>"Ordbog"</strong> igen og vælg <strong>"Hent ordbogsværdi"</strong>.</p>
+        <p>I <strong>Nøgle</strong>-feltet skriver du <strong>"recipient"</strong>.</p>
+        <p>Klik på <strong>Ordbog</strong> efter "i", og omdøb variabelnavnet til <strong>"AI-ordbog"</strong>.</p>
+        <div class="inline-images">
+          <img src="/images/SiriShortcuts-images/10.PNG" alt="Trin 7.3" />
+          <img src="/images/SiriShortcuts-images/11.PNG" alt="Trin 7.4" />
+        </div>
+        <p>Klik nu på ordbogssymbolet (rød cirkel i billede 2 i dette trin) og klik på <strong>"Dupliker"</strong>. Ændr feltet <strong>"recipient"</strong> til <strong>"dueDate"</strong> og <strong>"amount"</strong>.</p>
+      </div>
+    </div>
+
+    <!-- Step 8 -->
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-number">8</div>
+        <h2 class="step-title">Opret konto- og kategoriruteringsordbøger</h2>
+      </div>
+      <div class="step-content">
+        <p>Lav to nye ordbøger. Dette skal bruges som ruteringsmuligheder for de konti og kategorier, du har baseret på Modtageren fra e-mails. På denne måde kan du modtage e-mails fra flere afsendere, og betalingerne vil blive belastet til de korrekte konti.</p>
+      </div>
+      <div class="step-images">
+        <img src="/images/SiriShortcuts-images/12.PNG" alt="Trin 8.1" />
+        <img src="/images/SiriShortcuts-images/13.PNG" alt="Trin 8.2" />
+        <img src="/images/SiriShortcuts-images/14.PNG" alt="Trin 8.3" />
+        <img src="/images/SiriShortcuts-images/15.PNG" alt="Trin 8.4" />
+      </div>
+      <div class="step-content">
+        <p>Søg efter <strong>"Ordbog"</strong> og vælg den mulighed. Klik på <strong>"Tilføj nyt element"</strong> og vælg <strong>"Tekst"</strong>.</p>
+        <p>Skriv modtagerens navn i Nøglen, f.eks. <strong>"Elværk"</strong> og i Tekst-feltet skriver du navnet på kontoen, du vil have denne modtager trukket fra. I mit eksempel bruger jeg <strong>"Hus"</strong>. Tilføj så mange modtagere, du vil, og de vil alle blive dirigeret til den korrekte konto.</p>
+        <div class="inline-images">
+          <img src="/images/SiriShortcuts-images/16.PNG" alt="Trin 8.5" />
+        </div>
+        <p><strong>Dupliker</strong> igen den nyoprettede ordbog. Denne nye ordbog vil vælge den korrekte kategori, du vil have betalingen skal have. Nøglen er den samme som den første ordbog, og Teksten er kategorien, du vil bruge.</p>
+        <div class="important-section">
+          <h2>Vigtigt!</h2>
+          <p>Husk på, at kontonavnet og kategorinavnet skal <strong>MATCHE 100%</strong> med navnene, der bruges i BalanceTrackr-appen.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 9 -->
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-number">9</div>
+        <h2 class="step-title">Hent konto- og kategoriværdier</h2>
+      </div>
+      <div class="step-images">
+        <img src="/images/SiriShortcuts-images/17.PNG" alt="Trin 9.1" />
+        <img src="/images/SiriShortcuts-images/18.PNG" alt="Trin 9.2" />
+        <img src="/images/SiriShortcuts-images/19.PNG" alt="Trin 9.3" />
+      </div>
+      <div class="step-content">
+        <p>Nu skal du søge efter <strong>"Ordbog"</strong> igen og igen vælge <strong>"Hent ordbogsværdi"</strong>.</p>
+        <p>Handlingen vil automatisk vælge den sidste ordbog, du oprettede. Tryk på <strong>"Nøgle"</strong> og derefter tryk på <strong>"Vælg variabel"</strong>. Scroll opad og find den første <strong>"Hent ordbogsværdi"</strong>, der har teksten <strong>"Hent værdi for recipient i AI-ordbog"</strong>. Tryk på <strong>"Ordbogsværdi"</strong> under. Giv variablen et navn, f.eks. <strong>"Modtager værdi"</strong> og træk arket ned for at gemme det.</p>
+        <p>Klik derefter på <strong>"Ordbog"</strong> efter "i", og omdøb variabelnavnet til <strong>"Konti"</strong>.</p>
+        <div class="inline-images">
+          <img src="/images/SiriShortcuts-images/20.PNG" alt="Trin 9.4" />
+          <img src="/images/SiriShortcuts-images/21.PNG" alt="Trin 9.5" />
+          <img src="/images/SiriShortcuts-images/22.PNG" alt="Trin 9.6" />
+        </div>
+        <p><strong>Dupliker</strong> denne Hent ordbogsværdi. Ryd <strong>"Konti"</strong>-navnet, du lige oprettede, og klik på teksten <strong>"Ordbog"</strong>. Klik derefter på <strong>"Vælg variabel"</strong> og vælg <strong>"Ordbogsværdi"</strong> for den anden ordbog.</p>
+        <p>Klik på <strong>"Ordbog"</strong> efter "i", og omdøb variabelnavnet til <strong>"Kategorier"</strong>.</p>
+      </div>
+    </div>
+
+    <!-- Step 10 -->
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-number">10</div>
+        <h2 class="step-title">Konfigurer BalanceTrackr-handling</h2>
+      </div>
+      <div class="step-content">
+        <div class="inline-images">
+          <img src="/images/SiriShortcuts-images/23.PNG" alt="Trin 10.1" />
+          <img src="/images/SiriShortcuts-images/24.PNG" alt="Trin 10.2" />
+          <img src="/images/SiriShortcuts-images/25.PNG" alt="Trin 10.3" />
+        </div>
+        <p>Søg efter <strong>"BalanceTrackr"</strong> og vælg <strong>"Log planlagt transaktion"</strong>.</p>
+        <p>Klik på <strong>"Beløb"</strong> og klik derefter på <strong>"Vælg variabel"</strong>. Scroll opad og find <strong>"Ordbogsværdi"</strong>, der kommer efter <strong>"Hent værdi for amount i AI-ordbog"</strong>. Klik på den nyoprettede <strong>"Ordbogsværdi"</strong> og omdøb den til <strong>"Beløbsværdi"</strong>.</p>
+        
+        <div class="inline-images">
+          <img src="/images/SiriShortcuts-images/26.PNG" alt="Trin 10.4" />
+        </div>
+        <p>Klik på <strong>Type</strong> og vælg, om transaktionen skal være en <strong>Udgift</strong> eller <strong>Indtægt</strong>.</p>
+        
+        <div class="inline-images">
+          <img src="/images/SiriShortcuts-images/27.PNG" alt="Trin 10.5" />
+        </div>
+        <p>Klik på <strong>"Konto"</strong> og klik derefter på <strong>"Vælg variabel"</strong>. Scroll opad og find <strong>"Ordbogsværdi"</strong>, der kommer efter <strong>"Hent værdi for Modtager værdi i Konti"</strong>. Klik på den nyoprettede <strong>"Ordbogsværdi"</strong> og omdøb den til <strong>"Kontoværdi"</strong>.</p>
+        
+        <div class="inline-images">
+          <img src="/images/SiriShortcuts-images/28.PNG" alt="Trin 10.6" />
+        </div>
+        <p>Klik på <strong>"Kategori"</strong> og klik derefter på <strong>"Vælg variabel"</strong>. Scroll opad og find <strong>"Ordbogsværdi"</strong>, der kommer efter <strong>"Hent værdi for Modtager værdi i Kategorier"</strong>. Klik på den nyoprettede <strong>"Ordbogsværdi"</strong> og omdøb den til <strong>"Kategoriværdi"</strong>.</p>
+        
+        <div class="inline-images">
+          <img src="/images/SiriShortcuts-images/29.PNG" alt="Trin 10.7" />
+        </div>
+        <p>Klik på <strong>"Dato"</strong> og klik derefter på <strong>"Vælg variabel"</strong>. Scroll opad og find <strong>"Ordbogsværdi"</strong>, der kommer efter <strong>"Hent værdi for dueDate i AI-ordbog"</strong>.</p>
+        <p>Klik på <strong>"Ordbogsværdi"</strong> og omdøb den til <strong>"Forfaldsdato-værdi"</strong>.</p>
+        <p>Klik på <strong>"Tid"</strong> og skriv klokkeslettet, du vil have transaktionen skal ske på denne dato. I min guide bruger jeg <strong>12:34</strong>.</p>
+        
+        <div class="inline-images">
+          <img src="/images/SiriShortcuts-images/30.PNG" alt="Trin 10.8" />
+        </div>
+        <p>Klik på <strong>"Beskrivelse"</strong>, scroll til højre i "Vælg variabel"-linjen og vælg <strong>"Modtager værdi"</strong>. Dette vil være noten for transaktionen i BalanceTrackr.</p>
+        
+        <div class="inline-images">
+          <img src="/images/SiriShortcuts-images/31.PNG" alt="Trin 10.9" />
+          <img src="/images/SiriShortcuts-images/32.PNG" alt="Trin 10.10" />
+          <img src="/images/SiriShortcuts-images/33.PNG" alt="Trin 10.11" />
+        </div>
+        <p>Hvis alt er indtastet korrekt, viser disse tre billeder, hvordan det skal se ud.</p>
+        <p>Tryk nu på det store hvide hakemærke på blå baggrund øverst til højre, og automatiseringen er gemt og klar til brug! Den skal derefter køre i baggrunden, når en e-mail med de valgte nøgleord kommer ind i din e-mail, og magisk skal den blive indtastet i BalanceTrackr.</p>
+      </div>
+    </div>
+
+    <!-- Pro Tip -->
+    <div class="step-card pro-tip">
+      <div class="step-header">
+        <div class="step-number">💡</div>
+        <h2 class="step-title">Pro Tip</h2>
+      </div>
+      <div class="step-content">
+        <p>Opsæt notifikationer i BalanceTrackr for at få notifikationer om transaktionerne, der er blevet indtastet.</p>
+      </div>
+    </div>
+
+    <!-- Pro Tip 2 -->
+    <div class="step-card pro-tip">
+      <div class="step-header">
+        <div class="step-number">💡</div>
+        <h2 class="step-title">Pro Tip 2</h2>
+      </div>
+      <div class="step-content">
+        <p>For at se præcis, hvilken information Apple Intelligence henter fra dine e-mails, brug <strong>"Tilføj til note"</strong>-funktionen til test.</p>
+        <p>Opret en ny note i Notes-appen, tilføj derefter <strong>"Tilføj til note"</strong>-handlingen til din genvej. Vælg de variabler og tekst, du vil fange (som modtager, forfaldsdato og beløb), og vælg den note, du oprettede, som destination.</p>
+        <p>Når automatiseringen udløses, vil al ekstraheret information blive tilføjet til din note. Dette er en fremragende måde at se de faktiske værdier, der vil blive brugt i dine ruteringsordbøger, hvilket sikrer, at de korrekte konti og kategorier vælges, når genvejen kører i baggrunden.</p>
+        <div class="inline-images">
+          <img src="/images/SiriShortcuts-images/35.PNG" alt="Pro Tip: Tilføj til note" />
+        </div>
+      </div>
+    </div>
+
+    <a href="/index-da.html" class="back-btn">← BalanceTrackr</a>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <p>&copy; 2025 BalanceTrackr (RegnskApp).<br>
+      Ole Morten Tengesdal. Alle rettigheder forbeholdes.</p>
+    </div>
+  </footer>
+
+  <script>
+    function toggleLanguageMenu() {
+      const menu = document.getElementById("language-menu");
+      menu.classList.toggle("show");
+    }
+
+    function changeLanguage(langCode) {
+      // Normalize language codes (remove hyphens for zhHans/zhHant)
+      if (langCode === 'zh-Hans') langCode = 'zhHans';
+      if (langCode === 'zh-Hant') langCode = 'zhHant';
+      const flagPath = `/images/${langCode.replace('-', '')}/${langCode === 'en' ? 'gb' : langCode.replace('-', '')}.svg`;
+      document.getElementById("current-flag").src = flagPath;
+
+      const langTexts = {
+        'en': 'EN', 'no': 'NO', 'da': 'DA', 'sv': 'SV', 'de': 'DE',
+        'fr': 'FR', 'es': 'ES', 'ar': 'AR', 'fi': 'FI', 'hi': 'HI',
+        'it': 'IT', 'ja': 'JA', 'nl': 'NL', 'uk': 'UK', 'zhHans': 'CN', 'zhHant': 'TW'
+      };
+      document.getElementById("current-lang-text").textContent = langTexts[langCode] || 'DA';
+
+      // Navigate to the appropriate SiriShortcuts page
+      const file = langCode === 'en' ? '/SiriShortcuts/en.html' : `/SiriShortcuts/${langCode}.html`;
+      window.location.href = file;
+    }
+
+    // Determine which language is active based on URL
+    function setInitialFlag() {
+      const path = window.location.pathname;
+      let langCode = 'da';
+      
+      // Extract language code from path
+      if (path.includes('/SiriShortcuts/')) {
+        const match = path.match(/\/SiriShortcuts\/([^\/]+)\.html/);
+        if (match) {
+          langCode = match[1];
+        }
+      }
+      
+      // Normalize language codes
+      if (langCode === 'zhHans') langCode = 'zhHans';
+      if (langCode === 'zhHant') langCode = 'zhHant';
+      
+      const flagPath = `/images/${langCode.replace('-', '')}/${langCode === 'en' ? 'gb' : langCode.replace('-', '')}.svg`;
+      const img = document.getElementById("current-flag");
+      if (img) img.src = flagPath;
+      
+      const langTexts = {
+        'en': 'EN', 'no': 'NO', 'da': 'DA', 'sv': 'SV', 'de': 'DE',
+        'fr': 'FR', 'es': 'ES', 'ar': 'AR', 'fi': 'FI', 'hi': 'HI',
+        'it': 'IT', 'ja': 'JA', 'nl': 'NL', 'uk': 'UK', 'zhHans': 'CN', 'zhHant': 'TW'
+      };
+      document.getElementById("current-lang-text").textContent = langTexts[langCode] || 'DA';
+    }
+
+    setInitialFlag(); // call the function on load
+
+    // Hamburger Menu Functions
+    const toggleButton = document.getElementById('menu-toggle');
+    const dropdown = document.getElementById('menu-dropdown');
+
+    toggleButton.addEventListener('click', () => {
+      dropdown.classList.toggle('show');
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener("click", function (event) {
+      const switcher = document.getElementById("language-switcher");
+      if (!switcher.contains(event.target)) {
+        document.getElementById("language-menu").classList.remove("show");
+      }
+
+      if (!document.getElementById('hamburger-menu').contains(event.target)) {
+        dropdown.classList.remove('show');
+      }
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Mobile: Highlight step cards when they come into viewport
+    if (window.matchMedia('(max-width: 768px)').matches) {
+      const stepCards = document.querySelectorAll('.step-card');
+      
+      const observerOptions = {
+        root: null,
+        rootMargin: '-20% 0px -20% 0px', // Trigger when card is in middle 60% of viewport
+        threshold: 0.1
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+          } else {
+            entry.target.classList.remove('in-view');
+          }
+        });
+      }, observerOptions);
+
+      stepCards.forEach(card => {
+        observer.observe(card);
+      });
+    }
+
+    // Copy to clipboard function
+    function copyToClipboard(button, textId) {
+      const textElement = document.getElementById(textId);
+      const text = textElement.textContent || textElement.innerText;
+      
+      navigator.clipboard.writeText(text).then(() => {
+        const originalText = button.textContent;
+        button.textContent = 'Kopieret!';
+        button.classList.add('copied');
+        
+        setTimeout(() => {
+          button.textContent = originalText;
+          button.classList.remove('copied');
+        }, 2000);
+      }).catch(err => {
+        console.error('Failed to copy text: ', err);
+        alert('Kunne ikke kopiere tekst. Vælg og kopier manuelt.');
+      });
+    }
+  </script>
+
+</body>
+</html>
+
