@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Configuración de Transacciones y Atajos – BalanceTrackr</title>
+  <link rel="icon" href="/images/RegnskApp-Light-Mode-Icon.jpg" type="image/jpeg" />
+  
+  <!-- Canonical -->
+  <link rel="canonical" href="https://regnskapp.github.io/SiriShortcuts/es.html">
+  
+  <!-- Alternate hreflang -->
+  <link rel="alternate" hreflang="x-default" href="https://regnskapp.github.io/SiriShortcuts/">
+  <link rel="alternate" hreflang="en" href="https://regnskapp.github.io/SiriShortcuts/en.html">
+  <link rel="alternate" hreflang="no" href="https://regnskapp.github.io/SiriShortcuts/no.html">
+  <link rel="alternate" hreflang="sv" href="https://regnskapp.github.io/SiriShortcuts/sv.html">
+  <link rel="alternate" hreflang="da" href="https://regnskapp.github.io/SiriShortcuts/da.html">
+  <link rel="alternate" hreflang="de" href="https://regnskapp.github.io/SiriShortcuts/de.html">
+  <link rel="alternate" hreflang="fr" href="https://regnskapp.github.io/SiriShortcuts/fr.html">
+  <link rel="alternate" hreflang="es" href="https://regnskapp.github.io/SiriShortcuts/es.html">
+  <link rel="alternate" hreflang="ar" href="https://regnskapp.github.io/SiriShortcuts/ar.html">
+  <link rel="alternate" hreflang="fi" href="https://regnskapp.github.io/SiriShortcuts/fi.html">
+  <link rel="alternate" hreflang="hi" href="https://regnskapp.github.io/SiriShortcuts/hi.html">
+  <link rel="alternate" hreflang="it" href="https://regnskapp.github.io/SiriShortcuts/it.html">
+  <link rel="alternate" hreflang="ja" href="https://regnskapp.github.io/SiriShortcuts/ja.html">
+  <link rel="alternate" hreflang="nl" href="https://regnskapp.github.io/SiriShortcuts/nl.html">
+  <link rel="alternate" hreflang="uk" href="https://regnskapp.github.io/SiriShortcuts/uk.html">
+  <link rel="alternate" hreflang="zh-Hans" href="https://regnskapp.github.io/SiriShortcuts/zhHans.html">
+  <link rel="alternate" hreflang="zh-Hant" href="https://regnskapp.github.io/SiriShortcuts/zhHant.html">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* Modern CSS Reset & Base Styles */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --primary-color: #0f766e;
+      --primary-dark: #0d5f56;
+      --accent-color: #f59e0b;
+      --success-color: #10b981;
+      --text-primary: #111827;
+      --text-secondary: #6b7280;
+      --text-muted: #9ca3af;
+      --bg-primary: #ffffff;
+      --bg-secondary: #f0f4f8;
+      --bg-tertiary: #e2e8f0;
+      --border-color: #e5e7eb;
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      --radius-sm: 0.375rem;
+      --radius-md: 0.5rem;
+      --radius-lg: 0.75rem;
+      --radius-xl: 1rem;
+      --transition-fast: 0.15s ease;
+      --transition-normal: 0.3s ease;
+      --transition-slow: 0.5s ease;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --text-primary: #f9fafb;
+        --text-secondary: #d1d5db;
+        --text-muted: #9ca3af;
+        --bg-primary: #111827;
+        --bg-secondary: #1f2937;
+        --bg-tertiary: #374151;
+        --border-color: #374151;
+        --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+        --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+        --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
+        --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+      }
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      color: var(--text-primary);
+      background: var(--bg-primary);
+      overflow-x: hidden;
+    }
+
+    /* Modern Typography */
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 600;
+      line-height: 1.25;
+      letter-spacing: -0.025em;
+    }
+
+    h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
+    h2 { font-size: clamp(1.5rem, 4vw, 2.25rem); }
+    h3 { font-size: clamp(1.25rem, 3vw, 1.875rem); }
+
+    p { margin-bottom: 1rem; }
+
+    /* Navigation Components */
+    .nav-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-color);
+      transition: all var(--transition-normal);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .nav-container {
+        background: rgba(17, 24, 39, 0.8);
+      }
+    }
+
+    .nav-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* Language Switcher */
+    #language-switcher {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    #active-language {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    #current-lang-text {
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    #active-language:hover {
+      background: var(--bg-tertiary);
+      border-color: var(--primary-color);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+
+    #current-flag {
+      width: 20px;
+      height: 15px;
+      border-radius: 2px;
+      object-fit: cover;
+    }
+
+    #language-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      margin-top: 0.5rem;
+      background: var(--bg-primary);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-xl);
+      padding: 0.5rem;
+      min-width: 200px;
+      max-height: 300px;
+      overflow-y: auto;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all var(--transition-normal);
+      z-index: 1000;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border-color) transparent;
+    }
+
+    #language-menu::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    #language-menu::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    #language-menu::-webkit-scrollbar-thumb {
+      background: var(--border-color);
+      border-radius: 3px;
+    }
+
+    #language-menu.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    #language-menu button {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      color: var(--text-primary);
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    #language-menu button:hover {
+      background: var(--bg-secondary);
+      border-color: var(--primary-color);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-1px);
+    }
+
+    #language-menu button:active {
+      transform: translateY(0);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Hamburger Menu */
+    #hamburger-menu {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    #menu-toggle {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      font-size: 0;
+      padding: 0;
+    }
+
+    #menu-toggle::before,
+    #menu-toggle::after,
+    #menu-toggle span {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: var(--text-primary);
+      margin: 3px 0;
+      transition: all var(--transition-fast);
+      border-radius: 1px;
+    }
+
+    #menu-toggle:hover {
+      background: var(--bg-tertiary);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+
+    #menu-dropdown {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      margin-top: 0.5rem;
+      background: var(--bg-primary);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-xl);
+      padding: 0.5rem;
+      min-width: 235px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all var(--transition-normal);
+      z-index: 1000;
+    }
+
+    #menu-dropdown.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    #menu-dropdown a {
+      display: block;
+      padding: 0.75rem 1rem;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      text-decoration: none;
+      font-weight: 500;
+      border-radius: var(--radius-md);
+      transition: all var(--transition-fast);
+      margin-bottom: 0.25rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    #menu-dropdown a:hover {
+      background: var(--bg-secondary);
+      border-color: var(--primary-color);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+
+    #menu-dropdown a:active {
+      transform: translateY(0);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Modern Recipe Layout */
+    .content {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 2rem;
+      padding-top: calc(80px + 2rem);
+    }
+
+    .intro-section {
+      text-align: center;
+      margin-bottom: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 2px solid var(--border-color);
+    }
+
+    .intro-section h1 {
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+
+    .intro-section p {
+      font-size: 1.125rem;
+      color: var(--text-secondary);
+      max-width: 700px;
+      margin: 0 auto 1rem;
+    }
+
+    .intro-section p:last-child {
+      margin-bottom: 0;
+    }
+
+    .device-info-box {
+      background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-secondary) 100%);
+      border: 2px solid var(--primary-color);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      margin: 1.5rem auto;
+      max-width: 700px;
+      text-align: left;
+    }
+
+    .device-info-box h2 {
+      color: var(--primary-color);
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .device-info-box h2 + p {
+      text-align: center;
+    }
+
+    .device-info-box p {
+      margin-bottom: 0.75rem;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .device-info-box p:last-child {
+      margin-bottom: 0;
+    }
+
+    .device-info-box strong {
+      color: var(--primary-color);
+      font-weight: 600;
+    }
+
+    /* Step Card Design */
+    .step-card {
+      background: var(--bg-secondary);
+      border-radius: var(--radius-xl);
+      padding: 2rem;
+      margin-bottom: 2.5rem;
+      border: 2px solid var(--border-color);
+      box-shadow: var(--shadow-sm), 0 0 0 1px rgba(15, 118, 110, 0.15), 0 6px 18px -2px rgba(15, 118, 110, 0.3);
+      transition: all var(--transition-normal);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .step-card:hover {
+      box-shadow: var(--shadow-md), 0 0 0 1px rgba(15, 118, 110, 0.25), 0 10px 24px -4px rgba(15, 118, 110, 0.4);
+      transform: translateY(-2px);
+    }
+
+    /* Mobile: Highlight card when in viewport */
+    @media screen and (max-width: 768px) {
+      .step-card.in-view {
+        box-shadow: var(--shadow-md), 0 0 0 1px rgba(15, 118, 110, 0.25), 0 10px 24px -4px rgba(15, 118, 110, 0.4);
+        transform: translateY(-2px);
+      }
+    }
+
+    .step-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .step-number {
+      flex-shrink: 0;
+      width: 60px;
+      height: 60px;
+      background: var(--primary-color);
+      color: white;
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.75rem;
+      font-weight: 700;
+      box-shadow: var(--shadow-md);
+    }
+
+    .step-card.pro-tip .step-number {
+      background: var(--accent-color);
+      font-size: 2rem;
+    }
+
+    .step-title {
+      flex: 1;
+      color: var(--primary-color);
+      font-size: clamp(1.25rem, 3vw, 1.75rem);
+      font-weight: 600;
+      line-height: 1.3;
+      margin: 0;
+      padding-top: 0.5rem;
+    }
+
+    .step-images {
+      margin: 1.5rem 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center; /* Center images on desktop */
+    }
+
+    /* Desktop: All images same size (33.333% like step 3) */
+    .step-images img {
+      flex: 1 1 calc(33.333% - 1rem);
+      max-width: calc(33.333% - 1rem);
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      transition: all var(--transition-fast);
+      display: block;
+    }
+
+    .step-images img:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .step-content {
+      color: var(--text-primary);
+      line-height: 1.7;
+    }
+
+    .step-content p {
+      margin-bottom: 1rem;
+    }
+
+    .step-content .inline-images {
+      margin: 1rem 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: flex-start;
+    }
+
+    /* Center single images on desktop */
+    .step-content .inline-images:has(img:only-child) {
+      justify-content: center;
+    }
+
+    /* Center when there are exactly 2 images (for step 7) */
+    .step-content .inline-images:has(img:nth-child(2):last-child) {
+      justify-content: center;
+    }
+
+    .step-content .inline-images img {
+      flex: 0 1 auto;
+      max-width: calc(33.333% - 1rem);
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-md);
+      transition: all var(--transition-fast);
+    }
+
+    .step-content .inline-images img:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    @media (max-width: 768px) {
+      .step-content .inline-images {
+        gap: 0.5rem;
+      }
+      
+      .step-content .inline-images img {
+        flex: 1 1 48%;
+        max-width: 48%;
+      }
+      
+      /* Single image uses same size as multiple images and is centered */
+      .step-content .inline-images img:only-child {
+        flex: 1 1 48%;
+        max-width: 48%;
+      }
+      
+      .step-content .inline-images:has(img:only-child) {
+        justify-content: center;
+      }
+      
+      /* Ensure multiple images stay side by side */
+      .step-content .inline-images:not(:has(img:only-child)) {
+        justify-content: flex-start;
+      }
+      
+      /* On mobile: when there are exactly 3 images, center the third one under the first two */
+      .step-content .inline-images img:nth-child(3):last-child {
+        flex: 0 0 48%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+
+    .step-content strong {
+      color: var(--primary-color);
+      font-weight: 600;
+    }
+
+    .step-content code {
+      background: var(--bg-tertiary);
+      padding: 0.25rem 0.5rem;
+      border-radius: var(--radius-sm);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9em;
+      color: var(--text-primary);
+      border: 1px solid var(--border-color);
+    }
+
+    .step-content ul {
+      margin-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .step-content ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    /* Copy Box */
+    .copy-box {
+      background: var(--bg-tertiary);
+      border: 2px solid var(--primary-color);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+      margin: 1rem 0;
+      position: relative;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      color: var(--text-primary);
+    }
+
+    .copy-box-button {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: var(--radius-sm);
+      padding: 0.5rem 1rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      font-family: 'Inter', sans-serif;
+    }
+
+    .copy-box-button:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .copy-box-button:active {
+      transform: translateY(0);
+    }
+
+    .copy-box-button.copied {
+      background: var(--success-color);
+    }
+
+    /* Important Section */
+    .important-section {
+      background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-secondary) 100%);
+      border: 2px solid var(--accent-color);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .important-section h2 {
+      color: var(--accent-color);
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .important-section p {
+      margin-bottom: 0.75rem;
+    }
+
+    .back-btn {
+      display: inline-block;
+      background: var(--primary-color);
+      color: white !important;
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      font-weight: 600;
+      transition: all var(--transition-fast);
+      margin-top: 2rem;
+      box-shadow: var(--shadow-md);
+      border: 2px solid var(--primary-color);
+    }
+
+    .back-btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .footer {
+      padding: 2rem;
+      background: var(--bg-tertiary);
+      text-align: center;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .footer-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .nav-content {
+        padding: 1rem;
+      }
+
+      .content {
+        padding: 1rem;
+        padding-top: calc(70px + 1rem);
+      }
+
+      #language-menu {
+        left: 0;
+        right: auto;
+        min-width: 180px;
+      }
+
+      #menu-dropdown {
+        min-width: 200px;
+      }
+
+      .intro-section {
+        margin-bottom: 2rem;
+        padding-bottom: 1.5rem;
+      }
+
+      .step-card {
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .step-header {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .step-number {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+      }
+
+      .step-title {
+        padding-top: 0;
+      }
+
+      /* Mobile: 2 images side by side when more than 1 image */
+      .step-images {
+        gap: 0.5rem;
+        justify-content: flex-start; /* Reset centering on mobile */
+      }
+      
+      /* Center single images in step-images on mobile */
+      .step-images:has(img:only-child) {
+        justify-content: center;
+      }
+      
+      .step-images img {
+        flex: 1 1 48%;
+        max-width: 48%;
+        border-radius: var(--radius-md);
+      }
+      
+      /* Single image on mobile uses same size as multiple images */
+      .step-images img:only-child {
+        flex: 1 1 48%;
+        max-width: 48%;
+      }
+      
+      /* On mobile: when there are exactly 3 images, center the third one under the first two */
+      .step-images img:nth-child(3):last-child {
+        flex: 0 0 48%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .important-section {
+        padding: 1.25rem;
+      }
+
+      .copy-box {
+        font-size: 0.85rem;
+        padding: 0.75rem;
+      }
+
+      .copy-box-button {
+        padding: 0.4rem 0.75rem;
+        font-size: 0.8rem;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav-container">
+    <div class="nav-content">
+      <!-- 🌍 Language Switcher -->
+      <div id="language-switcher">
+        <button id="active-language" onclick="toggleLanguageMenu()" aria-label="Seleccionar idioma">
+          <img id="current-flag" src="" alt="Idioma seleccionado" />
+          <span id="current-lang-text">ES</span>
+        </button>
+        <div id="language-menu">
+          <button onclick="changeLanguage('en')">
+            <img src="/images/en/gb.svg" width="20" alt="English" /> English
+          </button>
+          <button onclick="changeLanguage('no')">
+            <img src="/images/no/no.svg" width="20" alt="Norsk" /> Norsk
+          </button>
+          <button onclick="changeLanguage('da')">
+            <img src="/images/da/da.svg" width="20" alt="Dansk" /> Dansk
+          </button>
+          <button onclick="changeLanguage('sv')">
+            <img src="/images/sv/sv.svg" width="20" alt="Svenska" /> Svenska
+          </button>
+          <button onclick="changeLanguage('de')">
+            <img src="/images/de/de.svg" width="20" alt="Deutsch" /> Deutsch
+          </button>
+          <button onclick="changeLanguage('fr')">
+            <img src="/images/fr/fr.svg" width="20" alt="Français" /> Français
+          </button>
+          <button onclick="changeLanguage('es')">
+            <img src="/images/es/es.svg" width="20" alt="Español" /> Español
+          </button>
+          <button onclick="changeLanguage('it')">
+            <img src="/images/it/it.svg" width="20" alt="Italiano" /> Italiano
+          </button>
+          <button onclick="changeLanguage('nl')">
+            <img src="/images/nl/nl.svg" width="20" alt="Nederlands" /> Nederlands
+          </button>
+          <button onclick="changeLanguage('fi')">
+            <img src="/images/fi/fi.svg" width="20" alt="Suomi" /> Suomi
+          </button>
+          <button onclick="changeLanguage('ar')">
+            <img src="/images/ar/ar.svg" width="20" alt="العربية" /> العربية
+          </button>
+          <button onclick="changeLanguage('hi')">
+            <img src="/images/hi/hi.svg" width="20" alt="हिन्दी" /> हिन्दी
+          </button>
+          <button onclick="changeLanguage('ja')">
+            <img src="/images/ja/ja.svg" width="20" alt="日本語" /> 日本語
+          </button>
+          <button onclick="changeLanguage('uk')">
+            <img src="/images/uk/uk.svg" width="20" alt="Українська" /> Українська
+          </button>
+          <button onclick="changeLanguage('zhHans')">
+            <img src="/images/zhHans/zhHans.svg" width="20" alt="简体中文" /> 简体中文
+          </button>
+          <button onclick="changeLanguage('zhHant')">
+            <img src="/images/zhHant/zhHant.svg" width="20" alt="繁體中文" /> 繁體中文
+          </button>
+        </div>
+      </div>
+
+      <!-- Hamburger Menu -->
+      <div id="hamburger-menu">
+        <button id="menu-toggle" aria-label="Abrir menú"><span></span></button>
+        <div id="menu-dropdown">
+          <a href="/index-es.html">Inicio</a>
+          <a href="/SiriShortcutsSetup/es.html">Apple Pay y Atajos</a>
+          <a href="/privacy-policy/es.html">Política de Privacidad</a>
+          <a href="/support/es.html">Soporte</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="content">
+    <div class="intro-section">
+      <h1>Configuración de Transacciones y Atajos</h1>
+      <p>Siga estos pasos para configurar un Atajo para registrar transacciones programadas en BalanceTrackr con total flexibilidad.</p>
+      <p>Esta guía demuestra cómo usar el <strong>activador de correo electrónico</strong> con palabras clave específicas en la línea de asunto del correo. Esto es especialmente útil si recibe frecuentemente correos sobre facturas próximas, ya que la información de estos correos puede registrarse automáticamente en segundo plano en BalanceTrackr.</p>
+      <p>Aunque también puede usar otros activadores para capturar información de transacciones, esta configuración se centra en el activador de correo electrónico. Los Atajos se vuelven increíblemente poderosos cuando se combinan con Apple Intelligence.</p>
+      
+      <div class="device-info-box">
+        <h2>📱 Requisitos del dispositivo</h2>
+        <p><strong>Esta guía requiere Apple Intelligence.</strong></p>
+        <p>Apple Intelligence está disponible en el <strong>iPhone 15 Pro</strong> y <strong>iPhone 15 Pro Max</strong>, y estará disponible en todos los <strong>modelos de iPhone 16 y posteriores</strong>.</p>
+        <p>Estos dispositivos tienen los <strong>chips A17 Pro o más nuevos</strong> necesarios para las funciones de IA, que incluyen procesamiento en el dispositivo para mayor seguridad y velocidad.</p>
+      </div>
+    </div>
+
+    <!-- Step 1 -->
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-number">1</div>
+        <h2 class="step-title">Abrir la aplicación Atajos</h2>
+      </div>
+      <div class="step-images">
+        <img src="/images/SiriShortcutsSetup-images/1.jpeg" alt="Paso 1" />
+      </div>
+      <div class="step-content">
+        <p>Inicie la aplicación Atajos integrada en su iPhone.</p>
+      </div>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-number">2</div>
+        <h2 class="step-title">Tocar "Automatización" en la parte inferior</h2>
+      </div>
+      <div class="step-images">
+        <img src="/images/SiriShortcutsSetup-images/2.jpeg" alt="Paso 2" />
+      </div>
+      <div class="step-content">
+        <p>Cambie a la pestaña <strong>Automatización</strong> para crear un nuevo atajo.</p>
+      </div>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-number">3</div>
+        <h2 class="step-title">Tocar "Nueva automatización" o el icono de más y elegir "Correo electrónico"</h2>
+      </div>
+      <div class="step-images">
+        <img src="/images/SiriShortcutsSetup-images/3.0.jpeg" alt="Paso 3.0" />
+        <img src="/images/SiriShortcutsSetup-images/3.1.jpeg" alt="Paso 3.1" />
+        <img src="/images/SiriShortcuts-images/1.PNG" alt="Paso 3.2" />
+      </div>
+      <div class="step-content">
+        <p>Toque <strong>Nueva automatización</strong> o el icono <strong>+</strong> en la esquina superior derecha, luego seleccione <strong>Correo electrónico</strong>.</p>
+      </div>
+    </div>
+
+    <!-- Step 4 -->
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-number">4</div>
+        <h2 class="step-title">Agregar palabra clave y configurar automatización</h2>
+      </div>
+      <div class="step-images">
+        <img src="/images/SiriShortcuts-images/2.PNG" alt="Paso 4" />
+        <img src="/images/SiriShortcuts-images/34.PNG" alt="Paso 4.2" />
+      </div>
+      <div class="step-content">
+        <p>Agregue una palabra clave en <strong>"El asunto contiene"</strong>. Haga clic en <strong>Ejecutar inmediatamente</strong> para que el atajo se ejecute completamente en segundo plano. Toque <strong>Siguiente</strong>.</p>
+        <p>Toque <strong>Crear nuevo atajo</strong> para iniciar la configuración.</p>
+      </div>
+    </div>
+
+    <!-- Step 5 -->
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-number">5</div>
+        <h2 class="step-title">Obtener texto de entrada</h2>
+      </div>
+      <div class="step-images">
+        <img src="/images/SiriShortcuts-images/3.PNG" alt="Paso 5.1" />
+        <img src="/images/SiriShortcuts-images/4.PNG" alt="Paso 5.2" />
+        <img src="/images/SiriShortcuts-images/5.PNG" alt="Paso 5.3" />
+      </div>
+      <div class="step-content">
+        <p>Busque <strong>"Obtener texto de entrada"</strong> y tóquelo para agregarlo.</p>
+        <p>Toque <strong>Entrada</strong> y seleccione <strong>Entrada de atajo</strong>.</p>
+        <p>Seleccione <strong>Contenido</strong>.</p>
+      </div>
+    </div>
+
+    <!-- Step 6 -->
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-number">6</div>
+        <h2 class="step-title">Usar modelo con Apple Intelligence</h2>
+      </div>
+      <div class="step-images">
+        <img src="/images/SiriShortcuts-images/6.PNG" alt="Paso 6.1" />
+        <img src="/images/SiriShortcuts-images/7.PNG" alt="Paso 6.2" />
+      </div>
+      <div class="step-content">
+        <p>Busque <strong>"Usar modelo"</strong> y toque <strong>"En el dispositivo"</strong>.</p>
+        <p>Haga clic en el cuadro y elimine el texto para que diga: <strong>"Solicitud…"</strong>. Escriba el siguiente texto:</p>
+        <div class="copy-box">
+          <button class="copy-box-button" onclick="copyToClipboard(this, 'copy-text-step6')">Copiar</button>
+          <div id="copy-text-step6">Extract the following information from TEXT:
+
+Recipient
+Due date
+Amount
+
+Return the answer like this:
+
+{"recipient": "...", "dueDate": "...", "amount": "..."}</div>
+        </div>
+        <p>Elimine el <strong>TEXT</strong> grande y seleccione la variable que muestra un símbolo de texto amarillo y la palabra <strong>Texto</strong>.</p>
+        <p>Haga clic en la pequeña chevron junto al modelo y seleccione <strong>"Texto"</strong> del selector de Salida.</p>
+      </div>
+    </div>
+
+    <!-- Step 7 -->
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-number">7</div>
+        <h2 class="step-title">Obtener valores del diccionario</h2>
+      </div>
+      <div class="step-images">
+        <img src="/images/SiriShortcuts-images/8.PNG" alt="Paso 7.1" />
+        <img src="/images/SiriShortcuts-images/9.PNG" alt="Paso 7.2" />
+      </div>
+      <div class="step-content">
+        <p>Busque <strong>"Diccionario"</strong> y seleccione <strong>"Obtener diccionario de entrada"</strong>.</p>
+        <p>Busque <strong>"Diccionario"</strong> nuevamente y seleccione <strong>"Obtener valor del diccionario"</strong>.</p>
+        <p>En el campo <strong>Clave</strong> escriba <strong>"recipient"</strong>.</p>
+        <p>Haga clic en <strong>Diccionario</strong> después de "en" y renombre el Nombre de variable a <strong>"Diccionario IA"</strong>.</p>
+        <div class="inline-images">
+          <img src="/images/SiriShortcuts-images/10.PNG" alt="Paso 7.3" />
+          <img src="/images/SiriShortcuts-images/11.PNG" alt="Paso 7.4" />
+        </div>
+        <p>Ahora haga clic en el símbolo del Diccionario (círculo rojo en la imagen 2 en este paso) y haga clic en <strong>"Duplicar"</strong>. Cambie el campo <strong>"recipient"</strong> a <strong>"dueDate"</strong> y <strong>"amount"</strong>.</p>
+      </div>
+    </div>
+
+    <!-- Step 8 -->
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-number">8</div>
+        <h2 class="step-title">Crear diccionarios de enrutamiento de cuenta y categoría</h2>
+      </div>
+      <div class="step-content">
+        <p>Cree dos diccionarios nuevos. Estos se utilizarán como opciones de enrutamiento para las cuentas y categorías que tiene basadas en el Destinatario de los correos electrónicos. De esta manera puede recibir correos de múltiples remitentes, y los pagos se cargarán a las cuentas correctas.</p>
+      </div>
+      <div class="step-images">
+        <img src="/images/SiriShortcuts-images/12.PNG" alt="Paso 8.1" />
+        <img src="/images/SiriShortcuts-images/13.PNG" alt="Paso 8.2" />
+        <img src="/images/SiriShortcuts-images/14.PNG" alt="Paso 8.3" />
+        <img src="/images/SiriShortcuts-images/15.PNG" alt="Paso 8.4" />
+      </div>
+      <div class="step-content">
+        <p>Busque <strong>"Diccionario"</strong> y seleccione esa opción. Haga clic en <strong>"Agregar nuevo elemento"</strong> y seleccione <strong>"Texto"</strong>.</p>
+        <p>Escriba el nombre del Destinatario en la Clave, por ejemplo <strong>"Compañía de energía eléctrica"</strong> y en el campo de Texto escriba el nombre de la cuenta de la que desea que se deduzca este Destinatario. En mi ejemplo uso <strong>"Casa"</strong>. Agregue tantos destinatarios como desee, y todos se enrutarán a la cuenta correcta.</p>
+        <div class="inline-images">
+          <img src="/images/SiriShortcuts-images/16.PNG" alt="Paso 8.5" />
+        </div>
+        <p>Vuelva a <strong>Duplicar</strong> el diccionario recién creado. Este nuevo diccionario seleccionará la categoría correcta que desea que tenga el pago. La Clave es la misma que el primer diccionario, y el Texto es la categoría que desea usar.</p>
+        <div class="important-section">
+          <h2>¡Importante!</h2>
+          <p>Tenga en cuenta que el nombre de la cuenta y el nombre de la categoría deben <strong>COINCIDIR AL 100%</strong> con los nombres utilizados en la aplicación BalanceTrackr.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 9 -->
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-number">9</div>
+        <h2 class="step-title">Obtener valores de cuenta y categoría</h2>
+      </div>
+      <div class="step-images">
+        <img src="/images/SiriShortcuts-images/17.PNG" alt="Paso 9.1" />
+        <img src="/images/SiriShortcuts-images/18.PNG" alt="Paso 9.2" />
+        <img src="/images/SiriShortcuts-images/19.PNG" alt="Paso 9.3" />
+      </div>
+      <div class="step-content">
+        <p>Ahora tendrá que buscar <strong>"Diccionario"</strong> nuevamente y seleccionar <strong>"Obtener valor del diccionario"</strong> nuevamente.</p>
+        <p>La acción seleccionará automáticamente el último diccionario que creó. Toque <strong>"Clave"</strong> y luego toque <strong>"Seleccionar variable"</strong>. Desplácese hacia arriba y encuentre el primer <strong>"Obtener valor del diccionario"</strong> que tiene el texto <strong>"Obtener valor para recipient en Diccionario IA"</strong>. Toque el <strong>"Valor del diccionario"</strong> debajo. Dé un nombre a la variable, como <strong>"Valor del destinatario"</strong> y deslice la hoja hacia abajo para guardarla.</p>
+        <p>Luego haga clic en <strong>"Diccionario"</strong> después de "en" y renombre el Nombre de variable a <strong>"Cuentas"</strong>.</p>
+        <div class="inline-images">
+          <img src="/images/SiriShortcuts-images/20.PNG" alt="Paso 9.4" />
+          <img src="/images/SiriShortcuts-images/21.PNG" alt="Paso 9.5" />
+          <img src="/images/SiriShortcuts-images/22.PNG" alt="Paso 9.6" />
+        </div>
+        <p><strong>Duplique</strong> este Obtener valor del diccionario. Borre el nombre <strong>"Cuentas"</strong> que acaba de crear y haga clic en el texto <strong>"Diccionario"</strong>. Luego haga clic en <strong>"Seleccionar variable"</strong> y seleccione el <strong>"Valor del diccionario"</strong> para el segundo diccionario.</p>
+        <p>Haga clic en <strong>"Diccionario"</strong> después de "en" y renombre el Nombre de variable a <strong>"Categorías"</strong>.</p>
+      </div>
+    </div>
+
+    <!-- Step 10 -->
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-number">10</div>
+        <h2 class="step-title">Configurar acción de BalanceTrackr</h2>
+      </div>
+      <div class="step-content">
+        <div class="inline-images">
+          <img src="/images/SiriShortcuts-images/23.PNG" alt="Paso 10.1" />
+          <img src="/images/SiriShortcuts-images/24.PNG" alt="Paso 10.2" />
+          <img src="/images/SiriShortcuts-images/25.PNG" alt="Paso 10.3" />
+        </div>
+        <p>Busque <strong>"BalanceTrackr"</strong> y seleccione <strong>"Registrar transacción programada"</strong>.</p>
+        <p>Haga clic en <strong>"Cantidad"</strong> y luego haga clic en <strong>"Seleccionar variable"</strong>. Desplácese hacia arriba y encuentre el <strong>"Valor del diccionario"</strong> que está después de <strong>"Obtener valor para amount en Diccionario IA"</strong>. Haga clic en el <strong>"Valor del diccionario"</strong> recién agregado y renómbrelo a <strong>"Valor de cantidad"</strong>.</p>
+        
+        <div class="inline-images">
+          <img src="/images/SiriShortcuts-images/26.PNG" alt="Paso 10.4" />
+        </div>
+        <p>Haga clic en <strong>Tipo</strong> y seleccione si la transacción debe ser un <strong>Gasto</strong> o <strong>Ingreso</strong>.</p>
+        
+        <div class="inline-images">
+          <img src="/images/SiriShortcuts-images/27.PNG" alt="Paso 10.5" />
+        </div>
+        <p>Haga clic en <strong>"Cuenta"</strong> y luego haga clic en <strong>"Seleccionar variable"</strong>. Desplácese hacia arriba y encuentre el <strong>"Valor del diccionario"</strong> que está después de <strong>"Obtener valor para Valor del destinatario en Cuentas"</strong>. Haga clic en el <strong>"Valor del diccionario"</strong> recién agregado y renómbrelo a <strong>"Valor de cuenta"</strong>.</p>
+        
+        <div class="inline-images">
+          <img src="/images/SiriShortcuts-images/28.PNG" alt="Paso 10.6" />
+        </div>
+        <p>Haga clic en <strong>"Categoría"</strong> y luego haga clic en <strong>"Seleccionar variable"</strong>. Desplácese hacia arriba y encuentre el <strong>"Valor del diccionario"</strong> que está después de <strong>"Obtener valor para Valor del destinatario en Categorías"</strong>. Haga clic en el <strong>"Valor del diccionario"</strong> recién agregado y renómbrelo a <strong>"Valor de categoría"</strong>.</p>
+        
+        <div class="inline-images">
+          <img src="/images/SiriShortcuts-images/29.PNG" alt="Paso 10.7" />
+        </div>
+        <p>Haga clic en <strong>"Fecha"</strong> y luego haga clic en <strong>"Seleccionar variable"</strong>. Desplácese hacia arriba y encuentre el <strong>"Valor del diccionario"</strong> que está después de <strong>"Obtener valor para dueDate en Diccionario IA"</strong>.</p>
+        <p>Haga clic en el <strong>"Valor del diccionario"</strong> y renómbrelo a <strong>"Valor de fecha de vencimiento"</strong>.</p>
+        <p>Haga clic en <strong>"Hora"</strong> y escriba la hora a la que desea que ocurra la transacción en esta fecha. En mi guía uso <strong>12:34</strong>.</p>
+        
+        <div class="inline-images">
+          <img src="/images/SiriShortcuts-images/30.PNG" alt="Paso 10.8" />
+        </div>
+        <p>Haga clic en <strong>"Descripción"</strong>, desplácese hacia la derecha en la línea "Seleccionar variable" y seleccione <strong>"Valor del destinatario"</strong>. Esta será la nota para la transacción en BalanceTrackr.</p>
+        
+        <div class="inline-images">
+          <img src="/images/SiriShortcuts-images/31.PNG" alt="Paso 10.9" />
+          <img src="/images/SiriShortcuts-images/32.PNG" alt="Paso 10.10" />
+          <img src="/images/SiriShortcuts-images/33.PNG" alt="Paso 10.11" />
+        </div>
+        <p>Si todo se ha ingresado correctamente, estas tres imágenes muestran cómo debería verse.</p>
+        <p>¡Ahora presione la gran marca de verificación blanca sobre fondo azul en la esquina superior derecha, y la automatización está guardada y lista para usar! Debería ejecutarse en segundo plano cuando un correo con las palabras clave seleccionadas entre en su correo, y mágicamente debería ingresarse en BalanceTrackr.</p>
+      </div>
+    </div>
+
+    <!-- Pro Tip -->
+    <div class="step-card pro-tip">
+      <div class="step-header">
+        <div class="step-number">💡</div>
+        <h2 class="step-title">Consejo profesional</h2>
+      </div>
+      <div class="step-content">
+        <p>Configure notificaciones en BalanceTrackr para recibir notificaciones sobre las transacciones que se han ingresado.</p>
+      </div>
+    </div>
+
+    <!-- Pro Tip 2 -->
+    <div class="step-card pro-tip">
+      <div class="step-header">
+        <div class="step-number">💡</div>
+        <h2 class="step-title">Consejo profesional 2</h2>
+      </div>
+      <div class="step-content">
+        <p>Para ver exactamente qué información extrae Apple Intelligence de sus correos electrónicos, use la función <strong>"Agregar a nota"</strong> para pruebas.</p>
+        <p>Cree una nueva nota en la aplicación Notas, luego agregue la acción <strong>"Agregar a nota"</strong> a su atajo. Seleccione las variables y el texto que desea capturar (como destinatario, fecha de vencimiento y cantidad), y elija la nota que creó como destino.</p>
+        <p>Cuando se active la automatización, toda la información extraída se agregará a su nota. Esta es una excelente manera de ver los valores reales que se usarán en sus diccionarios de enrutamiento, asegurando que se seleccionen las cuentas y categorías correctas cuando el atajo se ejecute en segundo plano.</p>
+        <div class="inline-images">
+          <img src="/images/SiriShortcuts-images/35.PNG" alt="Consejo profesional: Agregar a nota" />
+        </div>
+      </div>
+    </div>
+
+    <a href="/index-es.html" class="back-btn">← BalanceTrackr</a>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <p>&copy; 2025 BalanceTrackr (RegnskApp).<br>
+      Ole Morten Tengesdal. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    function toggleLanguageMenu() {
+      const menu = document.getElementById("language-menu");
+      menu.classList.toggle("show");
+    }
+
+    function changeLanguage(langCode) {
+      // Normalize language codes (remove hyphens for zhHans/zhHant)
+      if (langCode === 'zh-Hans') langCode = 'zhHans';
+      if (langCode === 'zh-Hant') langCode = 'zhHant';
+      const flagPath = `/images/${langCode.replace('-', '')}/${langCode === 'en' ? 'gb' : langCode.replace('-', '')}.svg`;
+      document.getElementById("current-flag").src = flagPath;
+
+      const langTexts = {
+        'en': 'EN', 'no': 'NO', 'da': 'DA', 'sv': 'SV', 'de': 'DE',
+        'fr': 'FR', 'es': 'ES', 'ar': 'AR', 'fi': 'FI', 'hi': 'HI',
+        'it': 'IT', 'ja': 'JA', 'nl': 'NL', 'uk': 'UK', 'zhHans': 'CN', 'zhHant': 'TW'
+      };
+      document.getElementById("current-lang-text").textContent = langTexts[langCode] || 'ES';
+
+      // Navigate to the appropriate SiriShortcuts page
+      const file = langCode === 'en' ? '/SiriShortcuts/en.html' : `/SiriShortcuts/${langCode}.html`;
+      window.location.href = file;
+    }
+
+    // Determine which language is active based on URL
+    function setInitialFlag() {
+      const path = window.location.pathname;
+      let langCode = 'es';
+      
+      // Extract language code from path
+      if (path.includes('/SiriShortcuts/')) {
+        const match = path.match(/\/SiriShortcuts\/([^\/]+)\.html/);
+        if (match) {
+          langCode = match[1];
+        }
+      }
+      
+      // Normalize language codes
+      if (langCode === 'zhHans') langCode = 'zhHans';
+      if (langCode === 'zhHant') langCode = 'zhHant';
+      
+      const flagPath = `/images/${langCode.replace('-', '')}/${langCode === 'en' ? 'gb' : langCode.replace('-', '')}.svg`;
+      const img = document.getElementById("current-flag");
+      if (img) img.src = flagPath;
+      
+      const langTexts = {
+        'en': 'EN', 'no': 'NO', 'da': 'DA', 'sv': 'SV', 'de': 'DE',
+        'fr': 'FR', 'es': 'ES', 'ar': 'AR', 'fi': 'FI', 'hi': 'HI',
+        'it': 'IT', 'ja': 'JA', 'nl': 'NL', 'uk': 'UK', 'zhHans': 'CN', 'zhHant': 'TW'
+      };
+      document.getElementById("current-lang-text").textContent = langTexts[langCode] || 'ES';
+    }
+
+    setInitialFlag(); // call the function on load
+
+    // Hamburger Menu Functions
+    const toggleButton = document.getElementById('menu-toggle');
+    const dropdown = document.getElementById('menu-dropdown');
+
+    toggleButton.addEventListener('click', () => {
+      dropdown.classList.toggle('show');
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener("click", function (event) {
+      const switcher = document.getElementById("language-switcher");
+      if (!switcher.contains(event.target)) {
+        document.getElementById("language-menu").classList.remove("show");
+      }
+
+      if (!document.getElementById('hamburger-menu').contains(event.target)) {
+        dropdown.classList.remove('show');
+      }
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Mobile: Highlight step cards when they come into viewport
+    if (window.matchMedia('(max-width: 768px)').matches) {
+      const stepCards = document.querySelectorAll('.step-card');
+      
+      const observerOptions = {
+        root: null,
+        rootMargin: '-20% 0px -20% 0px', // Trigger when card is in middle 60% of viewport
+        threshold: 0.1
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+          } else {
+            entry.target.classList.remove('in-view');
+          }
+        });
+      }, observerOptions);
+
+      stepCards.forEach(card => {
+        observer.observe(card);
+      });
+    }
+
+    // Copy to clipboard function
+    function copyToClipboard(button, textId) {
+      const textElement = document.getElementById(textId);
+      const text = textElement.textContent || textElement.innerText;
+      
+      navigator.clipboard.writeText(text).then(() => {
+        const originalText = button.textContent;
+        button.textContent = '¡Copiado!';
+        button.classList.add('copied');
+        
+        setTimeout(() => {
+          button.textContent = originalText;
+          button.classList.remove('copied');
+        }, 2000);
+      }).catch(err => {
+        console.error('Failed to copy text: ', err);
+        alert('No se pudo copiar el texto. Por favor, seleccione y copie manualmente.');
+      });
+    }
+  </script>
+
+</body>
+</html>
+
