@@ -506,6 +506,16 @@
       justify-content: flex-start;
     }
 
+    /* Center single images on desktop */
+    .step-content .inline-images:has(img:only-child) {
+      justify-content: center;
+    }
+
+    /* Center when there are exactly 2 images (for step 7) */
+    .step-content .inline-images:has(img:nth-child(2):last-child) {
+      justify-content: center;
+    }
+
     .step-content .inline-images img {
       flex: 0 1 auto;
       max-width: calc(33.333% - 1rem);
@@ -1111,7 +1121,7 @@ Return the answer like this:
     <div class="step-card pro-tip">
       <div class="step-header">
         <div class="step-number">💡</div>
-        <h2 class="step-title">Pro Tip</h2>
+        <h2 class="step-title">Pro Tip 2</h2>
       </div>
       <div class="step-content">
         <p>To see exactly what information Apple Intelligence extracts from your emails, use the <strong>"Append to Note"</strong> function for testing.</p>
