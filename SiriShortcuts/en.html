@@ -545,6 +545,13 @@
       .step-content .inline-images:not(:has(img:only-child)) {
         justify-content: flex-start;
       }
+      
+      /* On mobile: when there are exactly 3 images, center the third one under the first two */
+      .step-content .inline-images img:nth-child(3):last-child {
+        flex: 0 0 48%;
+        margin-left: auto;
+        margin-right: auto;
+      }
     }
 
     .step-content strong {
