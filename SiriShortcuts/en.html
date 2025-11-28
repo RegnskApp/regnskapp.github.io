@@ -527,9 +527,14 @@
         max-width: 48%;
       }
       
+      /* Single image uses same size as multiple images and is centered */
       .step-content .inline-images img:only-child {
-        flex: 1 1 100%;
-        max-width: 100%;
+        flex: 1 1 48%;
+        max-width: 48%;
+      }
+      
+      .step-content .inline-images:has(img:only-child) {
+        justify-content: center;
       }
     }
 
@@ -712,10 +717,10 @@
         border-radius: var(--radius-md);
       }
       
-      /* Single image on mobile takes full width */
+      /* Single image on mobile uses same size as multiple images */
       .step-images img:only-child {
-        flex: 1 1 100%;
-        max-width: 100%;
+        flex: 1 1 48%;
+        max-width: 48%;
       }
       
       /* On mobile: when there are exactly 3 images, center the third one under the first two */
