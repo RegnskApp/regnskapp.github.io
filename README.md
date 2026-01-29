@@ -1,2 +1,2 @@
-# regnskapp.github.io
+# balancetrackr.com
 Homepage for RegnskApp

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://regnskapp.github.io/sitemap.xml
+Sitemap: https://balancetrackr.com/sitemap.xml
