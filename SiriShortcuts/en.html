@@ -1138,7 +1138,7 @@ Return the answer like this:
 
   <footer class="footer">
     <div class="footer-content">
-      <p>&copy; 2025 BalanceTrackr (RegnskApp).<br>
+      <p>&copy; <span id="copyright-year">2025</span> BalanceTrackr (RegnskApp).<br>
       Ole Morten Tengesdal. All rights reserved.</p>
     </div>
   </footer>
@@ -1276,6 +1276,22 @@ Return the answer like this:
         console.error('Failed to copy text: ', err);
         alert('Failed to copy text. Please select and copy manually.');
       });
+    }
+
+    // Update copyright year dynamically
+    function updateCopyrightYear() {
+      const currentYear = new Date().getFullYear();
+      const copyrightElement = document.getElementById('copyright-year');
+      if (copyrightElement) {
+        copyrightElement.textContent = currentYear > 2025 ? `2025-${currentYear}` : '2025';
+      }
+    }
+    
+    // Run on page load
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', updateCopyrightYear);
+    } else {
+      updateCopyrightYear();
     }
   </script>
 
