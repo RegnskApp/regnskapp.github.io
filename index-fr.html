@@ -1283,7 +1283,7 @@
   <!-- Footer -->
   <footer class="footer">
     <div class="footer-content">
-      <p>&copy; 2025 BalanceTrackr (RegnskApp).<br>
+      <p>&copy; <span id="copyright-year">2025</span> BalanceTrackr (RegnskApp).<br>
       Ole Morten Tengesdal. Tous droits réservés.</p>
       <div style="margin-top: 1rem;">
         <a href="privacy-policy/fr.html" style="color: var(--text-secondary); text-decoration: none; margin: 0 1rem;">Politique de confidentialité</a>
@@ -1647,6 +1647,22 @@
       document.addEventListener('DOMContentLoaded', initImageModal);
     } else {
       initImageModal();
+    }
+
+    // Update copyright year dynamically
+    function updateCopyrightYear() {
+      const currentYear = new Date().getFullYear();
+      const copyrightElement = document.getElementById('copyright-year');
+      if (copyrightElement) {
+        copyrightElement.textContent = currentYear > 2025 ? `2025-${currentYear}` : '2025';
+      }
+    }
+    
+    // Run on page load
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', updateCopyrightYear);
+    } else {
+      updateCopyrightYear();
     }
   </script>
 
