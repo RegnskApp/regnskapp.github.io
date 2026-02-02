@@ -1,33 +1,92 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
->
-  <url><loc>https://balancetrackr.com/index.html</loc><lastmod>2025-08-06</lastmod></url>
-  <url><loc>https://balancetrackr.com/index-da.html</loc><lastmod>2025-08-06</lastmod></url>
-  <url><loc>https://balancetrackr.com/index-de.html</loc><lastmod>2025-08-06</lastmod></url>
-  <url><loc>https://balancetrackr.com/index-es.html</loc><lastmod>2025-08-06</lastmod></url>
-  <url><loc>https://balancetrackr.com/index-fr.html</loc><lastmod>2025-08-06</lastmod></url>
-  <url><loc>https://balancetrackr.com/index-no.html</loc><lastmod>2025-08-06</lastmod></url>
-  <url><loc>https://balancetrackr.com/index-sv.html</loc><lastmod>2025-08-06</lastmod></url>
-  <url><loc>https://balancetrackr.com/privacy-policy/da.html</loc><lastmod>2025-08-06</lastmod></url>
-  <url><loc>https://balancetrackr.com/privacy-policy/de.html</loc><lastmod>2025-08-06</lastmod></url>
-  <url><loc>https://balancetrackr.com/privacy-policy/en.html</loc><lastmod>2025-08-06</lastmod></url>
-  <url><loc>https://balancetrackr.com/privacy-policy/es.html</loc><lastmod>2025-08-06</lastmod></url>
-  <url><loc>https://balancetrackr.com/privacy-policy/fr.html</loc><lastmod>2025-08-06</lastmod></url>
-  <url><loc>https://balancetrackr.com/privacy-policy/no.html</loc><lastmod>2025-08-06</lastmod></url>
-  <url><loc>https://balancetrackr.com/privacy-policy/sv.html</loc><lastmod>2025-08-06</lastmod></url>
-  <url><loc>https://balancetrackr.com/support/da.html</loc><lastmod>2025-08-06</lastmod></url>
-  <url><loc>https://balancetrackr.com/support/de.html</loc><lastmod>2025-08-06</lastmod></url>
-  <url><loc>https://balancetrackr.com/support/en.html</loc><lastmod>2025-08-06</lastmod></url>
-  <url><loc>https://balancetrackr.com/support/es.html</loc><lastmod>2025-08-06</lastmod></url>
-  <url><loc>https://balancetrackr.com/support/fr.html</loc><lastmod>2025-08-06</lastmod></url>
-  <url><loc>https://balancetrackr.com/support/no.html</loc><lastmod>2025-08-06</lastmod></url>
-  <url><loc>https://balancetrackr.com/support/sv.html</loc><lastmod>2025-08-06</lastmod></url>
-  <url><loc>https://balancetrackr.com/SiriShortcutsSetup/da.html</loc><lastmod>2025-08-06</lastmod></url>
-  <url><loc>https://balancetrackr.com/SiriShortcutsSetup/de.html</loc><lastmod>2025-08-06</lastmod></url>
-  <url><loc>https://balancetrackr.com/SiriShortcutsSetup/en.html</loc><lastmod>2025-08-06</lastmod></url>
-  <url><loc>https://balancetrackr.com/SiriShortcutsSetup/es.html</loc><lastmod>2025-08-06</lastmod></url>
-  <url><loc>https://balancetrackr.com/SiriShortcutsSetup/fr.html</loc><lastmod>2025-08-06</lastmod></url>
-  <url><loc>https://balancetrackr.com/SiriShortcutsSetup/no.html</loc><lastmod>2025-08-06</lastmod></url>
-  <url><loc>https://balancetrackr.com/SiriShortcutsSetup/sv.html</loc><lastmod>2025-08-06</lastmod></url>
-</urlset>
+  <url><loc>https://balancetrackr.com/index.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/index-no.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/index-ar.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/index-da.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/index-de.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/index-es.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/index-fi.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/index-fr.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/index-hi.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/index-it.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/index-ja.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/index-nl.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/index-sv.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/index-uk.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/index-zhHans.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/index-zhHant.html</loc><lastmod>2026-02-02</lastmod></url>
 
+  <!-- Privacy policy localizations -->
+  <url><loc>https://balancetrackr.com/privacy-policy/en.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/privacy-policy/no.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/privacy-policy/sv.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/privacy-policy/da.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/privacy-policy/de.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/privacy-policy/fr.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/privacy-policy/es.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/privacy-policy/ar.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/privacy-policy/fi.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/privacy-policy/hi.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/privacy-policy/it.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/privacy-policy/ja.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/privacy-policy/nl.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/privacy-policy/uk.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/privacy-policy/zhHans.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/privacy-policy/zhHant.html</loc><lastmod>2026-02-02</lastmod></url>
+
+  <!-- Support localizations -->
+  <url><loc>https://balancetrackr.com/support/en.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/support/no.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/support/sv.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/support/da.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/support/de.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/support/fr.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/support/es.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/support/ar.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/support/fi.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/support/hi.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/support/it.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/support/ja.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/support/nl.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/support/uk.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/support/zhHans.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/support/zhHant.html</loc><lastmod>2026-02-02</lastmod></url>
+
+  <!-- SiriShortcuts localizations -->
+  <url><loc>https://balancetrackr.com/SiriShortcuts/en.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/SiriShortcuts/no.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/SiriShortcuts/sv.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/SiriShortcuts/da.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/SiriShortcuts/de.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/SiriShortcuts/fr.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/SiriShortcuts/es.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/SiriShortcuts/ar.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/SiriShortcuts/fi.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/SiriShortcuts/hi.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/SiriShortcuts/it.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/SiriShortcuts/ja.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/SiriShortcuts/nl.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/SiriShortcuts/uk.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/SiriShortcuts/zhHans.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/SiriShortcuts/zhHant.html</loc><lastmod>2026-02-02</lastmod></url>
+
+  <!-- SiriShortcutsSetup localizations -->
+  <url><loc>https://balancetrackr.com/SiriShortcutsSetup/en.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/SiriShortcutsSetup/no.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/SiriShortcutsSetup/sv.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/SiriShortcutsSetup/da.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/SiriShortcutsSetup/de.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/SiriShortcutsSetup/fr.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/SiriShortcutsSetup/es.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/SiriShortcutsSetup/ar.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/SiriShortcutsSetup/fi.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/SiriShortcutsSetup/hi.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/SiriShortcutsSetup/it.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/SiriShortcutsSetup/ja.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/SiriShortcutsSetup/nl.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/SiriShortcutsSetup/uk.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/SiriShortcutsSetup/zhHans.html</loc><lastmod>2026-02-02</lastmod></url>
+  <url><loc>https://balancetrackr.com/SiriShortcutsSetup/zhHant.html</loc><lastmod>2026-02-02</lastmod></url>
+
+</urlset>
