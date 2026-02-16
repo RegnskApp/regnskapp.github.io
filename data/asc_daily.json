@@ -1,11 +1,30 @@
 {
-  "generated_at_unix": 1771267930,
+  "generated_at_unix": 1771268501,
   "report_date": "2026-02-15",
   "app": {
     "id": "6743946348",
     "name": "BalanceTrackr (RegnskApp)"
   },
-  "sales_report_raw": "Provider\tProvider Country\tSKU\tDeveloper\tTitle\tVersion\tProduct Type Identifier\tUnits\tDeveloper Proceeds\tBegin Date\tEnd Date\tCustomer Currency\tCountry Code\tCurrency of Proceeds\tApple Identifier\tCustomer Price\tPromo Code\tParent Identifier\tSubscription\tPeriod\tCategory\tCMB\tDevice\tSupported Platforms\tProceeds Reason\tPreserved Pricing\tClient\tOrder Type\nAPPLE\tUS\tcom.olemorten.RegnskApp\tOle Morten Tengesdal\tBalanceTrackr (RegnskApp)\t3.5.0\t1F\t1\t0.00\t02/15/2026\t02/15/2026\tUSD\tUS\t \t6743946348\t0.00\t \t \t \t \tFinance\t\tiPhone\tiOS\t \t \t \t \n",
+  "total_units": 1,
+  "sales_by_country": {
+    "US": 1
+  },
+  "sales_by_device": {
+    "iPhone": 1
+  },
+  "sales_raw": [
+    {
+      "provider": "APPLE",
+      "country": "US",
+      "country_code": "US",
+      "sku": "com.olemorten.RegnskApp",
+      "version": "3.5.0",
+      "product_type": "1F",
+      "units": 1,
+      "device": "iPhone",
+      "platform": "iOS"
+    }
+  ],
   "reviews": {
     "count": 6,
     "latest": [
