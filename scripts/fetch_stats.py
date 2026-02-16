@@ -17,6 +17,80 @@ PRIVATE_KEY = os.environ["ASC_PRIVATE_KEY"].replace("\\n", "\n")
 VENDOR_NUMBER = os.environ["ASC_VENDOR_NUMBER"]
 
 # =========================
+# Landkode til navn mapping
+# =========================
+COUNTRY_CODES = {
+    "US": "United States",
+    "NO": "Norway",
+    "CN": "China mainland",
+    "CA": "Canada",
+    "GB": "United Kingdom",
+    "IN": "India",
+    "DE": "Germany",
+    "IT": "Italy",
+    "AU": "Australia",
+    "FR": "France",
+    "JP": "Japan",
+    "ES": "Spain",
+    "TW": "Taiwan",
+    "NL": "Netherlands",
+    "SG": "Singapore",
+    "HK": "Hong Kong",
+    "MY": "Malaysia",
+    "MX": "Mexico",
+    "SA": "Saudi Arabia",
+    "UA": "Ukraine",
+    "GR": "Greece",
+    "PH": "Philippines",
+    "SE": "Sweden",
+    "TR": "Türkiye",
+    "AT": "Austria",
+    "BR": "Brazil",
+    "TH": "Thailand",
+    "AE": "United Arab Emirates",
+    "BG": "Bulgaria",
+    "KH": "Cambodia",
+    "CO": "Colombia",
+    "DK": "Denmark",
+    "IL": "Israel",
+    "PL": "Poland",
+    "PT": "Portugal",
+    "ZA": "South Africa",
+    "AL": "Albania",
+    "CY": "Cyprus",
+    "GH": "Ghana",
+    "HU": "Hungary",
+    "ID": "Indonesia",
+    "KR": "Korea, Republic of",
+    "NZ": "New Zealand",
+    "RO": "Romania",
+    "RU": "Russia",
+    "AR": "Argentina",
+    "BE": "Belgium",
+    "DO": "Dominican Republic",
+    "EG": "Egypt",
+    "HN": "Honduras",
+    "IE": "Ireland",
+    "OM": "Oman",
+    "PE": "Peru",
+    "QA": "Qatar",
+    "CH": "Switzerland",
+    "VN": "Vietnam",
+    "AM": "Armenia",
+    "BW": "Botswana",
+    "EC": "Ecuador",
+    "EE": "Estonia",
+    "GT": "Guatemala",
+    "LV": "Latvia",
+    "LB": "Lebanon",
+    "LU": "Luxembourg",
+    "MO": "Macau",
+    "MA": "Morocco",
+    "NG": "Nigeria",
+    "RS": "Serbia",
+}
+
+# =========================
 # CREATE JWT TOKEN
 # =========================
 def create_token():
@@ -220,7 +294,8 @@ for entry in sales_data:
 # OPPDATER TOTAL PER LAND
 # =========================
 for country, units in sales_by_country.items():
-    history["total_per_country"][country] = history["total_per_country"].get(country, 0) + units
+    country_name = COUNTRY_CODES.get(country, country)  # fallback til kode hvis ukjent
+    history["total_per_country"][country_name] = history["total_per_country"].get(country_name, 0) + units
 
 # =========================
 # DAGENS SALG PER ENHET
