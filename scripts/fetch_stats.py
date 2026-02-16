@@ -30,9 +30,7 @@ def create_token():
     )
 
 
-headers = {
-    "Authorization": f"Bearer {create_token()}",
-}
+headers = {"Authorization": f"Bearer {create_token()}"}
 
 # =========================
 # DATE (YESTERDAY)
@@ -42,7 +40,7 @@ yesterday = (
 ).strftime("%Y-%m-%d")
 
 # =========================
-# FETCH SALES & TRENDS REPORT
+# FETCH SALES REPORT
 # =========================
 sales_response = requests.get(
     "https://api.appstoreconnect.apple.com/v1/salesReports",
@@ -56,7 +54,6 @@ sales_response = requests.get(
     },
 )
 
-# ---- Validate response ----
 if sales_response.status_code != 200:
     raise Exception(
         f"Sales API HTTP error {sales_response.status_code}:\n{sales_response.text}"
@@ -67,16 +64,33 @@ content_type = sales_response.headers.get("Content-Type", "")
 if "gzip" in content_type:
     sales_report_text = gzip.decompress(sales_response.content).decode("utf-8")
 else:
-    # Apple returned JSON error instead of gzip report
     raise Exception(
         f"Sales API returned non-gzip response:\n{sales_response.text}"
     )
 
 # =========================
-# FETCH REVIEWS
+# FIND APP ID
+# =========================
+apps_response = requests.get(
+    "https://api.appstoreconnect.apple.com/v1/apps",
+    headers=headers,
+    params={"limit": 1},
+)
+
+if apps_response.status_code != 200:
+    raise Exception(
+        f"Apps API HTTP error {apps_response.status_code}:\n{apps_response.text}"
+    )
+
+apps_json = apps_response.json()
+app_id = apps_json["data"][0]["id"]
+app_name = apps_json["data"][0]["attributes"]["name"]
+
+# =========================
+# FETCH REVIEWS FOR APP
 # =========================
 reviews_response = requests.get(
-    "https://api.appstoreconnect.apple.com/v1/customerReviews",
+    f"https://api.appstoreconnect.apple.com/v1/apps/{app_id}/customerReviews",
     headers=headers,
     params={"limit": 200},
 )
@@ -90,20 +104,24 @@ reviews_json = reviews_response.json()
 reviews_list = reviews_json.get("data", [])
 
 # =========================
-# BUILD OUTPUT STRUCTURE
+# BUILD OUTPUT
 # =========================
 output = {
     "generated_at_unix": int(time.time()),
     "report_date": yesterday,
-    "sales_report_raw": sales_report_text,  # inneholder land + device + downloads
+    "app": {
+        "id": app_id,
+        "name": app_name,
+    },
+    "sales_report_raw": sales_report_text,
     "reviews": {
         "count": len(reviews_list),
-        "latest": reviews_list[:50],  # begrens størrelse
+        "latest": reviews_list[:50],
     },
 }
 
 # =========================
-# WRITE JSON FILE
+# WRITE FILE
 # =========================
 os.makedirs("data", exist_ok=True)
 
