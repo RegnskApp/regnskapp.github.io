@@ -126,6 +126,7 @@ try:
 except FileNotFoundError:
     # STARTTOTAL 852 før første kjøring, landstall som du ga (USA 305, etc.)
     history = {
+        "last_data_update": yesterday,
         "total_units_all_time": 852,
         "total_per_country": {
             "United States": 305,
@@ -317,6 +318,9 @@ history["total_per_country"] = dict(
 # =========================
 # SKRIV FIL
 # =========================
+# Oppdater siste data-dato
+history["last_data_update"] = yesterday
+
 with open(history_file, "w", encoding="utf-8") as f:
     json.dump(history, f, indent=2, ensure_ascii=False)
 
