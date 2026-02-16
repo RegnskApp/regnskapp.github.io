@@ -172,7 +172,7 @@ def update_history(history, reviews):
         print("Ingen nye reviews.")
 
     # Oppdater rating summary
-    history["ratings"] = summarize_ratings(history["reviews"])
+    ratings_summary = summarize_ratings(history["reviews"])
 
     # Pakk sammen i ønsket format
     final_history = {
