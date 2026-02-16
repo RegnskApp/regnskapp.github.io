@@ -4,6 +4,7 @@ import time
 import requests
 import jwt
 from collections import defaultdict
+from datetime import datetime
 
 # ========= KONFIG =========
 APP_ID = "6743946348"
@@ -107,7 +108,7 @@ def fetch_reviews(token):
                 "title": attr.get("title", ""),
                 "review": attr.get("body", ""),
                 "reviewerNickname": attr.get("reviewerNickname", ""),
-                "createdDate": attr.get("createdDate", ""),
+                "createdDate": attr.get("createdDate", "").split("T")[0],
                 "territory": attr.get("territory", ""),
                 "country_name": COUNTRY_NAMES.get(territory, territory)
             })
@@ -168,15 +169,18 @@ def update_history(history, reviews):
         print(f"Nye reviews lagt til: {len(new_reviews)}")
         history.setdefault("reviews", []).extend(new_reviews)
         history.setdefault("review_ids", []).extend(r["id"] for r in new_reviews)
+        # Hent kun datoen fra siste review
+        last_review_date = new_reviews[-1]["createdDate"].split("T")[0]
     else:
         print("Ingen nye reviews.")
+        last_review_date = history.get("last_review_update", "")
 
     # Oppdater rating summary
     ratings_summary = summarize_ratings(history["reviews"])
 
     # Pakk sammen i ønsket format
     final_history = {
-        "last_review_update": new_reviews[-1]["createdDate"] if new_reviews else history.get("last_review_update", ""),
+        "last_review_update": last_review_date,
         "ratings": ratings_summary,
         "reviews": history["reviews"],
         "review_ids": history["review_ids"]
