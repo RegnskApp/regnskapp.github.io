@@ -249,17 +249,6 @@ app_id = apps_json["data"][0]["id"]
 app_name = apps_json["data"][0]["attributes"]["name"]
 
 # =========================
-# HENT REVIEWS (kun siste dag)
-# =========================
-reviews_response = requests.get(
-    f"https://api.appstoreconnect.apple.com/v1/apps/{app_id}/customerReviews",
-    headers=headers,
-    params={"limit": 200, "filter[createdDate]": yesterday}
-)
-reviews_json = reviews_response.json()
-reviews_list = reviews_json.get("data", [])
-
-# =========================
 # PARSE SALES TSV
 # =========================
 sales_data = []
@@ -306,26 +295,13 @@ for entry in sales_data:
     sales_by_device[device] = sales_by_device.get(device, 0) + entry["units"]
 
 # =========================
-# REVIEWS SUMMARY
-# =========================
-reviews_count = len(reviews_list)
-reviews_average_rating = (
-    sum(r["attributes"]["rating"] for r in reviews_list) / reviews_count
-    if reviews_count > 0 else 0
-)
-reviews_latest = reviews_list[:3]
-
-# =========================
 # DAGENS ENTRY
 # =========================
 day_entry = {
     "report_date": yesterday,
     "total_units": total_units_today,
     "sales_by_country": sales_by_country,
-    "sales_by_device": sales_by_device,
-    "reviews_count": reviews_count,
-    "reviews_average_rating": reviews_average_rating,
-    "reviews_latest": reviews_latest
+    "sales_by_device": sales_by_device
 }
 
 history["days"].append(day_entry)
