@@ -176,6 +176,7 @@ def update_history(history, reviews):
 
     # Pakk sammen i ønsket format
     final_history = {
+        "last_review_update": new_reviews[-1]["createdDate"] if new_reviews else history.get("last_review_update", ""),
         "ratings": ratings_summary,
         "reviews": history["reviews"],
         "review_ids": history["review_ids"]
