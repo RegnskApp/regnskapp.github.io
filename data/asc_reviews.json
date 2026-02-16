@@ -62,5 +62,38 @@
     "00000191-f874-6c03-135e-2efe00000000",
     "00000191-f874-6c02-f811-347300000000",
     "00000191-f874-6c03-1a7c-964200000000"
-  ]
+  ],
+  "ratings": {
+    "total_count": 6,
+    "average": 4.67,
+    "stars": {
+      "5": 4,
+      "4": 2,
+      "3": 0,
+      "2": 0,
+      "1": 0
+    },
+    "ratings_per_country": {
+      "USA": {
+        "total_count": 2,
+        "average": 5.0
+      },
+      "ARE": {
+        "total_count": 1,
+        "average": 5.0
+      },
+      "CAN": {
+        "total_count": 1,
+        "average": 4.0
+      },
+      "ESP": {
+        "total_count": 1,
+        "average": 5.0
+      },
+      "ITA": {
+        "total_count": 1,
+        "average": 4.0
+      }
+    }
+  }
 }
