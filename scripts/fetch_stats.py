@@ -5,6 +5,8 @@ import jwt
 import requests
 import datetime
 import gzip
+import csv
+from io import StringIO
 
 # =========================
 # ENVIRONMENT VARIABLES
@@ -28,7 +30,6 @@ def create_token():
         algorithm="ES256",
         headers={"kid": KEY_ID},
     )
-
 
 headers = {"Authorization": f"Bearer {create_token()}"}
 
@@ -60,7 +61,6 @@ if sales_response.status_code != 200:
     )
 
 content_type = sales_response.headers.get("Content-Type", "")
-
 if "gzip" in content_type:
     sales_report_text = gzip.decompress(sales_response.content).decode("utf-8")
 else:
@@ -104,7 +104,42 @@ reviews_json = reviews_response.json()
 reviews_list = reviews_json.get("data", [])
 
 # =========================
-# BUILD OUTPUT
+# PARSE SALES TSV
+# =========================
+sales_data = []
+total_units = 0
+
+tsv_io = StringIO(sales_report_text)
+reader = csv.DictReader(tsv_io, delimiter="\t")
+for row in reader:
+    units = int(row.get("Units", 0))
+    total_units += units
+    sales_data.append({
+        "provider": row.get("Provider"),
+        "country": row.get("Provider Country"),
+        "country_code": row.get("Country Code"),
+        "sku": row.get("SKU"),
+        "version": row.get("Version"),
+        "product_type": row.get("Product Type Identifier"),
+        "units": units,
+        "device": row.get("Device"),
+        "platform": row.get("Supported Platforms"),
+    })
+
+# Statistik per land
+sales_by_country = {}
+for entry in sales_data:
+    country = entry["country_code"]
+    sales_by_country[country] = sales_by_country.get(country, 0) + entry["units"]
+
+# Statistik per enhet
+sales_by_device = {}
+for entry in sales_data:
+    device = entry["device"]
+    sales_by_device[device] = sales_by_device.get(device, 0) + entry["units"]
+
+# =========================
+# BUILD OUTPUT JSON
 # =========================
 output = {
     "generated_at_unix": int(time.time()),
@@ -113,7 +148,10 @@ output = {
         "id": app_id,
         "name": app_name,
     },
-    "sales_report_raw": sales_report_text,
+    "total_units": total_units,
+    "sales_by_country": sales_by_country,
+    "sales_by_device": sales_by_device,
+    "sales_raw": sales_data,  # alle linjer med detalj info
     "reviews": {
         "count": len(reviews_list),
         "latest": reviews_list[:50],
@@ -124,7 +162,6 @@ output = {
 # WRITE FILE
 # =========================
 os.makedirs("data", exist_ok=True)
-
 with open("data/asc_daily.json", "w", encoding="utf-8") as f:
     json.dump(output, f, indent=2, ensure_ascii=False)
 
