@@ -41,7 +41,100 @@ yesterday = (
 ).strftime("%Y-%m-%d")
 
 # =========================
-# FETCH SALES REPORT
+# HISTORIKK-FIL
+# =========================
+history_file = "data/asc_history.json"
+os.makedirs("data", exist_ok=True)
+
+try:
+    with open(history_file, "r", encoding="utf-8") as f:
+        history = json.load(f)
+except FileNotFoundError:
+    # STARTTOTAL 852 før første kjøring, landstall som du ga (USA 305, etc.)
+    history = {
+        "total_units_all_time": 852,
+        "total_per_country": {
+            "United States": 305,
+            "Norway": 93,
+            "China mainland": 48,
+            "Canada": 27,
+            "United Kingdom": 26,
+            "India": 25,
+            "Germany": 23,
+            "Italy": 22,
+            "Australia": 16,
+            "France": 16,
+            "Japan": 16,
+            "Spain": 14,
+            "Taiwan": 14,
+            "Netherlands": 13,
+            "Singapore": 11,
+            "Hong Kong": 10,
+            "Malaysia": 8,
+            "Mexico": 8,
+            "Saudi Arabia": 8,
+            "Ukraine": 8,
+            "Greece": 7,
+            "Philippines": 7,
+            "Sweden": 7,
+            "Türkiye": 7,
+            "Austria": 5,
+            "Brazil": 5,
+            "Thailand": 5,
+            "United Arab Emirates": 5,
+            "Bulgaria": 4,
+            "Cambodia": 4,
+            "Colombia": 4,
+            "Denmark": 4,
+            "Israel": 4,
+            "Poland": 4,
+            "Portugal": 4,
+            "South Africa": 4,
+            "Albania": 3,
+            "Cyprus": 3,
+            "Ghana": 3,
+            "Hungary": 3,
+            "Indonesia": 3,
+            "Korea, Republic of": 3,
+            "New Zealand": 3,
+            "Romania": 3,
+            "Russia": 3,
+            "Argentina": 2,
+            "Belgium": 2,
+            "Dominican Republic": 2,
+            "Egypt": 2,
+            "Honduras": 2,
+            "Ireland": 2,
+            "Oman": 2,
+            "Peru": 2,
+            "Qatar": 2,
+            "Switzerland": 2,
+            "Vietnam": 2,
+            "Armenia": 1,
+            "Botswana": 1,
+            "Ecuador": 1,
+            "Estonia": 1,
+            "Guatemala": 1,
+            "Latvia": 1,
+            "Lebanon": 1,
+            "Luxembourg": 1,
+            "Macau": 1,
+            "Morocco": 1,
+            "Nigeria": 1,
+            "Serbia": 1
+        },
+        "days": []
+    }
+
+# =========================
+# HOPP OVER DAGEN HVIS DEN ALLEREDE ER REGISTRERT
+# =========================
+if any(d["report_date"] == yesterday for d in history["days"]):
+    print(f"Data for {yesterday} er allerede registrert. Ingen oppdatering gjort.")
+    exit(0)
+
+# =========================
+# FETCH SALES REPORT (dagens)
 # =========================
 sales_response = requests.get(
     "https://api.appstoreconnect.apple.com/v1/salesReports",
@@ -69,7 +162,7 @@ else:
     )
 
 # =========================
-# FIND APP ID
+# HENT APP INFO
 # =========================
 apps_response = requests.get(
     "https://api.appstoreconnect.apple.com/v1/apps",
@@ -77,29 +170,18 @@ apps_response = requests.get(
     params={"limit": 1},
 )
 
-if apps_response.status_code != 200:
-    raise Exception(
-        f"Apps API HTTP error {apps_response.status_code}:\n{apps_response.text}"
-    )
-
 apps_json = apps_response.json()
 app_id = apps_json["data"][0]["id"]
 app_name = apps_json["data"][0]["attributes"]["name"]
 
 # =========================
-# FETCH REVIEWS FOR APP
+# HENT REVIEWS (kun siste dag)
 # =========================
 reviews_response = requests.get(
     f"https://api.appstoreconnect.apple.com/v1/apps/{app_id}/customerReviews",
     headers=headers,
-    params={"limit": 200},
+    params={"limit": 200, "filter[createdDate]": yesterday}
 )
-
-if reviews_response.status_code != 200:
-    raise Exception(
-        f"Reviews API HTTP error {reviews_response.status_code}:\n{reviews_response.text}"
-    )
-
 reviews_json = reviews_response.json()
 reviews_list = reviews_json.get("data", [])
 
@@ -107,13 +189,13 @@ reviews_list = reviews_json.get("data", [])
 # PARSE SALES TSV
 # =========================
 sales_data = []
-total_units = 0
+total_units_today = 0
 
 tsv_io = StringIO(sales_report_text)
 reader = csv.DictReader(tsv_io, delimiter="\t")
 for row in reader:
     units = int(row.get("Units", 0))
-    total_units += units
+    total_units_today += units
     sales_data.append({
         "provider": row.get("Provider"),
         "country": row.get("Provider Country"),
@@ -126,43 +208,60 @@ for row in reader:
         "platform": row.get("Supported Platforms"),
     })
 
-# Statistik per land
+# =========================
+# DAGENS SALG PER LAND
+# =========================
 sales_by_country = {}
 for entry in sales_data:
-    country = entry["country_code"]
+    country = entry["country"]
     sales_by_country[country] = sales_by_country.get(country, 0) + entry["units"]
 
-# Statistik per enhet
+# =========================
+# OPPDATER TOTAL PER LAND
+# =========================
+for country, units in sales_by_country.items():
+    history["total_per_country"][country] = history["total_per_country"].get(country, 0) + units
+
+# =========================
+# DAGENS SALG PER ENHET
+# =========================
 sales_by_device = {}
 for entry in sales_data:
     device = entry["device"]
     sales_by_device[device] = sales_by_device.get(device, 0) + entry["units"]
 
 # =========================
-# BUILD OUTPUT JSON
+# REVIEWS SUMMARY
 # =========================
-output = {
-    "generated_at_unix": int(time.time()),
+reviews_count = len(reviews_list)
+reviews_average_rating = (
+    sum(r["attributes"]["rating"] for r in reviews_list) / reviews_count
+    if reviews_count > 0 else 0
+)
+reviews_latest = reviews_list[:3]
+
+# =========================
+# DAGENS ENTRY
+# =========================
+day_entry = {
     "report_date": yesterday,
-    "app": {
-        "id": app_id,
-        "name": app_name,
-    },
-    "total_units": total_units,
+    "total_units": total_units_today,
     "sales_by_country": sales_by_country,
     "sales_by_device": sales_by_device,
-    "sales_raw": sales_data,  # alle linjer med detalj info
-    "reviews": {
-        "count": len(reviews_list),
-        "latest": reviews_list[:50],
-    },
+    "reviews_count": reviews_count,
+    "reviews_average_rating": reviews_average_rating,
+    "reviews_latest": reviews_latest
 }
 
-# =========================
-# WRITE FILE
-# =========================
-os.makedirs("data", exist_ok=True)
-with open("data/asc_daily.json", "w", encoding="utf-8") as f:
-    json.dump(output, f, indent=2, ensure_ascii=False)
+history["days"].append(day_entry)
+history["total_units_all_time"] += total_units_today
 
-print("ASC daily stats written to data/asc_daily.json")
+# =========================
+# SKRIV FIL
+# =========================
+with open(history_file, "w", encoding="utf-8") as f:
+    json.dump(history, f, indent=2, ensure_ascii=False)
+
+print(f"ASC history updated: {total_units_today} downloads added for {yesterday}")
+print(f"Total downloads all time: {history['total_units_all_time']}")
+print(f"Total downloads per country updated.")
