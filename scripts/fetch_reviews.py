@@ -100,6 +100,7 @@ def fetch_reviews(token):
         data = r.json()
         for item in data.get("data", []):
             attr = item.get("attributes", {})
+            territory = attr.get("territory", "UNKNOWN")
             reviews.append({
                 "id": item.get("id"),
                 "rating": attr.get("rating"),
