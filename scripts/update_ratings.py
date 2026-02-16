@@ -8,7 +8,7 @@ from collections import defaultdict
 # ========= KONFIG =========
 
 APP_ID = "6743946348"
-HISTORY_FILE = "data/asc_history.json"
+HISTORY_FILE = "data/asc_reviews.json"
 
 ASC_ISSUER_ID = os.environ["ASC_ISSUER_ID"]
 ASC_KEY_ID = os.environ["ASC_KEY_ID"]
