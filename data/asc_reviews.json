@@ -74,23 +74,23 @@
       "1": 0
     },
     "ratings_per_country": {
-      "USA": {
+      "United States": {
         "total_count": 2,
         "average": 5.0
       },
-      "ARE": {
+      "United Arab Emirates": {
         "total_count": 1,
         "average": 5.0
       },
-      "CAN": {
+      "Canada": {
         "total_count": 1,
         "average": 4.0
       },
-      "ESP": {
+      "Spain": {
         "total_count": 1,
         "average": 5.0
       },
-      "ITA": {
+      "Italy": {
         "total_count": 1,
         "average": 4.0
       }
