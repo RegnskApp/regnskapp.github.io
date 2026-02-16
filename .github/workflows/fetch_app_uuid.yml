@@ -1,0 +1,27 @@
+name: Fetch App UUID
+
+on:
+  workflow_dispatch:  # Kun manuell kjøring
+
+jobs:
+  get-uuid:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install requests pyjwt cryptography
+
+      - name: Fetch App UUID
+        env:
+          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ASC_PRIVATE_KEY: ${{ secrets.ASC_PRIVATE_KEY }}
+        run: python scripts/fetch_id.py
