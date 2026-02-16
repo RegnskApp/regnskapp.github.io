@@ -30,6 +30,6 @@ jobs:
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git add data/asc_daily.json
+          git add data/asc_history.json
           git commit -m "Daily ASC stats" || echo "No changes"
           git push
