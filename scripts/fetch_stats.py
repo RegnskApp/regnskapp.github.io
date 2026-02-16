@@ -257,6 +257,13 @@ history["days"].append(day_entry)
 history["total_units_all_time"] += total_units_today
 
 # =========================
+# SORTER TOTAL PER LAND
+# =========================
+history["total_per_country"] = dict(
+    sorted(history["total_per_country"].items(), key=lambda x: -x[1])
+)
+
+# =========================
 # SKRIV FIL
 # =========================
 with open(history_file, "w", encoding="utf-8") as f:
