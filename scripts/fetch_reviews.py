@@ -100,7 +100,7 @@ def fetch_reviews(token):
         data = r.json()
         for item in data.get("data", []):
             attr = item.get("attributes", {})
-            territory = attr.get("territory", "UNKNOWN")
+            territory = r.get("territory", "UNKNOWN")
             reviews.append({
                 "id": item.get("id"),
                 "rating": attr.get("rating"),
@@ -174,7 +174,14 @@ def update_history(history, reviews):
     # Oppdater rating summary
     history["ratings"] = summarize_ratings(history["reviews"])
 
-    return history
+    # Pakk sammen i ønsket format
+    final_history = {
+        "ratings": ratings_summary,
+        "reviews": history["reviews"],
+        "review_ids": history["review_ids"]
+    }
+
+    return final_history
 
 # ========= MAIN =========
 def main():
