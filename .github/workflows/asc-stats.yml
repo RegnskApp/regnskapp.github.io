@@ -18,6 +18,7 @@ jobs:
 
       - run: pip install requests pyjwt cryptography
 
+      # Hent nedlastingsstatistikk
       - name: Fetch stats
         env:
           ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
@@ -26,10 +27,19 @@ jobs:
           ASC_VENDOR_NUMBER: ${{ secrets.ASC_VENDOR_NUMBER }}
         run: python scripts/fetch_stats.py
 
+      # Hent reviews / ratings
+      - name: Fetch reviews
+        env:
+          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ASC_PRIVATE_KEY: ${{ secrets.ASC_PRIVATE_KEY }}
+          ASC_VENDOR_NUMBER: ${{ secrets.ASC_VENDOR_NUMBER }}
+        run: python scripts/fetch_reviews.py
+
       - name: Commit JSON
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git add data/asc_history.json
-          git commit -m "Daily ASC stats" || echo "No changes"
+          git add data/asc_history.json data/asc_reviews.json
+          git commit -m "Daily ASC stats & reviews" || echo "No changes"
           git push
