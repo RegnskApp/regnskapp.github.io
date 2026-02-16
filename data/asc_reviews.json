@@ -1,0 +1,77 @@
+{
+  "ratings": {
+    "total_count": 6,
+    "average": 4.67,
+    "stars": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 2,
+      "5": 4
+    }
+  },
+  "reviews": [
+    {
+      "id": "00000191-f874-6c03-1578-020000000000",
+      "rating": 5,
+      "title": "Great simple net worth tracker",
+      "review": "",
+      "reviewerNickname": "Allybombbally",
+      "createdDate": "2025-10-09T10:50:17-07:00",
+      "territory": "USA"
+    },
+    {
+      "id": "00000191-f874-6c02-f849-010a00000000",
+      "rating": 5,
+      "title": "Superb",
+      "review": "",
+      "reviewerNickname": "Mehroz Ahmed",
+      "createdDate": "2025-06-09T13:02:53-07:00",
+      "territory": "ARE"
+    },
+    {
+      "id": "00000191-f874-6c02-fd76-871f00000000",
+      "rating": 5,
+      "title": "So useful",
+      "review": "",
+      "reviewerNickname": "MoZZoro",
+      "createdDate": "2025-07-02T00:13:54-07:00",
+      "territory": "USA"
+    },
+    {
+      "id": "00000191-f874-6c03-135e-2efe00000000",
+      "rating": 4,
+      "title": "Interesting app",
+      "review": "",
+      "reviewerNickname": "Diaappointed",
+      "createdDate": "2025-10-01T09:00:45-07:00",
+      "territory": "CAN"
+    },
+    {
+      "id": "00000191-f874-6c02-f811-347300000000",
+      "rating": 5,
+      "title": "Util",
+      "review": "",
+      "reviewerNickname": "Lumpy-Sheepherder-12",
+      "createdDate": "2025-06-08T13:57:00-07:00",
+      "territory": "ESP"
+    },
+    {
+      "id": "00000191-f874-6c03-1a7c-964200000000",
+      "rating": 4,
+      "title": "Ottime potenzialità",
+      "review": "",
+      "reviewerNickname": "misterbra",
+      "createdDate": "2025-10-29T05:55:20-07:00",
+      "territory": "ITA"
+    }
+  ],
+  "review_ids": [
+    "00000191-f874-6c03-1578-020000000000",
+    "00000191-f874-6c02-f849-010a00000000",
+    "00000191-f874-6c02-fd76-871f00000000",
+    "00000191-f874-6c03-135e-2efe00000000",
+    "00000191-f874-6c02-f811-347300000000",
+    "00000191-f874-6c03-1a7c-964200000000"
+  ]
+}
