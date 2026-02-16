@@ -2,7 +2,6 @@ import os
 import json
 import time
 import requests
-from collections import defaultdict
 import jwt
 
 # ========= KONFIG =========
@@ -25,9 +24,34 @@ def create_token():
     headers = {"alg": "ES256", "kid": ASC_KEY_ID, "typ": "JWT"}
     return jwt.encode(payload, ASC_PRIVATE_KEY, algorithm="ES256", headers=headers)
 
+# ========= HENT RATING SUMMARY =========
+def fetch_rating_summary(token):
+    """Hent korrekt total_count, stjerner og snitt, inkl reviews uten tekst"""
+    url = f"https://api.appstoreconnect.apple.com/v1/apps/{APP_ID}/customerReviewSummarizations"
+    headers = {"Authorization": f"Bearer {token}"}
+    r = requests.get(url, headers=headers)
+    r.raise_for_status()
+    data = r.json().get("data", [])
+
+    if not data:
+        return {"total_count": 0, "average": 0, "stars": {"5":0,"4":0,"3":0,"2":0,"1":0}}
+
+    attrs = data[0]["attributes"]
+    stars = {
+        "5": attrs.get("fiveStarCount", 0),
+        "4": attrs.get("fourStarCount", 0),
+        "3": attrs.get("threeStarCount", 0),
+        "2": attrs.get("twoStarCount", 0),
+        "1": attrs.get("oneStarCount", 0),
+    }
+    total_count = attrs.get("ratingCount", 0)
+    average = attrs.get("averageRating", 0)
+    return {"total_count": total_count, "average": average, "stars": stars}
+
 # ========= HENT ALLE REVIEWS =========
-def fetch_all_reviews(token):
-    url = f"https://api.appstoreconnect.apple.com/v1/apps/{APP_ID}/customerReviews"
+def fetch_reviews(token):
+    """Hent alle reviews, både med og uten tekst"""
+    url = f"https://api.appstoreconnect.apple.com/v1/apps/{APP_ID}/customerReviews?limit=200"
     headers = {"Authorization": f"Bearer {token}"}
     reviews = []
 
@@ -35,8 +59,18 @@ def fetch_all_reviews(token):
         r = requests.get(url, headers=headers)
         r.raise_for_status()
         data = r.json()
-        reviews.extend(data.get("data", []))
-        url = data.get("links", {}).get("next")  # pagination
+        for item in data.get("data", []):
+            attr = item.get("attributes", {})
+            reviews.append({
+                "id": item.get("id"),
+                "rating": attr.get("rating"),
+                "title": attr.get("title", ""),
+                "review": attr.get("body", ""),  # selve teksten
+                "reviewerNickname": attr.get("reviewerNickname", ""),
+                "createdDate": attr.get("createdDate", ""),
+                "territory": attr.get("territory", "")
+            })
+        url = data.get("links", {}).get("next")
 
     return reviews
 
@@ -54,64 +88,29 @@ def save_history(history):
         json.dump(history, f, indent=2, ensure_ascii=False)
 
 # ========= OPPDATER HISTORY =========
-def update_history(history, reviews):
-    existing_ids = set(history.get("review_ids", []))
-    new_reviews = []
+def update_history(history, rating_summary, reviews):
+    """Oppdater ratings og legg til nye reviews uten duplikater"""
+    history["ratings"] = rating_summary
 
-    # Bare nye reviews
-    for r in reviews:
-        review_id = r["id"]
-        if review_id not in existing_ids:
-            attributes = r.get("attributes", {})
-            review_entry = {
-                "id": review_id,
-                "rating": attributes.get("rating"),
-                "title": attributes.get("title", ""),
-                "review": attributes.get("review", ""),
-                "reviewerNickname": attributes.get("reviewerNickname", ""),
-                "createdDate": attributes.get("createdDate", ""),
-                "territory": attributes.get("territory", "")
-            }
-            new_reviews.append(review_entry)
+    existing_ids = set(history.get("review_ids", []))
+    new_reviews = [r for r in reviews if r["id"] not in existing_ids]
 
     if new_reviews:
-        print(f"Nye reviews: {len(new_reviews)}")
+        print(f"Nye reviews lagt til: {len(new_reviews)}")
         history.setdefault("reviews", []).extend(new_reviews)
         history.setdefault("review_ids", []).extend(r["id"] for r in new_reviews)
     else:
         print("Ingen nye reviews.")
-
-    # Lag summary
-    star_counts = defaultdict(int)
-    total_score = 0
-    total_count = 0
-
-    for r in history.get("reviews", []):
-        rating = r.get("rating")
-        if rating is not None:
-            star_counts[str(rating)] += 1
-            total_score += rating
-            total_count += 1
-
-    average = round(total_score / total_count, 2) if total_count else 0
-    # Sørg for alle stjerner vises
-    stars = {str(i): star_counts.get(str(i), 0) for i in range(1, 6)}
-
-    history["ratings"] = {
-        "total_count": total_count,
-        "average": average,
-        "stars": stars
-    }
 
     return history
 
 # ========= MAIN =========
 def main():
     token = create_token()
-    reviews = fetch_all_reviews(token)
-
+    rating_summary = fetch_rating_summary(token)
+    reviews = fetch_reviews(token)
     history = load_history()
-    history = update_history(history, reviews)
+    history = update_history(history, rating_summary, reviews)
     save_history(history)
 
     print(f"Ratings oppdatert. Totalt: {history['ratings']['total_count']} ratings, snitt: {history['ratings']['average']}")
