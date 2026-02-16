@@ -1,0 +1,106 @@
+{
+  "last_review_update": "2025-10-29",
+  "ratings": {
+    "total_count": 6,
+    "average": 4.67,
+    "stars": {
+      "5": 4,
+      "4": 2,
+      "3": 0,
+      "2": 0,
+      "1": 0
+    },
+    "ratings_per_country": {
+      "United States": {
+        "total_count": 2,
+        "average": 5.0
+      },
+      "United Arab Emirates": {
+        "total_count": 1,
+        "average": 5.0
+      },
+      "Canada": {
+        "total_count": 1,
+        "average": 4.0
+      },
+      "Spain": {
+        "total_count": 1,
+        "average": 5.0
+      },
+      "Italy": {
+        "total_count": 1,
+        "average": 4.0
+      }
+    }
+  },
+  "reviews": [
+    {
+      "id": "00000191-f874-6c03-1578-020000000000",
+      "rating": 5,
+      "title": "Great simple net worth tracker",
+      "review": "I am really happy with this app. I use it to track net worth across a variety of accounts. I love that I can separate out shared accounts, I put  kids college savings in that bucket since I don’t consider it mine. Great simple functionality to transfer between accounts, update balances, use as much custom labeling as you want. My only feedback to developers would be to improve the y axis on the graphs. The lower bound is always pegged at zero, which means an account has to have a very small balance for any trend to really be reflected in the graph. Hypothetically, if I have $1million saved (I don’t, lol), and I contribute $1000 this month to the account, the graph doesn’t even register the change because the y axis scale is so compressed. If that y axis auto adjusted to the relevant range, or gave an option to adjust the scale, I would appreciate that— it would mean I could see the lines moving in the right direction. Otherwise no complaints, I appreciate this app and use it a bunch!",
+      "reviewerNickname": "Allybombbally",
+      "createdDate": "2025-10-09",
+      "territory": "USA",
+      "country_name": "United States"
+    },
+    {
+      "id": "00000191-f874-6c02-f849-010a00000000",
+      "rating": 5,
+      "title": "Superb",
+      "review": "This app deserves no less than 5 stars because of what it offers in such a price. All the required features to track daily expenses are there. Integration with Apple Pay through shortcuts is a clear winner.\nSupport is also very good. Highly recommended.",
+      "reviewerNickname": "Mehroz Ahmed",
+      "createdDate": "2025-06-09",
+      "territory": "ARE",
+      "country_name": "United Arab Emirates"
+    },
+    {
+      "id": "00000191-f874-6c02-fd76-871f00000000",
+      "rating": 5,
+      "title": "So useful",
+      "review": "The app is super simple and clean. Everything I need is right there and easy to manage.",
+      "reviewerNickname": "MoZZoro",
+      "createdDate": "2025-07-02",
+      "territory": "USA",
+      "country_name": "United States"
+    },
+    {
+      "id": "00000191-f874-6c03-135e-2efe00000000",
+      "rating": 4,
+      "title": "Interesting app",
+      "review": "Sounds everything been thought of. Only that the entry a little bit sluggish.",
+      "reviewerNickname": "Diaappointed",
+      "createdDate": "2025-10-01",
+      "territory": "CAN",
+      "country_name": "Canada"
+    },
+    {
+      "id": "00000191-f874-6c02-f811-347300000000",
+      "rating": 5,
+      "title": "Util",
+      "review": "Muy pero que muy util",
+      "reviewerNickname": "Lumpy-Sheepherder-12",
+      "createdDate": "2025-06-08",
+      "territory": "ESP",
+      "country_name": "Spain"
+    },
+    {
+      "id": "00000191-f874-6c03-1a7c-964200000000",
+      "rating": 4,
+      "title": "Ottime potenzialità",
+      "review": "L’app consente di tenere traccia delle entrate e delle uscite in modo semplice: puoi registrare quando ricevi denaro (entrata) o quando lo spendi (uscita). Criticità: Quando imposti un saldo iniziale del conto (es: 10.000 €) e poi inserisci spese passate, il saldo scende come previsto — sarebbe utili avere una voce  “transazione neutra”: scegliendo questo tipo, la voce viene registrata per la storia ma non modifica il saldo del conto.",
+      "reviewerNickname": "misterbra",
+      "createdDate": "2025-10-29",
+      "territory": "ITA",
+      "country_name": "Italy"
+    }
+  ],
+  "review_ids": [
+    "00000191-f874-6c03-1578-020000000000",
+    "00000191-f874-6c02-f849-010a00000000",
+    "00000191-f874-6c02-fd76-871f00000000",
+    "00000191-f874-6c03-135e-2efe00000000",
+    "00000191-f874-6c02-f811-347300000000",
+    "00000191-f874-6c03-1a7c-964200000000"
+  ]
+}
