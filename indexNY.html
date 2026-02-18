@@ -477,8 +477,16 @@
       max-width: 1200px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 2rem;
+    }
+
+    .features-grid .feature-card:nth-child(4) {
+      grid-column: 1;
+    }
+
+    .features-grid .feature-card:nth-child(5) {
+      grid-column: 3;
     }
 
     .feature-card {
@@ -714,11 +722,23 @@
       border: 1px solid rgba(255, 255, 255, 0.3);
       transition: all var(--transition-fast);
       min-height: 3rem;
-     } 
+    }
+
+    .download-badges .download-badge {
+      width: 160px;
+      min-width: 160px;
+      height: 48px;
+      min-height: 48px;
+      padding: 0;
+    }
 
     .download-badge img {
       display: block;
       margin: 0;
+      width: 140px;
+      height: auto;
+      max-height: 42px;
+      object-fit: contain;
     }
 
     .download-badge:hover {
@@ -732,6 +752,36 @@
       gap: 1rem;
       justify-content: center;
       align-items: center;
+    }
+
+    .platform-switcher {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: center;
+      margin-top: 1.5rem;
+    }
+
+    .platform-btn {
+      padding: 0.5rem 1.25rem;
+      border-radius: var(--radius-md);
+      border: 2px solid var(--border-color);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+
+    .platform-btn:hover {
+      border-color: var(--primary-color);
+      color: var(--primary-color);
+    }
+
+    .platform-btn.active {
+      background: var(--primary-color);
+      border-color: var(--primary-color);
+      color: white;
     }
 
     /* Reviews Section */
@@ -910,6 +960,11 @@
       .features-grid {
         grid-template-columns: 1fr;
       }
+
+      .features-grid .feature-card:nth-child(4),
+      .features-grid .feature-card:nth-child(5) {
+        grid-column: auto;
+      }
     
       .reviews-grid {
         grid-template-columns: 1fr;
@@ -1063,12 +1118,12 @@
         <a href="https://apps.apple.com/us/app/regnskapp/id6743946348" class="btn" target="_blank">
           <span>📱</span> Download for iOS
         </a>
+        <a href="#features" class="btn btn-secondary">
+          <span>✨</span> Discover Features
+        </a>
         <!-- Replace href with Play Store URL when Android app is published -->
         <a href="#" class="btn" target="_blank" title="Coming soon to Google Play">
           <span>🤖</span> Download for Android
-        </a>
-        <a href="#features" class="btn btn-secondary">
-          <span>✨</span> Discover Features
         </a>
       </div>
     </div>
@@ -1126,6 +1181,10 @@
       <p class="section-description">
         Experience the clean, intuitive interface designed for modern money management.
       </p>
+      <div class="platform-switcher">
+        <button type="button" class="platform-btn active" data-platform="ios" aria-pressed="true">iOS</button>
+        <button type="button" class="platform-btn" data-platform="android" aria-pressed="false">Android</button>
+      </div>
     </div>
 
   <div class="carousel-wrapper">
@@ -1165,8 +1224,8 @@
   <section class="video-section">
     <h2 class="section-title">Watch the Magic Happen</h2>
     <div class="video-container">
-      <video autoplay muted playsinline loop>
-  <source src="images/LadetRegneiMovie.mp4" type="video/mp4">
+      <video id="platform-video" autoplay muted playsinline loop>
+  <source id="platform-video-source" src="images/LadetRegneiMovie.mp4" type="video/mp4">
   Your browser does not support the video tag.
   </video>
       <div class="video-caption">
@@ -1364,6 +1423,44 @@
     }
   
     setInitialFlag(); // call the function on load
+
+    // Platform switcher (iOS / Android) for screenshots and video
+    const platformPaths = {
+      ios: {
+        images: ['images/en/1.png', 'images/en/2.png', 'images/en/3.png', 'images/en/4.png', 'images/en/5.png', 'images/en/6.png', 'images/en/7.png', 'images/en/8.png'],
+        video: 'images/LadetRegneiMovie.mp4'
+      },
+      android: {
+        images: ['images/android/1.png', 'images/android/2.png', 'images/android/3.png', 'images/android/4.png', 'images/android/5.png', 'images/android/6.png', 'images/android/7.png', 'images/android/8.png'],
+        video: 'images/android/LadetRegneiMovie.mp4'
+      }
+    };
+
+    function switchPlatform(platform) {
+      const paths = platformPaths[platform];
+      if (!paths) return;
+      const carousel1Imgs = document.querySelectorAll('.carousel-1 img');
+      const carousel2Imgs = document.querySelectorAll('.carousel-2 img');
+      carousel1Imgs.forEach((img, i) => { img.src = paths.images[i]; });
+      carousel2Imgs.forEach((img, i) => { img.src = paths.images[4 + i]; });
+      const videoSource = document.getElementById('platform-video-source');
+      const video = document.getElementById('platform-video');
+      if (videoSource && video) {
+        videoSource.src = paths.video;
+        video.load();
+      }
+      document.querySelectorAll('.platform-btn').forEach(btn => {
+        const isActive = btn.getAttribute('data-platform') === platform;
+        btn.classList.toggle('active', isActive);
+        btn.setAttribute('aria-pressed', isActive);
+      });
+    }
+
+    document.querySelectorAll('.platform-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        switchPlatform(this.getAttribute('data-platform'));
+      });
+    });
   
     // Close menu when clicking outside
     document.addEventListener("click", function (event) {
