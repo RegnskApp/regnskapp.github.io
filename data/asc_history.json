@@ -1,8 +1,8 @@
 {
-  "last_data_update": "2026-02-16",
-  "total_units_all_time": 854,
+  "last_data_update": "2026-02-17",
+  "total_units_all_time": 857,
   "total_per_country": {
-    "United States": 307,
+    "United States": 310,
     "Norway": 93,
     "China mainland": 48,
     "Canada": 27,
@@ -90,6 +90,16 @@
       },
       "sales_by_device": {
         "iPhone": 1
+      }
+    },
+    {
+      "report_date": "2026-02-17",
+      "total_units": 3,
+      "sales_by_country": {
+        "US": 3
+      },
+      "sales_by_device": {
+        "iPhone": 3
       }
     }
   ]
