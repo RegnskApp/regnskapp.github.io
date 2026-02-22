@@ -1,6 +1,6 @@
 {
-  "last_data_update": "2026-02-20",
-  "total_units_all_time": 861,
+  "last_data_update": "2026-02-21",
+  "total_units_all_time": 863,
   "total_per_country": {
     "United States": 307,
     "Norway": 95,
@@ -8,13 +8,13 @@
     "Canada": 27,
     "United Kingdom": 26,
     "India": 25,
-    "Germany": 23,
+    "Germany": 24,
     "Italy": 22,
     "Australia": 16,
     "France": 16,
     "Japan": 16,
+    "Taiwan": 15,
     "Spain": 14,
-    "Taiwan": 14,
     "Netherlands": 13,
     "Singapore": 11,
     "Hong Kong": 10,
@@ -130,6 +130,17 @@
       },
       "sales_by_device": {
         "iPhone": 1
+      }
+    },
+    {
+      "report_date": "2026-02-21",
+      "total_units": 2,
+      "sales_by_country": {
+        "DE": 1,
+        "TW": 1
+      },
+      "sales_by_device": {
+        "iPhone": 2
       }
     }
   ]
