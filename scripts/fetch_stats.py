@@ -273,12 +273,14 @@ for row in reader:
     })
 
 # =========================
-# DAGENS SALG PER LAND
+# DAGENS SALG PER LAND (bruk Country Code)
 # =========================
 sales_by_country = {}
 for entry in sales_data:
-    country = entry["country"]
-    sales_by_country[country] = sales_by_country.get(country, 0) + entry["units"]
+    country_code = entry["country_code"]
+    sales_by_country[country_code] = (
+        sales_by_country.get(country_code, 0) + entry["units"]
+    )
 
 # =========================
 # OPPDATER TOTAL PER LAND
