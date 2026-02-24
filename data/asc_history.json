@@ -1,13 +1,13 @@
 {
-  "last_data_update": "2026-02-22",
-  "total_units_all_time": 865,
+  "last_data_update": "2026-02-23",
+  "total_units_all_time": 868,
   "total_per_country": {
     "United States": 307,
     "Norway": 95,
     "China mainland": 49,
     "Canada": 28,
     "United Kingdom": 26,
-    "India": 25,
+    "India": 26,
     "Germany": 24,
     "Italy": 23,
     "Australia": 16,
@@ -30,6 +30,7 @@
     "Brazil": 5,
     "Thailand": 5,
     "United Arab Emirates": 5,
+    "South Africa": 5,
     "Bulgaria": 4,
     "Cambodia": 4,
     "Colombia": 4,
@@ -37,7 +38,6 @@
     "Israel": 4,
     "Poland": 4,
     "Portugal": 4,
-    "South Africa": 4,
     "Albania": 3,
     "Cyprus": 3,
     "Ghana": 3,
@@ -47,6 +47,7 @@
     "New Zealand": 3,
     "Romania": 3,
     "Russia": 3,
+    "Qatar": 3,
     "Argentina": 2,
     "Belgium": 2,
     "Dominican Republic": 2,
@@ -55,7 +56,6 @@
     "Ireland": 2,
     "Oman": 2,
     "Peru": 2,
-    "Qatar": 2,
     "Switzerland": 2,
     "Vietnam": 2,
     "Armenia": 1,
@@ -152,6 +152,18 @@
       },
       "sales_by_device": {
         "iPhone": 2
+      }
+    },
+    {
+      "report_date": "2026-02-23",
+      "total_units": 3,
+      "sales_by_country": {
+        "IN": 1,
+        "ZA": 1,
+        "QA": 1
+      },
+      "sales_by_device": {
+        "iPhone": 3
       }
     }
   ]
