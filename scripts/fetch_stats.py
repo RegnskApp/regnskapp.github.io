@@ -17,6 +17,23 @@ PRIVATE_KEY = os.environ["ASC_PRIVATE_KEY"].replace("\\n", "\n")
 VENDOR_NUMBER = os.environ["ASC_VENDOR_NUMBER"]
 
 # =========================
+# ONLY COUNT "DOWNLOADS" (APP UNITS)
+# =========================
+# Product Type Identifiers for apps (exclude updates=7, redownloads=3, IAP=IA*, etc.)
+# Source: Apple "Product type identifiers" reference.
+DOWNLOAD_PRODUCT_TYPES = {
+    "1",    # Free or paid app (iOS/iPadOS/visionOS/watchOS)
+    "1F",   # Free or paid app (Universal app, excluding tvOS)
+    "1T",   # tvOS app
+    "1E",   # Paid app (Custom iOS app)
+    "1EP",  # Paid app (Custom iPadOS app)
+    "1EU",  # Paid app (Custom universal app)
+    "1-B",  # App bundle (iOS/iPadOS/visionOS bundle)
+    "F1",   # Free or paid app (Mac)  (appears in Apple's list; keep if you ship Mac)
+    "F1-B", # Mac app bundle
+}
+
+# =========================
 # Landkode til navn mapping
 # =========================
 COUNTRY_CODES = {
@@ -110,9 +127,7 @@ headers = {"Authorization": f"Bearer {create_token()}"}
 # =========================
 # DATE (YESTERDAY)
 # =========================
-yesterday = (
-    datetime.date.today() - datetime.timedelta(days=1)
-).strftime("%Y-%m-%d")
+yesterday = (datetime.date.today() - datetime.timedelta(days=1)).strftime("%Y-%m-%d")
 
 # =========================
 # HISTORIKK-FIL
@@ -124,7 +139,7 @@ try:
     with open(history_file, "r", encoding="utf-8") as f:
         history = json.load(f)
 except FileNotFoundError:
-    # STARTTOTAL 852 før første kjøring, landstall som du ga (USA 305, etc.)
+    # STARTTOTAL før første kjøring
     history = {
         "last_data_update": yesterday,
         "total_units_all_time": 852,
@@ -202,14 +217,23 @@ except FileNotFoundError:
     }
 
 # =========================
-# HOPP OVER DAGEN HVIS DEN ALLEREDE ER REGISTRERT
+# (VALGFRITT, MEN SMART): LÅS EN BASELINE SÅ TOTALEN IKKE DRIVER
 # =========================
-if any(d["report_date"] == yesterday for d in history["days"]):
-    print(f"Data for {yesterday} er allerede registrert. Ingen oppdatering gjort.")
-    exit(0)
+# Hvis baseline ikke finnes (eldre filer), lag den slik at totalen din bevares:
+# baseline + sum(days) == total_units_all_time
+if "baseline_total_units_all_time" not in history:
+    summed_days = sum(int(d.get("total_units", 0)) for d in history.get("days", []))
+    history["baseline_total_units_all_time"] = int(history.get("total_units_all_time", 0)) - summed_days
 
 # =========================
-# FETCH SALES REPORT (dagens)
+# HOPP OVER DAGEN HVIS DEN ALLEREDE ER REGISTRERT
+# =========================
+if any(d.get("report_date") == yesterday for d in history.get("days", [])):
+    print(f"Data for {yesterday} er allerede registrert. Ingen oppdatering gjort.")
+    raise SystemExit(0)
+
+# =========================
+# FETCH SALES REPORT (YESTERDAY)
 # =========================
 sales_response = requests.get(
     "https://api.appstoreconnect.apple.com/v1/salesReports",
@@ -224,77 +248,73 @@ sales_response = requests.get(
 )
 
 if sales_response.status_code != 200:
-    raise Exception(
-        f"Sales API HTTP error {sales_response.status_code}:\n{sales_response.text}"
-    )
+    raise Exception(f"Sales API HTTP error {sales_response.status_code}:\n{sales_response.text}")
 
-content_type = sales_response.headers.get("Content-Type", "")
-if "gzip" in content_type:
+content_type = (sales_response.headers.get("Content-Type", "") or "").lower()
+if "gzip" in content_type or sales_response.content[:2] == b"\x1f\x8b":
     sales_report_text = gzip.decompress(sales_response.content).decode("utf-8")
 else:
-    raise Exception(
-        f"Sales API returned non-gzip response:\n{sales_response.text}"
-    )
+    raise Exception(f"Sales API returned non-gzip response:\n{sales_response.text}")
 
 # =========================
-# HENT APP INFO
+# PARSE SALES TSV (COUNT ONLY DOWNLOAD PRODUCT TYPES)
 # =========================
-apps_response = requests.get(
-    "https://api.appstoreconnect.apple.com/v1/apps",
-    headers=headers,
-    params={"limit": 1},
-)
+def parse_units(value) -> int:
+    # Units kan komme som "2" eller "2.0" (rapportfeltet er DECIMAL i Apple docs)
+    try:
+        return int(float(value))
+    except (TypeError, ValueError):
+        return 0
 
-apps_json = apps_response.json()
-app_id = apps_json["data"][0]["id"]
-app_name = apps_json["data"][0]["attributes"]["name"]
-
-# =========================
-# PARSE SALES TSV
-# =========================
 sales_data = []
 total_units_today = 0
 
 tsv_io = StringIO(sales_report_text)
 reader = csv.DictReader(tsv_io, delimiter="\t")
+
+skipped_by_type = {}  # debug: viser hva som ble filtrert bort
+
 for row in reader:
-    units = int(row.get("Units", 0))
+    product_type = (row.get("Product Type Identifier") or "").strip()
+    units = parse_units(row.get("Units"))
+
+    # Filtrer vekk alt som ikke er "app download/app unit"
+    if product_type not in DOWNLOAD_PRODUCT_TYPES:
+        if units != 0:
+            skipped_by_type[product_type] = skipped_by_type.get(product_type, 0) + units
+        continue
+
     total_units_today += units
     sales_data.append({
-        "provider": row.get("Provider"),
-        "country": row.get("Provider Country"),
-        "country_code": row.get("Country Code"),
-        "sku": row.get("SKU"),
-        "version": row.get("Version"),
-        "product_type": row.get("Product Type Identifier"),
+        "country_code": (row.get("Country Code") or "").strip(),
+        "product_type": product_type,
         "units": units,
-        "device": row.get("Device"),
-        "platform": row.get("Supported Platforms"),
+        "device": (row.get("Device") or "").strip(),
+        "platform": (row.get("Supported Platforms") or "").strip(),
     })
 
 # =========================
-# DAGENS SALG PER LAND (bruk Country Code)
+# DAGENS DOWNLOADS PER LAND (bruk Country Code)
 # =========================
 sales_by_country = {}
 for entry in sales_data:
-    country_code = entry["country_code"]
-    sales_by_country[country_code] = (
-        sales_by_country.get(country_code, 0) + entry["units"]
-    )
+    cc = entry["country_code"] or "UNKNOWN"
+    sales_by_country[cc] = sales_by_country.get(cc, 0) + entry["units"]
 
 # =========================
 # OPPDATER TOTAL PER LAND
 # =========================
-for country, units in sales_by_country.items():
-    country_name = COUNTRY_CODES.get(country, country)  # fallback til kode hvis ukjent
+history.setdefault("total_per_country", {})
+for country_code, units in sales_by_country.items():
+    country_name = COUNTRY_CODES.get(country_code, country_code)
     history["total_per_country"][country_name] = history["total_per_country"].get(country_name, 0) + units
 
 # =========================
-# DAGENS SALG PER ENHET
+# DAGENS DOWNLOADS PER ENHET
 # =========================
 sales_by_device = {}
 for entry in sales_data:
-    device = entry["device"]
+    device = entry["device"] or "UNKNOWN"
     sales_by_device[device] = sales_by_device.get(device, 0) + entry["units"]
 
 # =========================
@@ -304,11 +324,20 @@ day_entry = {
     "report_date": yesterday,
     "total_units": total_units_today,
     "sales_by_country": sales_by_country,
-    "sales_by_device": sales_by_device
+    "sales_by_device": sales_by_device,
+    # Valgfritt men nyttig for feilsøking: hva ble filtrert bort?
+    "skipped_units_by_product_type": dict(sorted(skipped_by_type.items(), key=lambda x: -abs(x[1]))),
 }
 
+history.setdefault("days", [])
 history["days"].append(day_entry)
-history["total_units_all_time"] += total_units_today
+
+# =========================
+# REBEREGN TOTAL (baseline + sum(days)) SÅ TOTALEN ALLTID ER KONSISTENT
+# =========================
+history["total_units_all_time"] = int(history.get("baseline_total_units_all_time", 0)) + sum(
+    int(d.get("total_units", 0)) for d in history["days"]
+)
 
 # =========================
 # SORTER TOTAL PER LAND
@@ -320,7 +349,6 @@ history["total_per_country"] = dict(
 # =========================
 # SKRIV FIL
 # =========================
-# Oppdater siste data-dato
 history["last_data_update"] = yesterday
 
 with open(history_file, "w", encoding="utf-8") as f:
@@ -328,4 +356,7 @@ with open(history_file, "w", encoding="utf-8") as f:
 
 print(f"ASC history updated: {total_units_today} downloads added for {yesterday}")
 print(f"Total downloads all time: {history['total_units_all_time']}")
-print(f"Total downloads per country updated.")
+if skipped_by_type:
+    print("Filtered out units (non-download product types):")
+    for k, v in sorted(skipped_by_type.items(), key=lambda x: -abs(x[1])):
+        print(f"  {k or 'BLANK'}: {v}")
