@@ -498,16 +498,20 @@
       overflow: hidden;
     }
 
-    .feature-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
-      transform: scaleX(0);
-      transition: transform var(--transition-normal);
+    .feature-card {
+      background: var(--bg-primary);
+      padding: 2rem;
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border-color);
+      transition: all var(--transition-normal);
+      position: relative;
+      overflow: hidden;
+    
+      display: flex;
+      flex-direction: column;
+      align-items: center;      /* horisontal sentrering */
+      text-align: center;       /* sentrer tekst */
     }
 
     .feature-card:hover {
