@@ -1,5 +1,5 @@
 {
-  "last_data_update": "2026-02-26",
+  "last_data_update": "2026-02-27",
   "total_units_all_time": 869,
   "total_country_downloaded_all_time": 68,
   "total_per_country": {
@@ -95,6 +95,15 @@
       },
       "skipped_units_by_product_type": {
         "IA1 – In-App Purchase": 1
+      }
+    },
+    {
+      "report_date": "2026-02-27",
+      "total_units": 0,
+      "sales_by_country": {},
+      "sales_by_device": {},
+      "skipped_units_by_product_type": {
+        "3F – Redownload (Universal, excl. tvOS)": 1
       }
     }
   ]
