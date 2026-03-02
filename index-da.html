@@ -68,17 +68,17 @@
     }
 
     :root {
-      --primary-color: #0f766e;
-      --primary-dark: #0d5f56;
-      --accent-color: #f59e0b;
+      --primary-color: #006b3a;
+      --primary-dark: #173852;
+      --accent-color: #185778;
       --success-color: #10b981;
-      --text-primary: #111827;
-      --text-secondary: #6b7280;
+      --text-primary: #0b1318;
+      --text-secondary: #185778;
       --text-muted: #9ca3af;
-      --bg-primary: #ffffff;
-      --bg-secondary: #f8fafc;
-      --bg-tertiary: #f1f5f9;
-      --border-color: #e5e7eb;
+      --bg-primary: #fcf7eb;
+      --bg-secondary: #cddee5;
+      --bg-tertiary: #afc7ac;
+      --border-color: #afc7ac;
       --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
       --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
       --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
@@ -477,9 +477,15 @@
       max-width: 1200px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(6, 1fr);
       gap: 2rem;
     }
+
+    .features-grid .feature-card:nth-child(1) { grid-column: 1 / 3; }
+    .features-grid .feature-card:nth-child(2) { grid-column: 3 / 5; }
+    .features-grid .feature-card:nth-child(3) { grid-column: 5 / 7; }
+    .features-grid .feature-card:nth-child(4) { grid-column: 2 / 4; }
+    .features-grid .feature-card:nth-child(5) { grid-column: 4 / 6; }
 
     .feature-card {
       background: var(--bg-primary);
@@ -490,18 +496,10 @@
       transition: all var(--transition-normal);
       position: relative;
       overflow: hidden;
-    }
-
-    .feature-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
-      transform: scaleX(0);
-      transition: transform var(--transition-normal);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
     }
 
     .feature-card:hover {
@@ -1058,6 +1056,12 @@
         <a href="#features" class="btn btn-secondary">
           <span>✨</span> Opdag Funktioner
         </a>
+              <div class="coming-soon-wrapper">
+          <span class="coming-soon-badge">Kommer snart</span>
+          <a href="#" class="btn" target="_blank" title="Coming soon to Google Play">
+            <span>🤖</span> Download til Android
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -1104,15 +1108,7 @@
           Dine økonomiske data bliver på din enhed. Ingen annoncer, ingen abonnementer, ingen dataindsamling.
         </p>
       </div>
-
-      <div class="feature-card fade-in-up">
-        <div class="feature-icon">🎯</div>
-        <h3 class="feature-title">Siri Integration</h3>
-        <p class="feature-description">
-          Brug Siri-genveje til hurtigt at tilføje transaktioner hændsfri. Automatisering i dine fingerspidser.
-        </p>
       </div>
-    </div>
   </section>
 
   <!-- Screenshots Section -->
@@ -1122,6 +1118,10 @@
       <p class="section-description">
         Oplev det rene og intuitive interface designet til moderne pengestyring.
       </p>
+          <div class="platform-switcher">
+        <button type="button" class="platform-btn active" data-platform="ios" aria-pressed="true">iOS</button>
+        <button type="button" class="platform-btn" data-platform="android" aria-pressed="false">Android</button>
+      </div>
     </div>
 
     <div class="carousel-wrapper">
@@ -1161,8 +1161,8 @@
   <section class="video-section">
     <h2 class="section-title">Se magien ske</h2>
     <div class="video-container">
-      <video autoplay muted playsinline loop>
-        <source src="images/LadetRegneiMovie.mp4" type="video/mp4">
+      <video id="platform-video" autoplay muted playsinline loop>
+        <source id="platform-video-source" src="images/LadetRegneiMovie.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
       <div class="video-caption">
@@ -1176,11 +1176,19 @@
     <div class="download-content">
       <h2 class="download-title">Klar til at tage kontrol?</h2>
       <p class="download-subtitle">
-        Bliv med tusindvis af brugere, der har forenklet deres økonomiske opfølgning med BalanceTrackr.
+        Bliv med tusindvis af brugere, der har forenklet deres økonomiske opfølgning med BalanceTrackr på iOS og Android.
       </p>
-      <a href="https://apps.apple.com/us/app/regnskapp/id6743946348" target="_blank" class="download-badge">
-        <img src="images/black.svg" alt="Download on the App Store" style="width: 140px; height: auto;" />
-      </a>
+      <div class="download-badges">
+        <a href="https://apps.apple.com/us/app/regnskapp/id6743946348" target="_blank" class="download-badge">
+          <img src="images/black.svg" alt="Download on the App Store" style="width: 140px; height: auto;" />
+        </a>
+        <div class="coming-soon-wrapper">
+          <span class="coming-soon-badge">Kommer snart</span>
+          <a href="#" target="_blank" class="download-badge" title="Coming soon to Google Play" aria-label="Get it on Google Play (coming soon)">
+            <img src="images/google-play-badge-logo-svgrepo-com.svg" alt="Get it on Google Play" style="width: 140px; height: auto;" />
+          </a>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1354,6 +1362,45 @@
     }
 
     setInitialFlag(); // call the function on load
+
+    // Platform switcher (iOS / Android) for screenshots and video
+    const PAGE_LANG = (() => { const m = window.location.pathname.split('/').pop().match(/^index(?:-([^.]+))?\.html$/); return (m && m[1]) ? m[1] : 'en'; })();
+    const platformPaths = {
+      ios: {
+        images: [`images/${PAGE_LANG}/1.png`, `images/${PAGE_LANG}/2.png`, `images/${PAGE_LANG}/3.png`, `images/${PAGE_LANG}/4.png`, `images/${PAGE_LANG}/5.png`, `images/${PAGE_LANG}/6.png`, `images/${PAGE_LANG}/7.png`, `images/${PAGE_LANG}/8.png`],
+        video: 'images/LadetRegneiMovie.mp4'
+      },
+      android: {
+        images: [`images/android/${PAGE_LANG}/1.png`, `images/android/${PAGE_LANG}/2.png`, `images/android/${PAGE_LANG}/3.png`, `images/android/${PAGE_LANG}/4.png`, `images/android/${PAGE_LANG}/5.png`, `images/android/${PAGE_LANG}/6.png`, `images/android/${PAGE_LANG}/7.png`, `images/android/${PAGE_LANG}/8.png`],
+        video: 'images/MovieMakeItRain.mp4'
+      }
+    };
+
+    function switchPlatform(platform) {
+      const paths = platformPaths[platform];
+      if (!paths) return;
+      const carousel1Imgs = document.querySelectorAll('.carousel-1 img');
+      const carousel2Imgs = document.querySelectorAll('.carousel-2 img');
+      carousel1Imgs.forEach((img, i) => { img.src = paths.images[i]; });
+      carousel2Imgs.forEach((img, i) => { img.src = paths.images[4 + i]; });
+      const videoSource = document.getElementById('platform-video-source');
+      const video = document.getElementById('platform-video');
+      if (videoSource && video) {
+        videoSource.src = paths.video;
+        video.load();
+      }
+      document.querySelectorAll('.platform-btn').forEach(btn => {
+        const isActive = btn.getAttribute('data-platform') === platform;
+        btn.classList.toggle('active', isActive);
+        btn.setAttribute('aria-pressed', isActive);
+      });
+    }
+
+    document.querySelectorAll('.platform-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        switchPlatform(this.getAttribute('data-platform'));
+      });
+    });
 
     // Close menu when clicking outside
     document.addEventListener("click", function (event) {
