@@ -719,9 +719,94 @@
       margin: 0;
     }
 
+    .download-badges .download-badge {
+      width: 160px;
+      min-width: 160px;
+      height: 48px;
+      min-height: 48px;
+      padding: 0;
+      box-sizing: border-box;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .download-badge img {
+      display: block;
+      margin: 0;
+      width: 140px;
+      height: auto;
+      object-fit: contain;
+    }
+
     .download-badge:hover {
       background: rgba(255, 255, 255, 0.3);
       transform: translateY(-2px);
+    }
+
+    .download-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Coming soon wrapper for Play Store buttons */
+    .coming-soon-wrapper {
+      position: relative;
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .coming-soon-badge {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      background: var(--primary-color);
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-radius: var(--radius-md);
+      white-space: nowrap;
+    }
+    .coming-soon-wrapper .btn,
+    .coming-soon-wrapper .download-badge {
+      opacity: 0.85;
+      pointer-events: none;
+      cursor: default;
+    }
+
+    .platform-switcher {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: center;
+      margin-top: 1.5rem;
+    }
+
+    .platform-btn {
+      padding: 0.5rem 1.25rem;
+      border-radius: var(--radius-md);
+      border: 2px solid var(--border-color);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+
+    .platform-btn:hover {
+      border-color: var(--primary-color);
+      color: var(--primary-color);
+    }
+
+    .platform-btn.active {
+      background: var(--primary-color);
+      border-color: var(--primary-color);
+      color: white;
     }
 
     /* Reviews Section */
@@ -1056,7 +1141,8 @@
         <a href="#features" class="btn btn-secondary">
           <span>✨</span> Upptäck Funktioner
         </a>
-              <div class="coming-soon-wrapper">
+        <!-- Replace href with Play Store URL when Android app is published -->
+        <div class="coming-soon-wrapper">
           <span class="coming-soon-badge">Kommer snart</span>
           <a href="#" class="btn" target="_blank" title="Coming soon to Google Play">
             <span>🤖</span> Ladda ner för Android
@@ -1118,13 +1204,13 @@
       <p class="section-description">
         Upplev det rena och intuitiva gränssnittet designat för modern pengahantering.
       </p>
-          <div class="platform-switcher">
+      <div class="platform-switcher">
         <button type="button" class="platform-btn active" data-platform="ios" aria-pressed="true">iOS</button>
         <button type="button" class="platform-btn" data-platform="android" aria-pressed="false">Android</button>
       </div>
     </div>
 
-    <div class="carousel-wrapper">
+  <div class="carousel-wrapper">
       <div class="carousel carousel-1">
         <img src="images/sv/1.png" alt="App dashboard showing balance overview" />
         <img src="images/sv/2.png" alt="Adding new transactions" />
@@ -1140,21 +1226,21 @@
       </div>
     </div>
 
-    <div class="carousel-wrapper">
-      <div class="carousel carousel-2">
+  <div class="carousel-wrapper">
+    <div class="carousel carousel-2">
         <img src="images/sv/5.png" alt="Transaction history" />
         <img src="images/sv/6.png" alt="Settings and preferences" />
         <img src="images/sv/7.png" alt="Payday countdown feature" />
         <img src="images/sv/8.png" alt="Siri Shortcuts integration" />
-      </div>
-
-      <div class="carousel-dots carousel-dots-2">
-        <span class="dot active"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-      </div>
     </div>
+
+    <div class="carousel-dots carousel-dots-2">
+        <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+  </div>
   </section>
 
   <!-- Video Section -->
@@ -1305,7 +1391,6 @@
       <div style="margin-top: 1rem;">
         <a href="privacy-policy/sv.html" style="color: var(--text-secondary); text-decoration: none; margin: 0 1rem;">Integritetspolicy</a>
         <a href="support/sv.html" style="color: var(--text-secondary); text-decoration: none; margin: 0 1rem;">Support</a>
-        <a href="SiriShortcutsSetup/sv.html" style="color: var(--text-secondary); text-decoration: none; margin: 0 1rem;">Genvägar</a>
       </div>
     </div>
   </footer>
