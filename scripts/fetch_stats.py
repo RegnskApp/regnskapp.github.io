@@ -139,6 +139,7 @@ COUNTRY_CODES = {
     "NO": "Norway",
     "CN": "China mainland",
     "CA": "Canada",
+    "CL": "Chile",
     "GB": "United Kingdom",
     "IN": "India",
     "DE": "Germany",
