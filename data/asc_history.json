@@ -1,5 +1,5 @@
 {
-  "last_data_update": "2026-03-02",
+  "last_data_update": "2026-03-03",
   "total_units_all_time": 873,
   "total_country_downloaded_all_time": 69,
   "total_per_country": {
@@ -143,6 +143,15 @@
       },
       "skipped_units_by_product_type": {
         "7F – Update (Universal, excl. tvOS)": 147
+      }
+    },
+    {
+      "report_date": "2026-03-03",
+      "total_units": 0,
+      "sales_by_country": {},
+      "sales_by_device": {},
+      "skipped_units_by_product_type": {
+        "7F – Update (Universal, excl. tvOS)": 25
       }
     }
   ]
