@@ -549,67 +549,75 @@
     </div>
   </nav>
 
-  <!-- Main Content -->
+<!-- Main Content -->
   <div class="content">
     <h1>Tietosuojakäytäntö</h1>
     <h2>Johdanto</h2>
-    <p>BalanceTrackr (RegnskApp) kunnioittaa yksityisyyttäsi. Tämä asiakirja selittää, miten käsittelemme tietojasi.</p>
-    
-    <h2>Tietojen keruu ja tallennus</h2>
+    <p>BalanceTrackr (RegnskApp) on henkilökohtaisen talouden hallintasovellus, joka kunnioittaa yksityisyyttäsi. Tämä käytäntö selittää, miten käsittelemme tietojasi.</p>
+
+    <h2>Tietojen kerääminen ja tallennus</h2>
     <ul>
-      <li>Kaikki taloustietosi tallennetaan paikallisesti laitteellesi</li>
-      <li>Emme kerää, siirrä tai tallenna tietojasi ulkoisille palvelimille</li>
-      <li>Henkilötietoja ei jaeta kolmansille osapuolille</li>
-      <li>Sovellus ei vaadi internet‑yhteyttä toimiakseen</li>
+      <li>Kaikki taloustietosi (tilit, tapahtumat, lainat) tallennetaan paikallisesti laitteellesi</li>
+      <li>Emme kerää, siirrä tai tallenna mitään taloustietojasi ulkoisille palvelimille</li>
+      <li>Henkilökohtaisia tietoja ei jaeta kolmansille osapuolille</li>
+      <li>Sovellus ei vaadi internetyhteyttä toimiakseen</li>
     </ul>
-    
+
     <h2>Tietojen käyttö</h2>
-    <p>Sovellus käyttää tietojasi seuraavasti:</p>
+    <p>Sovellus käyttää tietojasi seuraaviin tarkoituksiin:</p>
     <ul>
-      <li>Näyttää tilien saldot ja tapahtumat</li>
-      <li>Laskee lainojen maksut ja aikataulut</li>
-      <li>Näyttää tilastot ja kaaviot</li>
-      <li>Hallinnoi toistuvia tapahtumia</li>
+      <li>Näyttääkseen tiliesi saldot ja tapahtumat</li>
+      <li>Lainojen maksujen ja aikataulujen laskemiseen</li>
+      <li>Taloudellisten tilastojen ja kaavioiden näyttämiseen</li>
+      <li>Toistuvien tapahtumien hallintaan</li>
     </ul>
-    
+
     <h2>Paikallinen tallennus</h2>
     <ul>
-      <li>Tiedot tallennetaan turvallisesti SwiftDataa käyttäen</li>
-      <li>Data pysyy laitteellasi, ellei sitä poisteta</li>
-      <li>Kaikki sovelluksen data voidaan poistaa poistamalla sovellus</li>
+      <li>Kaikki tiedot tallennetaan turvallisesti laitteellesi. iOS-laitteissa sovellus käyttää SwiftDataa; Androidissa paikallista tietokantaa. Tiedot pysyvät laitteellasi, ellet nimenomaisesti päätä poistaa niitä</li>
+      <li>Voit poistaa kaikki sovelluksen tiedot poistamalla sovelluksen</li>
     </ul>
-    
+
     <h2>Biometrinen tunnistus</h2>
     <ul>
-      <li>Tuki Face ID/Touch ID ‑tunnistukselle laitetasolla</li>
-      <li>iOS hallinnoi tunnistustietoja; BalanceTrackr ei käsittele niitä</li>
-      <li>Sovellus ei kerää tai tallenna biometrisiä tietoja</li>
+      <li>Sovellus tukee laitteen tason suojausta biometrisella tunnistuksella kuten Face ID tai Touch ID iOS:ssä tai sormenjälki tai kasvojentunnistus Androidissa</li>
+      <li>Voit ottaa sen käyttöön laitteen tai sovelluksen asetuksissa. iOS:ssä paina ja pidä sovelluskuvaketta ja valitse Require Face ID tai Require Touch ID. Androidissa käytä sovelluksen asetusten suojausvaihtoehtoa</li>
+      <li>Tunnistus hoidetaan laitteen käyttöjärjestelmän toimesta eikä BalanceTrackr koskaan pääse siihen käsiksi</li>
+      <li>Sovellus ei kerää eikä tallenna biometrisiä tietoja</li>
     </ul>
-    
+
     <h2>Tietojen vienti ja tuonti</h2>
     <ul>
-      <li>Voit viedä tiedot .regnskappdata‑varmuuskopiotiedostoon</li>
-      <li>Voit valita, mitä viedään</li>
-      <li>Viedyt tiedostot tallennetaan paikallisesti</li>
-      <li>Voit tuoda aiemmin vietyjä tietoja palautusta tai siirtoa varten</li>
+      <li>Voit viedä tietosi turvalliseen tiedostoon (.regnskappdata-muoto) varmuuskopiointia varten</li>
+      <li>Voit itse päättää mitä tietoja viedään (tilit, tapahtumat, kategoriat, lainat, asetukset)</li>
+      <li>Viedyt tiedostot tallennetaan paikallisesti eikä niitä ladata automaattisesti minnekään</li>
+      <li>Voit tuoda tietosi aiemmin viedyistä tiedostoista palauttaaksesi tiedot tai siirtääksesi ne uuteen laitteeseen</li>
+      <li>Kaikki tiedonsiirrot suoritetaan manuaalisesti sinun toimesta käyttäjänä</li>
     </ul>
-    
+
+    <h2>Kieli ja valuutta-asetukset</h2>
+    <ul>
+      <li>Kieli ja valuutta-asetuksesi tallennetaan paikallisesti</li>
+      <li>Näitä asetuksia käytetään vain sovelluksessa näytettävien tietojen muotoiluun</li>
+    </ul>
+
     <h2>Turvallisuus</h2>
     <ul>
-      <li>Face ID/Touch ID laitetason suojaus</li>
-      <li>Ei ulkoista autentikointia</li>
-      <li>Dataa ei lähetetä laitteen ulkopuolelle</li>
-      <li>iOS salaa taloustiedot laitetasolla</li>
+      <li>Sovellus tukee laitteen tason suojausta biometrisella tunnistuksella kuten Face ID tai Touch ID iOS:ssä tai sormenjälki tai kasvojentunnistus Androidissa</li>
+      <li>Ulkopuolista tunnistautumista ei vaadita</li>
+      <li>Mitään tietoja ei lähetetä laitteesi ulkopuolelle</li>
+      <li>Sovellus on toteuttanut parhaat käytännöt turvalliseen paikalliseen tietojen tallennukseen</li>
+      <li>Taloustietosi ovat suojattu laitteen sisäänrakennetulla salauksella kuten iOS-laitteen salauksella tai Android Keystorella</li>
     </ul>
-    
+
     <h2>Päivitykset ja muutokset</h2>
-    <p>Voimme päivittää tätä tietosuojakäytäntöä ajoittain. Muutokset näkyvät sovelluksen uusimmassa versiossa.</p>
-    
-    <h2>Yhteys</h2>
-    <p>Kysymykset tästä tietosuojasta:</p>
-    <p>📧 Sähköposti: <a href="mailto:balancetrackr@gmail.com">balancetrackr@gmail.com</a></p>
-    
-    <p><em>Päivitetty: helmikuu 2026</em></p>
+    <p>Voin päivittää tätä tietosuojakäytäntöä ajoittain. Mahdolliset muutokset näkyvät sovelluksen uusimmassa versiossa.</p>
+
+    <h2>Yhteystiedot</h2>
+    <p>Jos sinulla on kysyttävää tästä tietosuojakäytännöstä, ota yhteyttä:</p>
+    <p>📧 Email: <a href="mailto:balancetrackr@gmail.com">balancetrackr@gmail.com</a></p>
+
+    <p><em>Viimeksi päivitetty: Helmikuu 2026</em></p>
 
     <a href="../index-fi.html" class="back-btn">← Takaisin</a>
   </div>
