@@ -1,5 +1,5 @@
 {
-  "last_data_update": "2026-03-19",
+  "last_data_update": "2026-03-20",
   "total_units_all_time": 879,
   "total_country_downloaded_all_time": 69,
   "total_per_country": {
@@ -299,6 +299,15 @@
       "skipped_units_by_product_type": {
         "3F – Redownload (Universal, excl. tvOS)": 1,
         "7F – Update (Universal, excl. tvOS)": 1
+      }
+    },
+    {
+      "report_date": "2026-03-20",
+      "total_units": 0,
+      "sales_by_country": {},
+      "sales_by_device": {},
+      "skipped_units_by_product_type": {
+        "3F – Redownload (Universal, excl. tvOS)": 1
       }
     }
   ]
