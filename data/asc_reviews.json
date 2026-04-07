@@ -1,10 +1,10 @@
 {
-  "last_review_update": "2025-10-29",
+  "last_review_update": "2026-04-05",
   "ratings": {
-    "total_count": 6,
-    "average": 4.67,
+    "total_count": 7,
+    "average": 4.71,
     "stars": {
-      "5": 4,
+      "5": 5,
       "4": 2,
       "3": 0,
       "2": 0,
@@ -12,7 +12,7 @@
     },
     "ratings_per_country": {
       "United States": {
-        "total_count": 2,
+        "total_count": 3,
         "average": 5.0
       },
       "United Arab Emirates": {
@@ -93,6 +93,16 @@
       "createdDate": "2025-10-29",
       "territory": "ITA",
       "country_name": "Italy"
+    },
+    {
+      "id": "00000191-f874-6c03-3e1a-39b000000000",
+      "rating": 5,
+      "title": "افضل برنامج",
+      "review": "ممتاز جدا ومفيد",
+      "reviewerNickname": "moooostafa",
+      "createdDate": "2026-04-05",
+      "territory": "USA",
+      "country_name": "United States"
     }
   ],
   "review_ids": [
@@ -101,6 +111,7 @@
     "00000191-f874-6c02-fd76-871f00000000",
     "00000191-f874-6c03-135e-2efe00000000",
     "00000191-f874-6c02-f811-347300000000",
-    "00000191-f874-6c03-1a7c-964200000000"
+    "00000191-f874-6c03-1a7c-964200000000",
+    "00000191-f874-6c03-3e1a-39b000000000"
   ]
 }
