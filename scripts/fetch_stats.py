@@ -204,6 +204,22 @@ COUNTRY_CODES = {
     "MA": "Morocco",
     "NG": "Nigeria",
     "RS": "Serbia",
+    "KW": "Kuwait",
+    "IQ": "Iraq",
+    "DZ": "Algeria",
+    "JO": "Jordan",
+    "TN": "Tunisia",
+    "YE": "Yemen",
+    "LY": "Libya",
+    "MR": "Mauritania",
+    "KE": "Kenya",
+    "ME": "Montenegro",
+    "LK": "Sri Lanka",
+    "BH": "Bahrain",
+    "FI": "Finland",
+    "BN": "Brunei",
+    "SN": "Senegal",
+    "GE": "Georgia"
 }
 
 # =========================
