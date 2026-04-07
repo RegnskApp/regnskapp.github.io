@@ -1,42 +1,51 @@
-import json
 import os
-from google.oauth2 import service_account
+import json
+import pandas as pd
+import requests
 from googleapiclient.discovery import build
+from google.oauth2 import service_account
+from io import StringIO
 
 # === KONFIGURASJON ===
-PACKAGE_NAME = "com.balancetrackr.app"  # Din app
+PACKAGE_NAME = "com.balancetrackr.app"
 OUTPUT_FILE = "data/play_store_history.json"
-SCOPES = ['https://www.googleapis.com/auth/androidpublisher']
+SCOPES = ["https://www.googleapis.com/auth/androidpublisher"]
 
-# === AUTENTISERING MED SERVICE ACCOUNT ===
 SERVICE_ACCOUNT_FILE = os.environ.get("GOOGLE_APPLICATION_CREDENTIALS")
+
+# === AUTENTISERING ===
 credentials = service_account.Credentials.from_service_account_file(
     SERVICE_ACCOUNT_FILE, scopes=SCOPES
 )
-service = build('androidpublisher', 'v3', credentials=credentials)
+service = build("androidpublisher", "v3", credentials=credentials)
 
-# === HENT TOTAL INSTALLS PER LAND ===
+# === HENT RAPPORTER FRA PLAY STORE ===
 try:
-    # Hent user acquisition report for appen
-    request = service.reports().get(
+    reports = service.reports().list(
         packageName=PACKAGE_NAME,
-        reportType='acquisition',  # acquisition = installs
-        metrics='installs',
-        dimensions='country',
-        startDate='2026-01-01',  # dato app ble publisert, eller ønsket start
-        endDate='2030-12-31'  # dagens dato eller ønsket end
-    )
-    response = request.execute()
+        reportType="statistics"  # acquisition/install stats
+    ).execute()
 
-    by_country = {}
     total_installs = 0
+    by_country = {}
 
-    # response inneholder rader med country + installs
-    for row in response.get("rows", []):
-        country_code = row.get("country")
-        installs = int(row.get("installs", 0))
-        by_country[country_code] = installs
-        total_installs += installs
+    for report in reports.get("downloads", []):
+        url = report.get("url")
+        if not url:
+            continue
+
+        # Hent CSV/TSV
+        r = requests.get(url)
+        r.raise_for_status()
+        # CSV kan være tab-separated
+        df = pd.read_csv(StringIO(r.text), sep="\t")
+
+        # summer per land
+        if "country" in df.columns and "installs" in df.columns:
+            country_installs = df.groupby("country")["installs"].sum().to_dict()
+            for country, installs in country_installs.items():
+                by_country[country] = by_country.get(country, 0) + installs
+            total_installs += df["installs"].sum()
 
 except Exception as e:
     print("Feil ved henting av Play Store data:", e)
@@ -44,13 +53,13 @@ except Exception as e:
     total_installs = 0
 
 # === LAG JSON OUTPUT ===
-daily_data = {
-    "total_installs": total_installs,
+os.makedirs(os.path.dirname(OUTPUT_FILE), exist_ok=True)
+output_data = {
+    "total_installs": int(total_installs),
     "by_country": by_country
 }
 
-os.makedirs(os.path.dirname(OUTPUT_FILE), exist_ok=True)
 with open(OUTPUT_FILE, "w") as f:
-    json.dump(daily_data, f, indent=2)
+    json.dump(output_data, f, indent=2)
 
-print("Data oppdatert:", daily_data)
+print("Data oppdatert:", output_data)
