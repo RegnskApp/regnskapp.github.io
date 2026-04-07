@@ -1,8 +1,4 @@
-[
-  {
-    "date": "2026-04-07",
-    "package_name": "com.balancetrackr.app",
-    "daily_installs": 0,
-    "purchases": []
-  }
-]
+{
+  "total_installs": 0,
+  "by_country": {}
+}
