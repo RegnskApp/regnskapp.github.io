@@ -1,35 +1,31 @@
-name: Test Play Store API
+name: Fetch Play Store Reports
 
 on:
   schedule:
     - cron: "0 6 * * *"  # daglig kl 06 UTC
-  workflow_dispatch:       # kan kjøres manuelt fra Actions
+  workflow_dispatch:
 
 jobs:
-  test_api:
+  fetch_reports:
     runs-on: ubuntu-latest
 
     steps:
-      # Hent repo
       - uses: actions/checkout@v3
 
-      # Sett opp Python
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
           python-version: 3.11
 
-      # Installer nødvendige biblioteker
       - name: Install dependencies
         run: |
-          pip install google-api-python-client google-auth
+          python -m pip install --upgrade pip
+          pip install google-cloud-storage
 
-      # Sett opp service account
       - name: Auth
         run: echo '${{ secrets.GPC_KEY }}' > play-api-key.json
 
-      # Kjør testscript
-      - name: Run test script
+      - name: Fetch reports
         env:
           GOOGLE_APPLICATION_CREDENTIALS: play-api-key.json
         run: python scripts/test_play_store_reports.py
