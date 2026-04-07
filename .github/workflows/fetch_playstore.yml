@@ -1,0 +1,43 @@
+name: Fetch Play Store Data
+
+on:
+  schedule:
+    - cron: "0 6 * * *"  # hver dag kl 06 UTC
+  workflow_dispatch:
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Hent repoet
+      - uses: actions/checkout@v3
+
+      # Sett opp Python
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
+
+      # Installer nødvendige biblioteker
+      - name: Install dependencies
+        run: pip install google-api-python-client google-auth pandas
+
+      # Lagre service account JSON fra GitHub Secrets
+      - name: Auth
+        run: echo '${{ secrets.GPC_KEY }}' > play-api-key.json
+
+      # Kjør Python-scriptet
+      - name: Run fetch script
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: play-api-key.json
+        run: python fetch.py
+
+      # Commit og push JSON-filen til repoet
+      - name: Commit result
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add data/play_store_history.json
+          git commit -m "Update Play Store data" || exit 0
+          git push
