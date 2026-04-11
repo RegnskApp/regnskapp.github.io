@@ -14,7 +14,6 @@ ASC_KEY_ID = os.environ["ASC_KEY_ID"]
 ASC_PRIVATE_KEY = os.environ["ASC_PRIVATE_KEY"].replace("\\n", "\n")
 
 # ========= MANUELL APP STORE RATING =========
-# Differansen mellom App Store total og reviews med tekst
 MANUAL_RATINGS = {
     "5": 8,
     "4": 1,
@@ -127,6 +126,10 @@ def fetch_reviews(token):
 
     return reviews
 
+# ========= SORTERING =========
+def sort_reviews_by_date(reviews):
+    return sorted(reviews, key=lambda r: r.get("createdDate", ""))
+
 # ========= SUMMARIZE =========
 def summarize_ratings(reviews):
     stars = {"5":0,"4":0,"3":0,"2":0,"1":0}
@@ -198,22 +201,26 @@ def update_history(history, reviews):
         print(f"Nye reviews: {len(new_reviews)}")
         history.setdefault("reviews", []).extend(new_reviews)
         history.setdefault("review_ids", []).extend(r["id"] for r in new_reviews)
-        last_review_date = new_reviews[-1]["createdDate"]
     else:
         print("Ingen nye reviews.")
-        last_review_date = history.get("last_review_update", "")
+
+    # 👉 SORTER ALLE REVIEWS (eldst → nyest)
+    history["reviews"] = sort_reviews_by_date(history["reviews"])
+
+    # 👉 Finn nyeste dato korrekt
+    all_dates = [
+        r.get("createdDate")
+        for r in history["reviews"]
+        if r.get("createdDate")
+    ]
+    last_review_date = max(all_dates) if all_dates else ""
 
     ratings_summary = summarize_ratings(history["reviews"])
 
     return {
         "last_review_update": last_review_date,
-
-        # 👉 Din “ekte App Store” (manuell + reviews)
         "ratings": ratings_summary,
-
-        # 👉 Transparens
         "manual_ratings": MANUAL_RATINGS,
-
         "reviews": history["reviews"],
         "review_ids": history["review_ids"]
     }
@@ -229,6 +236,7 @@ def main():
     save_history(history)
 
     print(f"Totalt reviews: {len(history['reviews'])}")
+    print("Siste review dato:", history["last_review_update"])
     print("Rating summary:")
     print(json.dumps(history["ratings"], indent=2, ensure_ascii=False))
 
