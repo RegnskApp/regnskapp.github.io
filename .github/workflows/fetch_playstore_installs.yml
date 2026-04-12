@@ -1,7 +1,9 @@
 name: Fetch Play Store Installs
 
 on:
-  workflow_dispatch:   # manuell kjøring
+  schedule:
+    - cron: "0 18 * * *"
+  workflow_dispatch:
 
 jobs:
   fetch:
