@@ -1,0 +1,27 @@
+name: Test Play Store Access
+
+on:
+  workflow_dispatch:  # kun manuell kjøring
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
+
+      - name: Install dependencies
+        run: pip install google-cloud-storage
+
+      - name: Load service account
+        run: echo '${{ secrets.GPC_KEY }}' > key.json
+
+      - name: Run test
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: key.json
+        run: python scripts/test_play_store_reports.py
