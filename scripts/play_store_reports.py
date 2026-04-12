@@ -60,7 +60,7 @@ COUNTRY_MAP = {
 # =========================
 # LAST UPDATED
 # =========================
-last_updated = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
+last_updated = datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
 # =========================
 # INIT STORAGE
