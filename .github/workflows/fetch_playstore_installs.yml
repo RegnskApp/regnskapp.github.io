@@ -32,7 +32,7 @@ jobs:
       - name: Run Play Store script
         env:
           GOOGLE_APPLICATION_CREDENTIALS: key.json
-        run: python scripts/test_play_store_reports.py
+        run: python scripts/play_store_reports.py
 
       # 6. Commit resultat (JSON)
       - name: Commit and push result
