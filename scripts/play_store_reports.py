@@ -133,7 +133,7 @@ total_installs = sum(by_country.values())
 # =========================
 result = {
     "last_updated": last_updated,
-    "total_installs": int(total_installs),
+    "total_downloads": int(total_installs),
     "by_country": by_country_named
 }
 
