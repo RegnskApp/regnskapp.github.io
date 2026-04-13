@@ -1101,6 +1101,13 @@
       padding: 0.5rem 0;
       border-bottom: 1px solid var(--border-color);
     }
+
+    .top-countries img {
+      width: 20px;
+      margin-right: 8px;
+      border-radius: 3px;
+      vertical-align: middle;
+    }
   </style>
 </head>
 <body>
@@ -1888,73 +1895,74 @@
       updateCopyrightYear();
     }
 
-    async function loadStatistics() {
-      try {
-        const [iosRes, androidRes] = await Promise.all([
-          fetch('https://balancetrackr.com/data/asc_history.json'),
-          fetch('https://balancetrackr.com/data/play_store_history.json')
-        ]);
-    
-        const iosData = await iosRes.json();
-        const androidData = await androidRes.json();
-    
-        const combined = {
-          total: 0,
-          countries: {},
-          lastUpdated: []
-        };
-    
-        function processData(data) {
-          combined.total += data.total_downloads || 0;
-    
-          Object.entries(data.by_country || {}).forEach(([country, value]) => {
-            combined.countries[country] = (combined.countries[country] || 0) + value;
-          });
-    
-          if (data.last_updated) {
-            combined.lastUpdated.push(data.last_updated);
-          }
-        }
-    
-        processData(iosData);
-        processData(androidData);
-    
-        // Sort countries
-        const sortedCountries = Object.entries(combined.countries)
-          .sort((a, b) => b[1] - a[1]);
-    
-        const top10 = sortedCountries.slice(0, 10);
-    
-        // Update UI
-        document.getElementById('total-downloads').textContent =
-          combined.total.toLocaleString();
-    
-        document.getElementById('total-countries').textContent =
-          sortedCountries.length;
-    
-        document.getElementById('last-updated').textContent =
-          combined.lastUpdated.sort().reverse()[0]?.split(' ')[0] || '-';
-    
-        const list = document.getElementById('top-countries-list');
-        list.innerHTML = '';
-    
-        top10.forEach(([country, value]) => {
-          const li = document.createElement('li');
-          li.innerHTML = `<span>${country}</span><span>${value}</span>`;
-          list.appendChild(li);
-        });
-    
-      } catch (error) {
-        console.error('Failed to load statistics:', error);
-      }
+    const countryToISO = {
+  "United States": "us",
+  "United Kingdom": "gb",
+  "Norway": "no",
+  "Germany": "de",
+  "France": "fr",
+  "Spain": "es",
+  "Italy": "it",
+  "Canada": "ca",
+  "India": "in",
+  "China mainland": "cn",
+  "Saudi Arabia": "sa",
+  "United Arab Emirates": "ae",
+  "Egypt": "eg"
+};
+
+function animateValue(id, end, duration = 1500) {
+  const el = document.getElementById(id);
+  let startTime = performance.now();
+
+  function update(currentTime) {
+    const progress = Math.min((currentTime - startTime) / duration, 1);
+    el.textContent = Math.floor(progress * end).toLocaleString();
+
+    if (progress < 1) {
+      requestAnimationFrame(update);
     }
-    
-    // Load on page ready
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', loadStatistics);
-    } else {
-      loadStatistics();
-    }
+  }
+
+  requestAnimationFrame(update);
+}
+
+async function loadStatistics() {
+  try {
+    const res = await fetch('https://balancetrackr.com/data/global_stats.json');
+    const data = await res.json();
+
+    const sortedCountries = Object.entries(data.by_country)
+      .sort((a, b) => b[1] - a[1]);
+
+    const top10 = sortedCountries.slice(0, 10);
+
+    animateValue('total-downloads', data.total_downloads);
+    document.getElementById('total-countries').textContent = sortedCountries.length;
+    document.getElementById('last-updated').textContent =
+      data.last_updated?.split(' ')[0] || '-';
+
+    const list = document.getElementById('top-countries-list');
+    list.innerHTML = '';
+
+    top10.forEach(([country, value]) => {
+      const code = countryToISO[country] || 'un';
+
+      const li = document.createElement('li');
+      li.innerHTML = `
+        <span>
+          <img src="https://flagcdn.com/w40/${code}.png">
+          ${country}
+        </span>
+        <span>${value.toLocaleString()}</span>
+      `;
+      list.appendChild(li);
+    });
+
+  } catch (error) {
+    console.error('Failed to load statistics:', error);
+  }
+}
     
   </script>
 
