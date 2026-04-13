@@ -1,0 +1,30 @@
+name: Generate Global Stats
+
+on:
+  schedule:
+    - cron: "0 2 * * *" # hver dag kl 02:00 UTC
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Run script
+        run: node scripts/generate-global-stats.js
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add data/global_stats.json
+          git diff --quiet && git diff --staged --quiet || git commit -m "Update global stats"
+          git push
