@@ -6,14 +6,18 @@ async function fetchJSON(url) {
   return res.json();
 }
 
+// Normaliser dato til YYYY-MM-DD
+function formatDate(dateString) {
+  if (!dateString) return null;
+  return dateString.split(" ")[0];
+}
+
+// Merge countries
 function mergeCountries(target, source) {
+  if (!source) return;
   for (const [country, value] of Object.entries(source)) {
     target[country] = (target[country] || 0) + value;
   }
-}
-
-function formatDate(dateString) {
-  return dateString.split(" ")[0]; // kun YYYY-MM-DD
 }
 
 (async () => {
@@ -28,9 +32,14 @@ function formatDate(dateString) {
 
     const combinedCountries = {};
 
-    mergeCountries(combinedCountries, ascData.by_country || {});
-    mergeCountries(combinedCountries, playData.by_country || {});
+    // ✅ Hent riktige felter fra begge
+    const ascCountries = ascData.total_per_country;
+    const playCountries = playData.by_country;
 
+    mergeCountries(combinedCountries, ascCountries);
+    mergeCountries(combinedCountries, playCountries);
+
+    // Sorter
     const sortedCountries = Object.entries(combinedCountries)
       .sort((a, b) => b[1] - a[1]);
 
@@ -39,14 +48,19 @@ function formatDate(dateString) {
       downloads,
     }));
 
+    // ✅ Total downloads (forskjellige feltnavn!)
     const totalDownloads =
-      (ascData.total_downloads || 0) +
+      (ascData.total_units_all_time || 0) +
       (playData.total_downloads || 0);
 
-    const lastUpdated =
-      formatDate(ascData.last_updated) > formatDate(playData.last_updated)
-        ? formatDate(ascData.last_updated)
-        : formatDate(playData.last_updated);
+    // ✅ Datoer (forskjellige feltnavn!)
+    const ascDate = formatDate(ascData.last_data_update);
+    const playDate = formatDate(playData.last_updated);
+
+    const lastUpdated = [ascDate, playDate]
+      .filter(Boolean)
+      .sort()
+      .pop() || new Date().toISOString().split("T")[0];
 
     const output = {
       total_downloads: totalDownloads,
@@ -60,7 +74,7 @@ function formatDate(dateString) {
       JSON.stringify(output, null, 2)
     );
 
-    console.log("✅ global_stats.json updated");
+    console.log("✅ global_stats.json updated successfully");
   } catch (error) {
     console.error("❌ Error:", error);
     process.exit(1);
