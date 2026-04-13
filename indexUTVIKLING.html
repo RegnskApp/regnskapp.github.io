@@ -1058,6 +1058,49 @@
         display: none !important;
       }
     }
+
+    /* Statistics Section */
+    .stats {
+      padding: 5rem 2rem;
+      background: var(--bg-secondary);
+      text-align: center;
+    }
+    
+    .stats-container {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+    
+    .stat-box {
+      background: var(--bg-primary);
+      padding: 2rem;
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-md);
+      min-width: 200px;
+    }
+    
+    .stat-box h3 {
+      font-size: 2rem;
+      color: var(--primary-color);
+    }
+    
+    .top-countries ul {
+      list-style: none;
+      padding: 0;
+      max-width: 400px;
+      margin: 0 auto;
+      text-align: left;
+    }
+    
+    .top-countries li {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--border-color);
+    }
   </style>
 </head>
 <body>
@@ -1286,6 +1329,38 @@
     </div>
   </section>
 
+  <!-- Statistics Section -->
+  <section class="stats">
+    <div class="section-header">
+      <h2 class="section-title">Global Statistics</h2>
+      <p class="section-description">
+        Real download data across iOS and Android.
+      </p>
+    </div>
+  
+    <div class="stats-container">
+      <div class="stat-box">
+        <h3 id="total-downloads">-</h3>
+        <p>Total Downloads</p>
+      </div>
+  
+      <div class="stat-box">
+        <h3 id="total-countries">-</h3>
+        <p>Countries</p>
+      </div>
+  
+      <div class="stat-box">
+        <h3 id="last-updated">-</h3>
+        <p>Last Updated</p>
+      </div>
+    </div>
+  
+    <div class="top-countries">
+      <h3>Top 10 Countries</h3>
+      <ul id="top-countries-list"></ul>
+    </div>
+  </section>
+  
   <!-- Reviews Section -->
   <section class="reviews">
     <div class="section-header">
@@ -1812,6 +1887,75 @@
     } else {
       updateCopyrightYear();
     }
+
+    async function loadStatistics() {
+      try {
+        const [iosRes, androidRes] = await Promise.all([
+          fetch('https://balancetrackr.com/data/asc_history.json'),
+          fetch('https://balancetrackr.com/data/play_store_history.json')
+        ]);
+    
+        const iosData = await iosRes.json();
+        const androidData = await androidRes.json();
+    
+        const combined = {
+          total: 0,
+          countries: {},
+          lastUpdated: []
+        };
+    
+        function processData(data) {
+          combined.total += data.total_downloads || 0;
+    
+          Object.entries(data.by_country || {}).forEach(([country, value]) => {
+            combined.countries[country] = (combined.countries[country] || 0) + value;
+          });
+    
+          if (data.last_updated) {
+            combined.lastUpdated.push(data.last_updated);
+          }
+        }
+    
+        processData(iosData);
+        processData(androidData);
+    
+        // Sort countries
+        const sortedCountries = Object.entries(combined.countries)
+          .sort((a, b) => b[1] - a[1]);
+    
+        const top10 = sortedCountries.slice(0, 10);
+    
+        // Update UI
+        document.getElementById('total-downloads').textContent =
+          combined.total.toLocaleString();
+    
+        document.getElementById('total-countries').textContent =
+          sortedCountries.length;
+    
+        document.getElementById('last-updated').textContent =
+          combined.lastUpdated.sort().reverse()[0]?.split(' ')[0] || '-';
+    
+        const list = document.getElementById('top-countries-list');
+        list.innerHTML = '';
+    
+        top10.forEach(([country, value]) => {
+          const li = document.createElement('li');
+          li.innerHTML = `<span>${country}</span><span>${value}</span>`;
+          list.appendChild(li);
+        });
+    
+      } catch (error) {
+        console.error('Failed to load statistics:', error);
+      }
+    }
+    
+    // Load on page ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', loadStatistics);
+    } else {
+      loadStatistics();
+    }
+    
   </script>
 
   <!-- Image Modal -->
