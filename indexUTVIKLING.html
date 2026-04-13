@@ -1098,15 +1098,14 @@
     .top-countries li {
       display: flex;
       justify-content: space-between;
-      padding: 0.5rem 0;
-      border-bottom: 1px solid var(--border-color);
+      align-items: center;
+      padding: 0.6rem 0;
     }
-
+    
     .top-countries img {
-      width: 20px;
-      margin-right: 8px;
+      width: 18px;
+      margin-right: 10px;
       border-radius: 3px;
-      vertical-align: middle;
     }
   </style>
 </head>
@@ -1932,22 +1931,23 @@ async function loadStatistics() {
     const res = await fetch('https://balancetrackr.com/data/global_stats.json');
     const data = await res.json();
 
-    const sortedCountries = Object.entries(data.by_country)
-      .sort((a, b) => b[1] - a[1]);
-
-    const top10 = sortedCountries.slice(0, 10);
+    const top10 = data.top_10;
 
     animateValue('total-downloads', data.total_downloads);
-    document.getElementById('total-countries').textContent = sortedCountries.length;
+    document.getElementById('total-countries').textContent =
+      data.countries;
     document.getElementById('last-updated').textContent =
       data.last_updated?.split(' ')[0] || '-';
 
     const list = document.getElementById('top-countries-list');
     list.innerHTML = '';
 
-    top10.forEach(([country, value]) => {
+    top10.forEach((item) => {
+      const country = item.country;
+      const value = item.downloads;
+    
       const code = countryToISO[country] || 'un';
-
+    
       const li = document.createElement('li');
       li.innerHTML = `
         <span>
