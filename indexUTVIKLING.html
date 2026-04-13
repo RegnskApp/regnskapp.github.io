@@ -1936,8 +1936,7 @@ async function loadStatistics() {
     animateValue('total-downloads', data.total_downloads);
     document.getElementById('total-countries').textContent =
       data.countries;
-    document.getElementById('last-updated').textContent =
-      data.last_updated?.split(' ')[0] || '-';
+    document.getElementById('last-updated').textContent = data.last_updated || '-';
 
     const list = document.getElementById('top-countries-list');
     list.innerHTML = '';
@@ -1963,7 +1962,9 @@ async function loadStatistics() {
     console.error('Failed to load statistics:', error);
   }
 }
-    
+
+  document.addEventListener('DOMContentLoaded', loadStatistics);
+  
   </script>
 
   <!-- Image Modal -->
