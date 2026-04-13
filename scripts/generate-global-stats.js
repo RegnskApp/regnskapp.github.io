@@ -12,11 +12,25 @@ function formatDate(dateString) {
   return dateString.split(" ")[0];
 }
 
-// Merge countries
+// 🧠 Normaliser landnavn (kritisk!)
+function normalizeCountryName(name) {
+  const map = {
+    "Türkiye": "Turkey",
+    "Korea, Republic of": "South Korea",
+    "United States of America": "United States",
+    "UAE": "United Arab Emirates"
+  };
+
+  return map[name] || name;
+}
+
+// Merge countries med normalisering
 function mergeCountries(target, source) {
   if (!source) return;
+
   for (const [country, value] of Object.entries(source)) {
-    target[country] = (target[country] || 0) + value;
+    const normalized = normalizeCountryName(country);
+    target[normalized] = (target[normalized] || 0) + value;
   }
 }
 
@@ -32,28 +46,26 @@ function mergeCountries(target, source) {
 
     const combinedCountries = {};
 
-    // ✅ Hent riktige felter fra begge
-    const ascCountries = ascData.total_per_country;
-    const playCountries = playData.by_country;
+    // Hent riktige felter
+    mergeCountries(combinedCountries, ascData.total_per_country);
+    mergeCountries(combinedCountries, playData.by_country);
 
-    mergeCountries(combinedCountries, ascCountries);
-    mergeCountries(combinedCountries, playCountries);
-
-    // Sorter
+    // Sorter land
     const sortedCountries = Object.entries(combinedCountries)
       .sort((a, b) => b[1] - a[1]);
 
+    // Top 10
     const top10 = sortedCountries.slice(0, 10).map(([country, downloads]) => ({
       country,
       downloads,
     }));
 
-    // ✅ Total downloads (forskjellige feltnavn!)
+    // Total downloads
     const totalDownloads =
       (ascData.total_units_all_time || 0) +
-      (playData.total_downloads || 0);
+      (playData.total_installs || 0);
 
-    // ✅ Datoer (forskjellige feltnavn!)
+    // Datoer
     const ascDate = formatDate(ascData.last_data_update);
     const playDate = formatDate(playData.last_updated);
 
@@ -66,7 +78,7 @@ function mergeCountries(target, source) {
       total_downloads: totalDownloads,
       countries: sortedCountries.length,
       last_updated: lastUpdated,
-      top_10: top10,
+      top_10: top10
     };
 
     fs.writeFileSync(
@@ -75,6 +87,9 @@ function mergeCountries(target, source) {
     );
 
     console.log("✅ global_stats.json updated successfully");
+    console.log(`🌍 Countries: ${output.countries}`);
+    console.log(`⬇️ Total downloads: ${output.total_downloads}`);
+
   } catch (error) {
     console.error("❌ Error:", error);
     process.exit(1);
