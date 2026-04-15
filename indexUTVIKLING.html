@@ -2041,7 +2041,29 @@ async function loadStatistics() {
   }
 }
 
-  document.addEventListener('DOMContentLoaded', loadStatistics);
+      let statisticsLoaded = false;
+    
+    function initStatisticsObserver() {
+      const statsSection = document.querySelector('.stats');
+      if (!statsSection) return;
+    
+      const statsObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !statisticsLoaded) {
+            statisticsLoaded = true;
+            loadStatistics();
+            observer.unobserve(statsSection);
+          }
+        });
+      }, {
+        threshold: 0.1,
+        rootMargin: '200px 0px'
+      });
+    
+      statsObserver.observe(statsSection);
+    }
+    
+    document.addEventListener('DOMContentLoaded', initStatisticsObserver);
   
   </script>
 
