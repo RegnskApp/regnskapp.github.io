@@ -1932,10 +1932,9 @@ async function loadStatistics() {
     const data = await res.json();
 
     const top10 = data.top_10;
-
+    
     animateValue('total-downloads', data.total_downloads);
-    document.getElementById('total-countries').textContent =
-      data.countries;
+    animateValue('total-countries', data.countries);
     document.getElementById('last-updated').textContent = data.last_updated || '-';
 
     const list = document.getElementById('top-countries-list');
