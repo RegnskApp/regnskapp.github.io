@@ -1090,23 +1090,92 @@
     .top-countries ul {
       list-style: none;
       padding: 0;
-      max-width: 400px;
+      max-width: 500px;
       margin: 0 auto;
       text-align: left;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
     }
     
     .top-countries li {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 0.6rem 0;
+      padding: 0.75rem 0.9rem;
+      border-radius: 8px;
+      transition: background 0.2s ease, transform 0.2s ease;
+      opacity: 0;
+      transform: translateY(12px);
+      animation: rankFadeIn 0.5s ease forwards;
+    }
+    
+    .top-countries li:nth-child(even) {
+      background: rgba(0, 0, 0, 0.03);
+    }
+    
+    .top-countries li:hover {
+      background: rgba(0, 0, 0, 0.08);
+      transform: translateX(2px);
+    }
+    
+    @media (prefers-color-scheme: dark) {
+      .top-countries li:nth-child(even) {
+        background: rgba(255, 255, 255, 0.05);
+      }
+    
+      .top-countries li:hover {
+        background: rgba(255, 255, 255, 0.1);
+      }
+    }
+    
+    .top-country-left {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      min-width: 0;
+    }
+    
+    .rank-badge {
+      min-width: 2rem;
+      text-align: center;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+    
+    .rank-badge.medal {
+      font-size: 1.2rem;
+    }
+    
+    .country-name {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    
+    .country-downloads {
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-left: 1rem;
     }
     
     .top-countries img {
       width: 18px;
-      margin-right: 10px;
+      margin-right: 0;
       border-radius: 3px;
+      flex-shrink: 0;
     }
+    
+    @keyframes rankFadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
   </style>
 </head>
 <body>
@@ -1934,26 +2003,36 @@ async function loadStatistics() {
     const top10 = data.top_10;
     
     animateValue('total-downloads', data.total_downloads);
-    animateValue('total-countries', data.countries);
+    animateValue('total-countries', data.countries, 1000);
     document.getElementById('last-updated').textContent = data.last_updated || '-';
 
     const list = document.getElementById('top-countries-list');
     list.innerHTML = '';
 
-    top10.forEach((item) => {
+    top10.forEach((item, index) => {
       const country = item.country;
       const value = item.downloads;
+      const code = item.code || 'un';
     
-      const code = countryToISO[country] || 'un';
+      let rankDisplay = index + 1;
+      if (index === 0) rankDisplay = '🥇';
+      if (index === 1) rankDisplay = '🥈';
+      if (index === 2) rankDisplay = '🥉';
     
       const li = document.createElement('li');
+      li.style.animationDelay = `${index * 90}ms`;
+    
       li.innerHTML = `
-        <span>
-          <img src="https://flagcdn.com/w40/${code}.png">
-          ${country}
-        </span>
-        <span>${value.toLocaleString()}</span>
+        <div class="top-country-left">
+          <span class="rank-badge ${index < 3 ? 'medal' : ''}">${rankDisplay}</span>
+          <span class="country-name">
+            <img src="https://flagcdn.com/w40/${code}.png" alt="${country} flag">
+            ${country}
+          </span>
+        </div>
+        <span class="country-downloads">${value.toLocaleString()}</span>
       `;
+    
       list.appendChild(li);
     });
 
