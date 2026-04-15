@@ -12,7 +12,7 @@ function formatDate(dateString) {
   return dateString.split(" ")[0];
 }
 
-// 🧠 Normaliser landnavn (kritisk!)
+// Normaliser landnavn
 function normalizeCountryName(name) {
   const map = {
     "Türkiye": "Turkey",
@@ -22,6 +22,90 @@ function normalizeCountryName(name) {
   };
 
   return map[name] || name;
+}
+
+// ISO-koder for flagg
+function getCountryCode(countryName) {
+  const codes = {
+    "Afghanistan": "af",
+    "Albania": "al",
+    "Algeria": "dz",
+    "Argentina": "ar",
+    "Australia": "au",
+    "Austria": "at",
+    "Bahrain": "bh",
+    "Bangladesh": "bd",
+    "Belgium": "be",
+    "Brazil": "br",
+    "Bulgaria": "bg",
+    "Canada": "ca",
+    "Chile": "cl",
+    "China": "cn",
+    "China mainland": "cn",
+    "Colombia": "co",
+    "Croatia": "hr",
+    "Cyprus": "cy",
+    "Czech Republic": "cz",
+    "Denmark": "dk",
+    "Egypt": "eg",
+    "Estonia": "ee",
+    "Finland": "fi",
+    "France": "fr",
+    "Germany": "de",
+    "Greece": "gr",
+    "Hong Kong": "hk",
+    "Hungary": "hu",
+    "Iceland": "is",
+    "India": "in",
+    "Indonesia": "id",
+    "Iraq": "iq",
+    "Ireland": "ie",
+    "Israel": "il",
+    "Italy": "it",
+    "Japan": "jp",
+    "Jordan": "jo",
+    "Kuwait": "kw",
+    "Latvia": "lv",
+    "Lebanon": "lb",
+    "Lithuania": "lt",
+    "Luxembourg": "lu",
+    "Malaysia": "my",
+    "Mexico": "mx",
+    "Morocco": "ma",
+    "Netherlands": "nl",
+    "New Zealand": "nz",
+    "Nigeria": "ng",
+    "Norway": "no",
+    "Oman": "om",
+    "Pakistan": "pk",
+    "Philippines": "ph",
+    "Poland": "pl",
+    "Portugal": "pt",
+    "Qatar": "qa",
+    "Romania": "ro",
+    "Russia": "ru",
+    "Saudi Arabia": "sa",
+    "Serbia": "rs",
+    "Singapore": "sg",
+    "Slovakia": "sk",
+    "Slovenia": "si",
+    "South Africa": "za",
+    "South Korea": "kr",
+    "Spain": "es",
+    "Sweden": "se",
+    "Switzerland": "ch",
+    "Taiwan": "tw",
+    "Thailand": "th",
+    "Turkey": "tr",
+    "Türkiye": "tr",
+    "Ukraine": "ua",
+    "United Arab Emirates": "ae",
+    "United Kingdom": "gb",
+    "United States": "us",
+    "Vietnam": "vn"
+  };
+
+  return codes[countryName] || null;
 }
 
 // Merge countries med normalisering
@@ -54,9 +138,10 @@ function mergeCountries(target, source) {
     const sortedCountries = Object.entries(combinedCountries)
       .sort((a, b) => b[1] - a[1]);
 
-    // Top 10
+    // Top 10 med ISO-kode
     const top10 = sortedCountries.slice(0, 10).map(([country, downloads]) => ({
       country,
+      code: getCountryCode(country),
       downloads,
     }));
 
@@ -89,6 +174,12 @@ function mergeCountries(target, source) {
     console.log("✅ global_stats.json updated successfully");
     console.log(`🌍 Countries: ${output.countries}`);
     console.log(`⬇️ Total downloads: ${output.total_downloads}`);
+
+    const missingCodes = top10.filter(item => !item.code);
+    if (missingCodes.length > 0) {
+      console.log("⚠️ Missing country codes for:");
+      missingCodes.forEach(item => console.log(`- ${item.country}`));
+    }
 
   } catch (error) {
     console.error("❌ Error:", error);
