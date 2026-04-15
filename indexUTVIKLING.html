@@ -155,6 +155,23 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: relative;
+    }
+
+    #nav-logo {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      height: 28px;
+      width: auto;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    #nav-logo.visible {
+      opacity: 1;
+      pointer-events: auto;
     }
 
     /* Language Switcher */
@@ -1182,6 +1199,7 @@
   <!-- Navigation -->
   <nav class="nav-container">
     <div class="nav-content">
+      <img id="nav-logo" src="images/logo-nav-green.svg" alt="BalanceTrackr" />
       <!-- 🌍 Language Switcher -->
   <div id="language-switcher">
         <button id="active-language" onclick="toggleLanguageMenu()" aria-label="Select language">
@@ -2068,6 +2086,43 @@ async function loadStatistics() {
     }
     
     document.addEventListener('DOMContentLoaded', initStatisticsObserver);
+
+    // Nav logo: show when past hero, hide when footer is visible
+    (function () {
+      const navLogo = document.getElementById('nav-logo');
+      const hero = document.querySelector('.hero');
+      const footer = document.querySelector('.footer');
+
+      if (!navLogo || !hero || !footer) return;
+
+      let pastHero = false;
+      let footerVisible = false;
+
+      function updateNavLogo() {
+        if (pastHero && !footerVisible) {
+          navLogo.classList.add('visible');
+        } else {
+          navLogo.classList.remove('visible');
+        }
+      }
+
+      const heroObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          pastHero = !entry.isIntersecting;
+          updateNavLogo();
+        });
+      }, { threshold: 0 });
+
+      const footerObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          footerVisible = entry.isIntersecting;
+          updateNavLogo();
+        });
+      }, { threshold: 0 });
+
+      heroObserver.observe(hero);
+      footerObserver.observe(footer);
+    })();
   
   </script>
 
