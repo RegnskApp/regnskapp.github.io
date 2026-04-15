@@ -155,6 +155,28 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: relative;
+    }
+
+    #nav-logo {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      display: block;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    #nav-logo img {
+      height: 28px;
+      width: auto;
+      display: block;
+    }
+
+    #nav-logo.visible {
+      opacity: 1;
+      pointer-events: auto;
     }
 
     /* Language Switcher */
@@ -1043,12 +1065,133 @@
         display: none !important;
       }
     }
+
+    /* Statistics Section */
+    .stats {
+      padding: 5rem 2rem;
+      background: var(--bg-secondary);
+      text-align: center;
+    }
+    
+    .stats-container {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+    
+    .stat-box {
+      background: var(--bg-primary);
+      padding: 2rem;
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-md);
+      min-width: 200px;
+    }
+    
+    .stat-box h3 {
+      font-size: 2rem;
+      color: var(--primary-color);
+    }
+    
+    .top-countries ul {
+      list-style: none;
+      padding: 0;
+      max-width: 500px;
+      margin: 0 auto;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    
+    .top-countries li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 0.9rem;
+      border-radius: 8px;
+      transition: background 0.2s ease, transform 0.2s ease;
+      opacity: 0;
+      transform: translateY(12px);
+      animation: rankFadeIn 0.5s ease forwards;
+    }
+    
+    .top-countries li:nth-child(even) {
+      background: rgba(0, 0, 0, 0.03);
+    }
+    
+    .top-countries li:hover {
+      background: rgba(0, 0, 0, 0.08);
+      transform: translateX(2px);
+    }
+    
+    @media (prefers-color-scheme: dark) {
+      .top-countries li:nth-child(even) {
+        background: rgba(255, 255, 255, 0.05);
+      }
+    
+      .top-countries li:hover {
+        background: rgba(255, 255, 255, 0.1);
+      }
+    }
+    
+    .top-country-left {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      min-width: 0;
+    }
+    
+    .rank-badge {
+      min-width: 2rem;
+      text-align: center;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+    
+    .rank-badge.medal {
+      font-size: 1.2rem;
+    }
+    
+    .country-name {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    
+    .country-downloads {
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-left: 1rem;
+    }
+    
+    .top-countries img {
+      width: 18px;
+      margin-right: 0;
+      border-radius: 3px;
+      flex-shrink: 0;
+    }
+    
+    @keyframes rankFadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
   </style>
 </head>
 <body>
   <!-- Navigation -->
   <nav class="nav-container">
     <div class="nav-content">
+      <picture id="nav-logo">
+        <source srcset="images/logo-footer-dark.svg" media="(prefers-color-scheme: dark)" />
+        <img src="images/logo-nav-green.svg" alt="BalanceTrackr" style="height: 28px; width: auto; display: block;" />
+      </picture>
       <!-- 🌍 Language Switcher -->
   <div id="language-switcher">
         <button id="active-language" onclick="toggleLanguageMenu()" aria-label="Select language">
@@ -1364,7 +1507,39 @@
     </div>
   </section>
 
-  <!-- Social Section -->
+
+  <!-- Statistics Section -->
+  <section class="stats">
+    <div class="section-header">
+      <h2 class="section-title">Wereldwijde statistieken</h2>
+      <p class="section-description">
+        Echte downloadgegevens voor iOS en Android.
+      </p>
+    </div>
+  
+    <div class="stats-container">
+      <div class="stat-box">
+        <h3 id="total-downloads">-</h3>
+        <p>Totale downloads</p>
+      </div>
+  
+      <div class="stat-box">
+        <h3 id="total-countries">-</h3>
+        <p>Landen</p>
+      </div>
+  
+      <div class="stat-box">
+        <h3 id="last-updated">-</h3>
+        <p>Laatste update</p>
+      </div>
+    </div>
+  
+    <div class="top-countries">
+      <h3>Top 10 landen</h3>
+      <ul id="top-countries-list"></ul>
+    </div>
+  </section>
+    <!-- Social Section -->
   <section class="social">
     <a href="https://www.instagram.com/balancetrackr/" target="_blank" rel="noopener noreferrer" class="social-link">
       <img src="images/Instagram_logo_2016.svg.webp" alt="Instagram" style="width: 24px; height: 24px;">
@@ -1379,6 +1554,10 @@
   <!-- Footer -->
   <footer class="footer">
     <div class="footer-content">
+      <picture>
+        <source srcset="images/logo-footer-dark.svg" media="(prefers-color-scheme: dark)" />
+        <img src="images/logo-footer-light.svg" alt="BalanceTrackr" style="width: 180px; height: auto; margin-bottom: 1rem;" />
+      </picture>
       <p>&copy; <span id="copyright-year">2025</span> BalanceTrackr (RegnskApp).<br>
       Ole Morten Tengesdal. Alle rechten voorbehouden.</p>
       <div style="margin-top: 1rem;">
@@ -1759,6 +1938,108 @@
     } else {
       updateCopyrightYear();
     }
+
+    const countryToISO = {
+  "United States": "us",
+  "United Kingdom": "gb",
+  "Norway": "no",
+  "Germany": "de",
+  "France": "fr",
+  "Spain": "es",
+  "Italy": "it",
+  "Canada": "ca",
+  "India": "in",
+  "China mainland": "cn",
+  "Saudi Arabia": "sa",
+  "United Arab Emirates": "ae",
+  "Egypt": "eg"
+};
+
+function animateValue(id, end, duration = 1500) {
+  const el = document.getElementById(id);
+  let startTime = performance.now();
+
+  function update(currentTime) {
+    const progress = Math.min((currentTime - startTime) / duration, 1);
+    el.textContent = Math.floor(progress * end).toLocaleString();
+    if (progress < 1) requestAnimationFrame(update);
+  }
+
+  requestAnimationFrame(update);
+}
+
+async function loadStatistics() {
+  try {
+    const res = await fetch('https://balancetrackr.com/data/global_stats.json');
+    const data = await res.json();
+    animateValue('total-downloads', data.total_downloads);
+    animateValue('total-countries', data.countries, 1000);
+    document.getElementById('last-updated').textContent = data.last_updated || '-';
+
+    const list = document.getElementById('top-countries-list');
+    list.innerHTML = '';
+    data.top_10.forEach((item, index) => {
+      const code = item.code || 'un';
+      let rankDisplay = index + 1;
+      if (index === 0) rankDisplay = '🥇';
+      if (index === 1) rankDisplay = '🥈';
+      if (index === 2) rankDisplay = '🥉';
+      const li = document.createElement('li');
+      li.style.animationDelay = `${index * 90}ms`;
+      li.innerHTML = `
+        <div class="top-country-left">
+          <span class="rank-badge ${index < 3 ? 'medal' : ''}">${rankDisplay}</span>
+          <span class="country-name">
+            <img src="https://flagcdn.com/w40/${code}.png" alt="${item.country} flag">
+            ${item.country}
+          </span>
+        </div>
+        <span class="country-downloads">${item.downloads.toLocaleString()}</span>
+      `;
+      list.appendChild(li);
+    });
+  } catch (error) {
+    console.error('Failed to load statistics:', error);
+  }
+}
+
+    let statisticsLoaded = false;
+    function initStatisticsObserver() {
+      const statsSection = document.querySelector('.stats');
+      if (!statsSection) return;
+      const statsObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !statisticsLoaded) {
+            statisticsLoaded = true;
+            loadStatistics();
+            observer.unobserve(statsSection);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '200px 0px' });
+      statsObserver.observe(statsSection);
+    }
+    document.addEventListener('DOMContentLoaded', initStatisticsObserver);
+
+    // Nav logo: show when past hero, hide when footer is visible
+    (function () {
+      const navLogo = document.getElementById('nav-logo');
+      const hero = document.querySelector('.hero');
+      const footer = document.querySelector('.footer');
+      if (!navLogo || !hero || !footer) return;
+      let pastHero = false;
+      let footerVisible = false;
+      function updateNavLogo() {
+        navLogo.classList.toggle('visible', pastHero && !footerVisible);
+      }
+      const heroObserver = new IntersectionObserver((entries) => {
+        entries.forEach(e => { pastHero = !e.isIntersecting; updateNavLogo(); });
+      }, { threshold: 0 });
+      const footerObserver = new IntersectionObserver((entries) => {
+        entries.forEach(e => { footerVisible = e.isIntersecting; updateNavLogo(); });
+      }, { threshold: 0 });
+      heroObserver.observe(hero);
+      footerObserver.observe(footer);
+    })();
   </script>
 
   <!-- Image Modal -->
