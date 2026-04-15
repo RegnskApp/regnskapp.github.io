@@ -5,42 +5,52 @@
   "top_10": [
     {
       "country": "United States",
+      "code": "us",
       "downloads": 712
     },
     {
       "country": "Egypt",
+      "code": "eg",
       "downloads": 651
     },
     {
       "country": "China mainland",
+      "code": "cn",
       "downloads": 162
     },
     {
       "country": "Saudi Arabia",
+      "code": "sa",
       "downloads": 112
     },
     {
       "country": "Norway",
+      "code": "no",
       "downloads": 111
     },
     {
       "country": "United Arab Emirates",
+      "code": "ae",
       "downloads": 59
     },
     {
       "country": "India",
+      "code": "in",
       "downloads": 50
     },
     {
       "country": "Canada",
+      "code": "ca",
       "downloads": 47
     },
     {
       "country": "Germany",
+      "code": "de",
       "downloads": 46
     },
     {
       "country": "United Kingdom",
+      "code": "gb",
       "downloads": 38
     }
   ]
