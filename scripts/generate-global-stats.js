@@ -148,7 +148,7 @@ function mergeCountries(target, source) {
     // Total downloads
     const totalDownloads =
       (ascData.total_units_all_time || 0) +
-      (playData.total_installs || 0);
+      (playData.total_downloads || 0);
 
     // Datoer
     const ascDate = formatDate(ascData.last_data_update);
