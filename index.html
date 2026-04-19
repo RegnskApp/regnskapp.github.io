@@ -2023,7 +2023,9 @@ function animateValue(id, end, duration = 1500) {
 
 async function loadStatistics() {
   try {
-    const res = await fetch('https://balancetrackr.com/data/global_stats.json');
+    const res = await fetch(`/data/global_stats.json?v=${Date.now()}`, {
+      cache: 'no-store'
+    });
     const data = await res.json();
     animateValue('total-downloads', data.total_downloads);
     animateValue('total-countries', data.countries, 1000);
