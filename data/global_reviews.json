@@ -1,0 +1,148 @@
+{
+  "last_updated": "2026-04-26",
+  "total_reviews": 17,
+  "written_reviews": 8,
+  "average_rating": 4.82,
+  "by_rating": {
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 3,
+    "5": 14
+  },
+  "sources": {
+    "app_store": {
+      "last_updated": "2026-04-05",
+      "total_reviews": 16,
+      "written_reviews": 7,
+      "average_rating": 4.81,
+      "by_rating": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 3,
+        "5": 13
+      }
+    },
+    "play_store": {
+      "last_updated": "2026-04-26",
+      "total_reviews": 1,
+      "written_reviews": 1,
+      "average_rating": 5,
+      "by_rating": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 1
+      }
+    }
+  },
+  "reviews": [
+    {
+      "source": "app_store",
+      "store": "App Store",
+      "id": "00000191-f874-6c02-f811-347300000000",
+      "date": "2025-06-08",
+      "rating": 5,
+      "title": "Util",
+      "text": "Muy pero que muy util",
+      "reviewer": "Lumpy-Sheepherder-12",
+      "country": "Spain",
+      "territory": "ESP",
+      "link": null
+    },
+    {
+      "source": "app_store",
+      "store": "App Store",
+      "id": "00000191-f874-6c02-f849-010a00000000",
+      "date": "2025-06-09",
+      "rating": 5,
+      "title": "Superb",
+      "text": "This app deserves no less than 5 stars because of what it offers in such a price. All the required features to track daily expenses are there. Integration with Apple Pay through shortcuts is a clear winner.\nSupport is also very good. Highly recommended.",
+      "reviewer": "Mehroz Ahmed",
+      "country": "United Arab Emirates",
+      "territory": "ARE",
+      "link": null
+    },
+    {
+      "source": "app_store",
+      "store": "App Store",
+      "id": "00000191-f874-6c02-fd76-871f00000000",
+      "date": "2025-07-02",
+      "rating": 5,
+      "title": "So useful",
+      "text": "The app is super simple and clean. Everything I need is right there and easy to manage.",
+      "reviewer": "MoZZoro",
+      "country": "United States",
+      "territory": "USA",
+      "link": null
+    },
+    {
+      "source": "app_store",
+      "store": "App Store",
+      "id": "00000191-f874-6c03-135e-2efe00000000",
+      "date": "2025-10-01",
+      "rating": 4,
+      "title": "Interesting app",
+      "text": "Sounds everything been thought of. Only that the entry a little bit sluggish.",
+      "reviewer": "Diaappointed",
+      "country": "Canada",
+      "territory": "CAN",
+      "link": null
+    },
+    {
+      "source": "app_store",
+      "store": "App Store",
+      "id": "00000191-f874-6c03-1578-020000000000",
+      "date": "2025-10-09",
+      "rating": 5,
+      "title": "Great simple net worth tracker",
+      "text": "I am really happy with this app. I use it to track net worth across a variety of accounts. I love that I can separate out shared accounts, I put  kids college savings in that bucket since I don’t consider it mine. Great simple functionality to transfer between accounts, update balances, use as much custom labeling as you want. My only feedback to developers would be to improve the y axis on the graphs. The lower bound is always pegged at zero, which means an account has to have a very small balance for any trend to really be reflected in the graph. Hypothetically, if I have $1million saved (I don’t, lol), and I contribute $1000 this month to the account, the graph doesn’t even register the change because the y axis scale is so compressed. If that y axis auto adjusted to the relevant range, or gave an option to adjust the scale, I would appreciate that— it would mean I could see the lines moving in the right direction. Otherwise no complaints, I appreciate this app and use it a bunch!",
+      "reviewer": "Allybombbally",
+      "country": "United States",
+      "territory": "USA",
+      "link": null
+    },
+    {
+      "source": "app_store",
+      "store": "App Store",
+      "id": "00000191-f874-6c03-1a7c-964200000000",
+      "date": "2025-10-29",
+      "rating": 4,
+      "title": "Ottime potenzialità",
+      "text": "L’app consente di tenere traccia delle entrate e delle uscite in modo semplice: puoi registrare quando ricevi denaro (entrata) o quando lo spendi (uscita). Criticità: Quando imposti un saldo iniziale del conto (es: 10.000 €) e poi inserisci spese passate, il saldo scende come previsto — sarebbe utili avere una voce  “transazione neutra”: scegliendo questo tipo, la voce viene registrata per la storia ma non modifica il saldo del conto.",
+      "reviewer": "misterbra",
+      "country": "Italy",
+      "territory": "ITA",
+      "link": null
+    },
+    {
+      "source": "play_store",
+      "store": "Google Play",
+      "id": "play-2026-03-13-1",
+      "date": "2026-03-13",
+      "rating": 5,
+      "title": "",
+      "text": "Super app for oversikt over din økonomi, uten å laste noen data opp i \"skyen\". Få enkelt oversikt over alle dine økonomiske forhold: både kontoer og lån, se hva du bruker penger på. Anbefales for deg som vil ha kontroll på din økonomi.",
+      "reviewer": "",
+      "country": null,
+      "territory": null,
+      "link": "http://play.google.com/console/developers/4639390102037107647/app/4975960870339446934/user-feedback/review-details?reviewId=3b614e2c-e81a-40e0-b458-129328ae6c0c&corpus=PUBLIC_REVIEWS",
+      "file_updated": "2026-04-26"
+    },
+    {
+      "source": "app_store",
+      "store": "App Store",
+      "id": "00000191-f874-6c03-3e1a-39b000000000",
+      "date": "2026-04-05",
+      "rating": 5,
+      "title": "افضل برنامج",
+      "text": "ممتاز جدا ومفيد",
+      "reviewer": "moooostafa",
+      "country": "United States",
+      "territory": "USA",
+      "link": null
+    }
+  ]
+}
