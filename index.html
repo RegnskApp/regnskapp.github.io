@@ -10,7 +10,7 @@
   <meta name="author" content="Ole Morten Tengesdal" />
  
   <!-- Canonical URL: must match this exact language version -->
-  <link rel="canonical" href="https://balancetrackr.com/" />
+  <link rel="canonical" href="https://balancetrackr.com/indexUTVIKLING.html" />
 
   <!-- Hreflang for all language versions -->
   <link rel="alternate" hreflang="en" href="https://balancetrackr.com/index.html" />
@@ -43,7 +43,7 @@
   <meta property="og:title" content="BalanceTrackr – Smart Budget & Expense Tracker for iOS & Android" />
   <meta property="og:description" content="Take control of your finances with this privacy-first budgeting app on iOS and Android. Track expenses, monitor your balance, and achieve your financial goals." />
   <meta property="og:image" content="https://balancetrackr.com/images/RegnskApp-Light-Mode-Icon.png" />
-  <meta property="og:url" content="https://balancetrackr.com/index.html" />
+  <meta property="og:url" content="https://balancetrackr.com/indexUTVIKLING.html" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -839,6 +839,43 @@
     }
 
     /* Reviews Section */
+    .review-summary {
+      max-width: 800px;
+      margin: 2rem auto 3rem;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      text-align: center;
+    }
+    
+    .review-summary-box {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-md);
+      padding: 1.5rem 2rem;
+      min-width: 180px;
+    }
+    
+    .review-summary-box h3 {
+      font-size: 2rem;
+      color: var(--primary-color);
+      margin-bottom: 0.25rem;
+    }
+    
+    .review-summary-box p {
+      margin: 0;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+    
+    .review-summary-stars {
+      font-size: 1.2rem;
+      margin-top: 0.35rem;
+      letter-spacing: 0.05rem;
+    }
+    
     .reviews {
       padding: 5rem 2rem;
       background: var(--bg-primary);
@@ -1197,6 +1234,7 @@
         transform: translateY(0);
       }
     }
+    
   </style>
 </head>
 <body>
@@ -1429,6 +1467,38 @@
     </div>
   </section>
 
+  <!-- Statistics Section -->
+  <section class="stats">
+    <div class="section-header">
+      <h2 class="section-title">Global Statistics</h2>
+      <p class="section-description">
+        Real download data across iOS and Android.
+      </p>
+    </div>
+  
+    <div class="stats-container">
+      <div class="stat-box">
+        <h3 id="total-downloads">-</h3>
+        <p>Total Downloads</p>
+      </div>
+  
+      <div class="stat-box">
+        <h3 id="total-countries">-</h3>
+        <p>Countries</p>
+      </div>
+  
+      <div class="stat-box">
+        <h3 id="last-updated">-</h3>
+        <p>Last Updated</p>
+      </div>
+    </div>
+  
+    <div class="top-countries">
+      <h3>Top 10 Countries</h3>
+      <ul id="top-countries-list"></ul>
+    </div>
+  </section>
+  
   <!-- Reviews Section -->
   <section class="reviews">
     <div class="section-header">
@@ -1436,7 +1506,20 @@
       <p class="section-description">
         Real feedback from users who have transformed their financial habits.
       </p>
-  </div>
+  
+      <div class="review-summary">
+        <div class="review-summary-box">
+          <h3 id="total-reviews">-</h3>
+          <p>Total Reviews</p>
+        </div>
+  
+        <div class="review-summary-box">
+          <h3 id="average-rating">-</h3>
+          <p>Average Rating</p>
+          <div id="average-rating-stars" class="review-summary-stars">★★★★★</div>
+        </div>
+      </div>
+    </div>
 
     <div class="reviews-grid">
       <a href="https://krispitech.com/why-ad-free-apps-like-balancetrackr-are-revolutionizing-budget-management/" target="_blank" rel="noopener noreferrer" class="review-card" style="cursor: pointer; text-decoration: none;">
@@ -1522,39 +1605,7 @@
     </div>
   </section>
 
-
-  <!-- Statistics Section -->
-  <section class="stats">
-    <div class="section-header">
-      <h2 class="section-title">Global Statistics</h2>
-      <p class="section-description">
-        Real download data across iOS and Android.
-      </p>
-    </div>
-  
-    <div class="stats-container">
-      <div class="stat-box">
-        <h3 id="total-downloads">-</h3>
-        <p>Total Downloads</p>
-      </div>
-  
-      <div class="stat-box">
-        <h3 id="total-countries">-</h3>
-        <p>Countries</p>
-      </div>
-  
-      <div class="stat-box">
-        <h3 id="last-updated">-</h3>
-        <p>Last Updated</p>
-      </div>
-    </div>
-  
-    <div class="top-countries">
-      <h3>Top 10 Countries</h3>
-      <ul id="top-countries-list"></ul>
-    </div>
-  </section>
-    <!-- Social Section -->
+  <!-- Social Section -->
   <section class="social">
     <a href="https://www.instagram.com/balancetrackr/" target="_blank" rel="noopener noreferrer" class="social-link">
       <img src="images/Instagram_logo_2016.svg.webp" alt="Instagram" style="width: 24px; height: 24px;">
@@ -2015,7 +2066,10 @@ function animateValue(id, end, duration = 1500) {
   function update(currentTime) {
     const progress = Math.min((currentTime - startTime) / duration, 1);
     el.textContent = Math.floor(progress * end).toLocaleString();
-    if (progress < 1) requestAnimationFrame(update);
+
+    if (progress < 1) {
+      requestAnimationFrame(update);
+    }
   }
 
   requestAnimationFrame(update);
@@ -2023,45 +2077,56 @@ function animateValue(id, end, duration = 1500) {
 
 async function loadStatistics() {
   try {
-    const res = await fetch(`/data/global_stats.json?v=${Date.now()}`, {
-      cache: 'no-store'
-    });
+    const res = await fetch('https://balancetrackr.com/data/global_stats.json');
     const data = await res.json();
+
+    const top10 = data.top_10;
+    
     animateValue('total-downloads', data.total_downloads);
     animateValue('total-countries', data.countries, 1000);
     document.getElementById('last-updated').textContent = data.last_updated || '-';
 
     const list = document.getElementById('top-countries-list');
     list.innerHTML = '';
-    data.top_10.forEach((item, index) => {
+
+    top10.forEach((item, index) => {
+      const country = item.country;
+      const value = item.downloads;
       const code = item.code || 'un';
+    
       let rankDisplay = index + 1;
       if (index === 0) rankDisplay = '🥇';
       if (index === 1) rankDisplay = '🥈';
       if (index === 2) rankDisplay = '🥉';
+    
       const li = document.createElement('li');
       li.style.animationDelay = `${index * 90}ms`;
+    
       li.innerHTML = `
         <div class="top-country-left">
           <span class="rank-badge ${index < 3 ? 'medal' : ''}">${rankDisplay}</span>
           <span class="country-name">
-            <img src="https://flagcdn.com/w40/${code}.png" alt="${item.country} flag">
-            ${item.country}
+            <img src="https://flagcdn.com/w40/${code}.png" alt="${country} flag">
+            ${country}
           </span>
         </div>
-        <span class="country-downloads">${item.downloads.toLocaleString()}</span>
+        <span class="country-downloads">${value.toLocaleString()}</span>
       `;
+    
       list.appendChild(li);
     });
+
   } catch (error) {
     console.error('Failed to load statistics:', error);
   }
 }
 
-    let statisticsLoaded = false;
+      let statisticsLoaded = false;
+    
     function initStatisticsObserver() {
       const statsSection = document.querySelector('.stats');
       if (!statsSection) return;
+    
       const statsObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
           if (entry.isIntersecting && !statisticsLoaded) {
@@ -2070,31 +2135,133 @@ async function loadStatistics() {
             observer.unobserve(statsSection);
           }
         });
-      }, { threshold: 0.1, rootMargin: '200px 0px' });
+      }, {
+        threshold: 0.1,
+        rootMargin: '200px 0px'
+      });
+    
       statsObserver.observe(statsSection);
     }
+    
     document.addEventListener('DOMContentLoaded', initStatisticsObserver);
 
+    function animateDecimalValue(id, end, duration = 1500, decimals = 2) {
+      const el = document.getElementById(id);
+      if (!el) return;
+    
+      let startTime = performance.now();
+    
+      function update(currentTime) {
+        const progress = Math.min((currentTime - startTime) / duration, 1);
+        const value = progress * end;
+        el.textContent = value.toFixed(decimals);
+    
+        if (progress < 1) requestAnimationFrame(update);
+      }
+    
+      requestAnimationFrame(update);
+    }
+    
+    function renderRatingStars(rating) {
+      const el = document.getElementById('average-rating-stars');
+      if (!el) return;
+    
+      const rounded = Math.round(rating);
+      let stars = '';
+    
+      for (let i = 1; i <= 5; i++) {
+        stars += i <= rounded ? '★' : '☆';
+      }
+    
+      el.textContent = stars;
+    }
+    
+    async function loadReviewsSummary() {
+      try {
+        const res = await fetch(`/data/global_reviews.json?v=${Date.now()}`, {
+          cache: 'no-store'
+        });
+    
+        if (!res.ok) throw new Error('Failed to load global reviews');
+    
+        const data = await res.json();
+    
+        const totalReviews = data.total_reviews || 0;
+        const averageRating = data.average_rating || 0;
+    
+        animateValue('total-reviews', totalReviews, 1200);
+        animateDecimalValue('average-rating', averageRating, 1200, 2);
+        renderRatingStars(averageRating);
+    
+      } catch (error) {
+        console.error('Failed to load reviews summary:', error);
+    
+        const totalReviewsEl = document.getElementById('total-reviews');
+        const averageRatingEl = document.getElementById('average-rating');
+    
+        if (totalReviewsEl) totalReviewsEl.textContent = '-';
+        if (averageRatingEl) averageRatingEl.textContent = '-';
+      }
+    }
+    
+    let reviewsSummaryLoaded = false;
+    
+    function initReviewsObserver() {
+      const reviewsSection = document.querySelector('.reviews');
+      if (!reviewsSection) return;
+    
+      const reviewsObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !reviewsSummaryLoaded) {
+            reviewsSummaryLoaded = true;
+            loadReviewsSummary();
+            observer.unobserve(reviewsSection);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '200px 0px' });
+    
+      reviewsObserver.observe(reviewsSection);
+    }
+    
+    document.addEventListener('DOMContentLoaded', initReviewsObserver);
+    
     // Nav logo: show when past hero, hide when footer is visible
     (function () {
       const navLogo = document.getElementById('nav-logo');
       const hero = document.querySelector('.hero');
       const footer = document.querySelector('.footer');
+
       if (!navLogo || !hero || !footer) return;
+
       let pastHero = false;
       let footerVisible = false;
+
       function updateNavLogo() {
-        navLogo.classList.toggle('visible', pastHero && !footerVisible);
+        if (pastHero && !footerVisible) {
+          navLogo.classList.add('visible');
+        } else {
+          navLogo.classList.remove('visible');
+        }
       }
+
       const heroObserver = new IntersectionObserver((entries) => {
-        entries.forEach(e => { pastHero = !e.isIntersecting; updateNavLogo(); });
+        entries.forEach(entry => {
+          pastHero = !entry.isIntersecting;
+          updateNavLogo();
+        });
       }, { threshold: 0 });
+
       const footerObserver = new IntersectionObserver((entries) => {
-        entries.forEach(e => { footerVisible = e.isIntersecting; updateNavLogo(); });
+        entries.forEach(entry => {
+          footerVisible = entry.isIntersecting;
+          updateNavLogo();
+        });
       }, { threshold: 0 });
+
       heroObserver.observe(hero);
       footerObserver.observe(footer);
     })();
+  
   </script>
 
   <!-- Image Modal -->
