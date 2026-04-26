@@ -839,6 +839,43 @@
     }
 
     /* Reviews Section */
+    .review-summary {
+      max-width: 800px;
+      margin: 2rem auto 3rem;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      text-align: center;
+    }
+    
+    .review-summary-box {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-md);
+      padding: 1.5rem 2rem;
+      min-width: 180px;
+    }
+    
+    .review-summary-box h3 {
+      font-size: 2rem;
+      color: var(--primary-color);
+      margin-bottom: 0.25rem;
+    }
+    
+    .review-summary-box p {
+      margin: 0;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+    
+    .review-summary-stars {
+      font-size: 1.2rem;
+      margin-top: 0.35rem;
+      letter-spacing: 0.05rem;
+    }
+    
     .reviews {
       padding: 5rem 2rem;
       background: var(--bg-primary);
@@ -1469,7 +1506,20 @@
       <p class="section-description">
         Real feedback from users who have transformed their financial habits.
       </p>
-  </div>
+  
+      <div class="review-summary">
+        <div class="review-summary-box">
+          <h3 id="total-reviews">-</h3>
+          <p>Total Reviews</p>
+        </div>
+  
+        <div class="review-summary-box">
+          <h3 id="average-rating">-</h3>
+          <p>Average Rating</p>
+          <div id="average-rating-stars" class="review-summary-stars">★★★★★</div>
+        </div>
+      </div>
+    </div>
 
     <div class="reviews-grid">
       <a href="https://krispitech.com/why-ad-free-apps-like-balancetrackr-are-revolutionizing-budget-management/" target="_blank" rel="noopener noreferrer" class="review-card" style="cursor: pointer; text-decoration: none;">
@@ -2095,6 +2145,86 @@ async function loadStatistics() {
     
     document.addEventListener('DOMContentLoaded', initStatisticsObserver);
 
+    function animateDecimalValue(id, end, duration = 1500, decimals = 2) {
+      const el = document.getElementById(id);
+      if (!el) return;
+    
+      let startTime = performance.now();
+    
+      function update(currentTime) {
+        const progress = Math.min((currentTime - startTime) / duration, 1);
+        const value = progress * end;
+        el.textContent = value.toFixed(decimals);
+    
+        if (progress < 1) requestAnimationFrame(update);
+      }
+    
+      requestAnimationFrame(update);
+    }
+    
+    function renderRatingStars(rating) {
+      const el = document.getElementById('average-rating-stars');
+      if (!el) return;
+    
+      const rounded = Math.round(rating);
+      let stars = '';
+    
+      for (let i = 1; i <= 5; i++) {
+        stars += i <= rounded ? '★' : '☆';
+      }
+    
+      el.textContent = stars;
+    }
+    
+    async function loadReviewsSummary() {
+      try {
+        const res = await fetch(`/data/global_reviews.json?v=${Date.now()}`, {
+          cache: 'no-store'
+        });
+    
+        if (!res.ok) throw new Error('Failed to load global reviews');
+    
+        const data = await res.json();
+    
+        const totalReviews = data.total_reviews || 0;
+        const averageRating = data.average_rating || 0;
+    
+        animateValue('total-reviews', totalReviews, 1200);
+        animateDecimalValue('average-rating', averageRating, 1200, 2);
+        renderRatingStars(averageRating);
+    
+      } catch (error) {
+        console.error('Failed to load reviews summary:', error);
+    
+        const totalReviewsEl = document.getElementById('total-reviews');
+        const averageRatingEl = document.getElementById('average-rating');
+    
+        if (totalReviewsEl) totalReviewsEl.textContent = '-';
+        if (averageRatingEl) averageRatingEl.textContent = '-';
+      }
+    }
+    
+    let reviewsSummaryLoaded = false;
+    
+    function initReviewsObserver() {
+      const reviewsSection = document.querySelector('.reviews');
+      if (!reviewsSection) return;
+    
+      const reviewsObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !reviewsSummaryLoaded) {
+            reviewsSummaryLoaded = true;
+            loadReviewsSummary();
+            observer.unobserve(reviewsSection);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '200px 0px' });
+    
+      reviewsObserver.observe(reviewsSection);
+    }
+    
+    document.addEventListener('DOMContentLoaded', initReviewsObserver);
+    
     // Nav logo: show when past hero, hide when footer is visible
     (function () {
       const navLogo = document.getElementById('nav-logo');
