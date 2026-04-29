@@ -15,7 +15,7 @@ ASC_PRIVATE_KEY = os.environ["ASC_PRIVATE_KEY"].replace("\\n", "\n")
 
 # ========= MANUELL APP STORE RATING =========
 MANUAL_RATINGS = {
-    "5": 10,
+    "5": 11,
     "4": 1,
     "3": 0,
     "2": 0,
