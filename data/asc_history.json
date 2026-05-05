@@ -1,13 +1,13 @@
 {
-  "last_data_update": "2026-05-03",
-  "total_units_all_time": 2459,
+  "last_data_update": "2026-05-04",
+  "total_units_all_time": 2460,
   "total_country_downloaded_all_time": 85,
   "total_per_country": {
     "United States": 694,
     "Egypt": 616,
     "China mainland": 162,
     "Saudi Arabia": 110,
-    "Norway": 106,
+    "Norway": 107,
     "United Arab Emirates": 56,
     "Canada": 47,
     "Germany": 46,
@@ -909,6 +909,20 @@
       "skipped_units_by_product_type": {
         "7F – Update (Universal, excl. tvOS)": 7,
         "3F – Redownload (Universal, excl. tvOS)": 1
+      }
+    },
+    {
+      "report_date": "2026-05-04",
+      "total_units": 1,
+      "sales_by_country": {
+        "NO": 1
+      },
+      "sales_by_device": {
+        "iPhone": 1
+      },
+      "skipped_units_by_product_type": {
+        "7F – Update (Universal, excl. tvOS)": 3,
+        "3F – Redownload (Universal, excl. tvOS)": 2
       }
     }
   ]
