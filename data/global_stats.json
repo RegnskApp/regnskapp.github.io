@@ -1,17 +1,17 @@
 {
-  "total_downloads": 2603,
-  "countries": 94,
-  "last_updated": "2026-05-18",
+  "total_downloads": 2626,
+  "countries": 98,
+  "last_updated": "2026-05-19",
   "top_10": [
     {
       "country": "United States",
       "code": "us",
-      "downloads": 712
+      "downloads": 713
     },
     {
       "country": "Egypt",
       "code": "eg",
-      "downloads": 651
+      "downloads": 657
     },
     {
       "country": "China mainland",
@@ -26,7 +26,7 @@
     {
       "country": "Saudi Arabia",
       "code": "sa",
-      "downloads": 112
+      "downloads": 113
     },
     {
       "country": "United Arab Emirates",
@@ -36,12 +36,12 @@
     {
       "country": "India",
       "code": "in",
-      "downloads": 50
+      "downloads": 53
     },
     {
       "country": "Canada",
       "code": "ca",
-      "downloads": 48
+      "downloads": 49
     },
     {
       "country": "Germany",
