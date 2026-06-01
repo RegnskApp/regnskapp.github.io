@@ -45,7 +45,7 @@ BASELINE_TOTAL_PER_COUNTRY = {
     "Greece": 7,
     "Philippines": 7,
     "Sweden": 7,
-    "Türkiye": 7,
+    "Turkey": 7,
     "Austria": 5,
     "Brazil": 5,
     "Poland": 5,
@@ -159,7 +159,7 @@ COUNTRY_CODES = {
     "GR": "Greece",
     "PH": "Philippines",
     "SE": "Sweden",
-    "TR": "Türkiye",
+    "TR": "Turkey",
     "AT": "Austria",
     "BR": "Brazil",
     "TH": "Thailand",
@@ -219,7 +219,17 @@ COUNTRY_CODES = {
     "FI": "Finland",
     "BN": "Brunei",
     "SN": "Senegal",
-    "GE": "Georgia"
+    "GE": "Georgia",
+    "PK": "Pakistan",
+    "BJ": "Benin",
+    "BO": "Bolivia",
+    "MK": "North Macedonia",
+    "ML": "Mali",
+    "MM": "Myanmar",
+    "MZ": "Mozambique",
+    "PA": "Panama",
+    "VE": "Venezuela",
+    "ZW": "Zimbabwe"
 }
 
 # =========================
