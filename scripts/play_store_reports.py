@@ -40,7 +40,7 @@ COUNTRY_MAP = {
     "GR": "Greece",
     "PH": "Philippines",
     "SE": "Sweden",
-    "TR": "Türkiye",
+    "TR": "Turkey",
     "AT": "Austria",
     "BR": "Brazil",
     "TH": "Thailand",
