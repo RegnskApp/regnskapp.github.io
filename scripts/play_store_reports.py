@@ -100,7 +100,18 @@ COUNTRY_MAP = {
     "FI": "Finland",
     "BN": "Brunei",
     "SN": "Senegal",
-    "GE": "Georgia"
+    "GE": "Georgia",
+    "PK": "Pakistan",
+    "BJ": "Benin",
+    "BO": "Bolivia",
+    "MK": "North Macedonia",
+    "ML": "Mali",
+    "MM": "Myanmar",
+    "MZ": "Mozambique",
+    "PA": "Panama",
+    "VE": "Venezuela",
+    "ZW": "Zimbabwe",
+    "T\u00fcrkiye": "Turkey"
 }
 
 # =========================
