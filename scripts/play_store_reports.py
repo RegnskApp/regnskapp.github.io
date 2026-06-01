@@ -110,8 +110,7 @@ COUNTRY_MAP = {
     "MZ": "Mozambique",
     "PA": "Panama",
     "VE": "Venezuela",
-    "ZW": "Zimbabwe",
-    "T\u00fcrkiye": "Turkey"
+    "ZW": "Zimbabwe"
 }
 
 # =========================
