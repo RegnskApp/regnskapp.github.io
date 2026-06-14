@@ -1,31 +1,31 @@
 {
-  "last_updated": "2026-06-12",
-  "total_reviews": 22,
+  "last_updated": "2026-06-13",
+  "total_reviews": 23,
   "written_reviews": 8,
-  "average_rating": 4.77,
+  "average_rating": 4.78,
   "by_rating": {
     "1": 0,
     "2": 0,
     "3": 0,
     "4": 5,
-    "5": 17
+    "5": 18
   },
   "sources": {
     "app_store": {
       "last_updated": "2026-04-05",
-      "total_reviews": 21,
+      "total_reviews": 22,
       "written_reviews": 7,
-      "average_rating": 4.76,
+      "average_rating": 4.77,
       "by_rating": {
         "1": 0,
         "2": 0,
         "3": 0,
         "4": 5,
-        "5": 16
+        "5": 17
       }
     },
     "play_store": {
-      "last_updated": "2026-06-12",
+      "last_updated": "2026-06-13",
       "total_reviews": 1,
       "written_reviews": 1,
       "average_rating": 5,
