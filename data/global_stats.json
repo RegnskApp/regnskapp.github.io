@@ -1,7 +1,7 @@
 {
-  "total_downloads": 2666,
+  "total_downloads": 2667,
   "countries": 95,
-  "last_updated": "2026-06-28",
+  "last_updated": "2026-06-29",
   "top_10": [
     {
       "country": "United States",
@@ -51,7 +51,7 @@
     {
       "country": "United Kingdom",
       "code": "gb",
-      "downloads": 39
+      "downloads": 40
     }
   ]
 }
