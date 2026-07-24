@@ -1,2 +1,2 @@
 # balancetrackr.com
-Homepage for RegnskApp
+Homepage for BalanceTrackr
