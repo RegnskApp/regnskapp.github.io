@@ -940,11 +940,20 @@
     }
 
     .review-carousel-track .review-quote {
-      display: -webkit-box;
-      -webkit-line-clamp: 5;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
       flex: 1 1 auto;
+      overflow-y: auto;
+      overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
+      padding-right: 0.5rem;
+    }
+
+    .review-carousel-track .review-quote::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    .review-carousel-track .review-quote::-webkit-scrollbar-thumb {
+      background: var(--border-color);
+      border-radius: 2px;
     }
 
     .review-carousel-dots {
