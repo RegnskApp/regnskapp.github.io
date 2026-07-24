@@ -1,10 +1,10 @@
 {
-  "last_review_update": "2026-04-05",
+  "last_review_update": "2026-07-22",
   "ratings": {
-    "total_count": 22,
-    "average": 4.77,
+    "total_count": 23,
+    "average": 4.78,
     "stars": {
-      "5": 17,
+      "5": 18,
       "4": 5,
       "3": 0,
       "2": 0,
@@ -30,6 +30,10 @@
       "Italy": {
         "total_count": 1,
         "average": 4.0
+      },
+      "Romania": {
+        "total_count": 1,
+        "average": 5.0
       }
     }
   },
@@ -110,6 +114,16 @@
       "createdDate": "2026-04-05",
       "territory": "USA",
       "country_name": "United States"
+    },
+    {
+      "id": "00000191-f874-6c03-5663-ded300000000",
+      "rating": 5,
+      "title": "Amazing app",
+      "review": "Amazing app! Found it on Reddit and instantly fell in love. Super intuitive, easy to use, and I really appreciate that it’s private. It’s helped me manage my finances so much better. Highly recommend to anyone looking to track their money!",
+      "reviewerNickname": "JuniCuu",
+      "createdDate": "2026-07-22",
+      "territory": "ROU",
+      "country_name": "Romania"
     }
   ],
   "review_ids": [
@@ -119,6 +133,7 @@
     "00000191-f874-6c03-3e1a-39b000000000",
     "00000191-f874-6c03-135e-2efe00000000",
     "00000191-f874-6c02-f811-347300000000",
-    "00000191-f874-6c03-1a7c-964200000000"
+    "00000191-f874-6c03-1a7c-964200000000",
+    "00000191-f874-6c03-5663-ded300000000"
   ]
 }
