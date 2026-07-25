@@ -1,31 +1,31 @@
 {
-  "last_updated": "2026-07-23",
-  "total_reviews": 23,
-  "written_reviews": 8,
-  "average_rating": 4.78,
+  "last_updated": "2026-07-24",
+  "total_reviews": 24,
+  "written_reviews": 9,
+  "average_rating": 4.79,
   "by_rating": {
     "1": 0,
     "2": 0,
     "3": 0,
     "4": 5,
-    "5": 18
+    "5": 19
   },
   "sources": {
     "app_store": {
-      "last_updated": "2026-04-05",
-      "total_reviews": 22,
-      "written_reviews": 7,
-      "average_rating": 4.77,
+      "last_updated": "2026-07-22",
+      "total_reviews": 23,
+      "written_reviews": 8,
+      "average_rating": 4.78,
       "by_rating": {
         "1": 0,
         "2": 0,
         "3": 0,
         "4": 5,
-        "5": 17
+        "5": 18
       }
     },
     "play_store": {
-      "last_updated": "2026-07-23",
+      "last_updated": "2026-07-24",
       "total_reviews": 1,
       "written_reviews": 1,
       "average_rating": 5,
@@ -142,6 +142,19 @@
       "reviewer": "moooostafa",
       "country": "United States",
       "territory": "USA",
+      "link": null
+    },
+    {
+      "source": "app_store",
+      "store": "App Store",
+      "id": "00000191-f874-6c03-5663-ded300000000",
+      "date": "2026-07-22",
+      "rating": 5,
+      "title": "Amazing app",
+      "text": "Amazing app! Found it on Reddit and instantly fell in love. Super intuitive, easy to use, and I really appreciate that it’s private. It’s helped me manage my finances so much better. Highly recommend to anyone looking to track their money!",
+      "reviewer": "JuniCuu",
+      "country": "Romania",
+      "territory": "ROU",
       "link": null
     }
   ]
