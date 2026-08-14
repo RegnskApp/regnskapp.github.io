@@ -1,6 +1,6 @@
 {
-  "last_data_update": "2026-08-12",
-  "total_units_all_time": 2497,
+  "last_data_update": "2026-08-13",
+  "total_units_all_time": 2501,
   "total_country_downloaded_all_time": 85,
   "total_per_country": {
     "United States": 704,
@@ -11,10 +11,10 @@
     "United Arab Emirates": 57,
     "Germany": 49,
     "Canada": 47,
-    "United Kingdom": 40,
+    "United Kingdom": 41,
     "India": 37,
     "Italy": 35,
-    "Taiwan": 26,
+    "Taiwan": 27,
     "Hong Kong": 26,
     "France": 25,
     "Australia": 24,
@@ -33,10 +33,10 @@
     "Mexico": 10,
     "Korea, Republic of": 9,
     "Qatar": 9,
+    "Jordan": 9,
     "Ukraine": 8,
     "Philippines": 8,
     "Colombia": 8,
-    "Jordan": 8,
     "Greece": 7,
     "Thailand": 7,
     "Romania": 7,
@@ -50,10 +50,10 @@
     "Austria": 5,
     "Portugal": 5,
     "South Africa": 5,
+    "Cyprus": 5,
     "Bulgaria": 4,
     "Cambodia": 4,
     "Denmark": 4,
-    "Cyprus": 4,
     "Indonesia": 4,
     "Switzerland": 4,
     "Libya": 4,
@@ -1919,6 +1919,22 @@
       "sales_by_device": {},
       "skipped_units_by_product_type": {
         "7F – Update (Universal, excl. tvOS)": 19
+      }
+    },
+    {
+      "report_date": "2026-08-13",
+      "total_units": 4,
+      "sales_by_country": {
+        "JO": 1,
+        "GB": 1,
+        "CY": 1,
+        "TW": 1
+      },
+      "sales_by_device": {
+        "iPhone": 4
+      },
+      "skipped_units_by_product_type": {
+        "7F – Update (Universal, excl. tvOS)": 34
       }
     }
   ]
