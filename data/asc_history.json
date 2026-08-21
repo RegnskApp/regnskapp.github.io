@@ -1,12 +1,12 @@
 {
-  "last_data_update": "2026-08-19",
-  "total_units_all_time": 2504,
+  "last_data_update": "2026-08-20",
+  "total_units_all_time": 2507,
   "total_country_downloaded_all_time": 85,
   "total_per_country": {
     "United States": 705,
     "Egypt": 616,
     "China mainland": 162,
-    "Norway": 111,
+    "Norway": 112,
     "Saudi Arabia": 110,
     "United Arab Emirates": 57,
     "Germany": 49,
@@ -24,18 +24,18 @@
     "Kuwait": 23,
     "Netherlands": 21,
     "Singapore": 17,
+    "Israel": 15,
     "Malaysia": 14,
     "Turkey": 14,
-    "Israel": 14,
     "Iraq": 13,
     "Sweden": 11,
     "Algeria": 11,
     "Mexico": 10,
+    "Ukraine": 9,
     "Philippines": 9,
     "Korea, Republic of": 9,
     "Qatar": 9,
     "Jordan": 9,
-    "Ukraine": 8,
     "Colombia": 8,
     "Greece": 7,
     "Thailand": 7,
@@ -1993,6 +1993,21 @@
       "skipped_units_by_product_type": {
         "7F – Update (Universal, excl. tvOS)": 7,
         "3F – Redownload (Universal, excl. tvOS)": 1
+      }
+    },
+    {
+      "report_date": "2026-08-20",
+      "total_units": 3,
+      "sales_by_country": {
+        "NO": 1,
+        "UA": 1,
+        "IL": 1
+      },
+      "sales_by_device": {
+        "iPhone": 3
+      },
+      "skipped_units_by_product_type": {
+        "7F – Update (Universal, excl. tvOS)": 12
       }
     }
   ]
