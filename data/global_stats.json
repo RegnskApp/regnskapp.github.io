@@ -1,12 +1,12 @@
 {
-  "total_downloads": 2773,
+  "total_downloads": 2776,
   "countries": 96,
-  "last_updated": "2026-09-21",
+  "last_updated": "2026-09-22",
   "top_10": [
     {
       "country": "United States",
       "code": "us",
-      "downloads": 728
+      "downloads": 729
     },
     {
       "country": "Egypt",
@@ -21,7 +21,7 @@
     {
       "country": "Norway",
       "code": "no",
-      "downloads": 128
+      "downloads": 129
     },
     {
       "country": "Saudi Arabia",
