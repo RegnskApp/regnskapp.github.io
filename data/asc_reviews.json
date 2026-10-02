@@ -1,10 +1,10 @@
 {
   "last_review_update": "2026-07-22",
   "ratings": {
-    "total_count": 23,
-    "average": 4.78,
+    "total_count": 25,
+    "average": 4.8,
     "stars": {
-      "5": 18,
+      "5": 20,
       "4": 5,
       "3": 0,
       "2": 0,
@@ -38,7 +38,7 @@
     }
   },
   "manual_ratings": {
-    "5": 12,
+    "5": 14,
     "4": 3,
     "3": 0,
     "2": 0,
