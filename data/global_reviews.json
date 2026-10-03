@@ -1,31 +1,31 @@
 {
-  "last_updated": "2026-10-01",
-  "total_reviews": 24,
+  "last_updated": "2026-10-02",
+  "total_reviews": 26,
   "written_reviews": 9,
-  "average_rating": 4.79,
+  "average_rating": 4.81,
   "by_rating": {
     "1": 0,
     "2": 0,
     "3": 0,
     "4": 5,
-    "5": 19
+    "5": 21
   },
   "sources": {
     "app_store": {
       "last_updated": "2026-07-22",
-      "total_reviews": 23,
+      "total_reviews": 25,
       "written_reviews": 8,
-      "average_rating": 4.78,
+      "average_rating": 4.8,
       "by_rating": {
         "1": 0,
         "2": 0,
         "3": 0,
         "4": 5,
-        "5": 18
+        "5": 20
       }
     },
     "play_store": {
-      "last_updated": "2026-10-01",
+      "last_updated": "2026-10-02",
       "total_reviews": 1,
       "written_reviews": 1,
       "average_rating": 5,
@@ -129,7 +129,7 @@
       "country": null,
       "territory": null,
       "link": "http://play.google.com/console/developers/4639390102037107647/app/4975960870339446934/user-feedback/review-details?reviewId=3b614e2c-e81a-40e0-b458-129328ae6c0c&corpus=PUBLIC_REVIEWS",
-      "file_updated": "2026-09-30"
+      "file_updated": "2026-10-02"
     },
     {
       "source": "app_store",
