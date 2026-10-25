@@ -1,7 +1,7 @@
 {
-  "last_data_update": "2026-10-23",
-  "total_units_all_time": 2560,
-  "total_country_downloaded_all_time": 87,
+  "last_data_update": "2026-10-24",
+  "total_units_all_time": 2561,
+  "total_country_downloaded_all_time": 88,
   "total_per_country": {
     "United States": 709,
     "Egypt": 616,
@@ -89,7 +89,8 @@
     "Brunei": 1,
     "Georgia": 1,
     "Panama": 1,
-    "BA": 1
+    "BA": 1,
+    "MV": 1
   },
   "days": [
     {
@@ -2649,6 +2650,19 @@
       "sales_by_device": {},
       "skipped_units_by_product_type": {
         "3F – Redownload (Universal, excl. tvOS)": 2
+      }
+    },
+    {
+      "report_date": "2026-10-24",
+      "total_units": 1,
+      "sales_by_country": {
+        "MV": 1
+      },
+      "sales_by_device": {
+        "iPhone": 1
+      },
+      "skipped_units_by_product_type": {
+        "3F – Redownload (Universal, excl. tvOS)": 3
       }
     }
   ]
