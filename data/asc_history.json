@@ -1,6 +1,6 @@
 {
-  "last_data_update": "2026-10-24",
-  "total_units_all_time": 2561,
+  "last_data_update": "2026-10-25",
+  "total_units_all_time": 2562,
   "total_country_downloaded_all_time": 88,
   "total_per_country": {
     "United States": 709,
@@ -21,9 +21,9 @@
     "Spain": 26,
     "Singapore": 26,
     "Australia": 24,
+    "Netherlands": 23,
     "Morocco": 23,
     "Kuwait": 23,
-    "Netherlands": 22,
     "Israel": 16,
     "Malaysia": 14,
     "Turkey": 14,
@@ -2663,6 +2663,19 @@
       },
       "skipped_units_by_product_type": {
         "3F – Redownload (Universal, excl. tvOS)": 3
+      }
+    },
+    {
+      "report_date": "2026-10-25",
+      "total_units": 1,
+      "sales_by_country": {
+        "NL": 1
+      },
+      "sales_by_device": {
+        "iPhone": 1
+      },
+      "skipped_units_by_product_type": {
+        "3F – Redownload (Universal, excl. tvOS)": 1
       }
     }
   ]
