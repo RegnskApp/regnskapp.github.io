@@ -1,7 +1,7 @@
 {
-  "total_downloads": 2851,
+  "total_downloads": 2857,
   "countries": 99,
-  "last_updated": "2026-11-07",
+  "last_updated": "2026-11-08",
   "top_10": [
     {
       "country": "United States",
@@ -11,7 +11,7 @@
     {
       "country": "Egypt",
       "code": "eg",
-      "downloads": 660
+      "downloads": 661
     },
     {
       "country": "China mainland",
