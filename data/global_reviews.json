@@ -1,31 +1,31 @@
 {
-  "last_updated": "2026-11-18",
-  "total_reviews": 28,
-  "written_reviews": 9,
-  "average_rating": 4.82,
+  "last_updated": "2026-11-19",
+  "total_reviews": 29,
+  "written_reviews": 10,
+  "average_rating": 4.79,
   "by_rating": {
     "1": 0,
     "2": 0,
     "3": 0,
-    "4": 5,
+    "4": 6,
     "5": 23
   },
   "sources": {
     "app_store": {
-      "last_updated": "2026-07-22",
-      "total_reviews": 27,
-      "written_reviews": 8,
-      "average_rating": 4.81,
+      "last_updated": "2026-11-15",
+      "total_reviews": 28,
+      "written_reviews": 9,
+      "average_rating": 4.79,
       "by_rating": {
         "1": 0,
         "2": 0,
         "3": 0,
-        "4": 5,
+        "4": 6,
         "5": 22
       }
     },
     "play_store": {
-      "last_updated": "2026-11-18",
+      "last_updated": "2026-11-19",
       "total_reviews": 1,
       "written_reviews": 1,
       "average_rating": 5,
@@ -155,6 +155,19 @@
       "reviewer": "JuniCuu",
       "country": "Romania",
       "territory": "ROU",
+      "link": null
+    },
+    {
+      "source": "app_store",
+      "store": "App Store",
+      "id": "00000191-f874-6c03-71c1-ec3a00000000",
+      "date": "2026-11-15",
+      "rating": 4,
+      "title": "Really good app",
+      "text": "Really good app! My only worry to commit is that is my phone dies I cannot use the app on my microsoft pc or any other device.",
+      "reviewer": "Ramzi.21",
+      "country": "France",
+      "territory": "FRA",
       "link": null
     }
   ]
