@@ -1,7 +1,7 @@
 {
-  "last_data_update": "2026-11-19",
-  "total_units_all_time": 2589,
-  "total_country_downloaded_all_time": 89,
+  "last_data_update": "2026-11-20",
+  "total_units_all_time": 2590,
+  "total_country_downloaded_all_time": 90,
   "total_per_country": {
     "United States": 711,
     "Egypt": 616,
@@ -91,7 +91,8 @@
     "Panama": 1,
     "BA": 1,
     "MV": 1,
-    "PY": 1
+    "PY": 1,
+    "MD": 1
   },
   "days": [
     {
@@ -2875,6 +2876,19 @@
       "sales_by_device": {},
       "skipped_units_by_product_type": {
         "3F – Redownload (Universal, excl. tvOS)": 2
+      }
+    },
+    {
+      "report_date": "2026-11-20",
+      "total_units": 1,
+      "sales_by_country": {
+        "MD": 1
+      },
+      "sales_by_device": {
+        "iPhone": 1
+      },
+      "skipped_units_by_product_type": {
+        "3F – Redownload (Universal, excl. tvOS)": 1
       }
     }
   ]
